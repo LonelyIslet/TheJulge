@@ -1,5 +1,5 @@
-import spoqaHanSansNeo from "@/styles/local.font";
-import "@/styles/globals.scss";
+import "styles/globals.scss";
+import spoqaHanSansNeo from "styles/local.font";
 
 export const metadata = {
   title: "",
