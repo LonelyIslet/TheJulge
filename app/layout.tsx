@@ -1,6 +1,6 @@
 import "styles/globals.scss";
 import spoqaHanSansNeo from "styles/local.font";
-import { StoreProvider } from "redux/provider";
+import StoreProvider from "redux/StoreProvider";
 
 export const metadata = {
   title: "더줄게",
