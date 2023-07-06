@@ -35,7 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 # github
-.github
+/.github
 
 # vscode
 /.vscode
