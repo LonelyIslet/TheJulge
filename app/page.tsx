@@ -1,9 +1,11 @@
 import styles from "@/page.module.scss";
 
-export default function Home() {
+const HomePage = () => {
   return (
     <main className={styles.main}>
       <h1>더줄게</h1>
     </main>
   );
-}
+};
+
+export default HomePage;
