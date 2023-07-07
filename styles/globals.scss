@@ -14,6 +14,7 @@ body {
   input {
     font-family: inherit;
     font-size: inherit;
+    outline-color: $red-20;
   }
 
   button {
@@ -26,6 +27,7 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
