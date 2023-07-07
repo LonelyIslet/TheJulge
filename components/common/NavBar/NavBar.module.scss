@@ -52,5 +52,9 @@
 
   h2 {
     font-size: 1.6rem;
+
+    @include mobile {
+      font-size: 1.4rem;
+    }
   }
 }
