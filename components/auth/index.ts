@@ -1,3 +1,3 @@
-import Login from "./Login/Login";
+import LoginForm from "./LoginForm/Login";
 
-export { Login };
+export { LoginForm };
