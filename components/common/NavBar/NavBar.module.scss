@@ -1,4 +1,4 @@
-@import "styles/mixins.scss";
+@use "styles/mixins.scss" as mixins;
 
 .container {
   display: flex;
@@ -8,12 +8,12 @@
   margin: 0 auto;
   max-width: 192rem;
 
-  @include tablet {
+  @include mixins.tablet {
     max-width: 84.8rem;
     padding: 1.5rem 3.2rem; 
   }
 
-  @include mobile {
+  @include mixins.mobile {
     flex-wrap: wrap;
     gap: 1.6rem;
     padding: 1rem 2rem;
@@ -25,7 +25,7 @@
   width: 11.2rem;
   height: 4rem;
 
-  @include mobile {
+  @include mixins.mobile {
     width: 8.4rem;
     height: 3rem;
   }
@@ -34,11 +34,11 @@
 .searchBar {
   width: 45rem;
 
-  @include tablet {
+  @include mixins.tablet {
     width: 34.4rem;
   }
 
-  @include mobile {
+  @include mixins.mobile {
     width: 100%;
     order: 1
   }
@@ -52,5 +52,9 @@
 
   h2 {
     font-size: 1.6rem;
+
+    @include mixins.mobile {
+      font-size: 1.4rem;
+    }
   }
 }

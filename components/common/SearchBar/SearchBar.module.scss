@@ -1,4 +1,4 @@
-@import "styles/mixins.scss";
+@use "styles/mixins.scss" as mixins;
 
 .container {
   display: flex;
@@ -28,7 +28,7 @@
   width: 2rem;
   height: 2rem;
 
-  @include mobile {
+  @include mixins.mobile {
     width: 1.6rem;
     height: 1.6rem;
   }
