@@ -1,3 +1,7 @@
+"use client";
+
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./SearchBar.module.scss";
 
@@ -10,12 +14,29 @@ const SearchBar = ({
   className = "",
   placeholder = "",
 }: SearchBarProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    router.push(`/posts?q=${searchQuery}`);
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
-    <form className={`${styles.container} ${className}`}>
+    <form
+      className={`${styles.container} ${className}`}
+      onSubmit={handleSearch}
+    >
       <input
         type="search"
         className={styles.input}
         placeholder={placeholder}
+        value={searchQuery}
+        onChange={handleChange}
       />
       <div className={styles.icon}>
         <Image
