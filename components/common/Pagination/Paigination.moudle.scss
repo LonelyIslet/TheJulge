@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.4rem;
+  }
+}
+
+.currentPage {
+  border-radius: 0.4rem;
+  background-color: $red-30;
+}
