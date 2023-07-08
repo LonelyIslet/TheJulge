@@ -1,0 +1,42 @@
+@use "styles/mixins.scss" as *;
+
+@mixin color($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+}
+
+@mixin desktop-tablet-font {
+  font-size: 1.4rem;
+  @include bold;
+}
+
+@mixin mobile-font {
+  font-size: 1.2rem;
+  @include regular;
+}
+
+.chipContainer {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  user-select: none;
+  @include desktop-tablet-font;
+
+  @include mobile {
+    @include mobile-font;
+  }
+}
+
+.pending {
+  @include color($green-10, $green-20);
+}
+
+.rejected {
+  @include color($red-10, $red-20);
+}
+
+.approved {
+  @include color($blue-10, $blue-20);
+}
