@@ -1,0 +1,110 @@
+@mixin fixed($top, $left, $right: null, $bottom: null) {
+	position: fixed;
+	top: $top;
+	left: $left;
+
+	@if $right {
+		right: $right;
+	}
+
+	@if $bottom {
+		bottom: $bottom;
+	}
+}
+
+@mixin button {
+  display: flex;
+  width: 8rem;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.6rem;
+  border: 1px solid $primary;
+
+  @include bold;
+  font-size: 1.4rem;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.overlay {
+  @include fixed(0, 0, 0, 0);
+  background: rgb(0, 0, 0);
+  opacity: 0.4;
+  animation: fadeInBg 0.5s;
+  @keyframes fadeInBg {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+  z-index: 1000;
+}
+
+.container {
+  @include fixed(50%, 50%);
+  display: flex;
+  padding: 2.4rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  background: $white;
+  border-radius: 1.2rem;
+  transform: translate(-50%, -50%);
+  animation: fadeInModal 0.5s;
+  
+  @keyframes fadeInModal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1.5;
+    }
+  }
+  z-index: 1000;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 25rem;
+
+  & > div {
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  & > span {
+    text-align: center;
+    @include regular;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: $black;
+  }
+}
+
+.modalFooter {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+
+  .closeBtn {
+    @include button;
+    color: $primary;
+    background-color: transparent;
+  }
+
+  .proceedBtn {
+    @include button;
+    color: $white;
+    background-color: $primary;
+  }
+}
