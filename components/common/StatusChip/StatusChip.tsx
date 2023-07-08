@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ApplyStatus } from "types/enums/apply.enum";
 
 import styles from "./StatusChip.module.scss";

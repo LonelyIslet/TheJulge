@@ -7,7 +7,13 @@ export const metadata = {
   description: "알바 대타 찾을때, 더줄게",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+const RootLayout = ({
+  children,
+}: RootLayoutProps) => {
   return (
     <StoreProvider>
       <html lang="ko">
