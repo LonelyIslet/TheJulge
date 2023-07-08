@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageButton {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  background-color: $white;
+}
+
+.currentPageButton {
+  cursor: default;
+  border-radius: 0.4rem;
+  color: inherit;
+  background-color: $red-30;
+}
+
+.reversed {
+  transform: scale(-1, 1);
+}
