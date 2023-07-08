@@ -19,6 +19,7 @@ const RootLayout = ({
     <StoreProvider>
       <html lang="ko">
         <body className={spoqaHanSansNeo.className}>
+          <div id="modal-root" />
           <NavBar />
           {children}
         </body>
