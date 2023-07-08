@@ -93,6 +93,7 @@ const Pagination = ({
       buttons.push(
         <button
           type="button"
+          className={styles.pageButton}
           onClick={() => { return handleClick(lastPage); }}
         >
           <Image
