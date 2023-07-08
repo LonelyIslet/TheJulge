@@ -9,3 +9,11 @@
     @content;
   }
 }
+
+@mixin bold {
+  font-weight: 700;
+}
+
+@mixin regular {
+  font-weight: 400;
+}

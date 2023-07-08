@@ -19,39 +19,68 @@
 thejulge
 ├─ .eslintignore
 ├─ .eslintrc.json
-├─ LICENSE
+├─ LICENSE.md
 ├─ README.md
 ├─ app
-│  ├─ api
-│  │  └─ route.ts
+│  ├─ api /
 │  ├─ favicon.ico
-│  ├─ fonts
-│  │  ├─ SpoqaHanSansNeo-Bold.woff
-│  │  └─ SpoqaHanSansNeo-Regular.woff
+│  ├─ fonts /
 │  ├─ layout.tsx
 │  ├─ page.module.scss
 │  └─ page.tsx
-├─ components /
-├─ constants /
-├─ hooks /
+├─ components
+│  ├─ auth
+│  │  ├─ LoginForm
+│  │  │  └─ Login.tsx
+│  │  └─ index.ts
+│  ├─ common
+│  │  ├─ NavBar
+│  │  │  ├─ NavBar.module.scss
+│  │  │  └─ NavBar.tsx
+│  │  ├─ Pagination
+│  │  │  ├─ Pagination.tsx
+│  │  │  └─ Paigination.moudle.scss
+│  │  ├─ SearchBar
+│  │  │  ├─ SearchBar.module.scss
+│  │  │  └─ SearchBar.tsx
+│  │  ├─ StatusChip
+│  │  │  └─ StatusChip.tsx
+│  │  └─ index.ts
+│  ├─ employee
+│  │  └─ index.ts
+│  ├─ employer
+│  │  └─ index.ts
+│  └─ post
+│     └─ index.ts
+├─ constants
+│  └─ sample.ts
+├─ hooks
+│  └─ useSample.ts
 ├─ next-sitemap.config.js
 ├─ next.config.js
 ├─ package-lock.json
 ├─ package.json
-├─ public /
+├─ public
+│  └─ images /
 ├─ redux
+│  ├─ StoreProvider.tsx
 │  ├─ hooks
 │  │  ├─ useAppDispatch.ts
 │  │  └─ useAppSelector.ts
 │  ├─ slices
-│  ├─ provider.tsx
+│  │  └─ sampleSlice.ts
 │  └─ store.ts
 ├─ styles
 │  ├─ globals.scss
-│  └─ local.font.ts
+│  ├─ local.font.ts
+│  ├─ mixins.scss
+│  └─ variables.scss
 ├─ tsconfig.json
 ├─ types
+│  ├─ global.d.ts
+│  └─ sample.d.ts
 └─ utils
+   └─ sample.ts
 
 ```
 
@@ -74,5 +103,7 @@ thejulge
 
 - [x] 보일러 플레이트
 - [x] 린트 설정
-- [ ] 라이브러리 설치
+- [x] 라이브러리 설치
+- [x] public assets 추출
 - [ ] 랜딩 페이지 작성
+- [ ] 리소스 완성

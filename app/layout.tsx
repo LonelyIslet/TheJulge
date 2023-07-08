@@ -1,6 +1,7 @@
 import "styles/globals.scss";
 import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
+import { NavBar } from "components/common";
 
 export const metadata = {
   title: "더줄게",
@@ -17,7 +18,10 @@ const RootLayout = ({
   return (
     <StoreProvider>
       <html lang="ko">
-        <body className={spoqaHanSansNeo.className}>{children}</body>
+        <body className={spoqaHanSansNeo.className}>
+          <NavBar />
+          {children}
+        </body>
       </html>
     </StoreProvider>
   );
