@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./Paigination.moudle.scss";
+import styles from "./Pagination.module.scss";
 
 interface PaginationProps {
   currentPage: number;
@@ -23,7 +23,7 @@ const Pagination = ({
     );
   };
 
-  const renderButtons = (): JSX.Element[] => {
+  const renderButtons = () => {
     const buttons: JSX.Element[] = [];
 
     if (lastPage <= 7) {
@@ -32,7 +32,7 @@ const Pagination = ({
           <button
             key={page}
             type="button"
-            className={currentPage === page ? styles.currentPage : ""}
+            className={`${styles.pageButton} ${currentPage === page ? styles.currentPageButton : ""}`}
             onClick={() => { return handleClick(page); }}
             disabled={currentPage === page}
           >
@@ -44,37 +44,67 @@ const Pagination = ({
       return buttons;
     }
 
-    buttons.push(
-      <button
-        type="button"
-        onClick={() => { return handleClick(Math.max(currentPage - 7, 1)); }}
-        disabled={currentPage < 5}
-      >
-        <Image
-          width={20}
-          height={20}
-          src="/images/chevron.svg"
-          alt="Previous Page"
-        />
-      </button>,
-    );
+    let start = 1;
+    let end = 7;
 
-    const prevButtons = range(
-      Math.max(1, currentPage - 3),
-      Math.min(currentPage - 1, lastPage),
-    );
+    if (currentPage > 4) {
+      start = currentPage - 3;
+      end = currentPage + 3;
+    }
 
-    prevButtons.forEach((page) => {
+    if (currentPage + 3 > lastPage) {
+      start = lastPage - 6;
+      end = lastPage;
+    }
+
+    const buttonRange = range(start, end);
+
+    if (start > 1) {
+      buttons.push(
+        <button
+          type="button"
+          className={styles.pageButton}
+          onClick={() => { return handleClick(1); }}
+        >
+          <Image
+            width={20}
+            height={20}
+            src="/images/chevron.svg"
+            alt="First Page"
+          />
+        </button>,
+      );
+    }
+
+    buttonRange.forEach((page) => {
       buttons.push(
         <button
           key={page}
           type="button"
+          className={`${styles.pageButton} ${currentPage === page ? styles.currentPageButton : ""}`}
           onClick={() => { return handleClick(page); }}
         >
           {page}
         </button>,
       );
     });
+
+    if (end < lastPage) {
+      buttons.push(
+        <button
+          type="button"
+          onClick={() => { return handleClick(lastPage); }}
+        >
+          <Image
+            width={20}
+            height={20}
+            className={styles.reversed}
+            src="/images/chevron.svg"
+            alt="Last Page"
+          />
+        </button>,
+      );
+    }
 
     return buttons;
   };
