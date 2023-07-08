@@ -17,7 +17,7 @@ const SearchBar = ({
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     router.push(`/posts?q=${searchQuery}`);
   };
@@ -29,7 +29,7 @@ const SearchBar = ({
   return (
     <form
       className={`${styles.container} ${className}`}
-      onSubmit={handleSearch}
+      onSubmit={handleSubmit}
     >
       <input
         type="search"
