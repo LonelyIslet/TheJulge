@@ -1,0 +1,60 @@
+@use "styles/mixins.scss" as *;
+
+.container {
+  display: flex;
+  gap: 4rem;
+  padding: 1.5rem 20.8rem;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 192rem;
+
+  @include tablet {
+    max-width: 84.8rem;
+    padding: 1.5rem 3.2rem; 
+  }
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.logo {
+  position: relative;
+  width: 11.2rem;
+  height: 4rem;
+
+  @include mobile {
+    width: 8.4rem;
+    height: 3rem;
+  }
+}
+
+.searchBar {
+  width: 45rem;
+
+  @include tablet {
+    width: 34.4rem;
+  }
+
+  @include mobile {
+    width: 100%;
+    order: 1
+  }
+}
+
+.rightItems {
+  display: flex;
+  gap: 4rem;
+  margin-left: auto;
+  color: $black;
+
+  h2 {
+    font-size: 1.6rem;
+
+    @include mobile {
+      font-size: 1.4rem;
+    }
+  }
+}

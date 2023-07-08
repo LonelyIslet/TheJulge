@@ -73,6 +73,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "import/no-cycle": "off",
+    "react/require-default-props": "off"
   }
 }
