@@ -1,0 +1,80 @@
+.payPercentage {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.5rem;
+  color: $white;
+  border-radius: 2rem;
+
+  &.bg-0-25 {
+    background-color: $red-20;
+  }
+
+  &.bg-25-50 {
+    background-color: $red-30;
+  }
+
+  &.bg-50-75 {
+    background-color: $red-40;
+  }
+
+  &.bg-75-100 {
+    background-color: $primary;
+  }
+
+  &.closed {
+    background-color: $gray-30;
+  }
+
+  .iconMobile {
+    display: none;
+  }
+
+  .icon {
+    width: 1.3rem;
+    margin-right: 0.2rem;
+  }
+
+  @include mobile {
+    background-color: $white;
+    padding: 0;
+    font-size: 1.2rem;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
+    &.bg-0-25 {
+      background-color: $white;
+      color: $red-20;
+    }
+
+    &.bg-25-50 {
+      background-color: $white;
+      color: $red-30;
+    }
+
+    &.bg-50-75 {
+      background-color: $white;
+      color: $red-40;
+    }
+
+    &.bg-75-100 {
+      background-color: $white;
+      color: $primary;
+    }
+
+    .iconMobile {
+      width: 1.3rem;
+      display: block;
+    }
+
+    .icon {
+      display: none;
+    }
+
+    &.closed {
+      background-color: $white;
+      color: $gray-20;
+    }
+  }
+}
