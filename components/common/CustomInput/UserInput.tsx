@@ -20,7 +20,7 @@ interface UserInputProps {
 const UserInput = ({
   element, type, placeholder, id, name, onBlur, onChange,
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-  const inputStyle = type === "number" ? `${styles["user-input"]} ${styles["input-number"]}` : styles["user-input"];
+  const inputStyle = type === "number" ? `${styles.userInput} ${styles.inputNumber}` : styles.userInput;
 
   const [eyeToggle, setEyeToggle] = useState(false);
 
@@ -52,7 +52,7 @@ const UserInput = ({
         )
         : (
           <textarea
-            className={styles["user-textarea"]}
+            className={styles.userTextArea}
             placeholder={placeholder}
             id={id}
             name={name}

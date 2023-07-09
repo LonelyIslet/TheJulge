@@ -40,7 +40,7 @@ const CustomInput = ({
   );
 
   return (
-    <InputBox>
+    <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
       <UserInput
         element={element}
@@ -53,7 +53,7 @@ const CustomInput = ({
         onChange={onChange}
       />
       {element === "text" && !validation && <p className={styles.validation}>{validationContent}</p>}
-    </InputBox>
+    </div>
   );
 };
 
