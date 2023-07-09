@@ -7,7 +7,7 @@ import UserInput from "./UserInput";
 
 import styles from "./CustomInput.module.scss";
 
-type validationType = {
+type ValidationType = {
   email: string,
   password: string,
   checkingPassword?: string
@@ -20,22 +20,37 @@ interface CustomInputProps {
   placeholder?: string;
   id: string;
   name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (event:
+  React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>) => void;
   essential?: boolean;
   validationType?: "email" | "password" | "hourlyPay" | "checkingPassword";
-  data?: validationType
+  data?: ValidationType
 }
 
 const CustomInput = ({
   element, label, type, placeholder, essential, id, name, validationType, onChange, data,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { validation, validationContent, handleBlur } = useInputValidation(validationType, inputRef.current?.value as string, data as object);
+  const { validation, validationContent, handleBlur } = useInputValidation(
+    validationType,
+    inputRef.current?.value as string,
+    data as object,
+  );
 
   return (
     <InputBox>
       <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
-      <UserInput element={element} placeholder={placeholder} type={type} id={id} name={name} ref={inputRef} onBlur={handleBlur} onChange={onChange} />
+      <UserInput
+        element={element}
+        placeholder={placeholder}
+        type={type}
+        id={id}
+        name={name}
+        ref={inputRef}
+        onBlur={handleBlur}
+        onChange={onChange}
+      />
       {element === "text" && !validation && <p className={styles.validation}>{validationContent}</p>}
     </InputBox>
   );
