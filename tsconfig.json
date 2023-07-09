@@ -30,6 +30,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".eslintrc.json"
-  ],
+, "components/common/Dropdown/Dropdown.jsx"  ],
   "exclude": ["node_modules"]
 }
