@@ -33,6 +33,7 @@ const AuthForm = () => {
           <div className={cn("line", activeTab === 2 && "active")} />
         </div>
       </div>
+      <ul className={styles.inputList} />
     </form>
   );
 };

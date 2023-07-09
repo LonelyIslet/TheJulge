@@ -1,4 +1,4 @@
-@mixin flexbox($direction, $justify, $align) {
+@mixin flexbox($direction, $justify: false, $align: false) {
   display: flex;
   flex-direction: $direction;
 
@@ -16,14 +16,14 @@
   gap: 2rem;
   padding: 2.4rem 3rem;
   background: $white;
-  border-radius: 22px;
+  border-radius: 2.2rem;
 }
 
 .titleContainer {
-  @include flexbox(row, false, false);
+  @include flexbox(row);
   width:100%;
   .titleItem {
-    @include flexbox(column, false, false);
+    @include flexbox(column);
     flex-grow: 1;
     height: 6rem;
     cursor: pointer;
@@ -55,4 +55,10 @@
       background-color: $primary;;
     }
   }
+}
+
+.inputList {
+  @include flexbox(column, center, center);
+  width: 100%;
+  gap: 2.8rem;
 }
