@@ -17,6 +17,8 @@ const useInputValidation = (
 ): { validation: boolean, validationContent: string, handleBlur: () => void } => {
   const [validation, setValidation] = useState<boolean>(true);
 
+  let validationContent = "";
+
   const handleBlur = () => {
     if (validationType && !checkValidation(validationType, value)) {
       setValidation(false);
@@ -25,7 +27,6 @@ const useInputValidation = (
     }
   };
 
-  let validationContent = "";
   if (!validation && validationType === "email") {
     validationContent = "이메일 주소가 유효하지 않습니다.";
   } else if (!validation && validationType === "password") {

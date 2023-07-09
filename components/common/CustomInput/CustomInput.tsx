@@ -21,8 +21,8 @@ interface CustomInputProps {
   id: string;
   name: string;
   onChange: (event:
-  React.ChangeEvent<HTMLInputElement>
-  | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement> |
+  React.ChangeEvent<HTMLTextAreaElement>) => void;
   essential?: boolean;
   validationType?: "email" | "password" | "hourlyPay" | "checkingPassword";
   data?: ValidationType
@@ -32,6 +32,7 @@ const CustomInput = ({
   element, label, type, placeholder, essential, id, name, validationType, onChange, data,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const { validation, validationContent, handleBlur } = useInputValidation(
     validationType,
     inputRef.current?.value as string,

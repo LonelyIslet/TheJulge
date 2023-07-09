@@ -13,8 +13,8 @@ interface UserInputProps {
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement>;
   onChange :(event:
-  React.ChangeEvent<HTMLInputElement>
-  | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement> |
+  React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const UserInput = ({
@@ -60,13 +60,14 @@ const UserInput = ({
           />
         )}
       {type === "password" && (
-
       <Image
         src={eyeToggle ? "/images/close-eye.svg"
           : "/images/open-eye.svg"}
         onClick={handleToggle}
         className={styles.unit}
         alt="비밀번호 표시/숨김 버튼"
+        width={16}
+        height={16}
       />
       )}
       {type === "number" && <span className={styles.unit}>원</span>}
