@@ -1,0 +1,58 @@
+@mixin flexbox($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+}
+
+.form {
+  @include flexbox(column, false, center);
+  gap: 2rem;
+  padding: 2.4rem 3rem;
+  background: $white;
+  border-radius: 22px;
+}
+
+.titleContainer {
+  @include flexbox(row, false, false);
+  width:100%;
+  .titleItem {
+    @include flexbox(column, false, false);
+    flex-grow: 1;
+    height: 6rem;
+    cursor: pointer;
+    &:hover {
+      .title {
+        color: $gray-40;
+      }
+      .line {
+        background-color: $gray-40;
+      }
+    }
+    .title {
+      @include flexbox(row, center, center);
+      height: 5.6rem;
+      @include bold;
+      font-size: 2.8rem;
+      transition: color 0.2s ease;
+      color: $gray-20;
+    }
+    .title.active {
+      color: $primary;
+    }
+    .line {
+      height: 0.4rem;
+      background-color: $gray-20;
+      transition: background-color 0.2s ease;
+    }
+    .line.active {
+      background-color: $primary;;
+    }
+  }
+}
