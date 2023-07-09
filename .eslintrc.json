@@ -74,7 +74,7 @@
         "tsx": "never"
       }
     ],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": "off",
     "import/no-cycle": "off",
     "react/require-default-props": "off"
   }
