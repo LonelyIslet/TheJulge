@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 
 import styles from "./CustomInput.module.scss";
@@ -11,7 +12,9 @@ interface UserInputProps {
   id: string;
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement>;
-  onChange :(event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange :(event:
+  React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const UserInput = ({
@@ -35,9 +38,37 @@ const UserInput = ({
   return (
     <div className={styles.input}>
       {element === "text"
-        ? <input className={inputStyle} type={getInputType()} placeholder={placeholder} id={id} name={name} ref={ref} onBlur={onBlur} onChange={(event) => { return onChange(event); }} />
-        : <textarea className={styles["user-textarea"]} placeholder={placeholder} id={id} name={name} onChange={(event) => { return onChange(event); }} />}
-      {type === "password" && <img src={eyeToggle ? "/images/close-eye.svg" : "/images/open-eye.svg"} onClick={handleToggle} className={styles.unit} />}
+        ? (
+          <input
+            className={inputStyle}
+            type={getInputType()}
+            placeholder={placeholder}
+            id={id}
+            name={name}
+            ref={ref}
+            onBlur={onBlur}
+            onChange={(event) => { return onChange(event); }}
+          />
+        )
+        : (
+          <textarea
+            className={styles["user-textarea"]}
+            placeholder={placeholder}
+            id={id}
+            name={name}
+            onChange={(event) => { return onChange(event); }}
+          />
+        )}
+      {type === "password" && (
+
+      <Image
+        src={eyeToggle ? "/images/close-eye.svg"
+          : "/images/open-eye.svg"}
+        onClick={handleToggle}
+        className={styles.unit}
+        alt="비밀번호 표시/숨김 버튼"
+      />
+      )}
       {type === "number" && <span className={styles.unit}>원</span>}
     </div>
   );
