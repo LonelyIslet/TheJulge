@@ -12,7 +12,7 @@ const Test = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(data)
+    console.log(data);
   };
 
   const handleInputChange = (event:
