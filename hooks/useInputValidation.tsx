@@ -3,14 +3,18 @@
 import { useState } from "react";
 import checkValidation from "utils/inputValidation";
 
-type validationType = "email" | "password" | "hourlyPay" | "checkingPassword" | undefined;
+type ValidationType = "email" | "password" | "hourlyPay" | "checkingPassword" | undefined;
 
-interface dataType {
+interface DataType {
   password?: string;
   checkingPassword?: string
 }
 
-const useInputValidation = (validationType: validationType, value: string | number, data: dataType): { validation: boolean, validationContent: string, handleBlur: () => void } => {
+const useInputValidation = (
+  validationType: ValidationType,
+  value: string | number,
+  data: DataType,
+): { validation: boolean, validationContent: string, handleBlur: () => void } => {
   const [validation, setValidation] = useState<boolean>(true);
 
   const handleBlur = () => {
