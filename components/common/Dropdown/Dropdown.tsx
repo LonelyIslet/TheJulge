@@ -1,69 +1,41 @@
 "use client";
 
+import useDropdown from "hooks/useDropdown";
 import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
   label: string
   id: string
   name: string
-  onChange: any
+  onChange: (name:string, value:string) => void
 }
 
 const Dropdown = ({
   label, id, onChange, name,
 }: DropdownProps) => {
-  const [toggle, setToggle] = useState(false);
-  const [inputData, setInputData] = useState<string[]>();
   const [inputValue, setInputValue] = useState<string>("");
 
   const divRef = useRef<HTMLDivElement>(null);
+  const { isOut, setIsOut, fetchData } = useDropdown(divRef);
 
-  const oneRef = useRef<HTMLDivElement>(null);
-
-  const handleInputValue = (event) => {
+  const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
     onChange(name, event.target.value);
   };
 
+  const handlePickData = ((event: React.MouseEvent<HTMLButtonElement>) => {
+    setInputValue((event.target as HTMLElement).textContent as string);
+    onChange(name, (event.target as HTMLElement).textContent as string);
+  });
+
   const handleToggle = () => {
-    setToggle(!toggle);
+    setIsOut((prev) => { return !prev; });
   };
-
-  const handlePickData = (e) => {
-    setInputValue(e.target.textContent);
-    onChange(name, e.target.textContent);
-  };
-
-  const getDropdownData = async () => {
-    const response = await fetch("/data/drop.json");
-    const json = await response.json();
-    setInputData(json);
-  };
-
-  useEffect(() => {
-    getDropdownData();
-  }, []);
-
-  useEffect(() => {
-    // 현재 document에서 mousedown 이벤트가 동작하면 호출되는 함수입니다.
-    function handleClickOutside(event) {
-      if (divRef.current && !divRef.current.contains(event.target)) {
-        console.log("div 외부 클릭을 감지!");
-      } else {
-        // console.log(oneRef);
-        // setInputValue(oneRef.current);
-      }
-    }
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [oneRef]);
 
   return (
-    <div className={styles.box}>
+    <div className={styles.box} ref={divRef}>
       <label className={styles.label} htmlFor={id}>{label}</label>
       <input
         id={id}
@@ -72,38 +44,42 @@ const Dropdown = ({
         value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
       />
-      <div ref={divRef} className={styles.container}>
-        {toggle && (
+      <div className={styles.container}>
+        {!isOut && (
         <div>
           {!inputValue
-        && inputData?.data?.ward.map((list) => {
-          return (
-            <button
-              type="button"
-              onClick={handlePickData}
-              className={styles.content}
-              key={list}
-            >
-              {list}
-            </button>
-          );
-        })}
+          && fetchData
+          && fetchData.data.ward.map((list:string) => {
+            return (
+              <button
+                type="button"
+                onClick={handlePickData}
+                className={styles.content}
+                key={list}
+              >
+                {list}
+              </button>
+            );
+          })}
         </div>
         )}
-        {inputValue
-        && inputData?.data?.ward?.filter((list) => { return list.includes(inputValue); }).map(((list) => {
-          return (
-            <button
-              key={list}
-              type="button"
-              onClick={handlePickData}
-              className={styles.content}
-            >
-              {list}
-            </button>
-          );
-        }))}
-        {!toggle && (
+        {!isOut
+        && inputValue
+        && fetchData
+        && fetchData.data.ward.filter((list) => { return list.includes(inputValue); })
+          .map(((list: string) => {
+            return (
+              <button
+                key={list}
+                type="button"
+                onClick={handlePickData}
+                className={styles.content}
+              >
+                {list}
+              </button>
+            );
+          }))}
+        {!isOut && (
         <Image
           className={styles.toggle}
           src="/images/dropdown.svg"
@@ -111,9 +87,10 @@ const Dropdown = ({
           width={16}
           height={16}
           onClick={handleToggle}
+          id="1"
         />
         )}
-        {toggle && (
+        {isOut && (
         <Image
           className={styles.toggle}
           src="/images/Triangle.svg"
@@ -121,6 +98,7 @@ const Dropdown = ({
           width={16}
           height={16}
           onClick={handleToggle}
+          id="2"
         />
         )}
       </div>
