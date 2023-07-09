@@ -2,40 +2,31 @@
 
 import { useState } from "react";
 import checkValidation from "utils/inputValidation";
+import { ValidationTarget } from "types/enums/inputValidation.enum";
 
-type ValidationType = "email" | "password" | "hourlyPay" | "checkingPassword" | undefined;
-
-interface DataType {
-  password?: string;
-  checkingPassword?: string
-}
+const validationContentMap = {
+  EMAIL: "이메일 주소가 유효하지 않습니다.",
+  PASSWORD: "비밀번호가 유효하지 않습니다.",
+  PASSWORD_CONFIRM: "비밀번호가 일치하지 않습니다.",
+  HOURLY_PAY: "백원 단위로 입력해주세요.",
+};
 
 const useInputValidation = (
-  validationType: ValidationType,
-  value: string | number,
-  data: DataType,
+  validationTarget: ValidationTarget,
+  value: string,
+  data?: object,
 ): { validation: boolean, validationContent: string, handleBlur: () => void } => {
   const [validation, setValidation] = useState<boolean>(true);
 
-  let validationContent = "";
-
   const handleBlur = () => {
-    if (validationType && !checkValidation(validationType, value)) {
+    if (validationTarget && !checkValidation(validationTarget, value, data)) {
       setValidation(false);
     } else {
       setValidation(true);
     }
   };
 
-  if (!validation && validationType === "email") {
-    validationContent = "이메일 주소가 유효하지 않습니다.";
-  } else if (!validation && validationType === "password") {
-    validationContent = "비밀번호가 유효하지 않습니다.";
-  } else if (!validation && validationType === "hourlyPay") {
-    validationContent = "백원 단위로 입력해주세요.";
-  } else if (data && !validation && validationType === "checkingPassword" && data.password !== data.checkingPassword) {
-    validationContent = "비밀번호가 일치하지 않습니다.";
-  }
+  const validationContent: string = validationContentMap[validationTarget];
 
   return { validation, validationContent, handleBlur };
 };

@@ -2,22 +2,22 @@
 
 import React, { useState } from "react";
 import { CustomInput } from "components/common";
+import { ValidationTarget } from "types/enums/inputValidation.enum";
 
 const Test = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
-    checkingPassword: "",
+    password_confirm: "",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(data);
   };
 
   const handleInputChange = (event:
   React.ChangeEvent<HTMLInputElement> |
-  React.ChangeEvent<HTMLTextAreaElement>) => {
+  React.ChangeEvent<HTMLTextAreaElement>): void => {
     const { name, value } = event.target;
     setData((prevData) => {
       return {
@@ -38,7 +38,7 @@ const Test = () => {
           essential
           id="email"
           name="email"
-          validationType="email"
+          validationTarget={ValidationTarget.EMAIL}
           data={data}
           onChange={handleInputChange}
         />
@@ -50,7 +50,7 @@ const Test = () => {
           essential
           id="password"
           name="password"
-          validationType="password"
+          validationTarget={ValidationTarget.PASSWORD}
           data={data}
           onChange={handleInputChange}
         />
@@ -60,9 +60,9 @@ const Test = () => {
           label="비밀번호 확인"
           placeholder="선택"
           essential
-          id="checkingPassword"
-          name="checkingPassword"
-          validationType="checkingPassword"
+          id="password_confirm"
+          name="password_confirm"
+          validationTarget={ValidationTarget.PASSWORD_CONFIRM}
           data={data}
           onChange={handleInputChange}
         />
@@ -73,7 +73,7 @@ const Test = () => {
           placeholder="선택"
           id="hourlyPay"
           name="hourlyPay"
-          validationType="hourlyPay"
+          validationTarget={ValidationTarget.HOURLY_PAY}
           onChange={handleInputChange}
         />
         <CustomInput

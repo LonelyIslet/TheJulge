@@ -2,16 +2,15 @@
 
 import { useRef } from "react";
 import useInputValidation from "hooks/useInputValidation";
-import InputBox from "./InputBox";
+import { ValidationTarget } from "types/enums/inputValidation.enum";
 import UserInput from "./UserInput";
-
 import styles from "./CustomInput.module.scss";
 
-type ValidationType = {
+interface ValidationType {
   email: string,
   password: string,
-  checkingPassword?: string
-};
+  password_confirm?: string
+}
 
 interface CustomInputProps {
   element: "text" | "textarea";
@@ -24,17 +23,17 @@ interface CustomInputProps {
   React.ChangeEvent<HTMLInputElement> |
   React.ChangeEvent<HTMLTextAreaElement>) => void;
   essential?: boolean;
-  validationType?: "email" | "password" | "hourlyPay" | "checkingPassword";
-  data?: ValidationType
+  validationTarget?: ValidationTarget
+  data?: ValidationType;
 }
 
 const CustomInput = ({
-  element, label, type, placeholder, essential, id, name, validationType, onChange, data,
+  element, label, type, placeholder, essential, id, name, validationTarget, onChange, data,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { validation, validationContent, handleBlur } = useInputValidation(
-    validationType,
+    validationTarget,
     inputRef.current?.value as string,
     data as object,
   );
