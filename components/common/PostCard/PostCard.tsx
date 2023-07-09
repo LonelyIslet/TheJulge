@@ -20,15 +20,15 @@ interface PostCardProps {
 const PostCard = ({
   hourlyPay, startsAt, closed, workhour, name, address1, imageUrl, originalHourlyPay, href,
 }: PostCardProps) => {
-  const passed = new Date() > new Date(startsAt);
-  const isClosed = closed || passed;
+  const isPassed = new Date() > new Date(startsAt);
+  const isClosed = closed || isPassed;
   const percentage = calculatePercentage(hourlyPay, originalHourlyPay);
 
   const getClosedMessage = () => {
     if (closed) {
       return "마감 완료";
     }
-    if (passed) {
+    if (isPassed) {
       return "지난 공고";
     }
     return null;
