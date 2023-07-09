@@ -6,20 +6,18 @@
   color: $white;
   border-radius: 2rem;
 
-  &.bg-0-25 {
-    background-color: $red-20;
-  }
+  $intensity: ("0-25": $red-20, "25-50": $red-30, "50-75": $red-40, "75-100": $primary);
 
-  &.bg-25-50 {
-    background-color: $red-30;
-  }
+  @each $range,
+  $color in $intensity {
+    &.bg-#{$range} {
+      background-color: $color;
 
-  &.bg-50-75 {
-    background-color: $red-40;
-  }
-
-  &.bg-75-100 {
-    background-color: $primary;
+      @include mobile {
+        background-color: $white;
+        color: $color;
+      }
+    }
   }
 
   &.closed {
@@ -42,26 +40,6 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     gap: 0.5rem;
-
-    &.bg-0-25 {
-      background-color: $white;
-      color: $red-20;
-    }
-
-    &.bg-25-50 {
-      background-color: $white;
-      color: $red-30;
-    }
-
-    &.bg-50-75 {
-      background-color: $white;
-      color: $red-40;
-    }
-
-    &.bg-75-100 {
-      background-color: $white;
-      color: $primary;
-    }
 
     .iconMobile {
       width: 1.3rem;
