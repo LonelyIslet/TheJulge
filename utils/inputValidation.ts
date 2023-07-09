@@ -1,20 +1,23 @@
-type validationType = "email" | "password" | "hourlyPay" | "checkingPassword";
+type ValidationType = "email" | "password" | "hourlyPay" | "checkingPassword";
 
-const checkvalidation = (validationType: validationType, value: string | number): boolean => {
+const emailRegexp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+const passwordRegexp = /^(?=.*[a-zA-Z가-힣!@#$%^&*()_+={}|[\]\\';:/?.,<>]).{8,16}$/;
+
+const checkvalidation = (validationType: ValidationType, value: string | number): boolean => {
+  const tenDigits = (+value / 10) % 10;
+  const oneDigits = +value % 10;
   if (!value) return false;
   switch (validationType) {
     case "email":
-      const emailRegexp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
       return emailRegexp.test(value.toString());
     case "password":
-      const passwordRegexp = /^(?=.*[a-zA-Z가-힣!@#$%^&*()_+={}|[\]\\';:/?.,<>]).{8,16}$/;
       return passwordRegexp.test(value.toString());
     case "hourlyPay":
-      const oneDigits = +value % 10;
-      const tenDigits = (+value / 10) % 10;
       if (!oneDigits && !tenDigits) {
         return true;
       }
+      break;
+    default:
   }
   return false;
 };
