@@ -37,7 +37,8 @@
     gap: 0.8rem;
     margin-top: -0.5rem;
 
-    .time, .address {
+    .time,
+    .address {
       font-size: 1.4rem;
       color: $gray-50;
       display: flex;
@@ -55,7 +56,8 @@
     @include mobile {
       gap: 0.6rem;
 
-      .time, .address {
+      .time,
+      .address {
         font-size: 1.2rem;
         align-items: flex-start;
 

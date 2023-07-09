@@ -2,7 +2,7 @@ import { PostCard } from "components/common";
 import styles from "@/page.module.scss";
 import data from "constants/mock/notice.json";
 
-const Page = async () => {
+const Page = () => {
   const {
     hourlyPay,
     startsAt,
@@ -10,25 +10,25 @@ const Page = async () => {
     closed,
     shop: {
       href,
-      item: { name, address1, imageUrl, originalHourlyPay },
+      item: {
+        name, address1, imageUrl, originalHourlyPay,
+      },
     },
   } = data.item;
-  
-  const postCardProps = {
-    hourlyPay,
-    startsAt,
-    workhour,
-    closed,
-    name,
-    address1,
-    imageUrl,
-    originalHourlyPay,
-    href,
-  };
 
   return (
     <main className={styles.main}>
-      <PostCard {...postCardProps}/>
+      <PostCard
+        hourlyPay={hourlyPay}
+        startsAt={startsAt}
+        workhour={workhour}
+        closed={closed}
+        name={name}
+        address1={address1}
+        imageUrl={imageUrl}
+        originalHourlyPay={originalHourlyPay}
+        href={href}
+      />
     </main>
   );
 };
