@@ -44,9 +44,9 @@ const HourlyPayPercentage = ({ isClosed, percentage }: HourlyPayPercentageProps)
 
   return (
     <div className={`${styles.payPercentage} ${isClosed ? styles.closed : ""} ${bgColorClass}`}>
+      <p>{`기존시급보다 ${percentage}%`}</p>
       <Image src="images/arrow-white.svg" className={styles.icon} alt="arrow" width={15} height={15} />
       <Image src={getArrowImageSource(isClosed, percentage)} className={styles.iconMobile} alt="arrow" width={15} height={15} />
-      <p>{`기존시급보다 ${percentage}%`}</p>
     </div>
   );
 };
