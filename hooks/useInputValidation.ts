@@ -4,11 +4,14 @@ import { useState } from "react";
 import checkValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
-const validationContentMap = {
+const validationContentMap: {
+  [key in ValidationTarget]: string
+} = {
   EMAIL: "이메일 주소가 유효하지 않습니다.",
   PASSWORD: "비밀번호가 유효하지 않습니다.",
   PASSWORD_CONFIRM: "비밀번호가 일치하지 않습니다.",
   HOURLY_PAY: "백원 단위로 입력해주세요.",
+  TEL: "유효하지 않는 전화번호 입니다.",
 };
 
 const useInputValidation = (

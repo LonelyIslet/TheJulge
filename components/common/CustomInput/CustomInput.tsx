@@ -33,7 +33,7 @@ const CustomInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { validation, validationContent, handleBlur } = useInputValidation(
-    validationTarget,
+    validationTarget as ValidationTarget,
     inputRef.current?.value as string,
     data as object,
   );

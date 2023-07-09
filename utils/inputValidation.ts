@@ -32,12 +32,12 @@ const checkvalidation = (
       if (!oneDigits && !tenDigits) {
         return true;
       }
-      break;
+      return false;
     case ValidationTarget.PASSWORD_CONFIRM:
       if (data && data.password === data.password_confirm) {
         return true;
       }
-      break;
+      return false;
     default:
       return false;
   }
