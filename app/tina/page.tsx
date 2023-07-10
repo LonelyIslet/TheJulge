@@ -1,6 +1,7 @@
-import { PostCard } from "components/common";
+import { CommonBtn, PostCard } from "components/common";
 import styles from "@/page.module.scss";
 import data from "constants/mock/notice.json";
+import { ButtonSize, ButtonType } from "types/enums/button.enum";
 
 const Page = () => {
   const {
@@ -29,6 +30,7 @@ const Page = () => {
         originalHourlyPay={originalHourlyPay}
         href={href}
       />
+      <CommonBtn type={ButtonType.OUTLINE} size={ButtonSize.LARGE} message="버튼" responsive />
     </main>
   );
 };

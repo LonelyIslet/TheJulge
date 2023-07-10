@@ -1,0 +1,43 @@
+.button {
+  width: 100%;
+  border-radius: 0.6rem;
+
+  &.solid {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &.outline {
+    background-color: $white;
+    border: .1rem solid $primary;
+    color: $primary;
+  }
+
+  &.disable {
+    background-color: $gray-40;
+    color: $white;
+    cursor: default;
+  }
+
+  &.large {
+    font-size: 1.6rem;
+    padding: 1.5rem;
+  }
+
+  &.medium {
+    font-size: 1.4rem;
+    padding: 1.2rem;
+  }
+
+  &.small {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  @include mobile {
+    &.responsive {
+      font-size: 1.4rem;
+      padding: 1.2rem;
+    }
+  }
+}
