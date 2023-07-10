@@ -40,9 +40,9 @@ thejulge
 │  │  ├─ HourlyPayPercentage
 │  │  │  ├─ HourlyPayPercentage.module.scss
 │  │  │  └─ HourlyPayPercentage.tsx
-│  │  ├─ NavBar
-│  │  │  ├─ NavBar.module.scss
-│  │  │  └─ NavBar.tsx
+│  │  ├─ GlobalNav
+│  │  │  ├─ GlobalNav.module.scss
+│  │  │  └─ GlobalNav.tsx
 │  │  ├─ Pagination
 │  │  │  ├─ Pagination.tsx
 │  │  │  └─ Paigination.moudle.scss
