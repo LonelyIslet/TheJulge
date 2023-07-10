@@ -1,7 +1,7 @@
 import { CommonBtn, PostCard } from "components/common";
-import styles from "@/page.module.scss";
-import data from "constants/mock/notice.json";
 import { ButtonSize, ButtonType } from "types/enums/button.enum";
+import data from "constants/mock/notice.json";
+import styles from "@/page.module.scss";
 
 const Page = () => {
   const {
