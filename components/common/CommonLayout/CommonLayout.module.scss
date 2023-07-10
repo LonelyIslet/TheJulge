@@ -33,6 +33,9 @@
   }
 
   @include mobile {
+    width: calc(100% - 2.4rem);
+
+
     header {
     margin-bottom: 1.6rem;
     }
