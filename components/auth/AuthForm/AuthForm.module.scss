@@ -14,6 +14,7 @@
 .form {
   @include flexbox(column, false, center);
   gap: 2rem;
+  width: fit-content;
   padding: 2.4rem 3rem;
   background: $white;
   border-radius: 2.2rem;
@@ -21,10 +22,10 @@
 
 .titleContainer {
   @include flexbox(row);
-  width:100%;
+  width:35rem;
   .titleItem {
     @include flexbox(column);
-    flex-grow: 1;
+    width: 50%;
     height: 6rem;
     cursor: pointer;
     &:hover {
@@ -57,7 +58,7 @@
   }
 }
 
-.inputList {
+.inputListContainer {
   @include flexbox(column, center, center);
   width: 100%;
   gap: 2.8rem;

@@ -3,16 +3,25 @@
 import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./AuthForm.module.scss";
+import UserTypeSelect from "../UserTypeSelect/UserTypeSelect";
 
 const cn = classNames.bind(styles);
-
-type ActiveTabNumber = 1 | 2;
+/**
+ * @1 - 로그인폼 탭
+ * @2 - 회원가입폼 탭
+ */
+type ActiveFormTabNumber = 1 | 2;
 
 const AuthForm = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTabNumber>(1);
+  const [activeTab, setActiveTab] = useState<ActiveFormTabNumber>(1);
 
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <div className={styles.titleContainer}>
         <div
           className={styles.titleItem}
@@ -33,7 +42,11 @@ const AuthForm = () => {
           <div className={cn("line", activeTab === 2 && "active")} />
         </div>
       </div>
-      <ul className={styles.inputList} />
+      <ul className={styles.inputListContainer}>
+        <UserTypeSelect onChange={(a) => { alert(a); }} />
+      </ul>
+      <input type="text" name="test" />
+      <input type="submit" />
     </form>
   );
 };
