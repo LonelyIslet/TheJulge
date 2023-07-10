@@ -1,33 +1,26 @@
 @import url(/styles/mixins.scss);
 
-.layout {
-  width: 100%;
-
-  .container {
-    max-width: 96.4rem;
-    padding: 6rem 0;
-    margin: 0 auto;
-    header {
-      margin-bottom: 0.8rem;
-    }
-    
-    p {
-      color: $red-50;
-      font-size: 1.6rem;
-      margin-bottom: 0.8rem;
-    }
+.container {
+  max-width: 96.4rem;
+  padding: 6rem 0;
+  margin: 0 auto;
   
-    h2 {
-      font-size: 2.8rem;
-    }
+  header {
+    margin-bottom: 0.8rem;
+  }
   
-    @include tablet {
-      width: calc(100% - 6.4rem);
-    }
+  p {
+    color: $red-50;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
   }
 
+  h2 {
+    font-size: 2.8rem;
+  }
+
+  @include tablet {
+    width: calc(100% - 6.4rem);
+  }
 }
 
-.layout.gray {
-  background-color: $gray-5;
-}

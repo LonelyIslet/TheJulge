@@ -1,20 +1,17 @@
 import React from "react";
 import styles from "./CommonLayout.module.scss";
 
-const CommonLayout = ({ children, isGray }) => {
-  const layoutStyle = isGray ? `${styles.layout} ${styles.gray}` : `${styles.layout}`;
+const CommonLayout = ({ children, isGray }: { children: React.ReactNode }) => {
+  const [title, content] = React.Children.toArray(children);
 
-  const [title, content] = React.Children.map(children, (child, index) => { return child; });
   return (
-    <div className={layoutStyle}>
-      <div className={styles.container}>
-        <header>
-          {title}
-        </header>
-        <main>
-          {content}
-        </main>
-      </div>
+    <div className={styles.container}>
+      <header>
+        {title}
+      </header>
+      <main>
+        {content}
+      </main>
     </div>
   );
 };
