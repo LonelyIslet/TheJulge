@@ -12,6 +12,6 @@ const formatTimeRange = (startsAt: string, workhour: number): string => {
   const endMinute = endDate.getMinutes().toString().padStart(2, "0");
 
   return `${year}-${month}-${day} ${startHour}:${startMinute} - ${endHour}:${endMinute} (${workhour}시간)`;
-}
+};
 
 export default formatTimeRange;
