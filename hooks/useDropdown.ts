@@ -9,7 +9,7 @@ interface Data {
 }
 
 const useDropdown = (ref: RefObject<HTMLElement>) => {
-  const [isOut, setIsOut] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const [fetchData, setFetchData] = useState<Data>();
 
   const getDropdownData = async () => {
@@ -29,10 +29,8 @@ const useDropdown = (ref: RefObject<HTMLElement>) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setIsOut(true);
-      } else {
-        setIsOut(false);
+      if (ref.current && !ref.current.contains(event.target as Node) && event.target.id !== "toggle") {
+        setToggle(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -41,7 +39,7 @@ const useDropdown = (ref: RefObject<HTMLElement>) => {
     };
   }, [ref]);
 
-  return { isOut, setIsOut, fetchData };
+  return { toggle, setToggle, fetchData };
 };
 
 export default useDropdown;

@@ -16,9 +16,9 @@ const Dropdown = ({
   label, id, onChange, name,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
+
   const [inputValue, setInputValue] = useState<string>("");
-  const [toggle, setToggle] = useState(false);
-  const { isOut, setIsOut, fetchData } = useDropdown(divRef);
+  const { toggle, setToggle, fetchData } = useDropdown(divRef);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -30,8 +30,9 @@ const Dropdown = ({
     onChange(name, (event.target as HTMLElement).textContent as string);
   });
 
-  const handleToggle = () => {
-    setToggle((prev) => { return !prev; });
+  const handleToggle = (e) => {
+    e.preventDefault();
+    setToggle(!toggle);
   };
 
   return (
@@ -44,8 +45,30 @@ const Dropdown = ({
         value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
       />
+      {toggle && (
+        <Image
+          className={styles.toggle}
+          src="/images/dropdown.svg"
+          alt="창내림"
+          width={16}
+          height={16}
+          onClick={handleToggle}
+          id="toggle"
+        />
+      )}
+      {!toggle && (
+        <Image
+          className={styles.toggle}
+          src="/images/Triangle.svg"
+          alt="창올림"
+          width={16}
+          height={16}
+          onClick={handleToggle}
+          id="toggle"
+        />
+      )}
       <div>
-        {!isOut && (
+        {toggle && (
         <div className={styles.container}>
           {!inputValue
           && fetchData
@@ -64,7 +87,7 @@ const Dropdown = ({
         </div>
         )}
         <div className={styles.container}>
-          {toggle && !isOut
+          {toggle
         && inputValue
         && fetchData
         && fetchData.data.ward.filter((list) => { return list.includes(inputValue); })
@@ -81,26 +104,7 @@ const Dropdown = ({
             );
           }))}
         </div>
-        {(!toggle && isOut) && (
-        <Image
-          className={styles.toggle}
-          src="/images/dropdown.svg"
-          alt="창내림"
-          width={16}
-          height={16}
-          onClick={handleToggle}
-        />
-        )}
-        {(toggle || !isOut) && (
-        <Image
-          className={styles.toggle}
-          src="/images/Triangle.svg"
-          alt="창올림"
-          width={16}
-          height={16}
-          onClick={handleToggle}
-        />
-        )}
+
       </div>
     </div>
   );
