@@ -51,7 +51,7 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
         </div>
         <div>
           <p>{dataType.description}</p>
-          <CommonBtn type={ButtonStyle.SOLID} size={ButtonSize.MEDIUM} message={dataType.buttonText} />
+          <CommonBtn type="button" style={ButtonStyle.SOLID} size={ButtonSize.MEDIUM} message={dataType.buttonText} />
         </div>
       </CommonLayout>
     </div>
