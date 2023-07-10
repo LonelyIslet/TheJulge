@@ -15,9 +15,9 @@ interface DropdownProps {
 const Dropdown = ({
   label, id, onChange, name,
 }: DropdownProps) => {
-  const [inputValue, setInputValue] = useState<string>("");
-
   const divRef = useRef<HTMLDivElement>(null);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [toggle, setToggle] = useState(false);
   const { isOut, setIsOut, fetchData } = useDropdown(divRef);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ const Dropdown = ({
   });
 
   const handleToggle = () => {
-    setIsOut((prev) => { return !prev; });
+    setToggle((prev) => { return !prev; });
   };
 
   return (
@@ -44,9 +44,9 @@ const Dropdown = ({
         value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
       />
-      <div className={styles.container}>
+      <div>
         {!isOut && (
-        <div>
+        <div className={styles.container}>
           {!inputValue
           && fetchData
           && fetchData.data.ward.map((list:string) => {
@@ -63,7 +63,8 @@ const Dropdown = ({
           })}
         </div>
         )}
-        {!isOut
+        <div className={styles.container}>
+          {toggle && !isOut
         && inputValue
         && fetchData
         && fetchData.data.ward.filter((list) => { return list.includes(inputValue); })
@@ -79,7 +80,8 @@ const Dropdown = ({
               </button>
             );
           }))}
-        {!isOut && (
+        </div>
+        {(!toggle && isOut) && (
         <Image
           className={styles.toggle}
           src="/images/dropdown.svg"
@@ -87,10 +89,9 @@ const Dropdown = ({
           width={16}
           height={16}
           onClick={handleToggle}
-          id="1"
         />
         )}
-        {isOut && (
+        {(toggle || !isOut) && (
         <Image
           className={styles.toggle}
           src="/images/Triangle.svg"
@@ -98,7 +99,6 @@ const Dropdown = ({
           width={16}
           height={16}
           onClick={handleToggle}
-          id="2"
         />
         )}
       </div>
