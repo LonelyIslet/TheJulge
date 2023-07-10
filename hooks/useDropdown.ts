@@ -23,7 +23,7 @@ const useDropdown = (ref: RefObject<HTMLElement>, category: string) => {
         const data = await response.json() as Data;
         setFetchData(data);
       } else {
-        throw new Error("Error fetching dropdown data");
+        throw new Error("데이터 통신 오류");
       }
     } catch (err) {
       console.error(err);
