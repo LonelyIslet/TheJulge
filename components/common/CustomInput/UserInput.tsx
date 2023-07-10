@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-
 import styles from "./CustomInput.module.scss";
 
 interface UserInputProps {
@@ -22,14 +21,14 @@ const UserInput = ({
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const inputStyle = type === "number" ? `${styles.userInput} ${styles.inputNumber}` : styles.userInput;
 
-  const [eyeToggle, setEyeToggle] = useState(false);
+  const [isEyeToggled, setIsEyeToggled] = useState(false);
 
   const handleToggle = () => {
-    setEyeToggle(!eyeToggle);
+    setIsEyeToggled(!isEyeToggled);
   };
 
   const getInputType = () => {
-    if (type === "password" && eyeToggle) {
+    if (type === "password" && isEyeToggled) {
       return "text";
     }
     return type;
@@ -61,7 +60,7 @@ const UserInput = ({
         )}
       {type === "password" && (
       <Image
-        src={eyeToggle ? "/images/close-eye.svg"
+        src={isEyeToggled ? "/images/close-eye.svg"
           : "/images/open-eye.svg"}
         onClick={handleToggle}
         className={styles.unit}
