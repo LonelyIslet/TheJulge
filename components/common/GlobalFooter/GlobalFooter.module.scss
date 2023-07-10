@@ -1,0 +1,66 @@
+.footer {
+  display: flex;
+  background-color: $gray-10;
+  justify-content: center;
+  height: 10rem;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 97rem;
+  }
+
+  .copyright {
+    color: $gray-50;
+  }
+
+  .infoContainer {
+    color: $gray-50;
+
+    .policy {
+      margin-right: 3rem;
+    }
+  }
+
+  .iconContainer {
+    display: flex;
+
+    .icon {
+      margin-left: 1.3rem;
+      display: flex;
+    }
+  }
+
+
+  @include tablet {
+    .container {
+      padding: 0 3rem;
+    }
+  }
+
+  @include mobile {
+    height: 12.6rem;
+    padding: 3rem 1.5rem 1.5rem;
+    font-size: 1.4rem;
+
+    .container {
+      padding: 0;
+      position: relative;
+      align-items: start;
+
+      .copyright {
+        font-size: 1.4rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .footer {
+    width: 37.5rem;
+  }
+}
