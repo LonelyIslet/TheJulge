@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames/bind";
-import { ButtonType, ButtonSize } from "types/enums/button.enum";
+import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
 import styles from "./CommonBtn.module.scss";
 
 const cx = classNames.bind(styles);
@@ -9,7 +9,8 @@ const cx = classNames.bind(styles);
 type ClickHandler = (e: React.MouseEvent) => void;
 
 interface CommonBtnProps {
-  type?: ButtonType;
+  type?: "button" | "submit";
+  style?: ButtonStyle;
   size?: ButtonSize;
   message?: string;
   onClick?: ClickHandler | undefined;
@@ -17,14 +18,26 @@ interface CommonBtnProps {
 }
 
 const CommonBtn = ({
-  type = ButtonType.SOLID,
+  type = "button",
+  style = ButtonStyle.SOLID,
   size = ButtonSize.LARGE,
   message = "button",
   onClick = undefined,
   responsive = false,
 }: CommonBtnProps) => {
+  const buttonClassName = cx(
+    "button",
+    `${style}`,
+    `${size}`,
+    { responsive },
+  );
   return (
-    <button type="button" className={cx("button", `${type}`, `${size}`, { responsive })} onClick={onClick} disabled={type === ButtonType.DISABLE}>
+    <button
+      type={type}
+      className={buttonClassName}
+      onClick={onClick}
+      disabled={style === ButtonStyle.DISABLE}
+    >
       {message}
     </button>
   );

@@ -4,7 +4,7 @@
  * @OUTLINE 테두리 버튼
  * @DISABLE 비활성화 버튼
  */
-enum ButtonType {
+enum ButtonStyle {
   SOLID = "solid",
   OUTLINE = "outline",
   DISABLE = "disable",
@@ -16,4 +16,4 @@ enum ButtonSize {
   SMALL = "small",
 }
 
-export { ButtonType, ButtonSize };
+export { ButtonStyle, ButtonSize };

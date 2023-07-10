@@ -1,5 +1,5 @@
 import { CommonBtn, PostCard } from "components/common";
-import { ButtonSize, ButtonType } from "types/enums/button.enum";
+import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import data from "constants/mock/notice.json";
 import styles from "@/page.module.scss";
 
@@ -30,7 +30,7 @@ const Page = () => {
         originalHourlyPay={originalHourlyPay}
         href={href}
       />
-      <CommonBtn type={ButtonType.OUTLINE} size={ButtonSize.LARGE} message="버튼" responsive />
+      <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" message="버튼" responsive />
     </main>
   );
 };
