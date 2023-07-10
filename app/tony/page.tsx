@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <CommonLayout>
+    <CommonLayout isGray>
       <div>
         <p>식당</p>
         <h2>도토리 식당</h2>
