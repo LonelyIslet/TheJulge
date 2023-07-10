@@ -55,4 +55,12 @@
       font-size: 1.4rem;
     }
   }
+
+  a {
+    transition: transform 0.2s ease;
+    &:hover {
+      transform: translateY(-0.2rem);
+      filter:brightness(1.2);
+    }
+  }
 }

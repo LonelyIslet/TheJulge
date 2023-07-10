@@ -15,8 +15,13 @@ const Page = () => {
       <StatusChip status={ApplyStatus.PENDING} />
       <button type="button" onClick={() => { setIsModalOpen((prev) => { return !prev; }); }}>Open Modal</button>
       {isModalOpen
-        && <Modal type={ModalType.ACTION} message="신청을 거절하시겠어요?" onClose={() => { setIsModalOpen(false); }} onClickProceed={() => { setIsModalOpen(false); }} />}
-
+        && (
+          <Modal
+            type={ModalType.ACTION}
+            message="신청을 거절하시겠어요?"
+            onClose={() => { setIsModalOpen(false); }}
+          />
+        )}
       <div className={styles.formBackground}>
         <AuthForm />
       </div>

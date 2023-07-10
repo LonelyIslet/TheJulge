@@ -1,41 +1,45 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect, useMemo, useState,
+} from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import classNames from "classnames/bind";
-import styles from "./AuthForm.module.scss";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
+import styles from "./AuthForm.module.scss";
 
 const cn = classNames.bind(styles);
-/**
- * @1 - 로그인폼 탭
- * @2 - 회원가입폼 탭
- */
-type ActiveFormTabNumber = 1 | 2;
 
 const AuthForm = () => {
-  const [activeTab, setActiveTab] = useState<ActiveFormTabNumber>(1);
+  const pathname = usePathname();
+  const searchValue = useSearchParams().get("form");
+  const [activeFormName, setActiveFormName] = useState("");
   const activeForm = useMemo(() => {
-    return (activeTab === 1
+    return (searchValue === "signup"
       ? (
-        <SigninForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            // eslint-disable-next-line no-alert
-            alert("로그인");
-          }}
-        />
-      )
-      : (
         <SignupForm
           onSubmit={(e) => {
             e.preventDefault();
             // eslint-disable-next-line no-alert
-            alert("회원가입");
+            alert("회원가입 완료");
+          }}
+        />
+      )
+      : (
+        <SigninForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            // eslint-disable-next-line no-alert
+            alert("로그인 완료");
           }}
         />
       ));
-  }, [activeTab]);
+  }, [searchValue]);
+  useEffect(() => {
+    setActiveFormName(searchValue === "signup" ? "signup" : "signin");
+  }, [searchValue]);
   return (
     <div
       className={styles.formContainer}
@@ -46,21 +50,27 @@ const AuthForm = () => {
       <div className={styles.titleContainer}>
         <div
           className={styles.titleItem}
-          role="button"
           aria-hidden="true"
-          onClick={() => { setActiveTab(1); }}
         >
-          <div className={cn("title", activeTab === 1 && "active")}>로그인</div>
-          <div className={cn("line", activeTab === 1 && "active")} />
+          <Link
+            href={`${pathname}?form=signin`}
+            className={cn("title", activeFormName === "signin" && "active")}
+          >
+            로그인
+          </Link>
+          <div className={cn("line", activeFormName === "signin" && "active")} />
         </div>
         <div
           className={styles.titleItem}
-          role="button"
           aria-hidden="true"
-          onClick={() => { setActiveTab(2); }}
         >
-          <div className={cn("title", activeTab === 2 && "active")}>회원가입</div>
-          <div className={cn("line", activeTab === 2 && "active")} />
+          <Link
+            href={`${pathname}?form=signup`}
+            className={cn("title", activeFormName === "signup" && "active")}
+          >
+            회원가입
+          </Link>
+          <div className={cn("line", activeFormName === "signup" && "active")} />
         </div>
       </div>
       {activeForm}

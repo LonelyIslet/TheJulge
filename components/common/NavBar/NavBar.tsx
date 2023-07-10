@@ -24,12 +24,12 @@ const NavBar = () => {
         />
       </div>
       <div className={styles.rightItems}>
-        <Link href="/signin">
+        <Link href="/account?form=signin">
           <h2>
             로그인
           </h2>
         </Link>
-        <Link href="signup">
+        <Link href="/account?form=signup">
           <h2>
             회원가입
           </h2>
