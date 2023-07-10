@@ -1,6 +1,7 @@
-import { PostCard } from "components/common";
-import styles from "@/page.module.scss";
+import { CommonBtn, PostCard } from "components/common";
+import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import data from "constants/mock/notice.json";
+import styles from "@/page.module.scss";
 
 const Page = () => {
   const {
@@ -29,6 +30,7 @@ const Page = () => {
         originalHourlyPay={originalHourlyPay}
         href={href}
       />
+      <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" message="버튼" responsive />
     </main>
   );
 };

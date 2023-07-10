@@ -34,6 +34,9 @@ thejulge
 │  │  │  └─ Login.tsx
 │  │  └─ index.ts
 │  ├─ common
+│  │  ├─ CommonBtn
+│  │  │  ├─ CommonBtn.module.scss
+│  │  │  └─ CommonBtn.tsx
 │  │  ├─ GlobalFooter
 │  │  │  ├─ GlobalFooter.module.scss
 │  │  │  └─ GlobalFooter.tsx
