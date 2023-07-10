@@ -17,7 +17,11 @@ interface CommonBtnProps {
 }
 
 const CommonBtn = ({
-  type = ButtonType.SOLID, size = ButtonSize.LARGE, message = "button", onClick, responsive = false,
+  type = ButtonType.SOLID,
+  size = ButtonSize.LARGE,
+  message = "button",
+  onClick,
+  responsive = false,
 }: CommonBtnProps) => {
   return (
     <button type="button" className={cx("button", `${type}`, `${size}`, { responsive })} onClick={onClick} disabled={type === ButtonType.DISABLE}>
