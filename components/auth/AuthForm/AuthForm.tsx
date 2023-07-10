@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./AuthForm.module.scss";
-import UserTypeSelect from "./UserTypeSelect";
+import SigninForm from "./SigninForm";
+import SignupForm from "./SignupForm";
 
 const cn = classNames.bind(styles);
 /**
@@ -14,7 +15,27 @@ type ActiveFormTabNumber = 1 | 2;
 
 const AuthForm = () => {
   const [activeTab, setActiveTab] = useState<ActiveFormTabNumber>(1);
-
+  const activeForm = useMemo(() => {
+    return (activeTab === 1
+      ? (
+        <SigninForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            // eslint-disable-next-line no-alert
+            alert("로그인");
+          }}
+        />
+      )
+      : (
+        <SignupForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            // eslint-disable-next-line no-alert
+            alert("회원가입");
+          }}
+        />
+      ));
+  }, [activeTab]);
   return (
     <div
       className={styles.formContainer}
@@ -42,11 +63,7 @@ const AuthForm = () => {
           <div className={cn("line", activeTab === 2 && "active")} />
         </div>
       </div>
-      <form className={styles.form}>
-        <UserTypeSelect onChange={() => {}} />
-      </form>
-      <input type="text" name="test" />
-      <input type="submit" />
+      {activeForm}
     </div>
   );
 };
