@@ -30,6 +30,11 @@
     margin-top: 0.8rem;
     border-radius: 0.6rem;
     overflow-y: scroll;
+    box-shadow: 11px 12px 18px -3px rgba(0,0,0,0.03);
+    -webkit-box-shadow: 11px 12px 18px -3px rgba(0,0,0,0.03);
+    -moz-box-shadow: 11px 12px 18px -3px rgba(0,0,0,0.03);
+    z-index: 1;
+    position: relative;
   }
 
   .content {
@@ -46,6 +51,30 @@
     &:hover {
       background-color: $gray-10;
     }
+  }
+
+  input:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black; 
+    box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black;
+  }
+
+  input:-webkit-autofill, 
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active { 
+    transition: background-color 5000s ease-in-out 0s; 
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox  */
+  input[type='number'] {
+    -moz-appearance: textfield;
   }
 
 }

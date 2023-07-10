@@ -6,19 +6,21 @@ import React, { useState, useRef } from "react";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
+  category: "shop" | "location"
   label: string
+  essential?: string
   id: string
   name: string
   onChange: (name:string, value:string) => void
 }
 
 const Dropdown = ({
-  label, id, onChange, name,
+  category, label, id, onChange, name, essential,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const [inputValue, setInputValue] = useState<string>("");
-  const { toggle, setToggle, fetchData } = useDropdown(divRef);
+  const { toggle, setToggle, fetchData } = useDropdown(divRef, category);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -30,20 +32,23 @@ const Dropdown = ({
     onChange(name, (event.target as HTMLElement).textContent as string);
   });
 
-  const handleToggle = (e) => {
+  const handleToggle = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     setToggle(!toggle);
   };
 
   return (
-    <div className={styles.box} ref={divRef}>
-      <label className={styles.label} htmlFor={id}>{label}</label>
+    /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+    jsx-a11y/no-static-element-interactions */
+    <div className={styles.box} ref={divRef} onClick={handleToggle}>
+      <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
       <input
         id={id}
         className={styles.userInput}
         name={name}
         value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
+        placeholder="선택"
       />
       {toggle && (
         <Image
@@ -72,7 +77,7 @@ const Dropdown = ({
         <div className={styles.container}>
           {!inputValue
           && fetchData
-          && fetchData.data.ward.map((list:string) => {
+          && fetchData.data.map((list:string) => {
             return (
               <button
                 type="button"
@@ -90,7 +95,7 @@ const Dropdown = ({
           {toggle
         && inputValue
         && fetchData
-        && fetchData.data.ward.filter((list) => { return list.includes(inputValue); })
+        && fetchData.data.filter((list) => { return list.includes(inputValue); })
           .map(((list: string) => {
             return (
               <button

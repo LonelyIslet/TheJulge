@@ -9,9 +9,19 @@ const Test = () => {
   return (
     <div>
       <Dropdown
+        category="shop"
         label="분류"
         id="category"
         name="category"
+        onChange={(name, value) => {
+          return setData((prev) => { return { ...prev, [name]: value }; });
+        }}
+      />
+      <Dropdown
+        category="location"
+        label="분류"
+        id="location"
+        name="location"
         onChange={(name, value) => {
           return setData((prev) => { return { ...prev, [name]: value }; });
         }}
