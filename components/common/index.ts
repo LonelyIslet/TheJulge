@@ -4,7 +4,8 @@ import SearchBar from "./SearchBar/SearchBar";
 import StatusChip from "./StatusChip/StatusChip";
 import PostCard from "./PostCard/PostCard";
 import HourlyPayPercentage from "./HourlyPayPercentage/HourlyPayPercentage";
+import Modal from "./Modal/Modal";
 
 export {
-  NavBar, Pagination, SearchBar, StatusChip, PostCard, HourlyPayPercentage,
+  NavBar, Pagination, SearchBar, StatusChip, PostCard, HourlyPayPercentage, Modal,
 };
