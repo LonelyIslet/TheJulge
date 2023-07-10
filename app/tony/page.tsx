@@ -12,7 +12,6 @@ const page = () => {
         그외 다른 것들
       </article>
     </CommonLayout>
-
   );
 };
 
