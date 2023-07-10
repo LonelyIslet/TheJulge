@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./CommonLayout.module.scss";
 
-const CommonLayout = ({ children, isGray }: { children: React.ReactNode }) => {
+interface ILayoutProps {
+  children: React.ReactNode
+  position: "above" | "below"
+}
+
+const CommonLayout = ({ children, position }): ILayoutProps => {
   const [title, content] = React.Children.toArray(children);
+  // position === 'above' 일 때 header의 margin 24px
+  // position === 'below' 일 때 header의 margin 32px
 
   return (
     <div className={styles.container}>
       <header>
         {title}
       </header>
-      <main>
+      <article>
         {content}
-      </main>
+      </article>
     </div>
   );
 };

@@ -4,13 +4,13 @@ import React from "react";
 const page = () => {
   return (
     <CommonLayout>
-      <div>
+      <header>
         <p>식당</p>
         <h2>도토리 식당</h2>
-      </div>
-      <div>
+      </header>
+      <article>
         그외 다른 것들
-      </div>
+      </article>
     </CommonLayout>
   );
 };
