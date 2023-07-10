@@ -1,6 +1,6 @@
 import Test from "./Test";
 
-const Page = () => {
+const page = () => {
   return (
     <div>
       <Test />
@@ -8,4 +8,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;
