@@ -10,7 +10,7 @@ const Test = () => {
     <div>
       <Dropdown
         category="shop"
-        label="분류"
+        label="가게분류"
         id="category"
         name="category"
         onChange={(name, value) => {
@@ -19,7 +19,7 @@ const Test = () => {
       />
       <Dropdown
         category="location"
-        label="분류"
+        label="장소"
         id="location"
         name="location"
         onChange={(name, value) => {
