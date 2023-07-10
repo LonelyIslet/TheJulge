@@ -12,7 +12,7 @@ interface CommonBtnProps {
   type?: ButtonType;
   size?: ButtonSize;
   message?: string;
-  onClick?: ClickHandler;
+  onClick?: ClickHandler | undefined;
   responsive?: boolean;
 }
 
@@ -20,7 +20,7 @@ const CommonBtn = ({
   type = ButtonType.SOLID,
   size = ButtonSize.LARGE,
   message = "button",
-  onClick,
+  onClick = undefined,
   responsive = false,
 }: CommonBtnProps) => {
   return (
