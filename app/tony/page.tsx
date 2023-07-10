@@ -1,5 +1,4 @@
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
-import React from "react";
+import { CommonLayout } from "components/common";
 
 const page = () => {
   return (
