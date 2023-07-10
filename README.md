@@ -34,6 +34,9 @@ thejulge
 │  │  │  └─ Login.tsx
 │  │  └─ index.ts
 │  ├─ common
+│  │  ├─ GlobalFooter
+│  │  │  ├─ GlobalFooter.module.scss
+│  │  │  └─ GlobalFooter.tsx
 │  │  ├─ HourlyPayPercentage
 │  │  │  ├─ HourlyPayPercentage.module.scss
 │  │  │  └─ HourlyPayPercentage.tsx
