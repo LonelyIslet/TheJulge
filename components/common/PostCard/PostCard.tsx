@@ -2,8 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import formatTimeRange from "utils/formatTimeRange";
 import calculatePercentage from "utils/calculatePercentage";
+import classNames from "classnames/bind";
 import HourlyPayPercentage from "../HourlyPayPercentage/HourlyPayPercentage";
 import styles from "./PostCard.module.scss";
+
+const cx = classNames.bind(styles);
 
 interface PostCardProps {
   hourlyPay: number;
@@ -35,24 +38,24 @@ const PostCard = ({
   };
 
   return (
-    <Link href={href} className={`${styles.postCard} ${isClosed ? styles.closed : ""}`}>
+    <Link href={href} className={cx("postCard", { isClosed })}>
       <div className={styles.postImageContainer}>
-        <Image src={imageUrl} className={`${styles.postImage} ${isClosed ? styles.closed : ""}`} alt="post-card" fill />
+        <Image src={imageUrl} className={cx("postImage", { isClosed })} alt="post-card" fill />
         {isClosed && <p className={styles.closedMessage}>{getClosedMessage()}</p>}
       </div>
-      <h2 className={`${styles.name} ${isClosed ? styles.closed : ""}`}>{name}</h2>
+      <h2 className={cx("name", { isClosed })}>{name}</h2>
       <div className={styles.information}>
-        <div className={`${styles.time} ${isClosed ? styles.closed : ""}`}>
-          <Image src={isClosed ? "images/clock-gray.svg" : "images/clock-red.svg"} className={`${styles.icon} ${isClosed ? styles.closed : ""}`} alt="clock" width={15} height={15} />
+        <div className={cx("time", { isClosed })}>
+          <Image src={isClosed ? "images/clock-gray.svg" : "images/clock-red.svg"} className={cx("icon", isClosed)} alt="clock" width={15} height={15} />
           <p>{formatTimeRange(startsAt, workhour)}</p>
         </div>
-        <div className={`${styles.address} ${isClosed ? styles.closed : ""}`}>
-          <Image src={isClosed ? "images/location-gray.svg" : "images/location-red.svg"} className={`${styles.icon} ${isClosed ? styles.closed : ""}`} alt="location" width={15} height={15} />
+        <div className={cx("address", { isClosed })}>
+          <Image src={isClosed ? "images/location-gray.svg" : "images/location-red.svg"} className={cx("icon", isClosed)} alt="location" width={15} height={15} />
           <p>{address1}</p>
         </div>
       </div>
       <div className={styles.hourlyPayContainer}>
-        <p className={`${styles.hourlyPay} ${isClosed ? styles.closed : ""}`}>
+        <p className={cx("hourlyPay", { isClosed })}>
           {hourlyPay.toLocaleString()}
           원
         </p>

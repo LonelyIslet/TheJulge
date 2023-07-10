@@ -1,5 +1,8 @@
 import Image from "next/image";
+import classNames from "classnames/bind";
 import styles from "./HourlyPayPercentage.module.scss";
+
+const cx = classNames.bind(styles);
 
 interface HourlyPayPercentageProps {
   percentage: number;
@@ -43,7 +46,7 @@ const HourlyPayPercentage = ({ isClosed, percentage }: HourlyPayPercentageProps)
   }
 
   return (
-    <div className={`${styles.payPercentage} ${isClosed ? styles.closed : ""} ${bgColorClass}`}>
+    <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
       <p>{`기존시급보다 ${percentage}%`}</p>
       <Image src="images/arrow-white.svg" className={styles.icon} alt="arrow" width={15} height={15} />
       <Image src={getArrowImageSource(isClosed, percentage)} className={styles.iconMobile} alt="arrow" width={15} height={15} />

@@ -22,7 +22,7 @@
     }
   }
 
-  &.closed {
+  &.isClosed {
     background-color: $gray-30;
   }
 
@@ -49,7 +49,7 @@
       display: none;
     }
 
-    &.closed {
+    &.isClosed {
       background-color: $white;
       color: $gray-20;
     }
