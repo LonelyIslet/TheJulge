@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SearchBar } from "components/common";
-import styles from "./NavBar.module.scss";
+import styles from "./GlobalNav.module.scss";
 
-const NavBar = () => {
+const GlobalNav = () => {
   return (
     <nav className={styles.container}>
       <div className={styles.leftItems}>
@@ -39,4 +39,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default GlobalNav;

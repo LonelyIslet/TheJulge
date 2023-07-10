@@ -34,12 +34,24 @@ thejulge
 │  │  │  └─ Login.tsx
 │  │  └─ index.ts
 │  ├─ common
-│  │  ├─ NavBar
-│  │  │  ├─ NavBar.module.scss
-│  │  │  └─ NavBar.tsx
+│  │  ├─ CommonBtn
+│  │  │  ├─ CommonBtn.module.scss
+│  │  │  └─ CommonBtn.tsx
+│  │  ├─ GlobalFooter
+│  │  │  ├─ GlobalFooter.module.scss
+│  │  │  └─ GlobalFooter.tsx
+│  │  ├─ HourlyPayPercentage
+│  │  │  ├─ HourlyPayPercentage.module.scss
+│  │  │  └─ HourlyPayPercentage.tsx
+│  │  ├─ GlobalNav
+│  │  │  ├─ GlobalNav.module.scss
+│  │  │  └─ GlobalNav.tsx
 │  │  ├─ Pagination
 │  │  │  ├─ Pagination.tsx
 │  │  │  └─ Paigination.moudle.scss
+│  │  ├─ PostCard
+│  │  │  ├─ PostCard.module.scss
+│  │  │  └─ PostCard.tsx
 │  │  ├─ SearchBar
 │  │  │  ├─ SearchBar.module.scss
 │  │  │  └─ SearchBar.tsx
@@ -80,6 +92,8 @@ thejulge
 │  ├─ global.d.ts
 │  └─ sample.d.ts
 └─ utils
+   └─ calculatePercentage.ts
+   └─ formatTimeRange.ts
    └─ sample.ts
 
 ```
