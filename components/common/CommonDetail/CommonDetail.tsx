@@ -10,12 +10,12 @@ type Detail = "EMPLOYER" | "EMPLOYEE";
 
 interface IDeail {
   EMPLOYER: {
-    titie: string;
+    title: string;
     description: string;
     buttonText: string;
   };
   EMPLOYEE: {
-    titie: string;
+    title: string;
     description: string;
     buttonText: string;
   };
@@ -42,8 +42,6 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
   };
 
   const dataType:Icontent = info[detailType];
-
-  console.log(dataType.title);
 
   return (
     <div className={styles.layout}>
