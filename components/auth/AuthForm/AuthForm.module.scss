@@ -11,7 +11,7 @@
   }
 }
 
-.form {
+.formContainer {
   @include flexbox(column, false, center);
   gap: 2rem;
   width: fit-content;
@@ -58,7 +58,7 @@
   }
 }
 
-.inputListContainer {
+.form {
   @include flexbox(column, center, center);
   width: 100%;
   gap: 2.8rem;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./AuthForm.module.scss";
-import UserTypeSelect from "../UserTypeSelect/UserTypeSelect";
+import UserTypeSelect from "./UserTypeSelect";
 
 const cn = classNames.bind(styles);
 /**
@@ -16,8 +16,8 @@ const AuthForm = () => {
   const [activeTab, setActiveTab] = useState<ActiveFormTabNumber>(1);
 
   return (
-    <form
-      className={styles.form}
+    <div
+      className={styles.formContainer}
       onSubmit={(e) => {
         e.preventDefault();
       }}
@@ -42,12 +42,12 @@ const AuthForm = () => {
           <div className={cn("line", activeTab === 2 && "active")} />
         </div>
       </div>
-      <ul className={styles.inputListContainer}>
-        <UserTypeSelect onChange={(a) => { alert(a); }} />
-      </ul>
+      <form className={styles.form}>
+        <UserTypeSelect onChange={() => {}} />
+      </form>
       <input type="text" name="test" />
       <input type="submit" />
-    </form>
+    </div>
   );
 };
 
