@@ -22,22 +22,29 @@
   &.large {
     font-size: 1.6rem;
     padding: 1.5rem;
+    @include bold;
   }
 
   &.medium {
     font-size: 1.4rem;
     padding: 1.2rem;
+    @include bold;
   }
 
   &.small {
     font-size: 1.2rem;
     padding: 1rem;
+    @include regular
   }
 
   @include mobile {
-    &.responsive {
-      font-size: 1.4rem;
-      padding: 1.2rem;
+    @include bold;
+
+    &.large {
+      &.responsive {
+        font-size: 1.4rem;
+        padding: 1.2rem;
+      }
     }
   }
 }
