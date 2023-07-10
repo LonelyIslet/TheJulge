@@ -30,18 +30,20 @@ interface Icontent {
 const CommonDetail = ({ detailType }: { detailType: Detail }) => {
   const info: IDeail = {
     EMPLOYER: {
-      titie: "내 가게",
+      title: "내 가게",
       description: "내 가게를 소개하고 공고도 등록해 보세요.",
       buttonText: "가게 등록하기",
     },
     EMPLOYEE: {
-      titie: "내 프로필",
+      title: "내 프로필",
       description: "내 프로필을 등록하고 원하는 가게에 지원해 보세요.",
       buttonText: "내 프로필 등록하기",
     },
   };
 
   const dataType:Icontent = info[detailType];
+
+  console.log(dataType.title);
 
   return (
     <div className={styles.layout}>

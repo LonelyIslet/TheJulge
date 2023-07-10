@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
       <CommonDetail detailType={DetailType.EMPLOYER} />
-      <CommonDetail detailType={DetailType.EMPLOYEE} />
+      {/* <CommonDetail detailType={DetailType.EMPLOYEE} /> */}
     </div>
   );
 };
