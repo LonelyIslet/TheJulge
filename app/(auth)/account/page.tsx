@@ -1,10 +1,14 @@
 import Image from "next/image";
 import { AuthForm } from "components/auth";
 import styles from "./page.module.scss";
+import "./page.scss";
 
 const AccountPage = () => {
   return (
     <main className={styles.container}>
+      <div className={styles.logoContainer}>
+        <Image src="/images/logo-white.svg" alt="로고" fill />
+      </div>
       <article>
         <section className={styles.promotionArea}>
           <h1>

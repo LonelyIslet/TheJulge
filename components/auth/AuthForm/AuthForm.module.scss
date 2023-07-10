@@ -19,6 +19,14 @@
   padding: 2.4rem 3rem;
   background: $white;
   border-radius: 2.2rem;
+
+  @media only screen and (max-width: 410px) {
+    
+    height: 100vh;
+    width: 100vw;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
 .titleContainer {

@@ -5,11 +5,11 @@
 }
 
 .container {
-	height: 100vh;
-	
-	background-color: $red-40;
   padding: 8.5rem 9.5rem 0 8.5rem;
 	margin: 0 auto;
+  @media only screen and (max-width: 410px) {
+		padding-top: 4rem;
+	}
 
 	& article {
 		max-width: 144rem;
@@ -41,5 +41,30 @@
 		@include tablet {
 			display: none;
 		}
+	}
+}
+
+nav.header {
+	display: block !important;
+}
+
+.logoContainer {
+	position: fixed;
+	width: 10.8851rem;
+	height: 2rem;
+	top: 2.6rem;
+  left: 20.8rem;
+
+	@include tablet {
+		top: 2.5rem;
+  	left: 3.2rem;
+	}
+	@include mobile {
+		top: 1.75rem;
+		left: 2rem;
+	}
+	@media only screen and (max-width: 410px) {
+		width: 8.164rem;
+		height: 1.5rem;
 	}
 }
