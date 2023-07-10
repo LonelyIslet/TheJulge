@@ -3,6 +3,7 @@
 .container {
   max-width: 96.4rem;
   margin: 0 auto;
+  background-color: inherit;
 
   header.above {
     margin-bottom: 2.4rem;
@@ -16,9 +17,11 @@
     color: $red-50;
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
+    font-weight: 700;
   }
 
   h2 {
+    font-weight: 700;
     font-size: 2.8rem;
   }
 
@@ -27,6 +30,10 @@
   }
 
   @include mobile {
+    header {
+    margin-bottom: 1.6rem;
+    }
+
     h2 {
       font-size: 2rem;
     }

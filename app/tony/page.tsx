@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <CommonLayout position="below">
+    <CommonLayout position="above">
       <header>
         <p>식당</p>
         <h2>도토리 식당</h2>
@@ -12,6 +12,7 @@ const page = () => {
         그외 다른 것들
       </article>
     </CommonLayout>
+
   );
 };
 

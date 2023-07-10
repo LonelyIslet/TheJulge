@@ -6,10 +6,8 @@ interface ILayoutProps {
   position: "above" | "below"
 }
 
-const CommonLayout = ({ children, position }): ILayoutProps => {
+const CommonLayout = ({ children, position }: ILayoutProps) => {
   const [title, content] = React.Children.toArray(children);
-  // position === 'above' 일 때 header의 margin 24px
-  // position === 'below' 일 때 header의 margin 32px
   const headerStyle = position === "above" ? `${styles.above}` : `${styles.below}`;
 
   return (
