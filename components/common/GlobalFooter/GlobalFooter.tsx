@@ -19,6 +19,7 @@ const GlobalFooter = () => {
           <Link
             href="https://mail.google.com/"
             className={styles.icon}
+            target="_blank"
           >
             <Image
               src="images/email-gray.svg"
@@ -30,6 +31,7 @@ const GlobalFooter = () => {
           <Link
             href="https://ko-kr.facebook.com/"
             className={styles.icon}
+            target="_blank"
           >
             <Image
               src="images/facebook-gray.svg"
@@ -41,6 +43,7 @@ const GlobalFooter = () => {
           <Link
             href="https://www.instagram.com/"
             className={styles.icon}
+            target="_blank"
           >
             <Image
               src="images/instagram-gray.svg"
