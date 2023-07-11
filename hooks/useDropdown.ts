@@ -2,13 +2,13 @@
 
 import { useState, useEffect, RefObject } from "react";
 
-interface Data {
+interface IData {
   data: string[]
 }
 
 const useDropdown = (ref: RefObject<HTMLElement>, category: string) => {
   const [toggle, setToggle] = useState(false);
-  const [fetchData, setFetchData] = useState<Data>();
+  const [fetchData, setFetchData] = useState<IData>();
 
   const getDropdownData = async () => {
     try {
@@ -20,7 +20,7 @@ const useDropdown = (ref: RefObject<HTMLElement>, category: string) => {
         response = await fetch("/data/dropdownShopCategory.json");
       }
       if (response && response.ok) {
-        const data = await response.json() as Data;
+        const data = await response.json() as IData;
         setFetchData(data);
       } else {
         throw new Error("데이터 통신 오류");
