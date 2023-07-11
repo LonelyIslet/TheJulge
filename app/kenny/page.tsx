@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  CommonBtn, StatusChip, Toast, Modal,
+  CommonBtn, StatusChip, Modal,
 } from "components/common";
 import useToast from "hooks/useToast";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import styles from "./page.module.scss";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isToastShowing, showToast } = useToast();
+  const { showToast } = useToast();
 
   return (
     <main>
@@ -28,7 +28,7 @@ const Page = () => {
       <CommonBtn
         message="Open Toast"
         type="button"
-        onClick={showToast}
+        onClick={() => { showToast("토스트 입니다."); }}
         style={ButtonStyle.SOLID}
       />
       {isModalOpen
@@ -37,12 +37,13 @@ const Page = () => {
             type={ModalType.ACTION}
             message="신청을 거절하시겠어요?"
             onClose={() => { setIsModalOpen(false); }}
+            onClickProceed={() => { showToast("거절 했습니다."); setIsModalOpen(false); }}
           />
         )}
       <div className={styles.formBackground}>
         <AuthForm />
       </div>
-      {isToastShowing && <Toast message="거절 했어요." />}
+      {/* {isToastShowing && <Toast message="거절 했어요." />} */}
     </main>
   );
 };

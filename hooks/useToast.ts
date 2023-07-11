@@ -1,27 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import useAppSelector from "redux/hooks/useAppSelector";
+import { setShow, setToastMessage } from "redux/slices/toastSlice";
 
 const useToast = () => {
-  const [isToastShowing, setIsToastShowing] = useState(false);
+  const isShowing = useAppSelector((state) => { return state.toast.isShowing; });
+  const dispatch = useAppDispatch();
 
-  const showToast = () => {
-    setIsToastShowing(true);
+  const showToast = (message: string) => {
+    dispatch(setToastMessage(message));
+    dispatch(setShow(true));
   };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
-    if (isToastShowing) {
+    if (isShowing) {
       timer = setTimeout(() => {
-        setIsToastShowing(false);
+        dispatch(setShow(false));
       }, 3000);
     }
 
     return () => {
       clearTimeout(timer);
     };
-  }, [isToastShowing]);
+  }, [dispatch, isShowing]);
 
-  return { isToastShowing, showToast };
+  return { showToast };
 };
 
 export default useToast;

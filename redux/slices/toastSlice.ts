@@ -14,11 +14,8 @@ export const toastSlice = createSlice({
   name: "toast",
   initialState,
   reducers: {
-    showToast: (state) => {
-      state.isShowing = true;
-    },
-    hideToast: (state) => {
-      state.isShowing = false;
+    setShow: (state, action: PayloadAction<boolean>) => {
+      state.isShowing = action.payload;
     },
     setToastMessage: (state, action: PayloadAction<string>) => {
       state.message = action.payload;
@@ -26,6 +23,6 @@ export const toastSlice = createSlice({
   },
 });
 
-export const { showToast, hideToast, setToastMessage } = toastSlice.actions;
+export const { setShow, setToastMessage } = toastSlice.actions;
 
 export default toastSlice.reducer;
