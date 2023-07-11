@@ -8,6 +8,10 @@ import styles from "./EditProfile.module.scss";
 const EditProfile = () => {
   const [data, setData] = useState();
 
+  const handleData = (e) => {
+    setData((prev) => return {...prev, [e.target.name]: e.target.value})
+  }
+
   return (
     <div className={styles.layout}>
       <div className={styles.inputBox}>
