@@ -24,12 +24,12 @@ const GlobalNav = () => {
         />
       </div>
       <div className={styles.rightItems}>
-        <Link href="/account?form=signin">
+        <Link href="/auth?form=signin">
           <h2>
             로그인
           </h2>
         </Link>
-        <Link href="/account?form=signup">
+        <Link href="/auth?form=signup">
           <h2>
             회원가입
           </h2>
