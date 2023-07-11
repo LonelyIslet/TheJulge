@@ -1,0 +1,42 @@
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.toast {
+	@include fixed(50%, 50%);
+	transform: translate(-50%, -50%);
+	display: inline-flex;
+	padding: 1rem 1.6rem;
+	align-items: flex-start;
+
+	border-radius: 0.5rem;
+	background: $red-30;
+  & span {
+		font-size: 1.6rem;
+		text-align: center;
+		line-height: 2.6rem;
+		color: $white;
+	}
+}
+
+.fadeOut {
+	animation: fadeOut 0.2s ease-out;
+}
+
+.fadeIn {
+	animation: fadeIn 0.2s ease-in;
+}
