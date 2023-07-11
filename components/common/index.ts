@@ -1,15 +1,23 @@
-import GlobalNav from "./GlobalNav/GlobalNav";
-import Pagination from "./Pagination/Pagination";
-import SearchBar from "./SearchBar/SearchBar";
-import StatusChip from "./StatusChip/StatusChip";
+import CommonBtn from "./CommonBtn/CommonBtn";
+import CustomInput from "./CustomInput/CustomInput";
 import GlobalFooter from "./GlobalFooter/GlobalFooter";
-import PostCard from "./PostCard/PostCard";
+import GlobalNav from "./GlobalNav/GlobalNav";
 import HourlyPayPercentage from "./HourlyPayPercentage/HourlyPayPercentage";
 import Modal from "./Modal/Modal";
-import CustomInput from "./CustomInput/CustomInput";
-import CommonBtn from "./CommonBtn/CommonBtn";
+import Pagination from "./Pagination/Pagination";
+import PostCard from "./PostCard/PostCard";
+import SearchBar from "./SearchBar/SearchBar";
+import StatusChip from "./StatusChip/StatusChip";
 
 export {
-  GlobalNav, Pagination, SearchBar, StatusChip,
-  GlobalFooter, PostCard, HourlyPayPercentage, Modal, CustomInput, CommonBtn,
+  CommonBtn,
+  CustomInput,
+  GlobalFooter,
+  GlobalNav,
+  HourlyPayPercentage,
+  Modal,
+  Pagination,
+  PostCard,
+  SearchBar,
+  StatusChip,
 };
