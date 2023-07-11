@@ -30,5 +30,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".eslintrc.json",
+  ]
   "exclude": ["node_modules"]
 }
