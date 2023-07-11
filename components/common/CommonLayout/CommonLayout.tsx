@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./CommonLayout.module.scss";
 
-interface ILayoutProps {
+interface LayoutProps {
   children: React.ReactNode
   position: "above" | "below"
 }
 
-const CommonLayout = ({ children, position }: ILayoutProps) => {
+const CommonLayout = ({ children, position }: LayoutProps) => {
   const [title, content] = React.Children.toArray(children);
   const headerStyle = position === "above" ? `${styles.above}` : `${styles.below}`;
 
