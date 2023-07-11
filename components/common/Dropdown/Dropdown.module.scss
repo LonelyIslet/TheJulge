@@ -1,0 +1,80 @@
+.box {
+  height: 11.6rem;
+  position: relative;
+
+  .label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .userInput {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 5.8rem;
+    padding: 1.6rem 2rem;
+    border: 1px solid $gray-30;
+    border-radius: 0.6rem;
+    outline: none;
+  }
+
+  .toggle {
+    position: absolute;
+    top: 4.8rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
+
+  .container {
+    max-height: 23rem;
+    margin-top: 0.8rem;
+    border-radius: 0.6rem;
+    overflow-y: scroll;
+    box-shadow: 1.1rem 1.2rem 1.8rem -0.3rem rgba(0,0,0,0.03);
+    -webkit-box-shadow: 1.1rem 1.2rem 1.8rem -0.3rem rgba(0,0,0,0.03);
+    -moz-box-shadow: 1.1rem 1.2rem 1.8rem -0.3rem rgba(0,0,0,0.03);
+    z-index: 1;
+    position: relative;
+  }
+
+  .content {
+    background-color: #fff;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    line-height: 4.6rem;
+    height: 4.6rem;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid $gray-30;
+
+    &:hover {
+      background-color: $gray-10;
+    }
+  }
+
+  input:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black; 
+    box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black;
+  }
+
+  input:-webkit-autofill, 
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active { 
+    transition: background-color 5000s ease-in-out 0s; 
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox  */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+}
