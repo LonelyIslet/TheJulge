@@ -55,6 +55,7 @@ const AuthForm = () => {
           <Link
             href={`${pathname}?form=signin`}
             className={cn("title", activeFormName === "signin" && "active")}
+            replace
           >
             로그인
           </Link>
@@ -67,6 +68,7 @@ const AuthForm = () => {
           <Link
             href={`${pathname}?form=signup`}
             className={cn("title", activeFormName === "signup" && "active")}
+            replace
           >
             회원가입
           </Link>
