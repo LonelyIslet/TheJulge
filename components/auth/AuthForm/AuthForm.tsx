@@ -14,7 +14,7 @@ const cn = classNames.bind(styles);
 
 const AuthForm = () => {
   const pathname = usePathname();
-  const searchValue = useSearchParams().get("form");
+  const searchValue = useSearchParams().get("mode");
   const [activeFormName, setActiveFormName] = useState("");
   const activeForm = useMemo(() => {
     return (searchValue === "signup"
@@ -53,7 +53,7 @@ const AuthForm = () => {
           aria-hidden="true"
         >
           <Link
-            href={`${pathname}?form=signin`}
+            href={`${pathname}?mode=signin`}
             className={cn("title", activeFormName === "signin" && "active")}
             replace
           >
@@ -66,7 +66,7 @@ const AuthForm = () => {
           aria-hidden="true"
         >
           <Link
-            href={`${pathname}?form=signup`}
+            href={`${pathname}?mode=signup`}
             className={cn("title", activeFormName === "signup" && "active")}
             replace
           >
