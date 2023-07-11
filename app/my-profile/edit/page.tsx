@@ -1,4 +1,4 @@
-import EditProfile from "components/employee/EditProfile";
+import { EditProfile } from "components/employee";
 import Image from "next/image";
 import React from "react";
 import styles from "./page.module.scss";

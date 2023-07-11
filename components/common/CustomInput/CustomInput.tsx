@@ -14,7 +14,7 @@ interface IValidationType {
 
 interface CustomInputProps {
   element: "text" | "textarea";
-  type: React.HTMLInputTypeAttribute;
+  type?: React.HTMLInputTypeAttribute;
   label: string;
   placeholder?: string;
   id: string;
