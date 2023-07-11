@@ -20,17 +20,22 @@ const useInputValidation = (
   data?: object,
 ): { validation: boolean, validationContent: string, handleBlur: () => void } => {
   const [validation, setValidation] = useState<boolean>(true);
+  const [toggle, setToggle] = useState(false);
+
   const handleBlur = () => {
     if (validationTarget && !checkValidation(validationTarget, value, data)) {
       setValidation(false);
     } else {
       setValidation(true);
     }
+    setToggle(!toggle);
   };
 
   const validationContent: string = validationContentMap[validationTarget];
 
-  return { validation, validationContent, handleBlur };
+  return {
+    validation, validationContent, handleBlur, toggle,
+  };
 };
 
 export default useInputValidation;

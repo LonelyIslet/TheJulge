@@ -32,12 +32,13 @@ const CustomInput = ({
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { validation, validationContent, handleBlur } = useInputValidation(
+  const {
+    validation, validationContent, handleBlur, toggle,
+  } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
     data as object,
   );
-
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
@@ -51,7 +52,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {element === "text" && !validation && <p className={styles.validation}>{validationContent}</p>}
+      {element === "text" && !validation && <p className={toggle ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
     </div>
   );
 };

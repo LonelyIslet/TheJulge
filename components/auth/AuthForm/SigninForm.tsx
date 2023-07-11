@@ -25,8 +25,8 @@ const SigninForm = ({ onSubmit }: SigninFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <CustomInput element="text" type="text" label="이메일" placeholder="입력" id="email" name="email" validationTarget={ValidationTarget.EMAIL} onChange={handleData} />
-      <CustomInput element="text" type="password" label="비밀번호" placeholder="입력" id="password" name="password" validationTarget={ValidationTarget.PASSWORD} onChange={handleData} />
+      <CustomInput element="text" type="text" label="이메일" placeholder="입력" id="email" name="email" validationTarget={ValidationTarget.EMAIL} onChange={handleData} data={data} />
+      <CustomInput element="text" type="password" label="비밀번호" placeholder="입력" id="password" name="password" validationTarget={ValidationTarget.PASSWORD} onChange={handleData} data={data} />
       <input
         type="submit"
         className={styles.submitButton}
