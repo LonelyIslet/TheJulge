@@ -1,6 +1,6 @@
 import { FormEventHandler } from "react";
-import styles from "./AuthForm.module.scss";
 import UserTypeSelect from "./UserTypeSelect";
+import styles from "./AuthForm.module.scss";
 
 interface SignupFormProps {
   onSubmit: FormEventHandler;
