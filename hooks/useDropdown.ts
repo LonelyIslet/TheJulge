@@ -6,17 +6,17 @@ interface IData {
   data: string[]
 }
 
-const useDropdown = (ref: RefObject<HTMLElement>, category: string) => {
+const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {
   const [toggle, setToggle] = useState(false);
   const [fetchData, setFetchData] = useState<IData>();
 
   const getDropdownData = async () => {
     try {
       let response;
-      if (category === "location") {
-        response = await fetch("/data/dropdownLocation.json");
+      if (type === "address") {
+        response = await fetch("/data/dropdownAddress.json");
       }
-      if (category === "shop") {
+      if (type === "category") {
         response = await fetch("/data/dropdownShopCategory.json");
       }
       if (response && response.ok) {

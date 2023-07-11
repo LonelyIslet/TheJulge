@@ -6,30 +6,30 @@ import React, { useState, useRef } from "react";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
-  category: "shop" | "location"
+  type: "address" | "category"
   label: string
-  essential?: string
   id: string
   name: string
-  onChange: (name:string, value:string) => void
+  essential?: string
+  onChange: (event: React.MouseEvent | React.ChangeEvent) => void
 }
 
 const Dropdown = ({
-  category, label, id, onChange, name, essential,
+  type, label, id, onChange, name, essential,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const [inputValue, setInputValue] = useState<string>("");
-  const { toggle, setToggle, fetchData } = useDropdown(divRef, category);
+  const { toggle, setToggle, fetchData } = useDropdown(divRef, type);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event);
     setInputValue(event.target.value);
-    onChange(name, event.target.value);
   };
 
   const handlePickData = ((event: React.MouseEvent<HTMLButtonElement>) => {
+    onChange(event);
     setInputValue((event.target as HTMLElement).textContent as string);
-    onChange(name, (event.target as HTMLElement).textContent as string);
   });
 
   const handleToggle = (e: React.MouseEvent<HTMLImageElement>) => {
@@ -84,6 +84,7 @@ const Dropdown = ({
                 onClick={handlePickData}
                 className={styles.content}
                 key={list}
+                name={type === "address" ? "address" : "category"}
               >
                 {list}
               </button>

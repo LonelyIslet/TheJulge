@@ -21,7 +21,9 @@ const RootLayout = ({
         <body className={spoqaHanSansNeo.className}>
           <div id="modal-root" />
           <GlobalNav />
-          {children}
+          <main>
+            {children}
+          </main>
           <GlobalFooter />
         </body>
       </html>
