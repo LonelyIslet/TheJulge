@@ -74,7 +74,9 @@
         "tsx": "never"
       }
     ],
+    "linebreak-style": "off",
     "import/no-cycle": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/button-has-type": "off"
   }
 }

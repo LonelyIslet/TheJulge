@@ -1,0 +1,52 @@
+.button {
+  width: 100%;
+  border-radius: 0.6rem;
+
+  @include hoverScaleEffect(5);
+
+  &.solid {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &.outline {
+    background-color: $white;
+    border: .1rem solid $primary;
+    color: $primary;
+  }
+
+  &.disable {
+    background-color: $gray-40;
+    color: $white;
+    cursor: default;
+  }
+
+  &.large {
+    font-size: 1.6rem;
+    padding: 1.5rem;
+    @include bold;
+  }
+
+  &.medium {
+    font-size: 1.4rem;
+    padding: 1.2rem;
+    @include bold;
+  }
+
+  &.small {
+    font-size: 1.2rem;
+    padding: 1rem;
+    @include regular
+  }
+
+  @include mobile {
+    @include bold;
+
+    &.large {
+      &.responsive {
+        font-size: 1.4rem;
+        padding: 1.2rem;
+      }
+    }
+  }
+}
