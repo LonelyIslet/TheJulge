@@ -1,12 +1,12 @@
-body {
+body.red {
 	background-color: $red-40;
   overflow: hidden;
 }
 
-nav {
+nav.hidden {
   display: none !important;
 }
 
-footer {
+footer.hidden{
   display: none !important;
 }
