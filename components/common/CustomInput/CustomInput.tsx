@@ -14,14 +14,15 @@ interface IValidationType {
 
 interface CustomInputProps {
   element: "text" | "textarea";
-  type?: React.HTMLInputTypeAttribute
   label: string;
-  placeholder?: string;
   id: string;
   name: string;
   onChange: (event:
-  React.ChangeEvent<HTMLInputElement> |
-  React.ChangeEvent<HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => void;
+  placeholder?: string;
+  type?: React.HTMLInputTypeAttribute
   essential?: boolean;
   validationTarget?: ValidationTarget
   data?: IValidationType;

@@ -1,10 +1,15 @@
 .layout {
   .inputBox {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    
-    .box {
-      flex-grow: 1;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 

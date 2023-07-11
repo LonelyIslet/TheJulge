@@ -11,7 +11,10 @@ interface DropdownProps {
   id: string
   name: string
   essential?: string
-  onChange: (event: React.MouseEvent | React.ChangeEvent) => void
+  onChange: (event:
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Dropdown = ({

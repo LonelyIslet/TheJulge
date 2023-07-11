@@ -1,7 +1,7 @@
 "use client";
 
 import { CommonBtn, CustomInput, Dropdown } from "components/common";
-import React, { useState } from "react";
+import { useState } from "react";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import styles from "./EditProfile.module.scss";
@@ -10,19 +10,24 @@ const EditProfile = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState({});
 
-  const handleData = (event) => {
+  const handleData = (event:
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => {
     if (event.type === "click") {
+      const target = event.target as HTMLButtonElement;
       setData((prev) => {
         return {
           ...prev,
-          [event.target.name]: event.target.textContent,
+          [target.name]: target.textContent,
         };
       });
     } else if (event.type === "change") {
+      const target = event.target as HTMLInputElement | HTMLTextAreaElement;
       setData((prev) => {
         return {
           ...prev,
-          [event.target.name]: event.target.value,
+          [target.name]: target.value,
         };
       });
     }
