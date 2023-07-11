@@ -6,7 +6,7 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 import UserInput from "./UserInput";
 import styles from "./CustomInput.module.scss";
 
-interface ValidationType {
+interface IValidationType {
   email: string,
   password: string,
   password_confirm?: string
@@ -24,7 +24,7 @@ interface CustomInputProps {
   React.ChangeEvent<HTMLTextAreaElement>) => void;
   essential?: boolean;
   validationTarget?: ValidationTarget
-  data?: ValidationType;
+  data?: IValidationType;
 }
 
 const CustomInput = ({
