@@ -1,3 +1,3 @@
-import LoginForm from "./LoginForm/Login";
+import AuthForm from "./AuthForm/AuthForm";
 
-export { LoginForm };
+export { AuthForm };
