@@ -7,8 +7,8 @@ import UserInput from "./UserInput";
 import styles from "./CustomInput.module.scss";
 
 interface IValidationType {
-  email: string,
-  password: string,
+  email?: string,
+  password?: string,
   password_confirm?: string
 }
 
@@ -20,8 +20,8 @@ interface CustomInputProps {
   id: string;
   name: string;
   onChange: (event:
-  React.ChangeEvent<HTMLInputElement> |
-  React.ChangeEvent<HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement>) => void
   essential?: boolean;
   validationTarget?: ValidationTarget
   data?: IValidationType;

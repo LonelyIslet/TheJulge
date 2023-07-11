@@ -20,7 +20,6 @@ const useInputValidation = (
   data?: object,
 ): { validation: boolean, validationContent: string, handleBlur: () => void } => {
   const [validation, setValidation] = useState<boolean>(true);
-
   const handleBlur = () => {
     if (validationTarget && !checkValidation(validationTarget, value, data)) {
       setValidation(false);

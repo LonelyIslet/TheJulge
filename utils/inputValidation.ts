@@ -19,16 +19,15 @@ const checkvalidation = (
 ): boolean => {
   const tenDigits = (+value / 10) % 10;
   const oneDigits = +value % 10;
-
   if (!value) return false;
   switch (validationTarget) {
-    case ValidationTarget.EMAIL:
+    case "EMAIL":
       return emailRegexp.test(value.toString());
-    case ValidationTarget.PASSWORD:
+    case "PASSWORD":
       return passwordRegexp.test(value.toString());
-    case ValidationTarget.TEL:
+    case "TEL":
       return telRegexp.test(value.toString());
-    case ValidationTarget.HOURLY_PAY:
+    case "HOURLY_PAY":
       if (!oneDigits && !tenDigits) {
         return true;
       }
