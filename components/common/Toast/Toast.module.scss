@@ -25,7 +25,8 @@
 
 	border-radius: 0.5rem;
 	background: $red-30;
-  & span {
+	z-index: 10000;
+	& span {
 		font-size: 1.6rem;
 		text-align: center;
 		line-height: 2.6rem;
