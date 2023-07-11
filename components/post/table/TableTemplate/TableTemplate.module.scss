@@ -1,8 +1,6 @@
-.list {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
+.tableContainer {
+  border: 1px solid $gray-20;
+  border-radius: 1rem;
   font-size: 1.4rem;
   color: $black;
   overflow-x: auto;
@@ -22,9 +20,4 @@
   @include mobile {
     font-size: 1.2rem;
   }
-}
-
-.item {
-  display: grid;
-  align-items: center;
 }

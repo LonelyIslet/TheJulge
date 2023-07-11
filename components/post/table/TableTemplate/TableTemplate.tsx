@@ -1,57 +1,57 @@
 import { Pagination } from "components/common";
-import { IListItems } from "types/post/post";
+import { IColumn } from "types/post/table";
 import styles from "./TableTemplate.module.scss";
 
-interface TableTemplateProps {
-  headerItems?: string[];
-  listItems?: IListItems[];
+interface TableTemplateProps<T> {
+  data: T[];
+  columns: IColumn<T>[];
   currentPage: number;
   lastPage: number;
   onPageClick: (page: number) => void;
 }
 
-const TableTemplate = ({
-  headerItems = ["-", "-", "-", "-"],
-  listItems = [],
+// eslint-disable-next-line @typescript-eslint/comma-dangle
+const TableTemplate = <T extends { id: number }>({
+  data,
+  columns,
   currentPage,
   lastPage,
   onPageClick,
-}: TableTemplateProps) => {
+}: TableTemplateProps<T>) => {
   return (
-    <>
-      <ul className={styles.list}>
-        <li className={styles.item}>
-          {headerItems.map((item) => {
+    <table className={styles.tableContainer}>
+      <thead>
+        <tr>
+          {columns.map((column) => {
             return (
-              <p key={item}>{item}</p>
+              <th key={column.id as number}>
+                {column.label}
+              </th>
             );
           })}
-        </li>
-        {listItems.map((item) => {
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((item) => {
           return (
-            <li key={item.id} className={styles.item}>
-              <p>
-                {item.item1}
-              </p>
-              <p>
-                {item.item2}
-              </p>
-              <p>
-                {item.item3}
-              </p>
-              <div>
-                {item.item4}
-              </div>
-            </li>
+            <tr key={item.id}>
+              {columns.map((column) => {
+                return (
+                  <td key={column.id as number}>
+                    {item[column.id]}
+                  </td>
+                );
+              })}
+            </tr>
           );
         })}
-      </ul>
+      </tbody>
       <Pagination
         currentPage={currentPage}
         lastPage={lastPage}
         onPageClick={onPageClick}
       />
-    </>
+    </table>
   );
 };
 
