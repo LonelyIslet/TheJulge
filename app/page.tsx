@@ -1,4 +1,4 @@
-import { EmployerTable } from "components/post/table";
+import { EmployerTable } from "components/post";
 import styles from "./page.module.scss";
 
 const HomePage = () => {

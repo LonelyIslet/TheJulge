@@ -3,7 +3,7 @@ export interface IPostsColumn<T> {
   label: string;
 }
 
-export interface EmployerPosts {
+export interface IEmployerPosts {
   id: number;
   name: string;
   intro: string;
@@ -11,7 +11,7 @@ export interface EmployerPosts {
   state: JSX.Element;
 }
 
-export interface EmployeePosts {
+export interface IEmployeePosts {
   id: number;
   store: string;
   date: string;
