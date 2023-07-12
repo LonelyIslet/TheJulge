@@ -5,8 +5,13 @@ import { AuthForm } from "components/auth";
 import { StatusChip, Modal, NotificationPopover } from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ModalType } from "types/enums/modal.enum";
+import mockAlertData from "constants/mock/alerts.json";
+import { IAlert } from "types/dto";
 import styles from "./page.module.scss";
 
+const ALERT_LIST: IAlert[] = mockAlertData.items.map((i: { item: IAlert[] }) => {
+  return i.item;
+});
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,7 +30,7 @@ const Page = () => {
       <div className={styles.formBackground}>
         <AuthForm />
       </div>
-      <NotificationPopover />
+      <NotificationPopover alertList={ALERT_LIST} />
     </main>
   );
 };
