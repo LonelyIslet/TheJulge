@@ -2,7 +2,7 @@ import { RefObject, useEffect } from "react";
 
 type CallbackFunction = () => void;
 
-const useOutsideClick = (
+const useClickOutside = (
   ref: RefObject<HTMLElement>,
   callback: CallbackFunction,
 ) => {
@@ -20,4 +20,4 @@ const useOutsideClick = (
   });
 };
 
-export default useOutsideClick;
+export default useClickOutside;
