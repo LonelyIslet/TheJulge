@@ -1,0 +1,127 @@
+{
+  "offset": "number",
+  "limit": "number",
+  "items": [
+		{
+      "item": {
+        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f699",
+        "createdAt": "2023-07-11T18:00:00.000Z",
+        "result": "accepted",
+        "read": false,
+        "application": {
+          "item": {
+            "id": "5e0d5d6a-81c4-43cd-8e3b-1680f252f699",
+            "status": "accepted"
+          },
+          "href": "/api/0-2/the-julge/shops/sample"
+        },
+        "shop": {
+					"item": {
+						"id": "02479698-8aeb-4c72-9a20-8381148c11c9",
+						"name": "스타벅스",
+						"category": "카페",
+						"address1": "서울시 중구",
+						"address2": "세종대로11길 26",
+						"description": "프렌차이즈 카페",
+						"imageUrl": "https://img.sbs.co.kr/newimg/news/20201213/201500962_1280.jpg",
+						"originalHourlyPay": 20000
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				},
+				"notice": {
+					"item": {
+						"id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
+						"hourlyPay": 22000,
+            "description": "오세요",
+            "startsAt": "2023-09-14T18:00:00.000Z",
+            "workhour": 2,
+            "closed": false
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				}
+			},
+			"links": [{}, {}, {}]
+		},
+		{
+      "item": {
+        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f699",
+        "createdAt": "2023-07-11T18:00:00.000Z",
+        "result": "accepted",
+        "read": false,
+        "application": {
+          "item": {
+            "id": "5e0d5d6a-81c4-43cd-8e3b-1680f252f699",
+            "status": "accepted"
+          },
+          "href": "/api/0-2/the-julge/shops/sample"
+        },
+        "shop": {
+					"item": {
+						"id": "02479698-8aeb-4c72-9a20-8381148c11c9",
+						"name": "스타벅스",
+						"category": "카페",
+						"address1": "서울시 중구",
+						"address2": "세종대로11길 26",
+						"description": "프렌차이즈 카페",
+						"imageUrl": "https://img.sbs.co.kr/newimg/news/20201213/201500962_1280.jpg",
+						"originalHourlyPay": 20000
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				},
+				"notice": {
+					"item": {
+						"id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
+						"hourlyPay": 22000,
+            "description": "오세요",
+            "startsAt": "2023-09-14T18:00:00.000Z",
+            "workhour": 2,
+            "closed": false
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				}
+			},
+			"links": [{}, {}, {}]
+		},
+		{
+      "item": {
+        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f699",
+        "createdAt": "2023-07-11T18:00:00.000Z",
+        "result": "accepted",
+        "read": false,
+        "application": {
+          "item": {
+            "id": "5e0d5d6a-81c4-43cd-8e3b-1680f252f699",
+            "status": "accepted"
+          },
+          "href": "/api/0-2/the-julge/shops/sample"
+        },
+        "shop": {
+					"item": {
+						"id": "02479698-8aeb-4c72-9a20-8381148c11c9",
+						"name": "스타벅스",
+						"category": "카페",
+						"address1": "서울시 중구",
+						"address2": "세종대로11길 26",
+						"description": "프렌차이즈 카페",
+						"imageUrl": "https://img.sbs.co.kr/newimg/news/20201213/201500962_1280.jpg",
+						"originalHourlyPay": 20000
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				},
+				"notice": {
+					"item": {
+						"id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
+						"hourlyPay": 22000,
+            "description": "오세요",
+            "startsAt": "2023-09-14T18:00:00.000Z",
+            "workhour": 2,
+            "closed": false
+					},
+					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+				}
+			},
+			"links": [{}, {}, {}]
+		}
+	],
+	"links": [{},{},{}]
+}
