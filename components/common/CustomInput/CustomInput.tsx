@@ -26,7 +26,8 @@ interface CustomInputProps {
   validationTarget?: ValidationTarget
   data?: IValidationType;
   rendering?: boolean;
-  buttonClickCount?: number
+  countValidation,
+  setCountValidation,
 }
 
 const CustomInput = ({
@@ -41,7 +42,8 @@ const CustomInput = ({
   onChange,
   data,
   rendering,
-  buttonClickCount,
+  countValidation,
+  setCountValidation,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const {
@@ -50,13 +52,19 @@ const CustomInput = ({
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
     data as object,
+    name,
+    countValidation,
+    setCountValidation,
   );
+
   const [change, setChange] = useState(false);
 
   useEffect(() => {
     setChange(!change);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
+
+  console.log(countValidation);
 
   return (
     <div className={styles.box}>
@@ -71,7 +79,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {element === "text" && (!!buttonClickCount && !validation) && <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
+      {element === "text" && (!!countValidation[name] && !validation) && <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
     </div>
   );
 };

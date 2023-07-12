@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import { preview } from "vite";
 
 const validationContentMap: {
   [key in ValidationTarget]: string
@@ -18,12 +19,22 @@ const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
   data?: object,
-): { validation: boolean, validationContent: string, handleBlur: () => void, toggle: boolean } => {
+  name?: string,
+  countValidation?: any,
+  setCountValidation?: any,
+): { validation: boolean, validationContent: string, handleBlur: () => void, toggle: boolean, setButtonClickCount: any } => {
   const [validation, setValidation] = useState<boolean>(false);
   const [toggle, setToggle] = useState(false);
 
   const handleBlur = (e) => {
     e.preventDefault();
+    setCountValidation((prev) => {
+      return {
+        ...prev,
+        [name]: prev[name] + 1,
+      };
+    });
+
     if (validationTarget && !inputValidation(validationTarget, value, data)) {
       setValidation(false);
     } else {

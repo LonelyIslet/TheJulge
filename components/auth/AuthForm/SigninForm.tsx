@@ -6,7 +6,11 @@ import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
   const [rendering, setRendering] = useState(false);
-  const [buttonClickCount, setButtonClickCount] = useState(0);
+  const [countValidation, setCountValidation] = useState({
+    email: 0,
+    password: 0,
+  });
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -29,7 +33,10 @@ const SigninForm = () => {
     // eslint-disable-next-line max-len, @typescript-eslint/no-unused-vars
     const checkPasswordValidation : boolean = inputValidation(ValidationTarget.PASSWORD, data.password);
     setRendering(!rendering);
-    setButtonClickCount((prev) => { return prev + 1; });
+    setCountValidation({
+      email: 1,
+      password: 1,
+    });
   };
 
   return (
@@ -45,7 +52,8 @@ const SigninForm = () => {
         onChange={handleData}
         data={data}
         rendering={rendering}
-        buttonClickCount={buttonClickCount}
+        countValidation={countValidation}
+        setCountValidation={setCountValidation}
       />
       <CustomInput
         element="text"
@@ -58,7 +66,8 @@ const SigninForm = () => {
         onChange={handleData}
         data={data}
         rendering={rendering}
-        buttonClickCount={buttonClickCount}
+        countValidation={countValidation}
+        setCountValidation={setCountValidation}
       />
       <input
         type="submit"
