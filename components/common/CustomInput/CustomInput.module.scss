@@ -38,6 +38,14 @@
     }
   }
 
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+
   .swing {
     color: $red-40;
     animation: swing 0.3s ease;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useInputValidation from "hooks/useInputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import UserInput from "./UserInput";
@@ -25,6 +25,8 @@ interface CustomInputProps {
   essential?: boolean;
   validationTarget?: ValidationTarget
   data?: IValidationType;
+  rendering?: boolean;
+  buttonClickCount?: number
 }
 
 const CustomInput = ({
@@ -38,16 +40,23 @@ const CustomInput = ({
   validationTarget,
   onChange,
   data,
+  rendering,
+  buttonClickCount,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const {
-    validation, validationContent, handleBlur, toggle, setToggle,
+    validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
     data as object,
   );
+  const [change, setChange] = useState(false);
+
+  useEffect(() => {
+    setChange(!change);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggle, rendering]);
 
   return (
     <div className={styles.box}>
@@ -62,7 +71,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {(element === "text" && !validation) && <p className={toggle ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
+      {element === "text" && (!!buttonClickCount && !validation) && <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
     </div>
   );
 };
