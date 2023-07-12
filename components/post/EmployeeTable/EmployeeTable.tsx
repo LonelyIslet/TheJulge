@@ -1,23 +1,23 @@
 import { Table } from "components/common";
-import { EmployerPosts, IPostsColumn } from "types/post/table";
+import { IEmployeePosts, IPostsColumn } from "types/post/table";
 
-interface EmployerTableProps {
-  data: EmployerPosts[];
+interface EmployeeTableProps {
+  data: IEmployeePosts[];
   currentPage: number;
   lastPage: number;
   onPageClick: (page: number) => void;
 }
 
-const EmployerTable = ({
+const EmployeeTable = ({
   data,
   currentPage,
   lastPage,
   onPageClick,
-}: EmployerTableProps) => {
-  const columns: IPostsColumn<EmployerPosts>[] = [
-    { id: "name", label: "신청자" },
-    { id: "intro", label: "소개" },
-    { id: "phoneNumber", label: "전화번호" },
+}: EmployeeTableProps) => {
+  const columns: IPostsColumn<IEmployeePosts>[] = [
+    { id: "store", label: "가게" },
+    { id: "date", label: "일자" },
+    { id: "hourlyWage", label: "시급" },
     { id: "state", label: "상태" },
   ];
 
@@ -32,4 +32,4 @@ const EmployerTable = ({
   );
 };
 
-export default EmployerTable;
+export default EmployeeTable;
