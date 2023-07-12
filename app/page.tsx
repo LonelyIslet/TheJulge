@@ -1,13 +1,13 @@
-import { EmployerTable } from "components/post";
-import { StatusChip } from "components/common";
-import { ApplyStatus } from "types/enums/apply.enum";
+// import { EmployerTable } from "components/post";
+// import { StatusChip } from "components/common";
+// import { ApplyStatus } from "types/enums/apply.enum";
 import styles from "./page.module.scss";
 
 const HomePage = () => {
   return (
     <main className={styles.main}>
       <h1>더줄게</h1>
-      <EmployerTable
+      {/* <EmployerTable
         data={[
           {
             id: 0,
@@ -47,7 +47,7 @@ const HomePage = () => {
         ]}
         currentPage={5}
         lastPage={6}
-      />
+      /> */}
     </main>
   );
 };
