@@ -3,11 +3,14 @@
 import useClickOutside from "hooks/useClickOutside";
 import React, { useRef } from "react";
 
+type Unit = "px" | "rem" | "em" | "%" | "vh" | "vw" | "vmin" | "vmax";
+type InsetValue = `${number}${Unit}`;
+
 interface PopoverProps {
-  top?:number,
-  left?:number,
-  right?:number,
-  bottom?:number,
+  top?:InsetValue,
+  left?:InsetValue,
+  right?:InsetValue,
+  bottom?:InsetValue,
   onClose: () => void;
   children: React.ReactNode;
 }
@@ -21,10 +24,11 @@ const Popover = React.memo(({
     <div
       style={{
         position: "absolute",
-        top: `${top ?? 0}rem`,
-        left: `${left ?? 0}rem`,
-        right: `${right ?? 0}rem`,
-        bottom: `${bottom ?? 0}rem`,
+        display: "flex",
+        top: `${top ?? "auto"}`,
+        left: `${left ?? "auto"}`,
+        right: `${right ?? "auto"}`,
+        bottom: `${bottom ?? "auto"}`,
       }}
       ref={popoverRef}
     >

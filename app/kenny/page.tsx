@@ -7,6 +7,7 @@ import { ApplyStatus } from "types/enums/apply.enum";
 import { ModalType } from "types/enums/modal.enum";
 import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
+import Popover from "components/common/Popover/Popover";
 import styles from "./page.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
@@ -15,6 +16,7 @@ const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return (
     <main>
@@ -31,7 +33,15 @@ const Page = () => {
       <div className={styles.formBackground}>
         <AuthForm />
       </div>
-      <NotificationPopover alertList={ALERT_LIST} />
+
+      <div style={{ position: "relative" }}>
+        <button type="button" onClick={() => { setIsPopoverOpen((prev) => { return !prev; }); }}>Open Popover</button>
+        {isPopoverOpen && (
+          <Popover onClose={() => { setIsPopoverOpen(false); }} top="3rem">
+            <NotificationPopover alertList={ALERT_LIST} />
+          </Popover>
+        )}
+      </div>
     </main>
   );
 };
