@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-interface ICustomArrow {
+interface CustomArrowProps {
   percentage: number;
   isClosed: boolean;
 }
@@ -21,7 +21,7 @@ const getArrowImageSource = (isClosed: boolean, percentage: number) => {
   return "/images/arrow-red-20.svg";
 };
 
-const CustomArrow = ({ isClosed, percentage }: ICustomArrow) => {
+const CustomArrow = ({ isClosed, percentage }: CustomArrowProps) => {
   return (
     <Image src={getArrowImageSource(isClosed, percentage)} alt="arrow" width={10} height={10} />
   );

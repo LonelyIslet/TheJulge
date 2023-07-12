@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./ShopCard.module.scss";
 import CommonBtn from "../CommonBtn/CommonBtn";
 
-interface IShopCardProps {
+interface ShopCardProps {
   name: string;
   address1: string;
   imageUrl: string;
@@ -14,7 +14,7 @@ interface IShopCardProps {
 
 const ShopCard = ({
   name, address1, imageUrl, description, category,
-}: IShopCardProps) => {
+}: ShopCardProps) => {
   return (
     <section className={styles.shopCard}>
       <div className={styles.shopImageContainer}>

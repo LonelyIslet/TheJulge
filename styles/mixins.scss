@@ -68,7 +68,7 @@
 }
 
 @mixin ellipsis($line: 1) {
-  @if ($line ==1) {
+  @if ($line == 1) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

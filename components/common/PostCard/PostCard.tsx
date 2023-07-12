@@ -9,7 +9,7 @@ import CustomArrow from "./CustomArrow/CustomArrow";
 
 const cx = classNames.bind(styles);
 
-interface IPostCardProps {
+interface PostCardProps {
   hourlyPay: number;
   startsAt: string;
   closed: boolean;
@@ -23,7 +23,7 @@ interface IPostCardProps {
 
 const PostCard = ({
   hourlyPay, startsAt, closed, workhour, name, address1, imageUrl, originalHourlyPay, href,
-}: IPostCardProps) => {
+}: PostCardProps) => {
   const isPassed = new Date() > new Date(startsAt);
   const isClosed = closed || isPassed;
   const percentage = calculatePercentage(hourlyPay, originalHourlyPay);
