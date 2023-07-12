@@ -109,15 +109,13 @@
       }
 
       .payPercentage {
-        display: flex;
-        align-items: center;
+        @include flexbox(x, true, true);
         font-size: 1.4rem;
         padding: 0.8rem 1.3rem;
         color: $white;
         border-radius: 2rem;
         gap: 0.5rem;
         white-space: nowrap;
-        justify-content: center;
         width: fit-content;
 
         $intensity: ("0-25": $red-20, "25-50": $red-30, "50-75": $red-40, "75-100": $primary);
