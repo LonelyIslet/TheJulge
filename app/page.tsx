@@ -33,7 +33,7 @@ const HomePage = () => {
           {
             id: 3,
             name: "조세영",
-            intro: "일을 꼼꼼하게 하는 성격입니다. 호스트 바에서 일해보고 싶습니다.",
+            intro: "일을 꼼꼼하게 하는 성격입니다. 퀸즈 초이스에서 일해보고 싶습니다.",
             phoneNumber: "010-1234-1234",
             state: <StatusChip status={ApplyStatus.PENDING} />,
           },
