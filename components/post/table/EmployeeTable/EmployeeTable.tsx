@@ -1,8 +1,8 @@
-import { TableTemplate } from "components/post/table";
-import { EmployeePostData, IColumn } from "types/post/table";
+import { Table } from "components/post/table";
+import { EmployeePosts, IPostsColumn } from "types/post/table";
 
 interface EmployeeTableProps {
-  data: EmployeePostData[];
+  data: EmployeePosts[];
   currentPage: number;
   lastPage: number;
   onPageClick: (page: number) => void;
@@ -14,7 +14,7 @@ const EmployeeTable = ({
   lastPage,
   onPageClick,
 }: EmployeeTableProps) => {
-  const columns: IColumn<EmployeePostData>[] = [
+  const columns: IPostsColumn<EmployeePosts>[] = [
     { id: "store", label: "가게" },
     { id: "date", label: "일자" },
     { id: "hourlyWage", label: "시급" },
@@ -22,7 +22,7 @@ const EmployeeTable = ({
   ];
 
   return (
-    <TableTemplate
+    <Table
       data={data}
       columns={columns}
       currentPage={currentPage}

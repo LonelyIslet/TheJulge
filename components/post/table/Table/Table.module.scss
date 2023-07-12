@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $gray-20;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 96.4rem;
+
+  & > * {
+    margin-bottom: 1.2rem;
+  }
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+  font-size: 1.4rem;
+  color: $black;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  th, td {
+
+    &:first-child {
+      width: 10.8rem;
+    }
+
+  }
+
+  th {
+    border: none;
+    height: 5rem;
+    background-color: $red-10;
+    text-align: start;;
+  }
+
+  td {
+    height: 6.4rem;
+  }
+  
+  @include mobile {
+    font-size: 1.2rem;
+  }
+}
