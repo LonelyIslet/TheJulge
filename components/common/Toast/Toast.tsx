@@ -2,8 +2,8 @@
 
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
-import styles from "./Toast.module.scss";
 import ToastPortal from "./ToastPortal";
+import styles from "./Toast.module.scss";
 
 interface ToastProps {
   message: string;
