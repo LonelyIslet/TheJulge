@@ -17,3 +17,72 @@
 @mixin regular {
   font-weight: 400;
 }
+
+@mixin fixed($top, $left, $right: null, $bottom: null) {
+  position: fixed;
+  top: $top;
+  left: $left;
+
+  @if $right {
+    right: $right;
+  }
+
+  @if $bottom {
+    bottom: $bottom;
+  }
+}
+
+@mixin flexbox($direction, $justify: false, $align: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+}
+
+@mixin hoverScaleEffect($percentage) {
+  $intensity: calc($percentage * 0.01 + 1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale($intensity);
+  }
+}
+
+@mixin hoverFloatEffect($direction, $length) {
+  transition: transform 0.2s ease;
+
+  @if $direction ==x {
+    &:hover {
+      transform: translateX($length);
+    }
+  }
+
+  @if $direction ==y {
+    &:hover {
+      transform: translateY($length);
+    }
+  }
+}
+
+@mixin ellipsis($line: 1) {
+  @if ($line ==1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
