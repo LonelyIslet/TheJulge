@@ -9,9 +9,10 @@ import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
 import styles from "./page.module.scss";
 
-const ALERT_LIST: IAlert[] = mockAlertData.items.map((i: { item: IAlert[] }) => {
-  return i.item;
+const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
+  return i.item as IAlert;
 });
+
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
