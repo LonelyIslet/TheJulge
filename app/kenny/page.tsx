@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AuthForm } from "components/auth";
-import { StatusChip, Modal, NotificationPopover } from "components/common";
+import { StatusChip, Modal, NotificationBoard } from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ModalType } from "types/enums/modal.enum";
 import mockAlertData from "constants/mock/alerts.json";
@@ -37,8 +37,8 @@ const Page = () => {
       <div style={{ position: "relative" }}>
         <button type="button" onClick={() => { setIsPopoverOpen((prev) => { return !prev; }); }}>Open Popover</button>
         {isPopoverOpen && (
-          <Popover onClose={() => { setIsPopoverOpen(false); }} top="3rem">
-            <NotificationPopover alertList={ALERT_LIST} />
+          <Popover onClose={() => { setIsPopoverOpen(false); }} bottom="8rem">
+            <NotificationBoard alertList={ALERT_LIST} />
           </Popover>
         )}
       </div>

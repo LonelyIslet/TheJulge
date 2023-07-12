@@ -6,7 +6,7 @@ import { IAlert } from "types/dto";
 import formatTimeRange from "utils/formatTimeRange";
 import { ApplyStatus } from "types/enums/apply.enum";
 import showElapsedTime from "utils/showElapsedTime";
-import styles from "./NotificationPopover.module.scss";
+import styles from "./NotificationBoard.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -15,11 +15,11 @@ const labelMap = {
   [ApplyStatus.REJECTED]: "거절",
 };
 
-interface NotificationPopoverProps {
+interface NotificationBoardProps {
   alertList: IAlert[];
 }
 
-const NotificationPopover = ({ alertList }: NotificationPopoverProps) => {
+const NotificationBoard = ({ alertList }: NotificationBoardProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -59,4 +59,4 @@ const NotificationPopover = ({ alertList }: NotificationPopoverProps) => {
   );
 };
 
-export default NotificationPopover;
+export default NotificationBoard;
