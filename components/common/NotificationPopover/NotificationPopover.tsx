@@ -15,11 +15,11 @@ const NotificationPopover = () => {
       </div>
       <ul className={styles.itemList}>
         <li className={styles.item}>
-          <div className={cx("ellipsis", "approved")} />
+          <div className={cx("ellipsis", "accepted")} />
           <p className={styles.content}>
             HS 과일주스(2023-01-14 15:00~18:00) 공고 지원이
             {" "}
-            <span className={styles.approved}>승인</span>
+            <span className={styles.accepted}>승인</span>
             되었어요.
           </p>
           <p className={styles.time}>1분 전</p>
@@ -35,21 +35,21 @@ const NotificationPopover = () => {
           <p className={styles.time}>1분 전</p>
         </li>
         <li className={styles.item}>
-          <div className={cx("ellipsis", "approved")} />
+          <div className={cx("ellipsis", "accepted")} />
           <p className={styles.content}>
             HS 과일주스(2023-01-14 15:00~18:00) 공고 지원이
             {" "}
-            <span className={styles.approved}>승인</span>
+            <span className={styles.accepted}>승인</span>
             되었어요.
           </p>
           <p className={styles.time}>1분 전</p>
         </li>
         <li className={styles.item}>
-          <div className={cx("ellipsis", "approved")} />
+          <div className={cx("ellipsis", "accepted")} />
           <p className={styles.content}>
             HS 과일주스(2023-01-14 15:00~18:00) 공고 지원이
             {" "}
-            <span className={styles.approved}>승인</span>
+            <span className={styles.accepted}>승인</span>
             되었어요.
           </p>
           <p className={styles.time}>1분 전</p>

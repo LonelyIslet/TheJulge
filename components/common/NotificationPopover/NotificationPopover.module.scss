@@ -1,4 +1,4 @@
-$statusMap: ("approved": $blue-20, "rejected": $red-40);
+$statusMap: ("accepted": $blue-20, "rejected": $red-40);
 
 .container {
 	@include flexbox(column, false, flex-start);
