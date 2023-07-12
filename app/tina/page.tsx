@@ -1,7 +1,6 @@
 import {
   CommonBtn, PostCard, NoticeCard, ShopCard,
 } from "components/common";
-import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import data from "constants/mock/notice.json";
 import styles from "@/page.module.scss";
 
@@ -51,18 +50,8 @@ const Page = () => {
         workhour={workhour}
         originalHourlyPay={originalHourlyPay}
       >
-        <CommonBtn
-          message="신청하기"
-          responsive
-        />
+        <CommonBtn responsive> 신청하기</CommonBtn>
       </NoticeCard>
-      <CommonBtn
-        style={ButtonStyle.OUTLINE}
-        size={ButtonSize.LARGE}
-        type="submit"
-        message="버튼"
-        responsive
-      />
     </main>
   );
 };
