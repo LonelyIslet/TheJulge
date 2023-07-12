@@ -38,13 +38,14 @@
             "closed": false
 					},
 					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
-				}
+				},
+				"links": [{}, {}, {}]
 			},
 			"links": [{}, {}, {}]
 		},
 		{
       "item": {
-        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f699",
+        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f689",
         "createdAt": "2023-07-11T18:00:00.000Z",
         "result": "accepted",
         "read": false,
@@ -78,15 +79,16 @@
             "closed": false
 					},
 					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
-				}
+				},
+				"links": [{}, {}, {}]
 			},
 			"links": [{}, {}, {}]
 		},
 		{
       "item": {
-        "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f699",
+        "id": "5e0d5d6a-81c4-40cd-8j3b-1680f252f699",
         "createdAt": "2023-07-11T18:00:00.000Z",
-        "result": "accepted",
+        "result": "rejected",
         "read": false,
         "application": {
           "item": {
@@ -118,7 +120,8 @@
             "closed": false
 					},
 					"href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
-				}
+				},
+				"links": [{}, {}, {}]
 			},
 			"links": [{}, {}, {}]
 		}
