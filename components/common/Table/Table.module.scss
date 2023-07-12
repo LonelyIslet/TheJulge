@@ -1,31 +1,10 @@
 .wrapper {
-  margin : 0 auto;
   border: 1px solid $gray-20;
   border-radius: 1rem;
-  overflow: hidden;
-  width: 96.4rem;
-
-  & > * {
-    margin-bottom: 1.2rem;
-  }
-
-  @include tablet {
-    max-width: 96.4rem;
-  }
-
-  @include mobile {
-    width: 35.1rem;
-  }
-}
-
-.table {
-  border-spacing: 0;
-  width: 100%;
-  color: $black;
+  overflow-x: auto;
   overflow-x: overlay;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  word-break: normal;
+  max-width: 96.4rem;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -37,10 +16,28 @@
     background: transparent;
   }
 
+  & > * {
+    margin-bottom: 1.2rem;
+  }
+
+  @include tablet {
+    width: 100%;
+  } 
+
+  @include mobile {
+    width: 35rem;
+  }
+}
+
+.table {
+  border-spacing: 0;
+  color: $black;
+  word-break: normal;
+
   th {
     padding: 1.4rem 1.2rem;
     background-color: $red-10;
-    text-align: start;;
+    text-align: start;
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.2rem;
@@ -58,6 +55,7 @@
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.6rem;
+    background-color: $white;
 
     @include mobile {
       padding: 1.2rem 0.8rem;
@@ -68,32 +66,31 @@
 
   th, td {
     &:first-of-type {
-      width: 22.8rem;
-
-      @include mobile {
-        width: 18.9rem;
-      }
+      min-width: 22.8rem;
     }
 
     &:nth-of-type(2) {
-      width: 30rem;
-
-      @include mobile {
-        display: none;
-      }
+      min-width: 30rem;
     }
 
     &:nth-of-type(3) {
-      width: 20rem;
-
-      @include mobile {
-        display: none;
-      }
+      min-width: 20rem;
     }
     
     &:last-of-type {
+      width: 23.6rem;
+      min-width: 23.6rem;
+      border-right: 1px solid $gray-20;
+
       @include tablet {
+        position: sticky;
+        right: 0;
         border-left: 1px solid $gray-20;
+      }
+
+      @include mobile {
+        width: 16.2rem;
+        min-width: 16.2rem;
       }
     }
   }
@@ -105,4 +102,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+.pagination {
+  position: sticky;
+  right: 0;
+
 }
