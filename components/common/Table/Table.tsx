@@ -51,11 +51,13 @@ const Table = <T extends { id: number }>({
           })}
         </tbody>
       </table>
-      <Pagination
-        currentPage={currentPage}
-        lastPage={lastPage}
-        onPageClick={onPageClick}
-      />
+      <div className={styles.pagination}>
+        <Pagination
+          currentPage={currentPage}
+          lastPage={lastPage}
+          onPageClick={onPageClick}
+        />
+      </div>
     </div>
   );
 };
