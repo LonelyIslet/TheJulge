@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import useInputValidation from "hooks/useInputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import UserInput from "./UserInput";
@@ -28,17 +28,27 @@ interface CustomInputProps {
 }
 
 const CustomInput = ({
-  element, label, type, placeholder, essential, id, name, validationTarget, onChange, data,
+  element,
+  label,
+  type,
+  placeholder,
+  essential,
+  id,
+  name,
+  validationTarget,
+  onChange,
+  data,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const {
-    validation, validationContent, handleBlur, toggle,
+    validation, validationContent, handleBlur, toggle, setToggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
     data as object,
   );
+
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
@@ -52,7 +62,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {element === "text" && !validation && <p className={toggle ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
+      {(element === "text" && !validation) && <p className={toggle ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
     </div>
   );
 };

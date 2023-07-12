@@ -12,7 +12,7 @@ const passwordRegexp = /^(?=.*[a-zA-Z가-힣!@#$%^&*()_+={}|[\]\\';:/?.,<>]).{8,
 // 전화번호 유효성 검사
 const telRegexp = /^01[016789]-\d{3,4}-\d{4}$/;
 
-const checkvalidation = (
+const inputValidation = (
   validationTarget: ValidationTarget,
   value: string,
   data?: DataType,
@@ -42,4 +42,4 @@ const checkvalidation = (
   }
 };
 
-export default checkvalidation;
+export default inputValidation;

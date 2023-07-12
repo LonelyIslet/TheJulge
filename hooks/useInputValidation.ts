@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import checkValidation from "utils/inputValidation";
+import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
 const validationContentMap: {
@@ -18,12 +18,11 @@ const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
   data?: object,
-): { validation: boolean, validationContent: string, handleBlur: () => void } => {
+): { validation: boolean, validationContent: string, handleBlur: () => void, toggle: boolean, setToggle: any } => {
   const [validation, setValidation] = useState<boolean>(true);
   const [toggle, setToggle] = useState(false);
-
-  const handleBlur = () => {
-    if (validationTarget && !checkValidation(validationTarget, value, data)) {
+  const handleBlur = (e) => {
+    if (validationTarget && !inputValidation(validationTarget, value, data)) {
       setValidation(false);
     } else {
       setValidation(true);
@@ -34,7 +33,7 @@ const useInputValidation = (
   const validationContent: string = validationContentMap[validationTarget];
 
   return {
-    validation, validationContent, handleBlur, toggle,
+    validation, validationContent, handleBlur, toggle, setToggle,
   };
 };
 
