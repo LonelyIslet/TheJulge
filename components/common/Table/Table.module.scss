@@ -8,16 +8,24 @@
   & > * {
     margin-bottom: 1.2rem;
   }
+
+  @include tablet {
+    max-width: 96.4rem;
+  }
+
+  @include mobile {
+    width: 35.1rem;
+  }
 }
 
 .table {
-  word-break: normal;
-  width: 100%;
   border-spacing: 0;
+  width: 100%;
   color: $black;
   overflow-x: overlay;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  word-break: normal;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -29,20 +37,6 @@
     background: transparent;
   }
 
-  th, td {
-    &:first-of-type {
-      width: 22.8rem;
-    }
-
-    &:nth-of-type(2) {
-      width: 30rem;
-    }
-
-    &:nth-of-type(3) {
-      width: 20rem;
-    }
-  }
-
   th {
     padding: 1.4rem 1.2rem;
     background-color: $red-10;
@@ -50,6 +44,12 @@
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.2rem;
+
+    @include mobile {
+      padding: 1.2rem 0.8rem;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+    }
   }
 
   td {
@@ -60,11 +60,44 @@
     line-height: 2.6rem;
 
     @include mobile {
-      font-size: 1.2rem;
+      padding: 1.2rem 0.8rem;
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+    }
+  }
+
+  th, td {
+    &:first-of-type {
+      width: 22.8rem;
+
+      @include mobile {
+        width: 18.9rem;
+      }
+    }
+
+    &:nth-of-type(2) {
+      width: 30rem;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &:nth-of-type(3) {
+      width: 20rem;
+
+      @include mobile {
+        display: none;
+      }
+    }
+    
+    &:last-of-type {
+      @include tablet {
+        border-left: 1px solid $gray-20;
+      }
     }
   }
   
-
   span {
     display: -webkit-box;
     -webkit-line-clamp: 2;
