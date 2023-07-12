@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
+import Link from "next/link";
 import styles from "./ShopCard.module.scss";
 import CommonBtn from "../CommonBtn/CommonBtn";
 
@@ -30,8 +31,12 @@ const ShopCard = ({
           {description}
         </p>
         <div className={styles.buttonContainer}>
-          <CommonBtn style={ButtonStyle.OUTLINE} size={ButtonSize.LARGE} type="submit" message="편집하기" responsive />
-          <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" message="공고 등록하기" responsive />
+          <Link href="/my-shop/edit" className={styles.button}>
+            <CommonBtn style={ButtonStyle.OUTLINE} size={ButtonSize.LARGE} type="submit" responsive>편집하기</CommonBtn>
+          </Link>
+          <Link href="/notice/write" className={styles.button}>
+            <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" responsive>공고 등록하기</CommonBtn>
+          </Link>
         </div>
       </div>
     </section>
