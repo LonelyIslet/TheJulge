@@ -1,4 +1,4 @@
-import { Table } from "components/post/table";
+import { Table } from "components/common";
 import { EmployeePosts, IPostsColumn } from "types/post/table";
 
 interface EmployeeTableProps {

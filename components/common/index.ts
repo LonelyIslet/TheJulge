@@ -8,6 +8,7 @@ import Pagination from "./Pagination/Pagination";
 import PostCard from "./PostCard/PostCard";
 import SearchBar from "./SearchBar/SearchBar";
 import StatusChip from "./StatusChip/StatusChip";
+import Table from "./Table/Table";
 
 export {
   CommonBtn,
@@ -20,4 +21,5 @@ export {
   PostCard,
   SearchBar,
   StatusChip,
+  Table,
 };
