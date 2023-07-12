@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AuthForm } from "components/auth";
-import { StatusChip, Modal } from "components/common";
+import { StatusChip, Modal, NotificationPopover } from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ModalType } from "types/enums/modal.enum";
 import styles from "./page.module.scss";
@@ -25,6 +25,7 @@ const Page = () => {
       <div className={styles.formBackground}>
         <AuthForm />
       </div>
+      <NotificationPopover />
     </main>
   );
 };
