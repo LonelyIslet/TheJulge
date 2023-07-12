@@ -29,8 +29,8 @@ const HomePage = () => {
             state: <div>aa</div>,
           },
         ]}
-        currentPage={1}
-        lastPage={7}
+        currentPage={5}
+        lastPage={6}
       />
     </main>
   );
