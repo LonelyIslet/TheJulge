@@ -25,7 +25,9 @@ const Table = <T extends { id: number }>({
             {columns.map((column) => {
               return (
                 <th key={column.id as number}>
-                  {column.label}
+                  <span>
+                    {column.label}
+                  </span>
                 </th>
               );
             })}
@@ -38,7 +40,9 @@ const Table = <T extends { id: number }>({
                 {columns.map((column) => {
                   return (
                     <td key={column.id as number}>
-                      {item[column.id]}
+                      <span>
+                        {item[column.id]}
+                      </span>
                     </td>
                   );
                 })}
