@@ -16,15 +16,15 @@ export interface IApplication {
   id?: string,
   status: ApplyStatus,
   createdAt?: string,
-  IUser?: {
+  user?: {
     item: IUser,
     href: string,
   }
-  IShop?: {
+  shop?: {
     item: IShop,
     href: string,
   },
-  INotice?: {
+  notice?: {
     item: INotice,
     href: string,
   }
@@ -37,7 +37,7 @@ export interface INotice {
   startsAt: string,
   workhour: number,
   closed?: boolean,
-  IShop?: {
+  shop?: {
     item: IShop,
     href: string,
   },
@@ -49,15 +49,15 @@ export interface IAlert {
   createdAt: string,
   result: ApplyStatus.ACCEPTED | ApplyStatus.REJECTED,
   read: boolean,
-  IApplication: {
+  application: {
     item: IApplication,
     href: string,
   },
-  IShop: {
+  shop: {
     item: IShop,
     href: string,
   },
-  INotice: {
+  notice: {
     item: INotice,
     href: string,
   },
