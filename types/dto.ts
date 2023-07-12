@@ -1,7 +1,7 @@
 import { ApplyStatus } from "./enums/apply.enum";
 import { UserType } from "./enums/user.enum";
 
-export interface Shop {
+export interface IShop {
   id?: string,
   name: string,
   category: string,
@@ -12,59 +12,59 @@ export interface Shop {
   originalHourlyPay: number
 }
 
-export interface Application {
+export interface IApplication {
   id?: string,
   status: ApplyStatus,
   createdAt?: string,
-  user?: {
-    item: User,
+  IUser?: {
+    item: IUser,
     href: string,
   }
-  shop?: {
-    item: Shop,
+  IShop?: {
+    item: IShop,
     href: string,
   },
-  notice?: {
-    item: Notice,
+  INotice?: {
+    item: INotice,
     href: string,
   }
 }
 
-export interface Notice {
+export interface INotice {
   id?: string,
   hourlyPay: number,
   description: string,
   startsAt: string,
   workhour: number,
   closed?: boolean,
-  shop?: {
-    item: Shop,
+  IShop?: {
+    item: IShop,
     href: string,
   },
 
 }
 
-export interface Alert {
+export interface IAlert {
   id?: string,
   createdAt: string,
   result: ApplyStatus.ACCEPTED | ApplyStatus.REJECTED,
   read: boolean,
-  application: {
-    item: Application,
+  IApplication: {
+    item: IApplication,
     href: string,
   },
-  shop: {
-    item: Shop,
+  IShop: {
+    item: IShop,
     href: string,
   },
-  notice: {
-    item: Notice,
+  INotice: {
+    item: INotice,
     href: string,
   },
   links: object[],
 }
 
-export interface User {
+export interface IUser {
   id?: string,
   email: string,
   password?: string,
@@ -73,8 +73,8 @@ export interface User {
   phone?: string,
   address?: string,
   bio?: string,
-  shop?: {
-    item: Shop,
+  IShop?: {
+    item: IShop,
     href: string,
   }
 }
