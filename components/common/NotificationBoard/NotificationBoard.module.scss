@@ -12,12 +12,12 @@ $statusMap: ("accepted": $blue-20, "rejected": $red-40);
 	box-shadow: 0 0.2rem 0.8rem 0 rgba(120, 116, 134, 0.25);
 
 	@include mobile {
-		position: fixed;
-		inset: 0;
+		@include fixed(0, 0, 0, 0);
 		width: 100%;
 		z-index: 9990;
 		padding: 2rem 4rem;
 		flex-shrink: 0;
+		border-radius: 0;
 	}
 
 	.header {
@@ -34,7 +34,9 @@ $statusMap: ("accepted": $blue-20, "rejected": $red-40);
 				position: relative;
 				width: 2.4rem;
 				height: 2.4rem;
+				background: transparent;
 				cursor: pointer;
+				@include hoverInvertEffect(0.6);
 			}
 		}
 	}

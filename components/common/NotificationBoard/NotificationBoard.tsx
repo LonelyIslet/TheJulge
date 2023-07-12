@@ -17,9 +17,10 @@ const labelMap = {
 
 interface NotificationBoardProps {
   alertList: IAlert[];
+  onClose: () => void;
 }
 
-const NotificationBoard = ({ alertList }: NotificationBoardProps) => {
+const NotificationBoard = ({ alertList, onClose }: NotificationBoardProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -29,9 +30,9 @@ const NotificationBoard = ({ alertList }: NotificationBoardProps) => {
           {alertList.length}
           개
         </h2>
-        <div className={styles.closeBtn}>
+        <button type="button" className={styles.closeBtn} onClick={onClose}>
           <Image src="/images/close.svg" fill alt="닫기 버튼" />
-        </div>
+        </button>
       </div>
       <ul className={styles.itemList}>
         {alertList.map((item) => {

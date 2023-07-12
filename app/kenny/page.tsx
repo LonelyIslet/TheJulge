@@ -38,7 +38,10 @@ const Page = () => {
         <button type="button" onClick={() => { setIsPopoverOpen((prev) => { return !prev; }); }}>Open Popover</button>
         {isPopoverOpen && (
           <Popover onClose={() => { setIsPopoverOpen(false); }} bottom="8rem">
-            <NotificationBoard alertList={ALERT_LIST} />
+            <NotificationBoard
+              alertList={ALERT_LIST}
+              onClose={() => { setIsPopoverOpen(false); }}
+            />
           </Popover>
         )}
       </div>
