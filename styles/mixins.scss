@@ -22,13 +22,13 @@
   position: fixed;
   top: $top;
   left: $left;
-
+  
   @if $right {
-    right: $right;
+		right: $right;
   }
-
+  
   @if $bottom {
-    bottom: $bottom;
+		bottom: $bottom;
   }
 }
 
@@ -48,22 +48,19 @@
 @mixin hoverScaleEffect($percentage) {
   $intensity: calc($percentage * 0.01 + 1);
   transition: transform 0.2s ease;
-
   &:hover {
-    transform: scale($intensity);
+     transform: scale($intensity); 
   }
 }
 
 @mixin hoverFloatEffect($direction, $length) {
   transition: transform 0.2s ease;
-
-  @if $direction ==x {
+  @if $direction == x {
     &:hover {
       transform: translateX($length);
     }
   }
-
-  @if $direction ==y {
+  @if $direction == y {
     &:hover {
       transform: translateY($length);
     }

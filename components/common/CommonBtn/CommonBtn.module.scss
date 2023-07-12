@@ -2,6 +2,8 @@
   width: 100%;
   border-radius: 0.6rem;
 
+  @include hoverScaleEffect(5);
+
   &.solid {
     background-color: $primary;
     color: $white;
