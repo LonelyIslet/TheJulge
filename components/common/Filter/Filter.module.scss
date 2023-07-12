@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.firstLine {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location {
+  display: grid;
+  border: 1px solid $gray-20;
+  border-radius: 0.6rem;
+}
+
+.selectedLocation {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.startDate,
+.hourlWage {
+  color: $black;
+  line-height: 2.6rem;
+}
+
+.dateInput,
+.wageInput {
+  width: 100%;
+  border: 1px solid $gray-30;
+}
+
+.buttons {
+  display: flex;
+}
+
+.resetButton {
+  color: $primary;
+  border: 1px solid $pirmary;
+  border-radius: 0.6rem;
+}
+
+.applyButton {
+  color: $white;
+  background-color: $primary;
+  border: 1px solid $pirmary;
+  border-radius: 0.6rem;
+}
