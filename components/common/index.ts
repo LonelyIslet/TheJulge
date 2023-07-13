@@ -1,10 +1,7 @@
 import CommonBtn from "./CommonBtn/CommonBtn";
 import CustomInput from "./CustomInput/CustomInput";
-<<<<<<< HEAD
 import Dropdown from "./Dropdown/Dropdown";
-=======
 import Filter from "./Filter/Filter";
->>>>>>> 767bcf2 (feat: ui 수정 JUL-42)
 import GlobalFooter from "./GlobalFooter/GlobalFooter";
 import GlobalNav from "./GlobalNav/GlobalNav";
 import HourlyPayPercentage from "./HourlyPayPercentage/HourlyPayPercentage";
@@ -19,11 +16,8 @@ import Toast from "./Toast/Toast";
 export {
   CommonBtn,
   CustomInput,
-<<<<<<< HEAD
   Dropdown,
-=======
   Filter,
->>>>>>> 767bcf2 (feat: ui 수정 JUL-42)
   GlobalFooter,
   GlobalNav,
   HourlyPayPercentage,
