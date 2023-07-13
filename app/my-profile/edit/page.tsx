@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "./page.module.scss";
 
-const page = () => {
+const MyProfilePage = () => {
   return (
     <div className={styles.layout}>
       <header>
@@ -18,4 +18,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default MyProfilePage;
