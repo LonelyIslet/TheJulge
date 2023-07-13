@@ -26,11 +26,12 @@
 .contents {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.2rem;
 
   hr {
     width: 100%;
     height: 0.2rem;
+    margin: 1.2rem 0;
     color: $gray-10;
   }
 }
@@ -69,6 +70,8 @@
 
 .labelInputContainer {
   label {
+    display: block;
+    margin-bottom: 0.8rem;
     color: $black;
     line-height: 2.6rem;
   }
@@ -78,6 +81,7 @@
   position: relative;
   display: inline-block;
   margin-right: 1.2rem;
+  width: 100%;
 
   input {
     width: 100%;

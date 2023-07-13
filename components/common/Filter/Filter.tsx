@@ -113,7 +113,7 @@ const Filter = ({
         </div>
         <hr />
         <div className={styles.labelInputContainer}>
-          <label htmlFor="dateInput">시작일</label>
+          <label htmlFor="fromDate">시작일</label>
           <div className={styles.inputWrapper}>
             <input
               type="date"
@@ -135,12 +135,13 @@ const Filter = ({
         </div>
         <hr />
         <div className={styles.labelInputContainer}>
-          <label htmlFor="hourlyWage">금액</label>
+          <label htmlFor="fromWage">금액</label>
           <div className={`${styles.inputWrapper} ${styles.wageInput}`}>
             <input
               type="text"
+              id="fromWage"
+              name="fromWage"
               placeholder="입력"
-              id="dateInput"
               pattern="[0-9]*"
               value={fromWage}
               onChange={handleChange}
