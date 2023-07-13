@@ -17,3 +17,58 @@
 @mixin regular {
   font-weight: 400;
 }
+
+@mixin fixed($top, $left, $right: null, $bottom: null) {
+  position: fixed;
+  top: $top;
+  left: $left;
+  
+  @if $right {
+		right: $right;
+  }
+  
+  @if $bottom {
+		bottom: $bottom;
+  }
+}
+
+@mixin flexbox($direction, $justify: false, $align: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+}
+
+@mixin hoverScaleEffect($percentage) {
+  $intensity: calc($percentage * 0.01 + 1);
+  transition: transform 0.2s ease;
+  &:hover {
+     transform: scale($intensity); 
+  }
+}
+
+@mixin hoverFloatEffect($direction, $length) {
+  transition: transform 0.2s ease;
+  @if $direction == x {
+    &:hover {
+      transform: translateX($length);
+    }
+  }
+  @if $direction == y {
+    &:hover {
+      transform: translateY($length);
+    }
+  }
+}
+
+@mixin hoverInvertEffect($amount) {
+  &:hover {
+    filter: invert($amount);
+  }
+}

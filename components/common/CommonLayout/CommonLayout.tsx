@@ -11,7 +11,7 @@ const CommonLayout = ({ children, position }: LayoutProps) => {
   const headerStyle = position === "above" ? `${styles.above}` : `${styles.below}`;
 
   return (
-    <div className={styles.layout}>
+    <div className={styles.container}>
       <header className={headerStyle}>
         {title}
       </header>
