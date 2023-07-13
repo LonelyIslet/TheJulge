@@ -30,16 +30,18 @@ const Page = () => {
       <CommonBtn
         type="button"
         onClick={() => { setIsModalOpen((prev) => { return !prev; }); }}
-        message="Open Modal"
         style={ButtonStyle.OUTLINE}
-      />
+      >
+        Open Modal
+      </CommonBtn>
       <br />
       <CommonBtn
-        message="Open Toast"
         type="button"
         onClick={() => { showToast("토스트 입니다."); }}
         style={ButtonStyle.SOLID}
-      />
+      >
+        Open Toast
+      </CommonBtn>
       {isModalOpen
         && (
           <Modal
@@ -62,6 +64,12 @@ const Page = () => {
             />
           </Popover>
         )}
+      </div>
+      <div className={styles.formBackground}>
+        <AuthForm />
+      </div>
+      <div className={styles.formBackground}>
+        <AuthForm />
       </div>
     </main>
   );
