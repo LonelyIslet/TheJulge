@@ -63,6 +63,12 @@ const Page = () => {
           </Popover>
         )}
       </div>
+      <div className={styles.formBackground}>
+        <AuthForm />
+      </div>
+      <div className={styles.formBackground}>
+        <AuthForm />
+      </div>
     </main>
   );
 };
