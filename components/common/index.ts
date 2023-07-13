@@ -10,6 +10,7 @@ import CustomInput from "./CustomInput/CustomInput";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import NotificationBoard from "./NotificationBoard/NotificationBoard";
 import Popover from "./Popover/Popover";
+import CommonLayout from "./CommonLayout/CommonLayout";
 import Toast from "./Toast/Toast";
 
 export {
@@ -25,5 +26,6 @@ export {
   CommonBtn,
   NotificationBoard,
   Popover,
+  CommonLayout,
   Toast,
 };
