@@ -1,4 +1,4 @@
-const formatTimeRange = (startsAt: string, workhour: number): string => {
+const formatTimeRange = (startsAt: string, workhour: number, showWorkhour = true): string => {
   const startDate = new Date(startsAt);
   const endDate = new Date(startDate.getTime() + workhour * 60 * 60 * 1000);
 
@@ -11,7 +11,10 @@ const formatTimeRange = (startsAt: string, workhour: number): string => {
   const endHour = endDate.getHours().toString().padStart(2, "0");
   const endMinute = endDate.getMinutes().toString().padStart(2, "0");
 
-  return `${year}-${month}-${day} ${startHour}:${startMinute} - ${endHour}:${endMinute} (${workhour}시간)`;
+  const resultString = `${year}-${month}-${day} ${startHour}:${startMinute} - ${endHour}:${endMinute}`;
+
+  if (!showWorkhour) return resultString;
+  return `${resultString} (${workhour}시간)`;
 };
 
 export default formatTimeRange;

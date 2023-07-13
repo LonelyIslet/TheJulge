@@ -2,6 +2,7 @@ import "styles/globals.scss";
 import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
 import { GlobalNav, GlobalFooter } from "components/common";
+import ToastRoot from "components/common/Toast/ToastRoot";
 
 export const metadata = {
   title: "더줄게",
@@ -19,9 +20,13 @@ const RootLayout = ({
     <StoreProvider>
       <html lang="ko">
         <body className={spoqaHanSansNeo.className}>
+          <div id="toast-root" />
+          <ToastRoot />
           <div id="modal-root" />
           <GlobalNav />
-          {children}
+          <main>
+            {children}
+          </main>
           <GlobalFooter />
         </body>
       </html>
