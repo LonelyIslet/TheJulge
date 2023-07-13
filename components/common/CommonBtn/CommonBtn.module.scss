@@ -1,6 +1,7 @@
 .button {
   width: 100%;
   border-radius: 0.6rem;
+  border: 0.1rem solid $primary;
 
   @include hoverScaleEffect(5);
 
@@ -11,7 +12,6 @@
 
   &.outline {
     background-color: $white;
-    border: .1rem solid $primary;
     color: $primary;
   }
 
