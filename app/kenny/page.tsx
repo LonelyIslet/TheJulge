@@ -1,12 +1,11 @@
 "use client";
 
 import {
-  CommonBtn, StatusChip, Modal,
+  CommonBtn, StatusChip, Modal, NotificationBoard,
 } from "components/common";
 import useToast from "hooks/useToast";
 import { useState } from "react";
 import { AuthForm } from "components/auth";
-import { StatusChip, Modal, NotificationBoard } from "components/common";
 
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
