@@ -55,7 +55,10 @@ const Filter = ({
       <div className={styles.contents}>
         <p>위치</p>
         <div className={styles.location}>
-          서울시 강남구
+          <p>서울시 강남구</p>
+          <p>인천시 계양구</p>
+          <p>델라웨어 뉴캐슬</p>
+          <p>후쿠시마시 아이즈와카마쓰시</p>
         </div>
         <div className={styles.selectedLocation}>
           <button

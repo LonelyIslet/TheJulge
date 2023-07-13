@@ -37,10 +37,13 @@
 }
 
 .location {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   border: 1px solid $gray-20;
   border-radius: 0.6rem;
   padding: 2rem 2.8rem;
+  font-size: 1.4rem;
 }
 
 .selectedLocation {
