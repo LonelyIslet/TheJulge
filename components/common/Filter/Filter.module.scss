@@ -67,26 +67,42 @@
   height: 1.6rem;
 }
 
-.startDate,
-.hourlWage {
-  color: $black;
-  line-height: 2.6rem;
+.labelInputContainer {
+  label {
+    color: $black;
+    line-height: 2.6rem;
+  }
 }
 
-.dateInput,
-.wageInput {
-  width: 100%;
-  border: 1px solid $gray-30;
-  border-radius: 0.6rem;
-  padding: 1.6rem 2rem;
-}
+.inputWrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 1.2rem;
 
+  input {
+    width: 100%;
+    border: 1px solid $gray-30;
+    border-radius: 0.6rem;
+    padding: 1.6rem 2rem;
+  }
+
+  .won {
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+  }
+}
 .buttons {
   display: flex;
   justify-content: space-between;
   button {
     font-weight: 700;
   }
+}
+
+.wageInput {
+  width: 16.9rem;
 }
 
 .resetButton {

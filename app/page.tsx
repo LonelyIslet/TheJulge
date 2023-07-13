@@ -5,9 +5,7 @@ const HomePage = () => {
   return (
     <main className={styles.main}>
       <h1>더줄게</h1>
-      <Filter
-        onClose={() => {}}
-      />
+      <Filter />
     </main>
   );
 };
