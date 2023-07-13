@@ -48,7 +48,9 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
       </div>
       <div className={styles.container}>
         <p>{dataType.description}</p>
-        <CommonBtn type="button" style={ButtonStyle.SOLID} size={ButtonSize.MEDIUM} message={dataType.buttonText} />
+        <CommonBtn type="button" style={ButtonStyle.SOLID} size={ButtonSize.MEDIUM}>
+          {dataType.buttonText}
+        </CommonBtn>
       </div>
     </CommonLayout>
   );

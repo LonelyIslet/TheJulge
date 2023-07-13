@@ -41,7 +41,7 @@ const EditProfile = () => {
         <Dropdown type="address" label="선호 지역" id="address" name="address" onChange={handleData} />
       </div>
       <CustomInput element="textarea" label="소개" placeholder="입력" id="bio" name="bio" onChange={handleData} />
-      <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE} message="등록하기" />
+      <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>등록하기</CommonBtn>
     </div>
   );
 };
