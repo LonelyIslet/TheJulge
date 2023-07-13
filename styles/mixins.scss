@@ -67,6 +67,12 @@
   }
 }
 
+@mixin hoverInvertEffect($amount) {
+  &:hover {
+    filter: invert($amount);
+  }
+}
+
 @mixin ellipsis($line: 1) {
   @if ($line == 1) {
     overflow: hidden;
@@ -81,9 +87,5 @@
     word-wrap: break-word;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: $line;
-
-@mixin hoverInvertEffect($amount) {
-  &:hover {
-    filter: invert($amount);
   }
 }
