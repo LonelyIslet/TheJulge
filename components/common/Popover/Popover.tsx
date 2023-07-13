@@ -1,7 +1,7 @@
 "use client";
 
 import useClickOutside from "hooks/useClickOutside";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 type Unit = "px" | "rem" | "em" | "%" | "vh" | "vw" | "vmin" | "vmax";
 type InsetValue = `${number}${Unit}`;
