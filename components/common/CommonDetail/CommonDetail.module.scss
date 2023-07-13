@@ -1,39 +1,28 @@
-@import url('/styles/mixins.scss');
-
-.layout {
-  padding: 6rem 0;
-  height: calc(100vh - 17rem);
+.container{
+      border: 1px solid $gray-20;
+      border-radius: 1.2rem;
+      padding: 6rem 0;
   
-  article {
-    border: 1px solid $gray-20;
-    border-radius: 1.2rem;
-    padding: 6rem 0;
-
-
-    p {
-      text-align: center;
-      margin-bottom: 2.4rem;
-    }
-
-    button {
-      display: block;
-      width: 35rem;
-      height: 4.7rem;
-      margin: 0 auto;
-    }
-  }
-
-  @include mobile {
-      height: calc(100vh - 12.6rem - 10.6rem);
-      padding: 4rem 0;
-      article {
-        p {
-          font-size: 1.4rem;
-        }
-        button {
-          width: 15rem;
-          font-size: 1.4rem;
-        }
+  
+      p {
+        text-align: center;
+        margin-bottom: 2.4rem;
       }
-  }
+  
+      button {
+        display: block;
+        width: 35rem;
+        height: 4.7rem;
+        margin: 0 auto;
+      }
+  
+    @include mobile {
+          p {
+            font-size: 1.4rem;
+          }
+          button {
+            width: 15rem;
+            font-size: 1.4rem;
+          }
+    }
 }

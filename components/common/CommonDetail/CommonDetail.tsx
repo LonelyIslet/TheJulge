@@ -1,15 +1,13 @@
 "use client";
 
-import React from "react";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
+import { CommonLayout, CommonBtn } from "components/common";
 import styles from "./CommonDetail.module.scss";
-import CommonLayout from "../CommonLayout/CommonLayout";
-import CommonBtn from "../CommonBtn/CommonBtn";
 
 type Detail = "EMPLOYER" | "EMPLOYEE";
 
 interface IDeail {
-  EMPLOYER: {
+  EMPLOYER : {
     title: string;
     description: string;
     buttonText: string;
@@ -44,17 +42,15 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
   const dataType:Icontent = info[detailType];
 
   return (
-    <div className={styles.layout}>
-      <CommonLayout position="above">
-        <div>
-          <h2>{dataType.title}</h2>
-        </div>
-        <div>
-          <p>{dataType.description}</p>
-          <CommonBtn type="button" style={ButtonStyle.SOLID} size={ButtonSize.MEDIUM} message={dataType.buttonText} />
-        </div>
-      </CommonLayout>
-    </div>
+    <CommonLayout position="above">
+      <div>
+        <h2>{dataType.title}</h2>
+      </div>
+      <div className={styles.container}>
+        <p>{dataType.description}</p>
+        <CommonBtn type="button" style={ButtonStyle.SOLID} size={ButtonSize.MEDIUM} message={dataType.buttonText} />
+      </div>
+    </CommonLayout>
   );
 };
 

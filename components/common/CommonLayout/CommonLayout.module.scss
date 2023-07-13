@@ -1,9 +1,7 @@
-@import url(/styles/mixins.scss);
-
-.container {
+.layout {
   max-width: 96.4rem;
-  margin: 0 auto;
   background-color: inherit;
+  margin: 0 auto;
 
   header.above {
     margin-bottom: 2.4rem;

@@ -9,8 +9,19 @@ import Modal from "./Modal/Modal";
 import CustomInput from "./CustomInput/CustomInput";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import CommonLayout from "./CommonLayout/CommonLayout";
+import CommonDetail from "./CommonDetail/CommonDetail";
 
 export {
-  GlobalNav, Pagination, SearchBar, StatusChip,
-  GlobalFooter, PostCard, HourlyPayPercentage, Modal, CustomInput, CommonBtn, CommonLayout,
+  GlobalNav,
+  Pagination,
+  SearchBar,
+  StatusChip,
+  GlobalFooter,
+  PostCard,
+  HourlyPayPercentage,
+  Modal,
+  CustomInput,
+  CommonBtn,
+  CommonLayout,
+  CommonDetail,
 };
