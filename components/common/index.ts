@@ -8,6 +8,7 @@ import HourlyPayPercentage from "./HourlyPayPercentage/HourlyPayPercentage";
 import Modal from "./Modal/Modal";
 import CustomInput from "./CustomInput/CustomInput";
 import CommonBtn from "./CommonBtn/CommonBtn";
+import CommonLayout from "./CommonLayout/CommonLayout";
 import Toast from "./Toast/Toast";
 
 export {
@@ -21,5 +22,7 @@ export {
   Modal,
   CustomInput,
   CommonBtn,
+  CommonLayout,
   Toast,
+
 };
