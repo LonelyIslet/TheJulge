@@ -1,0 +1,132 @@
+@mixin flexbox($direction, $justify: false, $align: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+}
+
+.formContainer {
+  @include flexbox(column, false, center);
+  gap: 2rem;
+  width: fit-content;
+  height: 69.7rem;
+  padding: 2.4rem 3rem;
+  background: $white;
+  border-radius: 2.2rem;
+
+  @media only screen and (max-width: 410px) {
+    
+    height: 100vh;
+    width: 100vw;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.titleContainer {
+  @include flexbox(row);
+  width:35rem;
+  .titleItem {
+    @include flexbox(column);
+    width: 50%;
+    height: 6rem;
+    cursor: pointer;
+    &:hover {
+      .title {
+        color: $gray-40;
+      }
+      .line {
+        background-color: $gray-40;
+      }
+    }
+    .title {
+      @include flexbox(row, center, center);
+      height: 5.6rem;
+      @include bold;
+      font-size: 2.8rem;
+      transition: color 0.2s ease;
+      color: $gray-20;
+    }
+    .title.active {
+      color: $primary;
+    }
+    .line {
+      height: 0.4rem;
+      background-color: $gray-20;
+      transition: background-color 0.2s ease;
+    }
+    .line.active {
+      background-color: $primary;;
+    }
+  }
+}
+
+.form {
+	@include flexbox(column, center, center);
+	width: 100%;
+	gap: 1rem;
+}
+
+.submitButton {
+	@include flexbox(row, center, center);
+	padding: 1.4rem 13.6rem;
+	gap: 0.8rem;
+	align-self: stretch;
+	appearance: none;
+	-webkit-appearance: none;
+	border: none;
+	border-radius: 0.6rem;
+	background: $primary;
+	cursor: pointer;
+
+	@include bold;
+	color: $white;
+	font-size: 1.6rem;
+	transition: transform 0.2s ease;
+	&:hover {
+		transform: scale(1.02);
+	}
+}
+
+// TODO: tony가 커스텀 인풋 merge하면 delete
+.inputContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  align-self: stretch;
+  padding-bottom: 2.4rem;
+  & span {
+    font-size: 1.6rem;
+  }
+  
+  & input {
+    width: 100%;
+    height: 5.8rem;
+    text-indent: 2rem;
+    font-size: 1.6rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--the-julge-gray-30, #CBC9CF);
+    background: var(--the-julge-white, #FFF);
+  }
+
+  & input::placeholder {
+    color: $gray-40;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
+  }
+  input[data-autocompleted] {
+      background-color: transparent !important;
+  }
+}
+

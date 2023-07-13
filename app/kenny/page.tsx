@@ -1,20 +1,68 @@
 "use client";
 
-import { StatusChip } from "components/common";
-import Modal from "components/common/Modal/Modal";
+import {
+  CommonBtn, StatusChip, Modal, NotificationBoard,
+} from "components/common";
+import useToast from "hooks/useToast";
 import { useState } from "react";
+import { AuthForm } from "components/auth";
+
 import { ApplyStatus } from "types/enums/apply.enum";
+import { ButtonStyle } from "types/enums/button.enum";
 import { ModalType } from "types/enums/modal.enum";
+import mockAlertData from "constants/mock/alerts.json";
+import { IAlert } from "types/dto";
+import Popover from "components/common/Popover/Popover";
+import styles from "./page.module.scss";
+
+const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
+  return i.item as IAlert;
+});
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const { showToast } = useToast();
 
   return (
     <main>
       <StatusChip status={ApplyStatus.PENDING} />
-      <button type="button" onClick={() => { setIsModalOpen((prev) => { return !prev; }); }}>Open Modal</button>
+      <CommonBtn
+        type="button"
+        onClick={() => { setIsModalOpen((prev) => { return !prev; }); }}
+        message="Open Modal"
+        style={ButtonStyle.OUTLINE}
+      />
+      <br />
+      <CommonBtn
+        message="Open Toast"
+        type="button"
+        onClick={() => { showToast("토스트 입니다."); }}
+        style={ButtonStyle.SOLID}
+      />
       {isModalOpen
-        && <Modal type={ModalType.ACTION} message="신청을 거절하시겠어요?" onClose={() => { setIsModalOpen(false); }} onClickProceed={() => { setIsModalOpen(false); }} />}
+        && (
+          <Modal
+            type={ModalType.ACTION}
+            message="신청을 거절하시겠어요?"
+            onClose={() => { setIsModalOpen(false); }}
+            onClickProceed={() => { showToast("거절 했습니다."); setIsModalOpen(false); }}
+          />
+        )}
+      <div className={styles.formBackground}>
+        <AuthForm />
+      </div>
+      <div style={{ position: "relative" }}>
+        <button type="button" onClick={() => { setIsPopoverOpen((prev) => { return !prev; }); }}>Open Popover</button>
+        {isPopoverOpen && (
+          <Popover onClose={() => { setIsPopoverOpen(false); }} bottom="8rem">
+            <NotificationBoard
+              alertList={ALERT_LIST}
+              onClose={() => { setIsPopoverOpen(false); }}
+            />
+          </Popover>
+        )}
+      </div>
     </main>
   );
 };

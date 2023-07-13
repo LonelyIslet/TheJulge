@@ -1,7 +1,15 @@
-const page = () => {
+"use client";
+
+import { CommonDetail } from "components/common";
+import { DetailType } from "types/enums/detailPage.enum";
+
+const MyPage = () => {
   return (
-    <div />
+    <>
+      {/* <CommonDetail detailType={DetailType.EMPLOYER} /> */}
+      <CommonDetail detailType={DetailType.EMPLOYEE} />
+    </>
   );
 };
 
-export default page;
+export default MyPage;

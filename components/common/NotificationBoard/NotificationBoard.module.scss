@@ -1,0 +1,89 @@
+$statusMap: ("accepted": $blue-20, "rejected": $red-40);
+
+.container {
+	@include flexbox(column, false, flex-start);
+	gap: 1.6rem;
+	width: fit-content;
+	padding: 2.4rem 2rem;
+	
+	border-radius: 1rem;
+	border: 1px solid $gray-30;
+	background: $red-10;
+	box-shadow: 0 0.2rem 0.8rem 0 rgba(120, 116, 134, 0.25);
+
+	@include mobile {
+		@include fixed(0, 0, 0, 0);
+		width: 100%;
+		z-index: 9990;
+		padding: 2rem 4rem;
+		flex-shrink: 0;
+		border-radius: 0;
+	}
+
+	.header {
+		@include flexbox(row, space-between, false);
+		width: 100%;
+		h2 {
+			@include bold;
+			font-size: 2rem;
+		}
+		.closeBtn {
+			display: none;
+			@include mobile {
+				display: block;
+				position: relative;
+				width: 2.4rem;
+				height: 2.4rem;
+				background: transparent;
+				cursor: pointer;
+				@include hoverInvertEffect(0.6);
+			}
+		}
+	}
+
+	.itemList {
+		@include flexbox(column,  false, flex-start);
+		gap: 0.8rem;
+		@include mobile {
+			width: 100%;
+		}
+		.item {
+			@include flexbox(column, false, flex-start);
+			gap: 0.4rem;
+			width: 32.8rem;
+			padding: 1.6rem 1.2rem;
+
+			border-radius: 0.5rem;
+			border: 1px solid $gray-20;
+			background: $white;
+			@include mobile {
+				width: 100%;
+			}
+			.ellipsis {
+				width: 0.5rem;
+				height: 0.5rem;
+				border-radius: 50%;
+				@each $status, $color in $statusMap {
+					&.#{$status} {
+						background-color: $color;
+					}
+				}
+			}
+
+			.content {
+				font-size: 1.4rem;
+				line-height: 2.2rem;
+				@each $status, $color in $statusMap {
+					& span.#{$status} {
+						color: $color;
+					}
+				}
+			}
+
+			.time {
+				color: $gray-40;
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
