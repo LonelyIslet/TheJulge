@@ -5,11 +5,11 @@ import Image from "next/image";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Filter = ({
-  onClose,
+  onClose = () => {},
 }: FilterProps) => {
   const [fromDate, setFromDate] = useState(new Date());
   const [fromWage, setFromWage] = useState("");
