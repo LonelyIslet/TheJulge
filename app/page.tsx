@@ -1,12 +1,12 @@
 // import { EmployerTable } from "components/post";
 // import { StatusChip } from "components/common";
 // import { ApplyStatus } from "types/enums/apply.enum";
+import { Filter } from "components/common";
 import styles from "./page.module.scss";
 
 const HomePage = () => {
   return (
     <main className={styles.main}>
-      <h1>더줄게</h1>
       {/* <EmployerTable
         data={[
           {
@@ -48,6 +48,7 @@ const HomePage = () => {
         currentPage={5}
         lastPage={6}
       /> */}
+      <Filter />
     </main>
   );
 };
