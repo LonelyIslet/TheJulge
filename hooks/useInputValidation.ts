@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import { preview } from "vite";
+
+interface ICountValidation {
+  email: number;
+  password: number;
+  password_confirm: number;
+}
 
 const validationContentMap: {
   [key in ValidationTarget]: string
@@ -20,20 +25,21 @@ const useInputValidation = (
   value: string,
   data?: object,
   name?: string,
-  countValidation?: any,
-  setCountValidation?: any,
-): { validation: boolean, validationContent: string, handleBlur: () => void, toggle: boolean, setButtonClickCount: any } => {
+  setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
+) => {
   const [validation, setValidation] = useState<boolean>(false);
   const [toggle, setToggle] = useState(false);
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setCountValidation((prev) => {
-      return {
-        ...prev,
-        [name]: prev[name] + 1,
-      };
-    });
+    if (ValidationTarget && setCountValidation && name) {
+      setCountValidation((prev) => {
+        return {
+          ...prev,
+          [name as keyof ICountValidation]: prev[name as keyof ICountValidation] + 1,
+        };
+      });
+    }
 
     if (validationTarget && !inputValidation(validationTarget, value, data)) {
       setValidation(false);

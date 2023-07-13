@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useInputValidation from "hooks/useInputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import useInputValidation from "hooks/useInputValidation";
 import UserInput from "./UserInput";
 import styles from "./CustomInput.module.scss";
 
@@ -10,6 +10,12 @@ interface IValidationType {
   email?: string,
   password?: string,
   password_confirm?: string
+}
+
+interface ICountValidation {
+  email: number;
+  password: number;
+  password_confirm: number
 }
 
 interface CustomInputProps {
@@ -26,8 +32,8 @@ interface CustomInputProps {
   validationTarget?: ValidationTarget
   data?: IValidationType;
   rendering?: boolean;
-  countValidation,
-  setCountValidation,
+  countValidation?: ICountValidation;
+  setCountValidation?: React.Dispatch<React.SetStateAction<ICountValidation>>;
 }
 
 const CustomInput = ({
@@ -53,7 +59,6 @@ const CustomInput = ({
     inputRef.current?.value as string,
     data as object,
     name,
-    countValidation,
     setCountValidation,
   );
 
@@ -63,8 +68,6 @@ const CustomInput = ({
     setChange(!change);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
-
-  console.log(countValidation);
 
   return (
     <div className={styles.box}>
@@ -79,7 +82,9 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {element === "text" && (!!countValidation[name] && !validation) && <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>}
+      {validationTarget && element === "text" && !!countValidation?.[name as keyof ICountValidation] && !validation && (
+      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+      )}
     </div>
   );
 };

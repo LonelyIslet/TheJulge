@@ -9,11 +9,13 @@ const SigninForm = () => {
   const [countValidation, setCountValidation] = useState({
     email: 0,
     password: 0,
+    password_confirm: 0,
   });
 
   const [data, setData] = useState({
     email: "",
     password: "",
+    password_confirm: "",
   });
 
   const handleData = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,7 +27,6 @@ const SigninForm = () => {
     });
   };
 
-  // 함수가 실행되면 유효성 검사가 시작됨
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -36,7 +37,11 @@ const SigninForm = () => {
     setCountValidation({
       email: 1,
       password: 1,
+      password_confirm: 1,
     });
+    // 이메일, 비밀번호 유효성 검사가 통과되면 실행되는 코드를 넣어주시면 됩니다.
+    // eslint-disable-next-line no-empty
+    if (checkEmailValidation && checkPasswordValidation) {}
   };
 
   return (
