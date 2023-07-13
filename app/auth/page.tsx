@@ -6,7 +6,7 @@ import { useLayoutEffect } from "react";
 import styles from "./page.module.scss";
 import "./page.scss";
 
-const AccountPage = () => {
+const AuthPage = () => {
   useLayoutEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
     const nav = document.querySelector("nav") as HTMLDivElement;
@@ -51,4 +51,4 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default AuthPage;
