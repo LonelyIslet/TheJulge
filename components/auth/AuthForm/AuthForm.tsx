@@ -19,22 +19,10 @@ const AuthForm = () => {
   const activeForm = useMemo(() => {
     return (searchValue === "signup"
       ? (
-        <SignupForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            // eslint-disable-next-line no-alert
-            alert("회원가입 완료");
-          }}
-        />
+        <SignupForm />
       )
       : (
-        <SigninForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            // eslint-disable-next-line no-alert
-            alert("로그인 완료");
-          }}
-        />
+        <SigninForm />
       ));
   }, [searchValue]);
   useEffect(() => {
