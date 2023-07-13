@@ -1,3 +1,5 @@
+"use client";
+
 import { Pagination } from "components/common";
 import { IPostsColumn } from "types/post/table";
 import styles from "./Table.module.scss";

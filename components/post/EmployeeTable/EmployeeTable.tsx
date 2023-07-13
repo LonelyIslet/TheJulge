@@ -1,3 +1,5 @@
+"use client";
+
 import { Table } from "components/common";
 import { IEmployeePosts, IPostsColumn } from "types/post/table";
 
@@ -5,14 +7,14 @@ interface EmployeeTableProps {
   data: IEmployeePosts[];
   currentPage: number;
   lastPage: number;
-  onPageClick: (page: number) => void;
+  onPageClick?: (page: number) => void;
 }
 
 const EmployeeTable = ({
   data,
   currentPage,
   lastPage,
-  onPageClick,
+  onPageClick = () => {},
 }: EmployeeTableProps) => {
   const columns: IPostsColumn<IEmployeePosts>[] = [
     { id: "store", label: "가게" },

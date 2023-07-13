@@ -1,3 +1,5 @@
+"use client";
+
 import { Table } from "components/common";
 import { IEmployerPosts, IPostsColumn } from "types/post/table";
 
@@ -5,14 +7,14 @@ interface EmployerTableProps {
   data: IEmployerPosts[];
   currentPage: number;
   lastPage: number;
-  onPageClick: (page: number) => void;
+  onPageClick?: (page: number) => void;
 }
 
 const EmployerTable = ({
   data,
   currentPage,
   lastPage,
-  onPageClick,
+  onPageClick = () => {},
 }: EmployerTableProps) => {
   const columns: IPostsColumn<IEmployerPosts>[] = [
     { id: "name", label: "신청자" },
