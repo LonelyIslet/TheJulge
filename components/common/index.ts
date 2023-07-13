@@ -9,6 +9,7 @@ import Modal from "./Modal/Modal";
 import CustomInput from "./CustomInput/CustomInput";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import CommonLayout from "./CommonLayout/CommonLayout";
+import Toast from "./Toast/Toast";
 
 export {
   GlobalNav,
@@ -22,4 +23,6 @@ export {
   CustomInput,
   CommonBtn,
   CommonLayout,
+  Toast,
+
 };
