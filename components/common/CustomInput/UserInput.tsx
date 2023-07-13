@@ -6,7 +6,7 @@ import styles from "./CustomInput.module.scss";
 
 interface UserInputProps {
   element: "text" | "textarea";
-  type: React.HTMLInputTypeAttribute;
+  type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   id: string;
   name: string;
