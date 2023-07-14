@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import toastReducer from "redux/slices/toastSlice";
+import userReducer from "redux/slices/userSlice";
 import { authApi } from "redux/api/authApi";
 
 export const store = configureStore({
   reducer: {
     toast: toastReducer,
+    user: userReducer,
     [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
