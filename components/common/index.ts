@@ -1,11 +1,11 @@
 import CommonBtn from "./CommonBtn/CommonBtn";
-// import CommonDetail from "./CommonDetail/CommonDetail";
+import CommonDetail from "./CommonDetail/CommonDetail";
 import CommonLayout from "./CommonLayout/CommonLayout";
 import CustomInput from "./CustomInput/CustomInput";
 import Dropdown from "./Dropdown/Dropdown";
 import Filter from "./Filter/Filter";
 import GlobalFooter from "./GlobalFooter/GlobalFooter";
-// import GlobalNav from "./GlobalNav/GlobalNav";
+import GlobalNav from "./GlobalNav/GlobalNav";
 import Modal from "./Modal/Modal";
 import NoticeCard from "./NoticeCard/NoticeCard";
 import NotificationBoard from "./NotificationBoard/NotificationBoard";
@@ -15,18 +15,18 @@ import PostCard from "./PostCard/PostCard";
 import SearchBar from "./SearchBar/SearchBar";
 import ShopCard from "./ShopCard/ShopCard";
 import StatusChip from "./StatusChip/StatusChip";
-// import Table from "./Table/Table";
+import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
 
 export {
   CommonBtn,
-  // CommonDetail,
+  CommonDetail,
   CommonLayout,
   CustomInput,
   Dropdown,
   Filter,
   GlobalFooter,
-  // GlobalNav,
+  GlobalNav,
   NoticeCard,
   NotificationBoard,
   Modal,
@@ -36,6 +36,6 @@ export {
   SearchBar,
   ShopCard,
   StatusChip,
-  // Table,
+  Table,
   Toast,
 };
