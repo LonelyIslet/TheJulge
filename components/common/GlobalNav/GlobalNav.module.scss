@@ -41,7 +41,7 @@
   width: 45rem;
 
   @include tablet {
-    width: 34.4rem;
+    // width: 34.4rem;
   }
 
   @include mobile {
@@ -68,7 +68,8 @@
     }
   }
 
-  a {
+  a, 
+  .logoutBtn {
     @include hoverFloatEffect(y, -0.2rem);
   }
 

@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect, useRef, useState, useLayoutEffect,
+} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { setUser } from "redux/slices/userSlice";
 import useAppSelector from "redux/hooks/useAppSelector";
+import useAppDispatch from "redux/hooks/useAppDispatch";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import Popover from "components/common/Popover/Popover";
 import { IAlert } from "types/dto";
 import { UserType } from "types/enums/user.enum";
+import { NO_USER } from "constants/auth/user";
 import mockAlertData from "constants/mock/alerts.json";
+import useToast from "hooks/useToast";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
+import { getCookie, removeCookie } from "utils/cookies";
 import styles from "./GlobalNav.module.scss";
 import NotificationBoard from "../NotificationBoard/NotificationBoard";
 
@@ -19,7 +27,11 @@ const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
 
 const GlobalNav = () => {
   const user = useAppSelector((state) => { return state.user; });
+  const { showToast } = useToast();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const [alertList, setAlertList] = useState<IAlert[]>([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navRef = useRef(null);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   useResponsiveHeader(navRef);
@@ -29,8 +41,21 @@ const GlobalNav = () => {
     setAlertList(ALERT_LIST);
   }, []);
 
+  useLayoutEffect(() => {
+    if (getCookie("token")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const hasUnreadAlerts = (alerts: IAlert[]) => {
     return alerts.some((alert) => { return !alert.read; });
+  };
+
+  const handleSignOut = () => {
+    removeCookie("token");
+    dispatch(setUser(NO_USER));
+    showToast("로그아웃 되었습니다.");
+    router.push("/");
   };
 
   return (
@@ -54,7 +79,7 @@ const GlobalNav = () => {
           />
         </div>
         <div className={styles.rightItems}>
-          {user.id ? (
+          {!isLoggedIn ? (
             <>
               <Link href="/auth?mode=signin">
                 <h2>
@@ -79,6 +104,9 @@ const GlobalNav = () => {
                     <h2>내 가게</h2>
                   </Link>
                 )}
+              <button className={styles.logoutBtn} onClick={handleSignOut}>
+                <h2>로그아웃</h2>
+              </button>
               <div className={styles.notificationIcon}>
                 <Image
                   src={
