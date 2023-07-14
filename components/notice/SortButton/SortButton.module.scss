@@ -1,0 +1,11 @@
+.button {
+  @include flexbox(row, space-between, center);
+  gap: 0.6rem;
+  padding: 0.65rem 1.2rem;
+  background-color: $gray-10;
+
+  h2 {
+    font-size: 1.4rem;
+    color: $black;
+  }
+}

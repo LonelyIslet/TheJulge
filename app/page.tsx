@@ -1,3 +1,4 @@
+import { FilterButton, SortButton } from "components/notice";
 import styles from "./page.module.scss";
 
 const HomePage = () => {
@@ -8,6 +9,8 @@ const HomePage = () => {
       </header>
       <main className={styles.cheesyNotice}>
         전체 공고
+        <SortButton />
+        <FilterButton />
       </main>
     </>
   );
