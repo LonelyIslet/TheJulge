@@ -15,6 +15,7 @@
 이 어플리케이션은 [https://www.thejulge.com](https://www.thejulge.com)에서 접속할 수 있습니다.
 
 ## 프로젝트 구조
+
 ```
 thejulge
 ├─ .eslintignore
@@ -22,65 +23,147 @@ thejulge
 ├─ LICENSE.md
 ├─ README.md
 ├─ app
-│  ├─ api /
+│  ├─ api
+│  │  └─ sample
+│  │     └─ route.ts
+│  ├─ auth
+│  │  ├─ page.module.scss
+│  │  ├─ page.scss
+│  │  └─ page.tsx
 │  ├─ favicon.ico
-│  ├─ fonts /
+│  ├─ fonts
+│  │  ├─ SpoqaHanSansNeo-Bold.woff
+│  │  └─ SpoqaHanSansNeo-Regular.woff
 │  ├─ layout.tsx
+│  ├─ my-profile
+│  │  ├─ edit
+│  │  │  ├─ page.module.scss
+│  │  │  └─ page.tsx
+│  │  ├─ layout.tsx
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
 │  ├─ page.module.scss
 │  └─ page.tsx
 ├─ components
 │  ├─ auth
-│  │  ├─ LoginForm
-│  │  │  └─ Login.tsx
+│  │  ├─ AuthForm
+│  │  │  ├─ AuthForm.module.scss
+│  │  │  ├─ AuthForm.tsx
+│  │  │  ├─ SigninForm.tsx
+│  │  │  ├─ SignupForm.tsx
+│  │  │  ├─ UserTypeSelect.module.scss
+│  │  │  └─ UserTypeSelect.tsx
 │  │  └─ index.ts
 │  ├─ common
 │  │  ├─ CommonBtn
 │  │  │  ├─ CommonBtn.module.scss
 │  │  │  └─ CommonBtn.tsx
+│  │  ├─ CommonDetail
+│  │  │  ├─ CommonDetail.module.scss
+│  │  │  └─ CommonDetail.tsx
+│  │  ├─ CommonLayout
+│  │  │  ├─ CommonLayout.module.scss
+│  │  │  └─ CommonLayout.tsx
+│  │  ├─ CustomInput
+│  │  │  ├─ CustomInput.module.scss
+│  │  │  ├─ CustomInput.tsx
+│  │  │  └─ UserInput.tsx
+│  │  ├─ Dropdown
+│  │  │  ├─ Dropdown.module.scss
+│  │  │  └─ Dropdown.tsx
+│  │  ├─ Filter
+│  │  │  ├─ Filter.module.scss
+│  │  │  └─ Filter.tsx
 │  │  ├─ GlobalFooter
 │  │  │  ├─ GlobalFooter.module.scss
 │  │  │  └─ GlobalFooter.tsx
-│  │  ├─ HourlyPayPercentage
-│  │  │  ├─ HourlyPayPercentage.module.scss
-│  │  │  └─ HourlyPayPercentage.tsx
 │  │  ├─ GlobalNav
 │  │  │  ├─ GlobalNav.module.scss
 │  │  │  └─ GlobalNav.tsx
+│  │  ├─ Modal
+│  │  │  ├─ Modal.module.scss
+│  │  │  ├─ Modal.tsx
+│  │  │  └─ ModalPortal.tsx
+│  │  ├─ NoticeCard
+│  │  │  ├─ NoticeCard.module.scss
+│  │  │  └─ NoticeCard.tsx
+│  │  ├─ NotificationBoard
+│  │  │  ├─ NotificationBoard.module.scss
+│  │  │  └─ NotificationBoard.tsx
 │  │  ├─ Pagination
-│  │  │  ├─ Pagination.tsx
-│  │  │  └─ Paigination.moudle.scss
+│  │  │  ├─ Pagination.module.scss
+│  │  │  └─ Pagination.tsx
+│  │  ├─ Popover
+│  │  │  └─ Popover.tsx
 │  │  ├─ PostCard
+│  │  │  ├─ CustomArrow
+│  │  │  │  └─ CustomArrow.tsx
 │  │  │  ├─ PostCard.module.scss
 │  │  │  └─ PostCard.tsx
 │  │  ├─ SearchBar
 │  │  │  ├─ SearchBar.module.scss
 │  │  │  └─ SearchBar.tsx
+│  │  ├─ ShopCard
+│  │  │  ├─ ShopCard.module.scss
+│  │  │  └─ ShopCard.tsx
 │  │  ├─ StatusChip
+│  │  │  ├─ StatusChip.module.scss
 │  │  │  └─ StatusChip.tsx
+│  │  ├─ Table
+│  │  │  ├─ Table.module.scss
+│  │  │  └─ Table.tsx
+│  │  ├─ Toast
+│  │  │  ├─ Toast.module.scss
+│  │  │  ├─ Toast.tsx
+│  │  │  ├─ ToastPortal.tsx
+│  │  │  └─ ToastRoot.tsx
 │  │  └─ index.ts
 │  ├─ employee
+│  │  ├─ EditProfile
+│  │  │  ├─ EditProfile.module.scss
+│  │  │  └─ EditProfile.tsx
 │  │  └─ index.ts
 │  ├─ employer
 │  │  └─ index.ts
-│  └─ post
+│  ├─ index.ts
+│  └─ notice
+│     ├─ EmployeeTable
+│     │  └─ EmployeeTable.tsx
+│     ├─ EmployerTable
+│     │  └─ EmployerTable.tsx
 │     └─ index.ts
 ├─ constants
+│  ├─ mock
+│  │  ├─ alerts.json
+│  │  └─ notice.json
+│  ├─ notice
+│  │  └─ table.ts
 │  └─ sample.ts
 ├─ hooks
-│  └─ useSample.ts
+│  ├─ useClickOutside.ts
+│  ├─ useDropdown.ts
+│  ├─ useInputValidation.ts
+│  ├─ useResponsiveNavbar.ts
+│  └─ useToast.ts
 ├─ next-sitemap.config.js
 ├─ next.config.js
 ├─ package-lock.json
 ├─ package.json
 ├─ public
-│  └─ images /
+│  ├─ data
+│  │  ├─ dropdownAddress.json
+│  │  └─ dropdownShopCategory.json
+│  ├─ images /
+│  ├─ robots.txt
+│  ├─ sitemap-0.xml
+│  └─ sitemap.xml
 ├─ redux
 │  ├─ StoreProvider.tsx
 │  ├─ hooks
 │  │  ├─ useAppDispatch.ts
 │  │  └─ useAppSelector.ts
 │  ├─ slices
-│  │  └─ sampleSlice.ts
+│  │  └─ toastSlice.ts
 │  └─ store.ts
 ├─ styles
 │  ├─ globals.scss
@@ -89,12 +172,23 @@ thejulge
 │  └─ variables.scss
 ├─ tsconfig.json
 ├─ types
+│  ├─ dto.ts
+│  ├─ enums
+│  │  ├─ apply.enum.ts
+│  │  ├─ button.enum.ts
+│  │  ├─ detailPage.enum.ts
+│  │  ├─ inputValidation.enum.ts
+│  │  ├─ modal.enum.ts
+│  │  └─ user.enum.ts
 │  ├─ global.d.ts
-│  └─ sample.d.ts
+│  ├─ notice
+│  │  └─ table.d.ts
 └─ utils
-   └─ calculatePercentage.ts
-   └─ formatTimeRange.ts
-   └─ sample.ts
+   ├─ calculatePercentage.ts
+   ├─ formatTimeRange.ts
+   ├─ getBgColorClass.ts
+   ├─ inputValidation.ts
+   └─ showElapsedTime.ts
 
 ```
 
@@ -121,3 +215,12 @@ thejulge
 - [x] public assets 추출
 - [x] 랜딩 페이지 작성
 - [ ] 리소스 완성
+- [ ] 공고 페이지 완성
+- [ ] 가게 정보 상세 페이지 완성
+- [ ] 가게 정보 등록/수정 페이지 완성
+- [ ] 공고 등록/수정 페이지 완성
+- [ ] 사장/공고 상세 페이지 완성
+- [ ] 알바/공고 상세 페이지 완성
+- [ ] 내 프로필 상세 페이지 완성
+- [ ] 내 프로필 등록/수정 페이지 완성
+- [ ] 퍼포먼스 확인 및 리팩토링

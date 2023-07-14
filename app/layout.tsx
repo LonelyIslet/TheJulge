@@ -1,8 +1,9 @@
-import "styles/globals.scss";
-import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
-import { GlobalNav, GlobalFooter } from "components/common";
+import GlobalNav from "components/common/GlobalNav/GlobalNav";
+import GlobalFooter from "components/common/GlobalFooter/GlobalFooter";
 import ToastRoot from "components/common/Toast/ToastRoot";
+import spoqaHanSansNeo from "styles/local.font";
+import "styles/globals.scss";
 
 export const metadata = {
   title: "더줄게",

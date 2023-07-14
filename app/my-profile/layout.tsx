@@ -1,6 +1,12 @@
 import styles from "./page.module.scss";
 
-const MyPageLayout = ({ children }: { children: React.ReactNode }) => {
+interface MyPageLayoutProps {
+  children: React.ReactNode;
+}
+
+const MyPageLayout = ({
+  children,
+}: MyPageLayoutProps) => {
   return (
     <section className={styles.layout}>
       {children}

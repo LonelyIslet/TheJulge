@@ -3,6 +3,7 @@ import CommonDetail from "./CommonDetail/CommonDetail";
 import CommonLayout from "./CommonLayout/CommonLayout";
 import CustomInput from "./CustomInput/CustomInput";
 import Dropdown from "./Dropdown/Dropdown";
+import Filter from "./Filter/Filter";
 import GlobalFooter from "./GlobalFooter/GlobalFooter";
 import GlobalNav from "./GlobalNav/GlobalNav";
 import Modal from "./Modal/Modal";
@@ -23,6 +24,7 @@ export {
   CommonLayout,
   CustomInput,
   Dropdown,
+  Filter,
   GlobalFooter,
   GlobalNav,
   NoticeCard,

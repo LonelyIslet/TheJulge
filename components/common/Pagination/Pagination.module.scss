@@ -1,14 +1,11 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(row, center, center);
 }
 
 .pageButton {
   width: 4rem;
   height: 4rem;
   font-size: 1.4rem;
-  background-color: $white;
 }
 
 .currentPageButton {

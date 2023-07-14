@@ -1,9 +1,15 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const ToastPortal = ({ children }: { children: ReactNode }) => {
+interface ToastPortalProps {
+  children: React.ReactNode;
+}
+
+const ToastPortal = ({
+  children,
+}: ToastPortalProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);

@@ -1,7 +1,7 @@
 "use client";
 
-import useClickOutside from "hooks/useClickOutside";
 import React, { useRef } from "react";
+import useClickOutside from "hooks/useClickOutside";
 
 type Unit = "px" | "rem" | "em" | "%" | "vh" | "vw" | "vmin" | "vmax";
 type InsetValue = `${number}${Unit}`;
@@ -16,7 +16,12 @@ interface PopoverProps {
 }
 
 const Popover = React.memo(({
-  top, left, right, bottom, onClose, children,
+  top,
+  left,
+  right,
+  bottom,
+  onClose,
+  children,
 }: PopoverProps) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   useClickOutside(popoverRef, onClose);

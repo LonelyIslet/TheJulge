@@ -18,7 +18,12 @@ interface DropdownProps {
 }
 
 const Dropdown = ({
-  type, label, id, onChange, name, essential,
+  type,
+  label,
+  id,
+  onChange,
+  name,
+  essential,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
 

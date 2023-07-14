@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination } from "components/common";
+import Pagination from "components/common/Pagination/Pagination";
 import { INoticesColumn } from "types/notice/table";
 import styles from "./Table.module.scss";
 
@@ -9,7 +9,7 @@ interface TableTemplateProps<T> {
   columns: INoticesColumn<T>[];
   currentPage: number;
   lastPage: number;
-  onPageClick: (page: number) => void;
+  onPageClick?: (page: number) => void;
 }
 
 const Table = <T extends { id: number }>({
@@ -17,7 +17,7 @@ const Table = <T extends { id: number }>({
   columns,
   currentPage,
   lastPage,
-  onPageClick,
+  onPageClick = () => {},
 }: TableTemplateProps<T>) => {
   return (
     <div className={styles.container}>

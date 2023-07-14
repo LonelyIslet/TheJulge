@@ -1,16 +1,15 @@
 import { ApplyStatus } from "types/enums/apply.enum";
-
 import styles from "./StatusChip.module.scss";
-
-interface StatusChipProps {
-  status: ApplyStatus;
-}
 
 const labelMap = {
   [ApplyStatus.PENDING]: "대기중",
   [ApplyStatus.ACCEPTED]: "승인 완료",
   [ApplyStatus.REJECTED]: "거절됨",
 };
+
+interface StatusChipProps {
+  status: ApplyStatus;
+}
 
 const StatusChip = ({
   status,

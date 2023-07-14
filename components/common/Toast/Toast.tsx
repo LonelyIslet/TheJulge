@@ -1,17 +1,19 @@
 "use client";
 
-import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
+import classNames from "classnames/bind";
 import ToastPortal from "./ToastPortal";
 import styles from "./Toast.module.scss";
+
+const cx = classNames.bind(styles);
 
 interface ToastProps {
   message: string;
 }
 
-const cx = classNames.bind(styles);
-
-const Toast = ({ message }: ToastProps) => {
+const Toast = ({
+  message,
+}: ToastProps) => {
   const [isShowing, setIsShowing] = useState(true);
 
   useEffect(() => {

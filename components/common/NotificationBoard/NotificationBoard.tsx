@@ -20,7 +20,10 @@ interface NotificationBoardProps {
   onClose: () => void;
 }
 
-const NotificationBoard = ({ alertList, onClose }: NotificationBoardProps) => {
+const NotificationBoard = ({
+  alertList,
+  onClose,
+}: NotificationBoardProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>

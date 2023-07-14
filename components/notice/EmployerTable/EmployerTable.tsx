@@ -1,24 +1,25 @@
 "use client";
 
-import { Table } from "components/common";
+import Table from "components/common/Table/Table";
 import { EMPLOYER_COLUMNS } from "constants/notice/table";
 import { IEmployerNotices } from "types/notice/table";
 
 interface EmployerTableProps {
-  data: IEmployerNotices[];
+  applicationList: IEmployerNotices[];
   currentPage: number;
   lastPage: number;
-  onPageClick: (page: number) => void;
+  onPageClick?: (page: number) => void;
 }
+
 const EmployerTable = ({
-  data,
+  applicationList,
   currentPage,
   lastPage,
-  onPageClick,
+  onPageClick = () => {},
 }: EmployerTableProps) => {
   return (
     <Table
-      data={data}
+      data={applicationList}
       columns={EMPLOYER_COLUMNS}
       currentPage={currentPage}
       lastPage={lastPage}
