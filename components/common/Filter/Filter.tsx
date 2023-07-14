@@ -12,7 +12,7 @@ const Filter = ({
   onClose = () => {},
 }: FilterProps) => {
   const [fromDate, setFromDate] = useState(new Date());
-  const [fromWage, setFromWage] = useState("");
+  const [fromPay, setFromPay] = useState("");
 
   const addCommas = (value: string) => {
     const parts = value.split(".");
@@ -26,11 +26,11 @@ const Filter = ({
     const numericValue = rawValue.replace(/\D/g, "");
     const formattedValue = addCommas(numericValue);
 
-    setFromWage(formattedValue);
+    setFromPay(formattedValue);
   };
 
   const onReset = () => {
-    setFromWage("");
+    setFromPay("");
     setFromDate(new Date());
   };
 
@@ -138,15 +138,15 @@ const Filter = ({
         </div>
         <hr />
         <div className={styles.labelInputContainer}>
-          <label htmlFor="fromWage">금액</label>
+          <label htmlFor="fromPay">금액</label>
           <div className={`${styles.inputWrapper} ${styles.wageInput}`}>
             <input
               type="text"
-              id="fromWage"
-              name="fromWage"
+              id="fromPay"
+              name="fromPay"
               placeholder="입력"
               pattern="[0-9]*"
-              value={fromWage}
+              value={fromPay}
               onChange={handleChange}
               inputMode="numeric"
             />

@@ -6,7 +6,10 @@ interface LayoutProps {
   position: "above" | "below"
 }
 
-const CommonLayout = ({ children, position }: LayoutProps) => {
+const CommonLayout = ({
+  children,
+  position,
+}: LayoutProps) => {
   const [title, content] = React.Children.toArray(children);
   const headerStyle = position === "above" ? `${styles.above}` : `${styles.below}`;
 

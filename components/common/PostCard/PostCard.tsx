@@ -22,7 +22,15 @@ interface PostCardProps {
 }
 
 const PostCard = ({
-  hourlyPay, startsAt, closed, workhour, name, address1, imageUrl, originalHourlyPay, href,
+  hourlyPay,
+  startsAt,
+  closed,
+  workhour,
+  name,
+  address1,
+  imageUrl,
+  originalHourlyPay,
+  href,
 }: PostCardProps) => {
   const isPassed = new Date() > new Date(startsAt);
   const isClosed = closed || isPassed;
