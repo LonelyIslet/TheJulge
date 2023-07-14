@@ -15,6 +15,7 @@ import NotificationBoard from "./NotificationBoard/NotificationBoard";
 import Popover from "./Popover/Popover";
 import CommonLayout from "./CommonLayout/CommonLayout";
 import Toast from "./Toast/Toast";
+import Loader from "./Loader/Loader";
 
 export {
   GlobalNav,
@@ -34,4 +35,5 @@ export {
   Dropdown,
   NoticeCard,
   ShopCard,
+  Loader,
 };
