@@ -15,8 +15,6 @@ import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
 import Popover from "components/common/Popover/Popover";
 import useAppSelector from "redux/hooks/useAppSelector";
-import useAppDispatch from "redux/hooks/useAppDispatch";
-import { setUser } from "redux/slices/userSlice";
 // import styles from "./page.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
@@ -25,7 +23,6 @@ const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
 
 const Page = () => {
   const user = useAppSelector((state) => { return state.user; });
-  const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const { showToast } = useToast();
