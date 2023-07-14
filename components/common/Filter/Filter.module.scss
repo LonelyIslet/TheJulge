@@ -33,24 +33,33 @@
 }
 
 .location {
-  @include flexbox(column);
-  gap: 2rem;
+  @include flexbox(row);
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-y: overlay;
   border: 1px solid $gray-20;
   border-radius: 0.6rem;
   padding: 2rem 2.8rem;
+  height: 25.8rem;
   font-size: 1.4rem;
+
+  * {
+    width: 13.5rem;
+    margin-bottom: 2rem;
+    text-align: start;
+  }
 }
 
 .selectedLocation {
   @include flexbox(row);
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.8rem;
 }
 
 .locationButton {
   @include flexbox(row, true, center);
   @include bold;
-  gap: 0.4rem;
   border-radius: 2rem;
   padding: 0.6rem 1rem;
   font-size: 1.4rem;
@@ -58,6 +67,7 @@
   color: $primary;
   background-color: $red-10;
 }
+
 
 .redCloseButton {
   position: relative;
@@ -94,6 +104,7 @@
     transform: translateY(-50%);
   }
 }
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -102,7 +113,7 @@
   }
 }
 
-.wageInput {
+.payInput {
   width: 16.9rem;
 }
 

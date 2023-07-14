@@ -1,5 +1,5 @@
 .container {
-  @include flexbox(column, start, center);
+  @include flexbox(column, flex-start, center);
 }
 
 .tableWrapper {

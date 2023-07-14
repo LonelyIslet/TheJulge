@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ADDRESS_1 } from "constants/notice/address";
 import addCommasToString from "utils/addCommasToString";
 import styles from "./Filter.module.scss";
 
@@ -14,6 +15,31 @@ const Filter = ({
 }: FilterProps) => {
   const [fromDate, setFromDate] = useState(new Date());
   const [fromPay, setFromPay] = useState("");
+  const [addressSet, setAddressSet] = useState(new Set<number>());
+
+  const handleAddressClick = (id: number) => {
+    addressSet.add(id);
+    setAddressSet(new Set(addressSet));
+  };
+
+  const RenderAddressSet = Array.from(addressSet).map(((id) => {
+    return (
+      <button
+        key={id}
+        type="button"
+        className={styles.locationButton}
+      >
+        {ADDRESS_1[id]?.label}
+        <div className={styles.redCloseButton}>
+          <Image
+            fill
+            src="/images/close-red.svg"
+            alt="Close Red"
+          />
+        </div>
+      </button>
+    );
+  }));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, "");
@@ -49,64 +75,20 @@ const Filter = ({
       <div className={styles.contents}>
         <p>위치</p>
         <div className={styles.location}>
-          <p>서울시 강남구</p>
-          <p>인천시 계양구</p>
-          <p>델라웨어 뉴캐슬</p>
-          <p>후쿠시마시 아이즈와카마쓰시</p>
+          {ADDRESS_1.map((address) => {
+            return (
+              <button
+                key={address.id}
+                type="button"
+                onClick={() => { return handleAddressClick(address.id); }}
+              >
+                {address.label}
+              </button>
+            );
+          })}
         </div>
         <div className={styles.selectedLocation}>
-          <button
-            type="button"
-            className={styles.locationButton}
-          >
-            경기도 안산시
-            <div className={styles.redCloseButton}>
-              <Image
-                fill
-                src="/images/close-red.svg"
-                alt="Close Red"
-              />
-            </div>
-          </button>
-          <button
-            type="button"
-            className={styles.locationButton}
-          >
-            경기도 부천시
-            <div className={styles.redCloseButton}>
-              <Image
-                fill
-                src="/images/close-red.svg"
-                alt="Close Red"
-              />
-            </div>
-          </button>
-          <button
-            type="button"
-            className={styles.locationButton}
-          >
-            전라도 신안군
-            <div className={styles.redCloseButton}>
-              <Image
-                fill
-                src="/images/close-red.svg"
-                alt="Close Red"
-              />
-            </div>
-          </button>
-          <button
-            type="button"
-            className={styles.locationButton}
-          >
-            전라도 광주시
-            <div className={styles.redCloseButton}>
-              <Image
-                fill
-                src="/images/close-red.svg"
-                alt="Close Red"
-              />
-            </div>
-          </button>
+          {RenderAddressSet}
         </div>
         <hr />
         <div className={styles.labelInputContainer}>
@@ -133,7 +115,7 @@ const Filter = ({
         <hr />
         <div className={styles.labelInputContainer}>
           <label htmlFor="fromPay">금액</label>
-          <div className={`${styles.inputWrapper} ${styles.wageInput}`}>
+          <div className={`${styles.inputWrapper} ${styles.payInput}`}>
             <input
               type="text"
               id="fromPay"
