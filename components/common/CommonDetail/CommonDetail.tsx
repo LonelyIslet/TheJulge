@@ -21,13 +21,6 @@ interface IInfo {
   APPLICATION_DETAILS: IDetail
 }
 
-interface IContent {
-  title?: string,
-  description: string,
-  buttonText: string,
-  onClick?: (e: React.MouseEvent) => void;
-}
-
 const CommonDetail = ({ detailType }: { detailType: Detail }) => {
   const router = useRouter();
   const info: IInfo = {
@@ -51,7 +44,7 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
     },
   };
 
-  const dataType:IContent = info[detailType];
+  const dataType:IDetail = info[detailType];
 
   return (
     <CommonLayout position="above">
