@@ -1,28 +1,40 @@
+/* eslint-disable no-console */
+
 "use client";
 
 import {
   CommonBtn, StatusChip, Modal, NotificationBoard,
 } from "components/common";
 import useToast from "hooks/useToast";
-import { useState } from "react";
-import { AuthForm } from "components/auth";
-
+import { useEffect, useState } from "react";
+// import { AuthForm } from "components/auth";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
 import { ModalType } from "types/enums/modal.enum";
 import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
 import Popover from "components/common/Popover/Popover";
-import styles from "./page.module.scss";
+import useAppSelector from "redux/hooks/useAppSelector";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import { setUser } from "redux/slices/userSlice";
+// import styles from "./page.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
   return i.item as IAlert;
 });
 
 const Page = () => {
+  const user = useAppSelector((state) => { return state.user; });
+  const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const { showToast } = useToast();
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(user);
+    console.log(process.env.NODE_ENV);
+  }, [user]);
 
   return (
     <main>
@@ -42,6 +54,13 @@ const Page = () => {
       >
         Open Toast
       </CommonBtn>
+      <CommonBtn
+        type="button"
+        onClick={() => { dispatch(setUser({ email: "ke@ke.com", type: "employee" })); }}
+        style={ButtonStyle.SOLID}
+      >
+        Change User.email
+      </CommonBtn>
       {isModalOpen
         && (
           <Modal
@@ -51,9 +70,9 @@ const Page = () => {
             onClickProceed={() => { showToast("거절 했습니다."); setIsModalOpen(false); }}
           />
         )}
-      <div className={styles.formBackground}>
+      {/* <div className={styles.formBackground}>
         <AuthForm />
-      </div>
+      </div> */}
       <div style={{ position: "relative" }}>
         <button type="button" onClick={() => { setIsPopoverOpen((prev) => { return !prev; }); }}>Open Popover</button>
         {isPopoverOpen && (
@@ -65,12 +84,12 @@ const Page = () => {
           </Popover>
         )}
       </div>
-      <div className={styles.formBackground}>
+      {/* <div className={styles.formBackground}>
         <AuthForm />
       </div>
       <div className={styles.formBackground}>
         <AuthForm />
-      </div>
+      </div> */}
     </main>
   );
 };

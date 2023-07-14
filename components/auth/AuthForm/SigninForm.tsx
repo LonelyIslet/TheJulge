@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { CustomInput, Loader, Modal } from "components/common";
 import { useSigninMutation } from "redux/api/authApi";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
@@ -6,9 +7,13 @@ import inputValidation from "utils/inputValidation";
 import { ModalType } from "types/enums/modal.enum";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import { setCookie } from "utils/cookies";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import { setUser } from "redux/slices/userSlice";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const [rendering, setRendering] = useState(false);
   const [signin, { isLoading }] = useSigninMutation();
   const [errorMsg, setErrorMsg] = useState("");
@@ -48,7 +53,9 @@ const SigninForm = () => {
     if (isEmailValidationPassed && isPasswordValidationPassed) {
       try {
         const res = await signin({ email: data.email, password: data.password }).unwrap();
-        setCookie("token", res.item.token);
+        setCookie("token", res.item.token, { maxAge: 2592000 });
+        dispatch(setUser(res.item.user.item));
+        router.push("/");
       } catch (err) {
         setIsErrorModalOpen(true);
         if (isFetchBaseQueryError(err)) {
