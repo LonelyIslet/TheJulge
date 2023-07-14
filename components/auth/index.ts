@@ -1,3 +1,4 @@
 import AuthForm from "./AuthForm/AuthForm";
+import CookieProvider from "./CookieProvider/CookieProvider";
 
-export { AuthForm };
+export { AuthForm, CookieProvider };

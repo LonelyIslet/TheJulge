@@ -2,8 +2,8 @@ import "styles/globals.scss";
 import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
 import { GlobalNav, GlobalFooter } from "components/common";
+import { CookieProvider } from "components/auth";
 import ToastRoot from "components/common/Toast/ToastRoot";
-import { CookiesProvider } from "react-cookie";
 
 export const metadata = {
   title: "더줄게",
@@ -19,7 +19,7 @@ const RootLayout = ({
 }: RootLayoutProps) => {
   return (
     <StoreProvider>
-      <CookiesProvider>
+      <CookieProvider>
         <html lang="ko">
           <body className={spoqaHanSansNeo.className}>
             <div id="toast-root" />
@@ -32,7 +32,7 @@ const RootLayout = ({
             <GlobalFooter />
           </body>
         </html>
-      </CookiesProvider>
+      </CookieProvider>
     </StoreProvider>
   );
 };
