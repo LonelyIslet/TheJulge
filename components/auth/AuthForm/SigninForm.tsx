@@ -1,14 +1,14 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CustomInput, Loader, Modal } from "components/common";
+import { setUser } from "redux/slices/userSlice";
 import { useSigninMutation } from "redux/api/authApi";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import { CustomInput, Loader, Modal } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import inputValidation from "utils/inputValidation";
 import { ModalType } from "types/enums/modal.enum";
+import inputValidation from "utils/inputValidation";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import { setCookie } from "utils/cookies";
-import useAppDispatch from "redux/hooks/useAppDispatch";
-import { setUser } from "redux/slices/userSlice";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {

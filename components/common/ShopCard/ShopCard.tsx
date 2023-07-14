@@ -13,7 +13,11 @@ interface ShopCardProps {
 }
 
 const ShopCard = ({
-  name, address1, imageUrl, description, category,
+  name,
+  address1,
+  imageUrl,
+  description,
+  category,
 }: ShopCardProps) => {
   return (
     <section className={styles.shopCard}>

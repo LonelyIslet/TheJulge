@@ -1,0 +1,133 @@
+.container {
+  @include flexbox(column);
+  gap: 2.4rem;
+  padding: 2.4rem 2rem;
+  border: 1px solid $gray-20;
+  border-radius: 1rem;
+  width: 39rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.title {
+  @include flexbox(row, space-between, center);
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.closeButton {
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.contents {
+  @include flexbox(column);
+  gap: 1.2rem;
+
+  hr {
+    width: 100%;
+    height: 0.2rem;
+    margin: 1.2rem 0;
+    color: $gray-10;
+  }
+}
+
+.location {
+  @include flexbox(row);
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-y: overlay;
+  border: 1px solid $gray-20;
+  border-radius: 0.6rem;
+  padding: 2rem 2.8rem;
+  height: 25.8rem;
+  font-size: 1.4rem;
+
+  * {
+    width: 13.5rem;
+    margin-bottom: 2rem;
+    text-align: start;
+  }
+}
+
+.selectedLocation {
+  @include flexbox(row);
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.locationButton {
+  @include flexbox(row, true, center);
+  @include bold;
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  line-height: 1.68rem;
+  color: $primary;
+  background-color: $red-10;
+}
+
+
+.redCloseButton {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.labelInputContainer {
+  label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: $black;
+    line-height: 2.6rem;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 1.2rem;
+  width: 100%;
+
+  input {
+    width: 100%;
+    border: 1px solid $gray-30;
+    border-radius: 0.6rem;
+    padding: 1.6rem 2rem;
+  }
+
+  .won {
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  button {
+    @include bold;
+  }
+}
+
+.payInput {
+  width: 16.9rem;
+}
+
+.resetButton {
+  border: 1px solid $primary;
+  border-radius: 0.6rem;
+  padding: 1.4rem 1.85rem;
+  color: $primary;
+}
+
+.applyButton {
+  border: 1px solid $primary;
+  border-radius: 0.6rem;
+  padding: 1.4rem 10rem;
+  color: $white;
+  background-color: $primary;
+}

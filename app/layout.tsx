@@ -1,9 +1,9 @@
-import "styles/globals.scss";
-import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
 import { GlobalNav, GlobalFooter } from "components/common";
 import { CookieProvider } from "components/auth";
 import ToastRoot from "components/common/Toast/ToastRoot";
+import spoqaHanSansNeo from "styles/local.font";
+import "styles/globals.scss";
 
 export const metadata = {
   title: "더줄게",

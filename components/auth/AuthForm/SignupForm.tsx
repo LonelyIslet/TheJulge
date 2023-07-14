@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CustomInput } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";

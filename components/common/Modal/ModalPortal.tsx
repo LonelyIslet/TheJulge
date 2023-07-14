@@ -1,9 +1,15 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const ModalPortal = ({ children }: { children: ReactNode }) => {
+interface ModalPortalProps {
+  children: React.ReactNode;
+}
+
+const ModalPortal = ({
+  children,
+}: ModalPortalProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);

@@ -42,7 +42,7 @@ $statusMap: ("accepted": $blue-20, "rejected": $red-40);
 	}
 
 	.itemList {
-		@include flexbox(column,  false, flex-start);
+		@include flexbox(column, false, flex-start);
 		gap: 0.8rem;
 		@include mobile {
 			width: 100%;

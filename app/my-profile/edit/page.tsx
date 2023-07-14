@@ -1,7 +1,6 @@
-import { EditProfile } from "components/employee";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import { EditProfile } from "components/employee";
 import styles from "./page.module.scss";
 
 const MyProfilePage = () => {
