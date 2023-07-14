@@ -72,7 +72,7 @@ export interface IUser {
   phone?: string,
   address?: string,
   bio?: string,
-  IShop?: {
+  shop?: {
     item: IShop,
     href: string,
   }
