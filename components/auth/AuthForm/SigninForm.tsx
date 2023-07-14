@@ -50,7 +50,6 @@ const SigninForm = () => {
         // eslint-disable-next-line no-console
         console.log(res.item.token);
       } catch (err) {
-        // eslint-disable-next-line no-console
         setIsErrorModalOpen(true);
         if (isFetchBaseQueryError(err)) {
           const errorObj = "error" in err ? err.error : err.data as { message: string };
