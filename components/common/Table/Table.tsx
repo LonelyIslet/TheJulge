@@ -1,3 +1,5 @@
+"use client";
+
 import { Pagination } from "components/common";
 import { IPostsColumn } from "types/post/table";
 import styles from "./Table.module.scss";
@@ -18,39 +20,41 @@ const Table = <T extends { id: number }>({
   onPageClick,
 }: TableTemplateProps<T>) => {
   return (
-    <div className={styles.wrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {columns.map((column) => {
+    <div className={styles.container}>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {columns.map((column) => {
+                return (
+                  <th key={column.id as number}>
+                    <span>
+                      {column.label}
+                    </span>
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => {
               return (
-                <th key={column.id as number}>
-                  <span>
-                    {column.label}
-                  </span>
-                </th>
+                <tr key={item.id}>
+                  {columns.map((column) => {
+                    return (
+                      <td key={column.id as number}>
+                        <span>
+                          {item[column.id]}
+                        </span>
+                      </td>
+                    );
+                  })}
+                </tr>
               );
             })}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => {
-            return (
-              <tr key={item.id}>
-                {columns.map((column) => {
-                  return (
-                    <td key={column.id as number}>
-                      <span>
-                        {item[column.id]}
-                      </span>
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
       <div className={styles.pagination}>
         <Pagination
           currentPage={currentPage}

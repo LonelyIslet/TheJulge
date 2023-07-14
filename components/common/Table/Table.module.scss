@@ -1,7 +1,13 @@
-.wrapper {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tableWrapper {
   position: relative;
   border: 1px solid $gray-20;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   overflow-x: auto;
   overflow-x: overlay;
   -webkit-overflow-scrolling: touch;
@@ -15,10 +21,6 @@
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track {
     background: transparent;
-  }
-
-  & > * {
-    margin-bottom: 1.2rem;
   }
 
   @include tablet {
@@ -65,6 +67,12 @@
     }
   }
 
+  tr:last-of-type {
+    td {
+      border-bottom: none;
+    }
+  }
+
   th, td {
     &:first-of-type {
       min-width: 22.8rem;
@@ -81,11 +89,11 @@
     &:last-of-type {
       width: 23.6rem;
       min-width: 23.6rem;
-      border-right: 1px solid $gray-20;
 
       @include tablet {
         position: sticky;
         right: 0;
+        z-index: 10;
         border-left: 1px solid $gray-20;
       }
 
@@ -106,7 +114,17 @@
 }
 
 .pagination {
-  position: sticky;
-  right: 0;
-  bottom: 0;
+  border: 1px solid $gray-20;
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  max-width: 96.4rem;
+  width: 96.4rem;
+
+  @include tablet {
+    width: 100%;
+  } 
+
+  @include mobile {
+    width: 35rem;
+  }
 }
