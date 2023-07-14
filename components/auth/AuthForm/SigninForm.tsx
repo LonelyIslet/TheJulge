@@ -5,6 +5,7 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
 import { ModalType } from "types/enums/modal.enum";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { setCookie } from "utils/cookies";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
@@ -47,8 +48,7 @@ const SigninForm = () => {
     if (isEmailValidationPassed && isPasswordValidationPassed) {
       try {
         const res = await signin({ email: data.email, password: data.password }).unwrap();
-        // eslint-disable-next-line no-console
-        console.log(res.item.token);
+        setCookie("token", res.item.token);
       } catch (err) {
         setIsErrorModalOpen(true);
         if (isFetchBaseQueryError(err)) {

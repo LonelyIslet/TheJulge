@@ -1,3 +1,5 @@
+"use client";
+
 import { CookiesProvider } from "react-cookie";
 
 const CookieProvider = ({ children }: { children: React.ReactNode }) => {
