@@ -24,12 +24,6 @@
   @include tablet {
     width: 100%;
   } 
-
-  @include mobile {
-    max-width: 35rem;
-    width: 100%;
-  }
-
 }
 
 .table {
@@ -121,11 +115,6 @@
   background-color: $white;
 
   @include tablet {
-    width: 100%;
-  } 
-
-  @include mobile {
-    max-width: 35rem;
     width: 100%;
   }
 }
