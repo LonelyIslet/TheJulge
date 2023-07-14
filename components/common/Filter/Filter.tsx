@@ -22,24 +22,10 @@ const Filter = ({
     setAddressSet(new Set(addressSet));
   };
 
-  const RenderAddressSet = Array.from(addressSet).map(((id) => {
-    return (
-      <button
-        key={id}
-        type="button"
-        className={styles.locationButton}
-      >
-        {ADDRESS_1[id]?.label}
-        <div className={styles.redCloseButton}>
-          <Image
-            fill
-            src="/images/close-red.svg"
-            alt="Close Red"
-          />
-        </div>
-      </button>
-    );
-  }));
+  const handleDeleteLocation = (id: number) => {
+    addressSet.delete(id);
+    setAddressSet(new Set(addressSet));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, "");
@@ -53,6 +39,30 @@ const Filter = ({
     setFromPay("");
     setFromDate(new Date());
   };
+
+  const onApply = () => {
+
+  };
+
+  const RenderAddressSet = Array.from(addressSet).map(((id) => {
+    return (
+      <button
+        key={id}
+        type="button"
+        className={styles.locationButton}
+        onClick={() => { return handleDeleteLocation(id); }}
+      >
+        {ADDRESS_1[id]?.label}
+        <div className={styles.redCloseButton}>
+          <Image
+            fill
+            src="/images/close-red.svg"
+            alt="Close Red"
+          />
+        </div>
+      </button>
+    );
+  }));
 
   return (
     <div className={styles.container}>
@@ -141,6 +151,7 @@ const Filter = ({
           <button
             type="button"
             className={styles.applyButton}
+            onClick={onApply}
           >
             적용하기
           </button>
