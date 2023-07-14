@@ -4,7 +4,13 @@ import Link from "next/link";
 import { ButtonStyle } from "types/enums/button.enum";
 import styles from "./RegisteredMyProfile.module.scss";
 
-const RegisteredMyProfile = () => {
+interface RegisteredMyProfileProps {
+  name: string
+  phone: string
+  address: string
+}
+
+const RegisteredMyProfile = ({ name, phone, address }: RegisteredMyProfileProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.blank}>
@@ -13,14 +19,14 @@ const RegisteredMyProfile = () => {
       <div className={styles.userInfoContainer}>
         <div className={styles.userInfoDetail}>
           <p>이름</p>
-          <h2>김승우</h2>
+          <h2>{name}</h2>
           <div className={styles.phone}>
             <Image src="/images/phone.svg" alt="전화번호" width={16} height={20} />
-            <span>010-1234-4223</span>
+            <span>{phone}</span>
           </div>
           <div className={styles.address}>
             <Image src="/images/location-red.svg" alt="주소" width={16} height={20} />
-            <span>선호 지역: 서울시 도봉구</span>
+            <span>{`선호 지역: ${address}`}</span>
           </div>
           <p>
             열심히 일하겠습니다.
