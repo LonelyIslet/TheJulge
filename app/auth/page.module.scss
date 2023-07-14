@@ -7,10 +7,10 @@
 .container {
   padding: 8.5rem 9.5rem 0 8.5rem;
 	margin: 0 auto;
-  @media only screen and (max-width: 410px) {
+
+	@include x-mobile {
 		padding-top: 4rem;
 	}
-
 	& article {
 		max-width: 144rem;
 		display: flex;
@@ -19,7 +19,7 @@
 	}
 
 	& section {
-		margin: 1rem;
+		margin-top: 1rem;
 	}
 
 	.formArea{
@@ -63,7 +63,7 @@ nav.header {
 		top: 1.75rem;
 		left: 2rem;
 	}
-	@media only screen and (max-width: 410px) {
+	@include x-mobile {
 		width: 8.164rem;
 		height: 1.5rem;
 	}

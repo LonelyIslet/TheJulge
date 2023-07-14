@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { AuthForm } from "components/auth";
 import { useLayoutEffect } from "react";
@@ -24,9 +25,9 @@ const AuthPage = () => {
   }, []);
   return (
     <main className={styles.container}>
-      <div className={styles.logoContainer}>
+      <Link href="/" className={styles.logoContainer}>
         <Image src="/images/logo-white.svg" alt="로고" fill />
-      </div>
+      </Link>
       <article>
         <section className={styles.promotionArea}>
           <h1>
