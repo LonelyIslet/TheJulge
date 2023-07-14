@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import addCommasToString from "utils/addCommasToString";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
@@ -14,17 +15,10 @@ const Filter = ({
   const [fromDate, setFromDate] = useState(new Date());
   const [fromPay, setFromPay] = useState("");
 
-  const addCommas = (value: string) => {
-    const parts = value.split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    return parts.join(".");
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, "");
     const numericValue = rawValue.replace(/\D/g, "");
-    const formattedValue = addCommas(numericValue);
+    const formattedValue = addCommasToString(numericValue);
 
     setFromPay(formattedValue);
   };

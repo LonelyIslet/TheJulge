@@ -1,7 +1,8 @@
 import "styles/globals.scss";
 import spoqaHanSansNeo from "styles/local.font";
 import StoreProvider from "redux/StoreProvider";
-import { GlobalNav, GlobalFooter } from "components/common";
+import GlobalNav from "components/common/GlobalNav/GlobalNav";
+import GlobalFooter from "components/common/GlobalFooter/GlobalFooter";
 import ToastRoot from "components/common/Toast/ToastRoot";
 
 export const metadata = {
