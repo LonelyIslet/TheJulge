@@ -8,14 +8,14 @@ interface EmployeeTableProps {
   applicationList: IEmployeeNotices[];
   currentPage: number;
   lastPage: number;
-  onPageClick?: (page: number) => void;
+  onPageClick: (page: number) => void;
 }
 
 const EmployeeTable = ({
   applicationList,
   currentPage,
   lastPage,
-  onPageClick = () => {},
+  onPageClick,
 }: EmployeeTableProps) => {
   return (
     <Table

@@ -9,7 +9,7 @@ interface TableTemplateProps<T> {
   columns: INoticesColumn<T>[];
   currentPage: number;
   lastPage: number;
-  onPageClick?: (page: number) => void;
+  onPageClick: (page: number) => void;
 }
 
 const Table = <T extends { id: number }>({
@@ -17,7 +17,7 @@ const Table = <T extends { id: number }>({
   columns,
   currentPage,
   lastPage,
-  onPageClick = () => {},
+  onPageClick,
 }: TableTemplateProps<T>) => {
   return (
     <div className={styles.container}>

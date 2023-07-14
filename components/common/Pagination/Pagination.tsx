@@ -6,13 +6,13 @@ import styles from "./Pagination.module.scss";
 interface PaginationProps {
   currentPage: number;
   lastPage: number;
-  onPageClick?: (page: number) => void;
+  onPageClick: (page: number) => void;
 }
 
 const Pagination = ({
   currentPage,
   lastPage,
-  onPageClick = () => {},
+  onPageClick,
 }: PaginationProps) => {
   const handleClick = (page: number) => {
     onPageClick(page);
