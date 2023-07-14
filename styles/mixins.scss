@@ -55,7 +55,7 @@
   $intensity: calc($percentage * 0.01 + 1);
   transition: transform 0.2s ease;
   &:hover {
-     transform: scale($intensity); 
+    transform: scale($intensity); 
   }
 }
 

@@ -12,7 +12,9 @@ const labelMap = {
   [ApplyStatus.REJECTED]: "거절됨",
 };
 
-const StatusChip = ({ status }: StatusChipProps) => {
+const StatusChip = ({
+  status,
+}: StatusChipProps) => {
   const statusClass = status.toLocaleLowerCase();
   return (
     <div className={`${styles.chipContainer} ${styles[statusClass]}`}>
