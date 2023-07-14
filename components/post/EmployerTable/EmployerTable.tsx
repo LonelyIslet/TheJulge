@@ -1,32 +1,25 @@
 "use client";
 
 import { Table } from "components/common";
-import { IEmployerPosts, IPostsColumn } from "types/post/table";
+import { EMPLOYER_COLUMNS } from "constants/notice/table";
+import { IEmployerNotices } from "types/notice/table";
 
 interface EmployerTableProps {
-  data: IEmployerPosts[];
+  data: IEmployerNotices[];
   currentPage: number;
   lastPage: number;
   onPageClick: (page: number) => void;
 }
-
 const EmployerTable = ({
   data,
   currentPage,
   lastPage,
   onPageClick,
 }: EmployerTableProps) => {
-  const columns: IPostsColumn<IEmployerPosts>[] = [
-    { id: "name", label: "신청자" },
-    { id: "intro", label: "소개" },
-    { id: "phoneNumber", label: "전화번호" },
-    { id: "state", label: "상태" },
-  ];
-
   return (
     <Table
       data={data}
-      columns={columns}
+      columns={EMPLOYER_COLUMNS}
       currentPage={currentPage}
       lastPage={lastPage}
       onPageClick={onPageClick}

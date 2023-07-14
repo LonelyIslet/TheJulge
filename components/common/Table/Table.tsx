@@ -1,12 +1,12 @@
 "use client";
 
 import { Pagination } from "components/common";
-import { IPostsColumn } from "types/post/table";
+import { INoticesColumn } from "types/notice/table";
 import styles from "./Table.module.scss";
 
 interface TableTemplateProps<T> {
   data: T[];
-  columns: IPostsColumn<T>[];
+  columns: INoticesColumn<T>[];
   currentPage: number;
   lastPage: number;
   onPageClick: (page: number) => void;

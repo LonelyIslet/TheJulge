@@ -1,9 +1,9 @@
-export interface IPostsColumn<T> {
+export interface INoticesColumn<T> {
   id: keyof T;
   label: string;
 }
 
-export interface IEmployerPosts {
+export interface IEmployerNotices {
   id: number;
   name: string;
   intro: string;
@@ -11,7 +11,7 @@ export interface IEmployerPosts {
   state: JSX.Element;
 }
 
-export interface IEmployeePosts {
+export interface IEmployeeNotices {
   id: number;
   store: string;
   date: string;
