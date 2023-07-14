@@ -1,3 +1,5 @@
+"use client";
+
 import { Table } from "components/common";
 import { IEmployerPosts, IPostsColumn } from "types/post/table";
 
