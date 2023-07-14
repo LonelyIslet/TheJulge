@@ -21,7 +21,7 @@ export const ADDRESS_1 = [
   { id: 19, label: "서울시 영등포구" },
   { id: 20, label: "서울시 동작구" },
   { id: 21, label: "서울시 관악구" },
-  { id: 23, label: "서울시 서초구" },
-  { id: 24, label: "서울시 강남구" },
-  { id: 25, label: "서울시 송파구" },
+  { id: 22, label: "서울시 서초구" },
+  { id: 23, label: "서울시 강남구" },
+  { id: 24, label: "서울시 송파구" },
 ];

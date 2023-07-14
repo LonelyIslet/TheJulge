@@ -1,5 +1,5 @@
-import { CustomInput } from "components/common";
 import { FormEvent, useState } from "react";
+import { CustomInput } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
 import styles from "./AuthForm.module.scss";
