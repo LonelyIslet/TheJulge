@@ -1,28 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { AuthForm } from "components/auth";
-import { useLayoutEffect } from "react";
 import styles from "./page.module.scss";
 import "./page.scss";
 
 const AuthPage = () => {
-  useLayoutEffect(() => {
-    const body = document.querySelector("body") as HTMLBodyElement;
-    const nav = document.querySelector("nav") as HTMLDivElement;
-    const footer = document.querySelector("footer") as HTMLDivElement;
-
-    body.classList.add("red");
-    nav.classList.add("hidden");
-    footer.classList.add("hidden");
-
-    return () => {
-      body.classList.remove("red");
-      nav.classList.remove("hidden");
-      footer.classList.remove("hidden");
-    };
-  }, []);
   return (
     <main className={styles.container}>
       <Link href="/" className={styles.logoContainer}>
@@ -36,7 +18,7 @@ const AuthPage = () => {
             <strong>더줄게</strong>
           </h1>
           <div style={{ width: "732px", height: "438px", position: "relative" }}>
-            <Image src="/images/landing-img.png" fill alt="랜딩 이미지" sizes="30vw" priority />
+            <Image src="/images/landing-img.png" fill alt="랜딩 이미지" sizes="20vw" priority />
           </div>
           <p>
             사장님도 알바님도 간편하게 서로를 찾을 수 있게.

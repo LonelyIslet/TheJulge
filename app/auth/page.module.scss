@@ -34,8 +34,9 @@
 			@include font-style(4.8rem);
 		}
 		p {
-			@include font-style(2.4rem);
+			@include font-style(2rem);
 			margin-top: 4rem;
+			line-height: 3rem;
 		}
 
 		@include tablet {
@@ -49,11 +50,9 @@ nav.header {
 }
 
 .logoContainer {
-	position: fixed;
+	@include fixed(2rem, 20.8rem);
 	width: 10.8851rem;
 	height: 2rem;
-	top: 2.6rem;
-  left: 20.8rem;
 
 	@include tablet {
 		top: 2.5rem;

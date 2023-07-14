@@ -1,11 +1,12 @@
 "use client";
 
 import {
-  useEffect, useMemo, useState,
+  useEffect, useLayoutEffect, useMemo, useState,
 } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { redirect, usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import classNames from "classnames/bind";
+import { getCookie } from "utils/cookies";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 import styles from "./AuthForm.module.scss";
@@ -25,9 +26,33 @@ const AuthForm = () => {
         <SigninForm />
       ));
   }, [searchValue]);
+
+  useLayoutEffect(() => {
+    if (getCookie("token")) {
+      redirect("/");
+    }
+  }, []);
+
   useEffect(() => {
     setActiveFormName(searchValue === "signup" ? "signup" : "signin");
   }, [searchValue]);
+
+  useLayoutEffect(() => {
+    const body = document.querySelector("body") as HTMLBodyElement;
+    const nav = document.querySelector("nav") as HTMLDivElement;
+    const footer = document.querySelector("footer") as HTMLDivElement;
+
+    body.classList.add("red");
+    nav.classList.add("hidden");
+    footer.classList.add("hidden");
+
+    return () => {
+      body.classList.remove("red");
+      nav.classList.remove("hidden");
+      footer.classList.remove("hidden");
+    };
+  }, []);
+
   return (
     <div
       className={styles.formContainer}
