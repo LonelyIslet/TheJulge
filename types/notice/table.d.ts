@@ -15,6 +15,6 @@ export interface IEmployeeNotices {
   id: number;
   store: string;
   date: string;
-  hourlyWage: number;
+  hourlyPay: number;
   state: JSX.Element;
 }

@@ -10,6 +10,6 @@ export const EMPLOYER_COLUMNS: INoticesColumn<IEmployerNotices>[] = [
 export const EMPLOYEE_COLUMNS: INoticesColumn<IEmployeeNotices>[] = [
   { id: "store", label: "가게" },
   { id: "date", label: "일자" },
-  { id: "hourlyWage", label: "시급" },
+  { id: "hourlyPay", label: "시급" },
   { id: "state", label: "상태" },
 ];
