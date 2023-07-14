@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination } from "components/common";
+import Pagination from "components/common/Pagination/Pagination";
 import { INoticesColumn } from "types/notice/table";
 import styles from "./Table.module.scss";
 

@@ -15,6 +15,7 @@
 이 어플리케이션은 [https://www.thejulge.com](https://www.thejulge.com)에서 접속할 수 있습니다.
 
 ## 프로젝트 구조
+
 ```
 thejulge
 ├─ .eslintignore

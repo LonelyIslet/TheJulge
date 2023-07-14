@@ -1,7 +1,8 @@
 "use client";
 
+import CommonLayout from "components/common/CommonLayout/CommonLayout";
+import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
-import { CommonLayout, CommonBtn } from "components/common";
 import styles from "./CommonDetail.module.scss";
 
 type Detail = "EMPLOYER" | "EMPLOYEE";
@@ -25,7 +26,13 @@ interface Icontent {
   buttonText: string
 }
 
-const CommonDetail = ({ detailType }: { detailType: Detail }) => {
+interface CommonDetailProps {
+  detailType: Detail;
+}
+
+const CommonDetail = ({
+  detailType,
+}:CommonDetailProps) => {
   const info: IDeail = {
     EMPLOYER: {
       title: "내 가게",

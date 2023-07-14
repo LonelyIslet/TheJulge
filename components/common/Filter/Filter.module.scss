@@ -1,18 +1,15 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column);
   gap: 2.4rem;
   padding: 2.4rem 2rem;
   border: 1px solid $gray-20;
   border-radius: 1rem;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
   width: 39rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
 }
 
 .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexbox(row, space-between, center);
   font-size: 2rem;
   line-height: 2.4rem;
 }
@@ -24,8 +21,7 @@
 }
 
 .contents {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column);
   gap: 1.2rem;
 
   hr {
@@ -37,8 +33,7 @@
 }
 
 .location {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column);
   gap: 2rem;
   border: 1px solid $gray-20;
   border-radius: 0.6rem;
@@ -47,18 +42,17 @@
 }
 
 .selectedLocation {
-  display: flex;
+  @include flexbox(row);
   flex-wrap: wrap;
   gap: 0.4rem;
 }
 
 .locationButton {
-  display: flex;
-  align-items: center;
+  @include flexbox(row, true, center);
+  @include bold;
   gap: 0.4rem;
   border-radius: 2rem;
   padding: 0.6rem 1rem;
-  font-weight: 700;
   font-size: 1.4rem;
   line-height: 1.68rem;
   color: $primary;
@@ -104,7 +98,7 @@
   display: flex;
   justify-content: space-between;
   button {
-    font-weight: 700;
+    @include bold;
   }
 }
 
@@ -113,16 +107,16 @@
 }
 
 .resetButton {
-  color: $primary;
   border: 1px solid $primary;
   border-radius: 0.6rem;
   padding: 1.4rem 1.85rem;
+  color: $primary;
 }
 
 .applyButton {
-  color: $white;
-  background-color: $primary;
   border: 1px solid $primary;
   border-radius: 0.6rem;
   padding: 1.4rem 10rem;
+  color: $white;
+  background-color: $primary;
 }

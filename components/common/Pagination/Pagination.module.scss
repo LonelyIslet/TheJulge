@@ -1,7 +1,5 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(row, center, center);
 }
 
 .pageButton {

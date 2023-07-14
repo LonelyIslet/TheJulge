@@ -10,6 +10,7 @@ interface EmployerTableProps {
   lastPage: number;
   onPageClick?: (page: number) => void;
 }
+
 const EmployerTable = ({
   applicationList,
   currentPage,
