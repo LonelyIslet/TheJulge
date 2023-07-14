@@ -2,9 +2,14 @@ import styles from "./page.module.scss";
 
 const HomePage = () => {
   return (
-    <main className={styles.main}>
-      <h1>더줄게</h1>
-    </main>
+    <>
+      <header className={styles.premiumNotice}>
+        맞춤 공고
+      </header>
+      <main className={styles.cheesyNotice}>
+        전체 공고
+      </main>
+    </>
   );
 };
 
