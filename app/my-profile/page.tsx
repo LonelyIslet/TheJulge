@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import { CommonDetail, CommonLayout, StatusChip } from "components/common";
@@ -8,9 +10,7 @@ import { ApplyStatus } from "types/enums/apply.enum";
 import styles from "./page.module.scss";
 
 const MyPage = () => {
-  const onPageClick = () => {
-    console.log("안녕");
-  };
+  const onPageClick = () => {};
   return (
     <>
       <div className={styles.top}>
