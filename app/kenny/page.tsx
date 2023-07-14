@@ -54,13 +54,6 @@ const Page = () => {
       >
         Open Toast
       </CommonBtn>
-      <CommonBtn
-        type="button"
-        onClick={() => { dispatch(setUser({ email: "ke@ke.com", type: "employee" })); }}
-        style={ButtonStyle.SOLID}
-      >
-        Change User.email
-      </CommonBtn>
       {isModalOpen
         && (
           <Modal
