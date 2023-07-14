@@ -1,4 +1,62 @@
 .container {
   max-width: 95.7rem;
   margin: 0 auto;
+  display: flex;
+  // min-height: 25.6rem;
+  box-sizing: border-box;
+
+  .blank {
+    width: 29.2rem;
+  }
+  
+  .userInfoContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    background-color: $red-10;
+    padding: 3.2rem;
+    border-radius: 1.2rem;
+
+    .userInfoDetail {
+      p:first-child {
+        color: $primary;
+        @include bold;
+        margin-bottom: 0.8rem;
+      }
+
+      h2 {
+        margin-bottom: 1.2rem;
+      }
+
+      .phone {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.2rem;
+        
+        span {
+          display: block;
+          color: $gray-50;
+          margin-left: 0.6rem;
+        }
+      }
+
+      .address {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.8rem;
+        
+        span {
+          display: block;
+          color: $gray-50;
+          margin-left: 0.6rem;
+        }
+      }
+    } 
+
+    .wrapperButton {
+      width: 16.9rem;
+    }
+  }
 }
+
