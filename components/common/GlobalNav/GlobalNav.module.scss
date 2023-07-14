@@ -56,6 +56,10 @@
   margin-left: auto;
   color: $black;
 
+  @include x-mobile {
+    gap: 1.6rem;
+  }
+
   h2 {
     font-size: 1.6rem;
 
@@ -65,10 +69,19 @@
   }
 
   a {
-    transition: transform 0.2s ease;
-    &:hover {
-      transform: translateY(-0.2rem);
-      filter:brightness(1.2);
+    @include hoverFloatEffect(y, -0.2rem);
+  }
+
+  .notificationIcon {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    img {
+      @include hoverFloatEffect(y, -0.2rem);
+      cursor: pointer;
+      & > div {
+        cursor: initial;
+      }
     }
   }
 }
