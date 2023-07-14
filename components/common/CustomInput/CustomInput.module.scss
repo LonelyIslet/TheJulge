@@ -1,5 +1,7 @@
 .box {
+  width: 100%;
   height: 11.6rem;
+  width: 100%;
 
   .label {
     display: block;
@@ -25,11 +27,30 @@
     padding: 1.6rem 2rem;
     border: 0.1rem solid $gray-30;
     border-radius: 0.6rem;
+    outline: none;
   }
 
   .validation {
     color: $red-40;
     animation: shake 0.2s ease;
+    margin: {
+      top: 0.8rem;
+      left: 0.8rem;
+      bottom: 0;
+    }
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .swing {
+    color: $red-40;
+    animation: swing 0.3s ease;
     margin: {
       top: 0.8rem;
       left: 0.8rem;
@@ -82,6 +103,21 @@
 }
 
 @keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-0.3rem);
+  }
+  75% {
+    transform: translate(0.3rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes swing {
   0% {
     transform: translate(0);
   }

@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import checkValidation from "utils/inputValidation";
+import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+
+interface ICountValidation {
+  email: number;
+  password: number;
+  password_confirm: number;
+}
 
 const validationContentMap: {
   [key in ValidationTarget]: string
@@ -18,20 +24,36 @@ const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
   data?: object,
-): { validation: boolean, validationContent: string, handleBlur: () => void } => {
-  const [validation, setValidation] = useState<boolean>(true);
+  name?: string,
+  setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
+) => {
+  const [validation, setValidation] = useState<boolean>(false);
+  const [toggle, setToggle] = useState(false);
 
-  const handleBlur = () => {
-    if (validationTarget && !checkValidation(validationTarget, value, data)) {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (ValidationTarget && setCountValidation && name) {
+      setCountValidation((prev) => {
+        return {
+          ...prev,
+          [name as keyof ICountValidation]: prev[name as keyof ICountValidation] + 1,
+        };
+      });
+    }
+
+    if (validationTarget && !inputValidation(validationTarget, value, data)) {
       setValidation(false);
     } else {
       setValidation(true);
     }
+    setToggle(!toggle);
   };
 
   const validationContent: string = validationContentMap[validationTarget];
 
-  return { validation, validationContent, handleBlur };
+  return {
+    validation, validationContent, handleBlur, toggle,
+  };
 };
 
 export default useInputValidation;

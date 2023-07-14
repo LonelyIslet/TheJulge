@@ -7,9 +7,9 @@ interface StatusChipProps {
 }
 
 const labelMap = {
-  PENDING: "대기중",
-  APPROVED: "승인 완료",
-  REJECTED: "거절됨",
+  [ApplyStatus.PENDING]: "대기중",
+  [ApplyStatus.ACCEPTED]: "승인 완료",
+  [ApplyStatus.REJECTED]: "거절됨",
 };
 
 const StatusChip = ({

@@ -22,7 +22,7 @@ const GlobalFooter = () => {
             target="_blank"
           >
             <Image
-              src="images/email-gray.svg"
+              src="/images/email-gray.svg"
               alt="email"
               width={25}
               height={25}
@@ -34,7 +34,7 @@ const GlobalFooter = () => {
             target="_blank"
           >
             <Image
-              src="images/facebook-gray.svg"
+              src="/images/facebook-gray.svg"
               alt="facebook"
               width={25}
               height={25}
@@ -46,7 +46,7 @@ const GlobalFooter = () => {
             target="_blank"
           >
             <Image
-              src="images/instagram-gray.svg"
+              src="/images/instagram-gray.svg"
               alt="instagram"
               width={25}
               height={25}

@@ -1,5 +1,6 @@
-import { CommonBtn, PostCard } from "components/common";
-import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
+import {
+  CommonBtn, PostCard, NoticeCard, ShopCard,
+} from "components/common";
 import data from "constants/mock/notice.json";
 import styles from "@/page.module.scss";
 
@@ -8,11 +9,12 @@ const Page = () => {
     hourlyPay,
     startsAt,
     workhour,
+    description: noticeDescription,
     closed,
     shop: {
       href,
       item: {
-        name, address1, imageUrl, originalHourlyPay,
+        name, address1, imageUrl, originalHourlyPay, category, description: shopDescription,
       },
     },
   } = data.item;
@@ -30,7 +32,26 @@ const Page = () => {
         originalHourlyPay={originalHourlyPay}
         href={href}
       />
-      <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" message="버튼" responsive />
+      <ShopCard
+        name={name}
+        address1={address1}
+        imageUrl={imageUrl}
+        description={shopDescription}
+        category={category}
+      />
+      <NoticeCard
+        hourlyPay={hourlyPay}
+        startsAt={startsAt}
+        address1={address1}
+        imageUrl={imageUrl}
+        shopDescription={shopDescription}
+        noticeDescription={noticeDescription}
+        closed={closed}
+        workhour={workhour}
+        originalHourlyPay={originalHourlyPay}
+      >
+        <CommonBtn responsive> 신청하기</CommonBtn>
+      </NoticeCard>
     </main>
   );
 };

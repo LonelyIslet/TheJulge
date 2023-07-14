@@ -8,11 +8,11 @@ const cx = classNames.bind(styles);
 
 type ClickHandler = (e: React.MouseEvent) => void;
 
-interface CommonBtnProps {
+interface ICommonBtnProps {
   type?: "button" | "submit";
   style?: ButtonStyle;
   size?: ButtonSize;
-  message?: string;
+  children: React.ReactNode;
   onClick?: ClickHandler | undefined;
   responsive?: boolean;
 }
@@ -21,10 +21,10 @@ const CommonBtn = ({
   type = "button",
   style = ButtonStyle.SOLID,
   size = ButtonSize.LARGE,
-  message = "button",
   onClick = undefined,
   responsive = false,
-}: CommonBtnProps) => {
+  children,
+}: ICommonBtnProps) => {
   const buttonClassName = cx(
     "button",
     `${style}`,
@@ -38,7 +38,7 @@ const CommonBtn = ({
       onClick={onClick}
       disabled={style === ButtonStyle.DISABLE}
     >
-      {message}
+      {children}
     </button>
   );
 };

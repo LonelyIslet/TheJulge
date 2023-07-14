@@ -2,7 +2,7 @@
   display: flex;
   background-color: $gray-10;
   justify-content: center;
-  height: 10rem;
+  min-height: 10rem;
 
   .container {
     display: flex;
