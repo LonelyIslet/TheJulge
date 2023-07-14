@@ -26,6 +26,7 @@
       }
 
       h2 {
+        @include bold;
         margin-bottom: 1.2rem;
       }
 
@@ -57,6 +58,62 @@
     .wrapperButton {
       width: 16.9rem;
     }
+  }
+  @include mobile {
+    flex-direction: column;
+    width: calc(100% - 6.4rem);
+
+    .blank {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  @include x-mobile {
+    width: calc(100% - 2.4rem);
+
+    .blank {
+      margin-bottom: 1.6rem;
+    }
+
+    .userInfoContainer {
+      padding: 2rem;
+
+      .wrapperButton {
+        width: 10.8rem;
+      }
+      
+    .userInfoDetail {
+      p:first-child {
+        font-size: 1.4rem
+      }
+
+      h2 {
+        font-size: 2.4rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .phone {
+        margin-bottom: 0.8rem;
+        
+        span {
+          font-size: 1.4rem;
+        }
+      }
+
+      .address {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.8rem;
+        
+        span {
+          display: block;
+          color: $gray-50;
+          margin-left: 0.6rem;
+        }
+      }
+    } 
+  }
+    
   }
 }
 
