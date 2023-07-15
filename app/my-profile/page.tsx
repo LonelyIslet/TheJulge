@@ -1,18 +1,14 @@
-import { CommonLayout } from "components/common";
+"use client";
+
+import { CommonDetail, CommonLayout } from "components/common";
 import RegisteredMyProfile from "components/employee/RegisteredMyProfile/RegisteredMyProfile";
+import { DetailType } from "types/enums/detailPage.enum";
 
 const MyPage = () => {
   return (
     <>
-      {/* <CommonDetail detailType={DetailType.EMPLOYER} /> */}
-      {/* <CommonDetail detailType={DetailType.EMPLOYEE} /> */}
       <RegisteredMyProfile />
-      <CommonLayout position="below">
-        <div>
-          <h2>신청내역</h2>
-        </div>
-        <div />
-      </CommonLayout>
+      <CommonDetail detailType={DetailType.APPLICATIONDETAILS} onClick={() => { return window.alert("안녕하세요"); }} />
     </>
   );
 };
