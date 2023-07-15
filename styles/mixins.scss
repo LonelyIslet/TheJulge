@@ -22,13 +22,13 @@
   position: fixed;
   top: $top;
   left: $left;
-  
+
   @if $right {
-		right: $right;
+    right: $right;
   }
-  
+
   @if $bottom {
-		bottom: $bottom;
+    bottom: $bottom;
   }
 }
 
@@ -49,7 +49,7 @@
   $intensity: calc($percentage * 0.01 + 1);
   transition: transform 0.2s ease;
   &:hover {
-     transform: scale($intensity); 
+    transform: scale($intensity);
   }
 }
 
@@ -68,7 +68,8 @@
 }
 
 @mixin ellipsis($line: 1) {
-  @if ($line == 1) {
+  @if ($line ==1) {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -78,7 +79,6 @@
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    word-wrap: break-word;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: $line;
   }
