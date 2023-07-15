@@ -1,22 +1,22 @@
 .shopCard {
   display: flex;
   width: 96.4rem;
-  height: 35.6rem;
+  height: auto;
   background-color: $red-10;
   border-radius: 1.2rem;
-  padding: 2.4rem;
-  gap: 3rem;
+  padding: clamp(2rem, 0.9529rem + 1.3652vw, 2.4rem);
+  gap: clamp(2rem, -0.6177rem + 3.4130vw, 3rem);
+  aspect-ratio: 2.7;
 
   @include tablet {
-    width: 68rem;
-    height: 67.7rem;
-    flex-direction: column;
-    gap: 0;
+    width: 100%;
   }
 
   @include mobile {
-    width: 35.1rem;
-    height: 44.9rem;
+    height: fit-content;
+    aspect-ratio: inherit;
+    flex-direction: column;
+    gap: 0;
     padding: 1.9rem;
   }
 
@@ -25,20 +25,18 @@
     flex-shrink: 0;
     border-radius: 1.2rem;
     overflow: hidden;
-    width: 53.9rem;
-
-    @include tablet {
-      width: 100%;
-      height: 36rem;
-      margin-bottom: 1.8rem;
-    }
+    aspect-ratio: 1.7;
 
     @include mobile {
-      height: 17.7rem;
-      margin-bottom: 1.4rem;
+      width: 100%;
+      height: auto;
+      margin-bottom: clamp(1rem, 0.0434rem + 2.5510vw, 2rem);
     }
 
     .shopImage {
+      width: auto;
+      height: auto;
+      aspect-ratio: 1.7;
       object-fit: cover;
     }
   }
@@ -47,30 +45,27 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
-    @include tablet {
-      height: 100%;
-    }
+    container-type: inline-size;
 
     .subtitle {
-      font-size: 1.6rem;
+      font-size: clamp(1.4rem, 0.8765rem + 0.6826vw, 1.6rem);
       color: $red-40;
+      margin-top: 1rem;
 
       @include mobile {
         font-size: 1.4rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
       }
     }
 
     .title {
-      font-size: 2.6rem;
-      margin-bottom: 1.5rem;
-
-      @include tablet {
-        margin-bottom: 1rem;
-      }
+      font-size: clamp(2rem, -0.0942rem + 2.7304vw, 2.8rem);
+      margin-bottom: clamp(1rem, -0.3089rem + 1.7065vw, 1.5rem);
 
       @include mobile {
-        font-size: 2.4rem;
+        font-size: clamp(2.4rem, 2.0173rem + 1.0204vw, 2.8rem);
+        margin-bottom: 0.8rem;
       }
     }
 
@@ -79,43 +74,52 @@
       align-items: center;
       margin-bottom: 2rem;
 
-      @include tablet {
+      @include mobile {
         margin-bottom: 1.5rem;
+        align-items: flex-start;
+      }
+
+      .icon {
+        margin-right: 0.5rem;
+        width: 1.6rem;
       }
 
       .address {
-        font-size: 1.6rem;
+        font-size: clamp(1.4rem, 0.8765rem + 0.6826vw, 1.6rem);
         color: $gray-50;
 
         @include mobile {
-          font-size: 1.4rem;
-        }
-
-        .icon {
-          margin-right: 0.5rem;
-          width: 1.6rem;
-
-          @include mobile {
-            width: 1.6rem;
-            height: 1.6rem;
-          }
+          font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+          margin-bottom: 0;
         }
       }
     }
 
+
     .description {
       margin-bottom: 1.8rem;
-      line-height: 2.4rem;
+      line-height: clamp(2.3rem, 1.5147rem + 1.0239vw, 2.6rem);
+      font-size: clamp(1.5rem, 1.2382rem + 0.3413vw, 1.6rem);
 
-      @include ellipsis(5);
+      @include ellipsis(4);
 
-      @include tablet {
+      @container (max-width: 353px) {
         @include ellipsis(3);
       }
 
+      @container (max-width: 300px) {
+        @include ellipsis(2);
+      }
+
       @include mobile {
-        font-size: 1.4rem;
-        line-height: 2rem;
+        font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+        line-height: clamp(2.2rem, 1.8173rem + 1.0204vw, 2.6rem);
+        margin-bottom: clamp(2.6rem, 1.2607rem + 3.5714vw, 4rem);
+        @include ellipsis(2);
+      }
+
+      @include x-mobile {
+        @include ellipsis(3);
       }
     }
 

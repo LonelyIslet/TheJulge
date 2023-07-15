@@ -1,26 +1,27 @@
 .noticeCardContainer {
   width: 96.4rem;
 
+  @include tablet {
+    width: 100%;
+  }
+
   .noticeCard {
     display: flex;
-    height: 35.6rem;
+    width: 100%;
+    height: auto;
     background-color: $white;
     border-radius: 1.2rem;
-    padding: 2.4rem;
-    gap: 3rem;
+    padding: clamp(2rem, 0.9529rem + 1.3652vw, 2.4rem);
+    gap: clamp(2rem, -0.6177rem + 3.4130vw, 3rem);
+    aspect-ratio: 2.7;
     border: 0.1rem solid $gray-20;
     margin-bottom: 2.4rem;
 
-    @include tablet {
-      width: 68rem;
-      height: 71.7rem;
+    @include mobile {
+      height: fit-content;
+      aspect-ratio: inherit;
       flex-direction: column;
       gap: 0;
-    }
-
-    @include mobile {
-      width: 35.1rem;
-      height: 47.8rem;
       padding: 1.9rem;
     }
 
@@ -29,9 +30,20 @@
       flex-shrink: 0;
       border-radius: 1.2rem;
       overflow: hidden;
-      width: 53.9rem;
+      aspect-ratio: 1.7;
+
+      @include mobile {
+        width: 100%;
+        height: auto;
+        margin-bottom: clamp(1rem, 0.0434rem + 2.5510vw, 2rem);
+      }
 
       .noticeImage {
+        width: auto;
+        height: auto;
+        aspect-ratio: 1.7;
+        object-fit: cover;
+
         &.isClosed {
           filter: brightness(0.4);
         }
@@ -47,24 +59,9 @@
         @include bold;
 
         @include mobile {
-          font-size: 2rem;
+          font-size: clamp(2.4rem, 2.0173rem + 1.0204vw, 2.8rem);
           white-space: pre;
         }
-      }
-
-      @include tablet {
-        width: 100%;
-        height: 36rem;
-        margin-bottom: 1.8rem;
-      }
-
-      @include mobile {
-        height: 17.7rem;
-        margin-bottom: 1rem;
-      }
-
-      .noticeImage {
-        object-fit: cover;
       }
     }
 
@@ -72,110 +69,134 @@
       width: 100%;
       display: flex;
       flex-direction: column;
+      container-type: inline-size;
 
-      @include tablet {
+      @include x-mobile {
+        container-type: normal;
+      }
+
+      @include mobile {
         height: 100%;
       }
-    }
 
-    .subtitle {
-      font-size: 1.6rem;
-      color: $red-40;
-      @include bold;
-
-      @include mobile {
-        font-size: 1.4rem;
-      }
-    }
-
-    .titleContainer {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-
-      .title {
-        font-size: 2.6rem;
-        margin-right: 1rem;
-
-        @include tablet {
-          margin-bottom: 1rem;
-          margin-bottom: 0;
-        }
+      .subtitle {
+        font-size: clamp(1.4rem, 0.8765rem + 0.6826vw, 1.6rem);
+        color: $red-40;
+        margin-top: 1rem;
+        @include bold;
 
         @include mobile {
-          font-size: 2.4rem;
-          margin-bottom: 0;
+          font-size: 1.4rem;
+          margin-top: 0;
+          margin-bottom: 0.5rem;
         }
       }
 
-      .payPercentage {
-        @include flexbox(x, true, true);
-        font-size: 1.4rem;
-        padding: 0.8rem 1.3rem;
-        color: $white;
-        border-radius: 2rem;
-        gap: 0.5rem;
-        white-space: nowrap;
-        width: fit-content;
+      .titleContainer {
+        display: flex;
+        align-items: center;
+        margin-bottom: clamp(1rem, -0.3089rem + 1.7065vw, 1.5rem);
 
-        $intensity: ("0-25": $red-20, "25-50": $red-30, "50-75": $red-40, "75-100": $primary);
+        .title {
+          font-size: clamp(2rem, -0.0942rem + 2.7304vw, 2.8rem);
+          margin-right: 1rem;
 
-        @each $range,
-        $color in $intensity {
-          &.bg-#{$range} {
-            background-color: $color;
+          @include mobile {
+            font-size: clamp(2.4rem, 2.0173rem + 1.0204vw, 2.8rem);
           }
         }
 
-        &.isClosed {
-          display: none;
-        }
+        .payPercentage {
+          @include flexbox(row, center, center);
+          font-size: 1.4rem;
+          padding: clamp(0.5rem, -0.2853rem + 1.0239vw, 0.8rem) clamp(0.8rem, -0.5089rem + 1.7065vw, 1.3rem);
+          color: $white;
+          border-radius: 2rem;
+          gap: 0.5rem;
+          white-space: nowrap;
+          width: fit-content;
 
-        @include mobile {
-          padding: 0.3rem 1rem;
-          font-size: 1.2rem;
-          @include regular;
+          $intensity: ("0-25": $red-20, "25-50": $red-30, "50-75": $red-40, "75-100": $primary);
 
-          .arrow {
-            width: 0.7rem;
+          @each $range,
+          $color in $intensity {
+            &.bg-#{$range} {
+              background-color: $color;
+            }
+          }
+
+          &.isClosed {
+            display: none;
+          }
+
+          @include mobile {
+            padding: 0.3rem 1rem;
+            font-size: 1.2rem;
+            @include regular;
+
+            .arrow {
+              width: 0.7rem;
+            }
           }
         }
       }
-    }
 
-    .timeContainer,
-    .addressContainer {
-      display: flex;
-      align-items: center;
-      color: $gray-50;
-      margin-bottom: 2rem;
+      .timeContainer,
+      .addressContainer {
+        display: flex;
+        align-items: center;
+        color: $gray-50;
+        font-size: clamp(1.4rem, 0.8765rem + 0.6826vw, 1.6rem);
 
-      @include tablet {
-        margin-bottom: 1.5rem;
+        .icon {
+          margin-right: 0.5rem;
+          width: 1.6rem;
+        }
+
+        @include mobile {
+          margin-bottom: 1.5rem;
+          align-items: flex-start;
+          font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+        }
       }
 
-      @include mobile {
-        font-size: 1.4rem;
+      .timeContainer {
+        margin-bottom: clamp(0.6rem, -0.4471rem + 1.3652vw, 1rem);
       }
 
-      .icon {
-        margin-right: 0.5rem;
-        width: 1.6rem;
+      .addressContainer {
+        margin-bottom: clamp(1rem, -1.6177rem + 3.4130vw, 2rem);
       }
-    }
 
-    .shopDescription {
-      font-size: 1.6rem;
+      .description {
+        font-size: clamp(1.5rem, 1.2382rem + 0.3413vw, 1.6rem);
+        line-height: clamp(2.3rem, 1.5147rem + 1.0239vw, 2.6rem);
 
-      @include ellipsis(3);
+        @include ellipsis(3);
 
-      @include mobile {
-        font-size: 1.4rem;
+        @container (max-width: 341px) {
+          @include ellipsis(2);
+        }
+
+        @container (max-width: 300px) {
+          @include ellipsis(1);
+        }
+
+        @include mobile {
+          font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+          line-height: clamp(2.2rem, 1.8173rem + 1.0204vw, 2.6rem);
+          margin-bottom: clamp(2.6rem, 1.2607rem + 3.5714vw, 4rem);
+          @include ellipsis(2);
+        }
+
+        @media (max-width: 425px) {
+          @include ellipsis(3);
+        }
       }
-    }
 
-    .buttonContainer {
-      margin-top: auto;
+      .buttonContainer {
+        margin-top: auto;
+      }
     }
   }
 
@@ -183,37 +204,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 96.4rem;
+    width: 100%;
     background-color: $gray-10;
-    height: 14.8rem;
+    min-height: clamp(13rem, 8.2881rem + 6.1433vw, 14.8rem);
     border-radius: 1.2rem;
     padding: 2.4rem;
     margin-top: 1.6rem;
 
-    @include tablet {
-      width: 68rem;
-    }
-
     @include mobile {
-      width: 35.1rem;
-      height: 15.3rem;
+      min-height: 15.3rem;
       padding: 1.9rem;
     }
 
     .noticeDescriptionTitle {
+      margin-bottom: 1rem;
+
       @include mobile {
-        font-size: 1.4rem;
+        font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+        margin-bottom: clamp(1rem, 0.0434rem + 2.5510vw, 2rem);
       }
     }
 
     .noticeDescription {
-      font-size: 1.6rem;
-      @include ellipsis(2);
-
-      @include mobile {
-        font-size: 1.4rem;
-        @include ellipsis(4);
-      }
+      font-size: clamp(1.4rem, 1.2087rem + 0.5102vw, 1.6rem);
+      line-height: clamp(2.3rem, 1.5147rem + 1.0239vw, 2.6rem);
     }
   }
 }
