@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { CommonBtn, CustomInput } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import styles from "./EditNotice.module.scss";
@@ -32,7 +32,7 @@ const EditNotice = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
 
