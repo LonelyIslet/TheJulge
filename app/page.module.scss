@@ -3,7 +3,7 @@
 }
 
 .noticeWrapper {
-  @include flexbox(column, true, flex-start);
+  @include flexbox(column, false, flex-start);
   margin: 0 auto;
   padding: 6rem 24rem;
   max-width: 192rem;
