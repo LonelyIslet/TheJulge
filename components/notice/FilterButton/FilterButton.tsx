@@ -1,14 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Filter } from "components/common";
-import useOutsideClick from "hooks/useOutsideClick";
+import { useState } from "react";
+import { Filter, Popover } from "components/common";
 import styles from "./FilterButton.module.scss";
 
 const FilterButton = () => {
   const [showPopover, setShowPopover] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
@@ -17,7 +14,6 @@ const FilterButton = () => {
   return (
     <div
       className={styles.container}
-      ref={containerRef}
     >
       <button
         type="button"
@@ -31,11 +27,12 @@ const FilterButton = () => {
       </button>
       {showPopover
         && (
-          <div className={styles.filterWrapper}>
-            <Filter
-              onClose={handlePopoverToggle}
-            />
-          </div>
+          <Popover
+            top="3.8rem"
+            onClose={handlePopoverToggle}
+          >
+            <Filter />
+          </Popover>
         )}
     </div>
   );

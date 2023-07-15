@@ -7,7 +7,7 @@ import addCommasToString from "utils/addCommasToString";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Filter = ({

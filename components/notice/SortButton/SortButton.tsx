@@ -1,17 +1,15 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { Popover } from "components/common";
 import { SORT_OPTIONS } from "constants/notice";
-import useOutsideClick from "hooks/useOutsideClick";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
 const SortButton = () => {
   const [sortOptionId, setSortOptionId] = useState(0);
   const [showPopover, setShowPopover] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
@@ -25,7 +23,6 @@ const SortButton = () => {
   return (
     <div
       className={styles.container}
-      ref={containerRef}
     >
       <button
         type="button"
@@ -42,7 +39,15 @@ const SortButton = () => {
           alt="Dropdown"
         />
       </button>
-      {showPopover && (<SortDropdown onOptionClick={handleOptionSelect} />)}
+      {showPopover
+        && (
+          <Popover
+            top="3.8rem"
+            onClose={handlePopoverToggle}
+          >
+            <SortDropdown onOptionClick={handleOptionSelect} />
+          </Popover>
+        )}
     </div>
   );
 };
