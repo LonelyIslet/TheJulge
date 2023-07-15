@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";

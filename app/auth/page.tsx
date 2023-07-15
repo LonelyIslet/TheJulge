@@ -1,8 +1,8 @@
 "use client";
 
+import { useLayoutEffect } from "react";
 import Image from "next/image";
 import { AuthForm } from "components/auth";
-import { useLayoutEffect } from "react";
 import styles from "./page.module.scss";
 import "./page.scss";
 

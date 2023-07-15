@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { SORT_OPTIONS } from "constants/notice";
+import useClickOutside from "hooks/useClickOutside";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
@@ -10,23 +11,11 @@ const SortButton = () => {
   const [sortOptionId, setSortOptionId] = useState(0);
   const [showPopover, setShowPopover] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  useClickOutside(containerRef, () => { return setShowPopover(false); });
 
   const toggleShowPopup = () => {
     setShowPopover((prev) => { return !prev; });
   };
-
-  const handleOutsideClick = (e: MouseEvent) => {
-    if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-      setShowPopover(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
 
   const onOptionClick = (id: number) => {
     setSortOptionId(id);

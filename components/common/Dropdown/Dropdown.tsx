@@ -1,8 +1,8 @@
 "use client";
 
-import useDropdown from "hooks/useDropdown";
-import Image from "next/image";
 import { useState, useRef } from "react";
+import Image from "next/image";
+import useDropdown from "hooks/useDropdown";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
