@@ -33,7 +33,7 @@ interface SignupResponse {
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
   endpoints: (builder) => {
     return {
       signin: builder.mutation<SigninResponse, ICredentials>({
