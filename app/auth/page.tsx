@@ -1,32 +1,15 @@
-"use client";
-
-import { useLayoutEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { AuthForm } from "components/auth";
 import styles from "./page.module.scss";
 import "./page.scss";
 
 const AuthPage = () => {
-  useLayoutEffect(() => {
-    const body = document.querySelector("body") as HTMLBodyElement;
-    const nav = document.querySelector("nav") as HTMLDivElement;
-    const footer = document.querySelector("footer") as HTMLDivElement;
-
-    body.classList.add("red");
-    nav.classList.add("hidden");
-    footer.classList.add("hidden");
-
-    return () => {
-      body.classList.remove("red");
-      nav.classList.remove("hidden");
-      footer.classList.remove("hidden");
-    };
-  }, []);
   return (
     <main className={styles.container}>
-      <div className={styles.logoContainer}>
+      <Link href="/" className={styles.logoContainer}>
         <Image src="/images/logo-white.svg" alt="로고" fill />
-      </div>
+      </Link>
       <article>
         <section className={styles.promotionArea}>
           <h1>
