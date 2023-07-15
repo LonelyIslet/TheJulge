@@ -10,22 +10,20 @@ interface SortDropdownProps {
 const SortDropdown = ({
   onOptionClick,
 }: SortDropdownProps) => {
-  const renderButtons = SORT_OPTIONS.map((option) => {
-    return (
-      <button
-        key={option.id}
-        type="button"
-        className={styles.option}
-        onClick={() => { return onOptionClick(option.id); }}
-      >
-        {option.label}
-      </button>
-    );
-  });
-
   return (
     <div className={styles.container}>
-      {renderButtons}
+      {SORT_OPTIONS.map((option) => {
+        return (
+          <button
+            key={option.id}
+            type="button"
+            className={styles.option}
+            onClick={() => { return onOptionClick(option.id); }}
+          >
+            {option.label}
+          </button>
+        );
+      })}
     </div>
   );
 };

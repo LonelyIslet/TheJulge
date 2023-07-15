@@ -10,7 +10,7 @@ const FilterButton = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
-  const toggleShowPopup = () => {
+  const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
@@ -22,7 +22,7 @@ const FilterButton = () => {
       <button
         type="button"
         className={styles.button}
-        onClick={toggleShowPopup}
+        onClick={handlePopoverToggle}
       >
         <h2>
           상세 필터
@@ -33,7 +33,7 @@ const FilterButton = () => {
         && (
           <div className={styles.filterWrapper}>
             <Filter
-              onClose={toggleShowPopup}
+              onClose={handlePopoverToggle}
             />
           </div>
         )}

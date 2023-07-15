@@ -13,11 +13,11 @@ const SortButton = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
-  const toggleShowPopup = () => {
+  const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
-  const onOptionClick = (id: number) => {
+  const handleOptionSelect = (id: number) => {
     setSortOptionId(id);
     setShowPopover((prev) => { return !prev; });
   };
@@ -30,7 +30,7 @@ const SortButton = () => {
       <button
         type="button"
         className={styles.button}
-        onClick={toggleShowPopup}
+        onClick={handlePopoverToggle}
       >
         <h2>
           {SORT_OPTIONS[sortOptionId]?.label}
@@ -42,7 +42,7 @@ const SortButton = () => {
           alt="Dropdown"
         />
       </button>
-      {showPopover && (<SortDropdown onOptionClick={onOptionClick} />)}
+      {showPopover && (<SortDropdown onOptionClick={handleOptionSelect} />)}
     </div>
   );
 };
