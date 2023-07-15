@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import { useState } from "react";
 import { CommonShopDescription, CommonDetail } from "components/common";
 import { EmployerNotice } from "components/employer";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { EmployeeNotice } from "components/employee";
 import { DetailType } from "types/enums/detailPage.enum";
 import styles from "./page.module.scss";
