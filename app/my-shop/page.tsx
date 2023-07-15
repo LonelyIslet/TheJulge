@@ -39,9 +39,9 @@ const Page = () => {
     <main className={styles.main}>
       <div style={{ marginBottom: "12px" }}>
         <CommonLayout position="above">
-          <header>
+          <div>
             <h2>내 가게</h2>
-          </header>
+          </div>
           <article>
             <ShopCard
               name={name}
