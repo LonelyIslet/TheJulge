@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
-import CommonBtn from "../CommonBtn/CommonBtn";
 import styles from "./ShopCard.module.scss";
 
 interface ShopCardProps {
