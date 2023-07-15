@@ -31,19 +31,19 @@ const CommonShopDescription = () => {
   } = item.item;
 
   const {
-    address1, imageUrl, description: noticeDescription, originalHourlyPay,
+    address1, imageUrl, description: noticeDescription, originalHourlyPay, category, name,
   } = shop.item;
   return (
     <CommonLayout position="above">
       <div>
-        <p>식당</p>
-        <h2>도토리 식당</h2>
+        <p>{category}</p>
+        <h2>{name}</h2>
       </div>
       <div>
         <NoticeCard
           hourlyPay={hourlyPay}
           startsAt={startsAt}
-          address1={address1}
+          address={address1}
           imageUrl={imageUrl}
           shopDescription={shopDescription}
           noticeDescription={noticeDescription}
