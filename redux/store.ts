@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import toastReducer from "redux/slices/toastSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    toast: toastReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

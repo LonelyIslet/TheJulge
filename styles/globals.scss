@@ -10,6 +10,24 @@ body {
   margin: 0;
   word-break: keep-all;
   font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  
+  > main {
+    flex-grow: 1;
+  }
+
+  nav.hide {
+    top: calc($navbar-height * (-1));
+    @include mobile {
+      top: calc($navbar-mobile-height * (-1));
+    }
+  }
+
+  nav.shadow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 
   input {
     font-family: inherit;
@@ -23,6 +41,7 @@ body {
     font-size: inherit;
     border: none;
     padding: 0;
+    background-color: $white;
   }
 }
 

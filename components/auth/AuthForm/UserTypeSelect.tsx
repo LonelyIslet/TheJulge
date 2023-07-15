@@ -14,7 +14,9 @@ const RadioButtonIcon = () => {
   );
 };
 
-const UserTypeSelect = ({ onChange }: UserTypeSelectProps) => {
+const UserTypeSelect = ({
+  onChange,
+}: UserTypeSelectProps) => {
   return (
     <div className={styles.box}>
       <legend className={styles.label}>회원 유형</legend>

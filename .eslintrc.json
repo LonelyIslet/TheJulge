@@ -75,8 +75,19 @@
       }
     ],
     "linebreak-style": "off",
-    "import/no-cycle": "off",
     "react/require-default-props": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": [
+        "state"
+      ]
+    }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ]
   }
 }

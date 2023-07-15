@@ -1,11 +1,17 @@
 @mixin tablet {
-  @media (max-width: 1199px) {
+  @media only screen and (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: 767px) {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin x-mobile {
+  @media only screen and (max-width: 425px) {
     @content;
   }
 }
@@ -55,7 +61,7 @@
   $intensity: calc($percentage * 0.01 + 1);
   transition: transform 0.2s ease;
   &:hover {
-    transform: scale($intensity);
+    transform: scale($intensity); 
   }
 }
 
@@ -70,6 +76,12 @@
     &:hover {
       transform: translateY($length);
     }
+  }
+}
+
+@mixin hoverInvertEffect($amount) {
+  &:hover {
+    filter: invert($amount);
   }
 }
 

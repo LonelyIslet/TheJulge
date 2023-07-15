@@ -5,7 +5,10 @@ interface CustomArrowProps {
   isClosed: boolean;
 }
 
-const getArrowImageSource = (isClosed: boolean, percentage: number) => {
+const getArrowImageSource = ({
+  percentage,
+  isClosed,
+}: CustomArrowProps) => {
   if (isClosed) {
     return "/images/arrow-gray.svg";
   }
@@ -23,7 +26,7 @@ const getArrowImageSource = (isClosed: boolean, percentage: number) => {
 
 const CustomArrow = ({ isClosed, percentage }: CustomArrowProps) => {
   return (
-    <Image src={getArrowImageSource(isClosed, percentage)} alt="arrow" width={10} height={10} />
+    <Image src={getArrowImageSource({ isClosed, percentage })} alt="arrow" width={10} height={10} />
   );
 };
 

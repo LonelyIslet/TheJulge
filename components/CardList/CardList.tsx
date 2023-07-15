@@ -1,4 +1,4 @@
-import { PostCard } from "components/common";
+import PostCard from "components/common/PostCard/PostCard";
 import { INotice } from "types/dto";
 import styles from "./CardList.module.scss";
 

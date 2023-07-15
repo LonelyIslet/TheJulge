@@ -6,18 +6,23 @@ import styles from "./CustomInput.module.scss";
 
 interface UserInputProps {
   element: "text" | "textarea";
-  type: React.HTMLInputTypeAttribute;
+  type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   id: string;
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement>;
   onChange :(event:
-  React.ChangeEvent<HTMLInputElement> |
-  React.ChangeEvent<HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 const UserInput = ({
-  element, type, placeholder, id, name, onBlur, onChange,
+  element,
+  type,
+  placeholder,
+  id,
+  name,
+  onBlur,
+  onChange,
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const inputStyle = type === "number" ? `${styles.userInput} ${styles.inputNumber}` : styles.userInput;
 
