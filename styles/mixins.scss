@@ -68,14 +68,13 @@
 
 @mixin hoverFloatEffect($direction, $length) {
   transition: transform 0.2s ease;
-
-  @if $direction ==x {
+  @if $direction == x {
     &:hover {
       transform: translateX($length);
     }
   }
 
-  @if $direction ==y {
+  @if $direction == y {
     &:hover {
       transform: translateY($length);
     }
@@ -89,7 +88,7 @@
 }
 
 @mixin ellipsis($line: 1) {
-  @if ($line ==1) {
+  @if ($line == 1) {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
