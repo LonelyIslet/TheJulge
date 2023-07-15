@@ -16,7 +16,11 @@ interface CardListProps {
 }
 
 const CardList = ({
-  noticeList, name, imageUrl, address, originalHourlyPay,
+  noticeList,
+  name,
+  imageUrl,
+  address,
+  originalHourlyPay,
 }: CardListProps) => {
   return (
     <ul className={styles.cardList}>

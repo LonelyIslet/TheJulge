@@ -1,18 +1,16 @@
 "use client";
 
-import {
-  CommonBtn, StatusChip, Modal, NotificationBoard,
-} from "components/common";
-import useToast from "hooks/useToast";
 import { useState } from "react";
 import { AuthForm } from "components/auth";
-
+import {
+  CommonBtn, Modal, NotificationBoard, Popover, StatusChip,
+} from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
 import { ModalType } from "types/enums/modal.enum";
-import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
-import Popover from "components/common/Popover/Popover";
+import mockAlertData from "constants/mock/alerts.json";
+import useToast from "hooks/useToast";
 import styles from "./page.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {

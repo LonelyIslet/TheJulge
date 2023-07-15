@@ -58,7 +58,7 @@
 }
 
 .locationButton {
-  @include flexbox(row, true, center);
+  @include flexbox(row, false, center);
   @include bold;
   border-radius: 2rem;
   padding: 0.6rem 1rem;

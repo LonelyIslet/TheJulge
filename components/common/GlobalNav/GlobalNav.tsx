@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";
@@ -11,8 +11,8 @@ const GlobalNav = () => {
   const navRef = useRef(null);
   useResponsiveHeader(navRef);
   return (
-    <nav ref={navRef} className={styles.container}>
-      <div className={styles.contentContainer}>
+    <nav ref={navRef} className={styles.wrapper}>
+      <div className={styles.container}>
         <div className={styles.leftItems}>
           <Link href="/">
             <div className={styles.logo}>

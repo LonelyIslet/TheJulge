@@ -1,4 +1,4 @@
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
+import { CommonLayout } from "components/common";
 
 const page = () => {
   return (
