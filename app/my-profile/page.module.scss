@@ -1,3 +1,20 @@
 .layout {
-  padding: 6rem 0;
+  @include flexbox(column, space-between, center);
+  .top {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0
+  }
+
+  .bottom {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0 12rem;
+    background-color: $gray-5;
+  }
+
+  @include tablet {
+    margin: 0 auto;
+  }
 }
+
