@@ -1,4 +1,4 @@
-import CardList from "components/CardList/CardList";
+import CardList from "./CardList/CardList";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import CommonDetail from "./CommonDetail/CommonDetail";
 import CommonLayout from "./CommonLayout/CommonLayout";
@@ -20,6 +20,7 @@ import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
 
 export {
+  CardList,
   CommonBtn,
   CommonDetail,
   CommonLayout,
@@ -36,7 +37,6 @@ export {
   PostCard,
   SearchBar,
   ShopCard,
-  CardList,
   StatusChip,
   Table,
   Toast,
