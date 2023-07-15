@@ -9,12 +9,12 @@ import useAppSelector from "redux/hooks/useAppSelector";
 import useAppDispatch from "redux/hooks/useAppDispatch";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import Popover from "components/common/Popover/Popover";
+import NotificationBoard from "components/common/NotificationBoard/NotificationBoard";
 import { IAlert } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 import mockAlertData from "constants/mock/alerts.json";
 import useToast from "hooks/useToast";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
-import NotificationBoard from "../NotificationBoard/NotificationBoard";
 import styles from "./GlobalNav.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
@@ -47,8 +47,8 @@ const GlobalNav = () => {
   };
 
   return (
-    <nav ref={navRef} className={styles.container}>
-      <div className={styles.contentContainer}>
+    <nav ref={navRef} className={styles.wrapper}>
+      <div className={styles.container}>
         <div className={styles.leftItems}>
           <Link href="/">
             <div className={styles.logo}>

@@ -2,20 +2,19 @@
 
 "use client";
 
+import { useState, useEffect } from "react";
 import {
-  CommonBtn, StatusChip, Modal, NotificationBoard,
+  CommonBtn, Modal, NotificationBoard, StatusChip,
 } from "components/common";
-import useToast from "hooks/useToast";
-import { useEffect, useState } from "react";
-// import { AuthForm } from "components/auth";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
 import { ModalType } from "types/enums/modal.enum";
-import mockAlertData from "constants/mock/alerts.json";
 import { IAlert } from "types/dto";
 import Popover from "components/common/Popover/Popover";
 import useAppSelector from "redux/hooks/useAppSelector";
 // import styles from "./page.module.scss";
+import mockAlertData from "constants/mock/alerts.json";
+import useToast from "hooks/useToast";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
   return i.item as IAlert;

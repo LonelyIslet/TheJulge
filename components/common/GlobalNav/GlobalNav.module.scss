@@ -1,16 +1,15 @@
-.container {
-  background-color: $white;
+.wrapper {
   position: sticky;
   z-index: 10;
   top: 0;
   transition: top 0.3s, box-shadow 0.4s ease-out;
+  background-color: $white;
 }
 
-.contentContainer {
-  display: flex;
+.container {
+  @include flexbox(row, false, center);
   gap: 4rem;
   padding: 1.5rem 20.8rem;
-  align-items: center;
   margin: 0 auto;
   max-width: 192rem;
 

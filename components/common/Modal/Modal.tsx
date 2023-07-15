@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ModalType } from "types/enums/modal.enum";
-import styles from "./Modal.module.scss";
 import ModalPortal from "./ModalPortal";
+import styles from "./Modal.module.scss";
 
 const modalIconSrcMap = {
   [ModalType.ACTION]: "/images/modal-check.svg",
