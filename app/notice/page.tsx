@@ -12,10 +12,14 @@ const NoticePage = () => {
   // 4. 사장 페이지와 알바생 페이지에서 식당 상세 컴포넌트는 동일하게 활용됨 <- 이걸 하나로 묶자!
   // 5. 사장페이지에서 below는 신청 내역이 보이며 알바생페이지에서는 내가 현재까지 본 공고 리스트가 나와야한다.
   return (
-    <div className={styles.top}>
-      <CommonShopDescription />
+    <div>
+      <div className={styles.top}>
+        <CommonShopDescription />
+      </div>
+      <div className={styles.bottom}>
+        <EmployeeNotice />
+      </div>
     </div>
-  // <EmployeeNotice />
   );
 };
 
