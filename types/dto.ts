@@ -1,6 +1,3 @@
-import { ApplyStatus } from "./enums/apply.enum";
-import { UserType } from "./enums/user.enum";
-
 export interface IShop {
   id?: string,
   name: string,
@@ -10,24 +7,6 @@ export interface IShop {
   description?: string,
   imageUrl?: string,
   originalHourlyPay: number
-}
-
-export interface IApplication {
-  id?: string,
-  status: ApplyStatus,
-  createdAt?: string,
-  user?: {
-    item: IUser,
-    href: string,
-  }
-  shop?: {
-    item: IShop,
-    href: string,
-  },
-  notice?: {
-    item: INotice,
-    href: string,
-  }
 }
 
 export interface INotice {
@@ -41,40 +20,4 @@ export interface INotice {
     item: IShop,
     href: string,
   },
-
-}
-
-export interface IAlert {
-  id?: string,
-  createdAt: string,
-  result: ApplyStatus.ACCEPTED | ApplyStatus.REJECTED,
-  read: boolean,
-  application: {
-    item: IApplication,
-    href: string,
-  },
-  shop: {
-    item: IShop,
-    href: string,
-  },
-  notice: {
-    item: INotice,
-    href: string,
-  },
-  links: object[],
-}
-
-export interface IUser {
-  id?: string,
-  email: string,
-  password?: string,
-  type: UserType,
-  name?: string,
-  phone?: string,
-  address?: string,
-  bio?: string,
-  IShop?: {
-    item: IShop,
-    href: string,
-  }
 }
