@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
-"use client";
-
 import { CommonDetail, CommonLayout, StatusChip } from "components/common";
 import RegisteredMyProfile from "components/employee/RegisteredMyProfile/RegisteredMyProfile";
-import EmployeeTable from "components/post/EmployeeTable/EmployeeTable";
+import { EmployeeTable } from "components/notice";
 import { DetailType } from "types/enums/detailPage.enum";
 import { ApplyStatus } from "types/enums/apply.enum";
 import styles from "./page.module.scss";
@@ -14,18 +11,18 @@ const MyPage = () => {
   return (
     <>
       <div className={styles.top}>
-        {/* <CommonDetail detailType={DetailType.APPLICATIONDETAILS} /> */}
-        <RegisteredMyProfile name="곽철용" phone="010-1234-1234" address="서울시 마포구" />
+        <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />
+        {/* <RegisteredMyProfile name="곽철용" phone="010-1234-1234" address="서울시 마포구" /> */}
       </div>
       <div className={styles.bottom}>
-        {/* <CommonDetail detailType={DetailType.APPLICATIONDETAILS} /> */}
-        <CommonLayout position="below">
+        {/* <CommonDetail detailType={DetailType.APPLICATION_DETAILS} /> */}
+        {/* <CommonLayout position="below">
           <div>
             <h2>신청 내역</h2>
           </div>
           <div>
             <EmployeeTable
-              data={[
+              applicationList={[
                 {
                   id: 0,
                   store: "김승주",
@@ -75,7 +72,7 @@ const MyPage = () => {
               onPageClick={onPageClick}
             />
           </div>
-        </CommonLayout>
+        </CommonLayout> */}
       </div>
     </>
   );
