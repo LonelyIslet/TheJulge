@@ -15,7 +15,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}:path*`,
+        destination: "https://bootcamp-api.codeit.kr/api/0-2/the-julge/:path*",
       },
     ];
   },
