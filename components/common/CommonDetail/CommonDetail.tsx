@@ -6,22 +6,22 @@ import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
 import styles from "./CommonDetail.module.scss";
 
-type Detail = "EMPLOYER" | "EMPLOYEE" | "APPLICATIONDETAILS";
+type Detail = "EMPLOYER" | "EMPLOYEE" | "APPLICATION_DETAILS";
 
-interface Ias {
+interface IDetail {
   title: string;
   description: string;
   buttonText: string;
   onClick: (e: React.MouseEvent) => void;
 }
 
-interface IDeail {
-  EMPLOYER : Ias
-  EMPLOYEE: Ias
-  APPLICATIONDETAILS: Ias
+interface IInfo {
+  EMPLOYER : IDetail
+  EMPLOYEE: IDetail
+  APPLICATION_DETAILS: IDetail
 }
 
-interface Icontent {
+interface IContent {
   title?: string,
   description: string,
   buttonText: string,
@@ -30,7 +30,7 @@ interface Icontent {
 
 const CommonDetail = ({ detailType }: { detailType: Detail }) => {
   const router = useRouter();
-  const info: IDeail = {
+  const info: IInfo = {
     EMPLOYER: {
       title: "내 가게",
       description: "내 가게를 소개하고 공고도 등록해 보세요.",
@@ -43,7 +43,7 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
       buttonText: "내 프로필 등록하기",
       onClick: () => { return router.push("/my-profile/edit"); },
     },
-    APPLICATIONDETAILS: {
+    APPLICATION_DETAILS: {
       title: "신청 내역",
       description: "아직 신청 내역이 없어요",
       buttonText: "공고 보러가기",
@@ -51,7 +51,7 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
     },
   };
 
-  const dataType:Icontent = info[detailType];
+  const dataType:IContent = info[detailType];
 
   return (
     <CommonLayout position="above">

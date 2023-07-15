@@ -1,6 +1,6 @@
-import { CommonBtn } from "components/common";
 import Image from "next/image";
 import Link from "next/link";
+import { CommonBtn } from "components/common";
 import { ButtonStyle } from "types/enums/button.enum";
 import styles from "./RegisteredMyProfile.module.scss";
 
