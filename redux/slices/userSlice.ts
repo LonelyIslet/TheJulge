@@ -1,28 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "types/dto";
-import { UserType } from "types/enums/user.enum";
 
-const initialState: IUser = {
-  email: "",
-  type: UserType.EMPLOYEE,
+interface IUserState {
+  token?: string;
+  userInfo?: IUser;
+}
+
+// interface IUserWithTokenAndInfo extends IUserState {
+//   token: string;
+//   userInfo: IUser;
+// }
+
+const initialState: IUserState = {
+  token: undefined,
+  userInfo: undefined,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IUser>) => {
-      const {
-        id, email, type, name, phone, address, bio, shop,
-      } = action.payload;
-      state.id = id;
-      state.email = email;
-      state.type = type;
-      state.name = name;
-      state.phone = phone;
-      state.address = address;
-      state.bio = bio;
-      state.shop = shop;
+    setUser: (state, action: PayloadAction<IUserState>) => {
+      state.token = action.payload.token;
+      state.userInfo = action.payload.userInfo;
     },
   },
 });

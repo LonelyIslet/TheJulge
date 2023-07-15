@@ -6,7 +6,7 @@ import {
 import { redirect, usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import classNames from "classnames/bind";
-import { getCookie } from "utils/cookies";
+import useAppSelector from "redux/hooks/useAppSelector";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 import styles from "./AuthForm.module.scss";
@@ -17,6 +17,7 @@ const AuthForm = () => {
   const pathname = usePathname();
   const searchValue = useSearchParams().get("mode");
   const [activeFormName, setActiveFormName] = useState("");
+  const user = useAppSelector((state) => { return state.user; });
   const activeForm = useMemo(() => {
     return (searchValue === "signup"
       ? (
@@ -28,10 +29,10 @@ const AuthForm = () => {
   }, [searchValue]);
 
   useLayoutEffect(() => {
-    if (getCookie("token")) {
+    if (user.userInfo) {
       redirect("/");
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     setActiveFormName(searchValue === "signup" ? "signup" : "signin");

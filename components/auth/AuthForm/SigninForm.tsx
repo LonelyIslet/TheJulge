@@ -8,7 +8,6 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 import { ModalType } from "types/enums/modal.enum";
 import inputValidation from "utils/inputValidation";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
-import { setCookie } from "utils/cookies";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
@@ -53,8 +52,8 @@ const SigninForm = () => {
     if (isEmailValidationPassed && isPasswordValidationPassed) {
       try {
         const res = await signin({ email: data.email, password: data.password }).unwrap();
-        setCookie("token", res.item.token, { maxAge: 2592000 });
-        dispatch(setUser(res.item.user.item));
+        const { item: { token, user: { item: userInfo } } } = res;
+        dispatch(setUser({ token, userInfo }));
         router.push("/");
       } catch (err) {
         setIsErrorModalOpen(true);

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IUser } from "types/dto";
+import { ILink, IUser } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 
 interface ICredentials {
@@ -11,13 +11,6 @@ interface ICredentialsWithType extends ICredentials {
   type: UserType;
 }
 
-type Link = {
-  rel: string,
-  description: string,
-  method: string,
-  href: string,
-};
-
 interface SigninResponse {
   item: {
     token: string,
@@ -26,7 +19,7 @@ interface SigninResponse {
       href: string
     }
   };
-  links: Link[];
+  links: ILink[];
 }
 
 interface SignupResponse {
@@ -35,7 +28,7 @@ interface SignupResponse {
     type: UserType,
     email: string,
   };
-  links: Link[];
+  links: ILink[];
 }
 
 export const authApi = createApi({

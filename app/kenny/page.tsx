@@ -30,7 +30,7 @@ const Page = () => {
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(user);
-    console.log(process.env.NODE_ENV);
+    // console.log(process.env.NODE_ENV);
   }, [user]);
 
   return (

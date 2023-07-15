@@ -1,9 +1,9 @@
 import StoreProvider from "redux/StoreProvider";
 import { GlobalNav, GlobalFooter } from "components/common";
-import { CookieProvider } from "components/auth";
 import ToastRoot from "components/common/Toast/ToastRoot";
 import spoqaHanSansNeo from "styles/local.font";
 import "styles/globals.scss";
+import PersistGateContext from "components/auth/PersistGateContext/PersistGateContext";
 
 export const metadata = {
   title: "더줄게",
@@ -19,9 +19,9 @@ const RootLayout = ({
 }: RootLayoutProps) => {
   return (
     <StoreProvider>
-      <CookieProvider>
-        <html lang="ko">
-          <body className={spoqaHanSansNeo.className}>
+      <html lang="ko">
+        <body className={spoqaHanSansNeo.className}>
+          <PersistGateContext>
             <div id="toast-root" />
             <ToastRoot />
             <div id="modal-root" />
@@ -30,9 +30,9 @@ const RootLayout = ({
               {children}
             </main>
             <GlobalFooter />
-          </body>
-        </html>
-      </CookieProvider>
+          </PersistGateContext>
+        </body>
+      </html>
     </StoreProvider>
   );
 };
