@@ -1,3 +1,4 @@
+import CardList from "components/CardList/CardList";
 import GlobalNav from "./GlobalNav/GlobalNav";
 import Pagination from "./Pagination/Pagination";
 import SearchBar from "./SearchBar/SearchBar";
@@ -9,6 +10,7 @@ import CustomInput from "./CustomInput/CustomInput";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import ShopCard from "./ShopCard/ShopCard";
 import NoticeCard from "./NoticeCard/NoticeCard";
+import CommonLayout from "./CommonLayout/CommonLayout";
 
 export {
   GlobalNav,
@@ -22,4 +24,6 @@ export {
   CommonBtn,
   NoticeCard,
   ShopCard,
+  CommonLayout,
+  CardList,
 };
