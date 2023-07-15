@@ -1,10 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import CommonLayout from "components/common/CommonLayout/CommonLayout";
 import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
-import { CommonLayout, CommonBtn } from "components/common";
-import { useRouter } from "next/navigation";
 import styles from "./CommonDetail.module.scss";
 
 type Detail = "EMPLOYER" | "EMPLOYEE" | "APPLICATIONDETAILS";

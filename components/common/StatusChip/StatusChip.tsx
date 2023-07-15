@@ -14,7 +14,7 @@ interface StatusChipProps {
 const StatusChip = ({
   status,
 }: StatusChipProps) => {
-  const statusClass = status.toLocaleLowerCase();
+  const statusClass = status?.toLocaleLowerCase();
   return (
     <div className={`${styles.chipContainer} ${styles[statusClass]}`}>
       {labelMap[status]}

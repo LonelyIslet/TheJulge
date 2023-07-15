@@ -1,6 +1,6 @@
 .container {
   max-width: 96.4rem;
-  margin: 0 auto;
+  width: 100%;
   background-color: inherit;
 
   header.above {
@@ -30,7 +30,6 @@
   }
 
   @include mobile {
-    width: calc(100% - 2.4rem);
     header {
       margin-bottom: 1.6rem;
     }
@@ -42,5 +41,9 @@
         font-size: 2rem;
       }
     }
+  }
+
+  @include x-mobile {
+    width: calc(100% - 2.4rem);
   }
 }
