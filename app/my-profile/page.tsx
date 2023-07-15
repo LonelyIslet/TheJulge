@@ -14,11 +14,12 @@ const MyPage = () => {
   return (
     <>
       <div className={styles.top}>
-        <RegisteredMyProfile />
+        {/* <CommonDetail detailType={DetailType.APPLICATIONDETAILS} /> */}
+        <RegisteredMyProfile name="곽철용" phone="010-1234-1234" address="서울시 마포구" />
       </div>
       <div className={styles.bottom}>
         {/* <CommonDetail detailType={DetailType.APPLICATIONDETAILS} /> */}
-        <CommonLayout position="above">
+        <CommonLayout position="below">
           <div>
             <h2>신청 내역</h2>
           </div>

@@ -69,6 +69,17 @@
     .blank {
       margin-bottom: 2.4rem;
     }
+
+    .userInfoContainer {
+      
+      .userInfoDetail {
+        flex-shrink: 0;
+      }
+
+      .wrapperButton {
+        flex-shrink: 1;
+      }
+    }
   }
 
   @include x-mobile {
@@ -81,42 +92,42 @@
     .userInfoContainer {
       padding: 2rem;
 
+      .userInfoDetail {
+        p:first-child {
+          font-size: 1.4rem
+        }
+
+        h2 {
+          font-size: 2.4rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .phone {
+          margin-bottom: 0.8rem;
+          
+          span {
+            font-size: 1.4rem;
+          }
+        }
+
+        .address {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2.8rem;
+          
+          span {
+            display: block;
+            color: $gray-50;
+            margin-left: 0.6rem;
+          }
+        }
+      }
+
       .wrapperButton {
         width: 10.8rem;
       }
       
-    .userInfoDetail {
-      p:first-child {
-        font-size: 1.4rem
-      }
-
-      h2 {
-        font-size: 2.4rem;
-        margin-bottom: 1.2rem;
-      }
-
-      .phone {
-        margin-bottom: 0.8rem;
-        
-        span {
-          font-size: 1.4rem;
-        }
-      }
-
-      .address {
-        display: flex;
-        align-items: center;
-        margin-bottom: 2.8rem;
-        
-        span {
-          display: block;
-          color: $gray-50;
-          margin-left: 0.6rem;
-        }
-      }
-    } 
-  }
-    
+    }
   }
 }
 
