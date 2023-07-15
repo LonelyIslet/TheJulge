@@ -189,7 +189,7 @@
           @include ellipsis(2);
         }
 
-        @media (max-width: 425px) {
+        @include x-mobile {
           @include ellipsis(3);
         }
       }
