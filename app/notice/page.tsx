@@ -1,13 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import {
-  CommonLayout, NoticeCard, CommonBtn, CommonDetail,
-} from "components/common";
-import CommonShopDescription from "components/common/CommonShopDescription/CommonShopDescription";
-import EmployeeNotice from "components/employee/EmployeeNotice/EmployeeNotice";
-import EmployerNotice from "components/employer/EmployerNotice/EmployerNotice";
-import { EmployerTable } from "components/notice";
+import { CommonShopDescription, CommonDetail } from "components/common";
+import { EmployerNotice } from "components/employer";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { EmployeeNotice } from "components/employee";
 import { DetailType } from "types/enums/detailPage.enum";
 import styles from "./page.module.scss";
 
@@ -22,14 +19,16 @@ const NoticePage = () => {
   // 2. 비회원일 경우 CommonShopDescription의 버튼을 누르면 로그인 페이지로 이동
   // 3. 자신이 올린 공고의 사장일 경우 CommonShopDescription 의 버튼을 disabled 설정
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <div>
       <div className={styles.top}>
         <CommonShopDescription />
       </div>
       <div className={styles.bottom}>
-        {isLoggedIn && <EmployeeNotice />}
+        {/* {isLoggedIn && <EmployeeNotice />} */}
+        {isLoggedIn && <EmployerNotice />}
         {!isLoggedIn && <CommonDetail detailType={DetailType.LOGIN} />}
       </div>
     </div>

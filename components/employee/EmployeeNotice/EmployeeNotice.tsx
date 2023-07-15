@@ -1,6 +1,6 @@
 import { CommonLayout, CardList } from "components/common";
-import noticeList from "constants/mock/noticeList.json";
 import { INotice } from "types/dto";
+import noticeList from "constants/mock/noticeList.json";
 
 interface INoticeWithClosedInfo extends INotice {
   id: string,

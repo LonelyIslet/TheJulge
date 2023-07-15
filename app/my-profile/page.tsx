@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CommonDetail, CommonLayout, StatusChip } from "components/common";
-import RegisteredMyProfile from "components/employee/RegisteredMyProfile/RegisteredMyProfile";
+import { RegisteredMyProfile } from "components/employee";
 import { EmployeeTable } from "components/notice";
 import { DetailType } from "types/enums/detailPage.enum";
 import { ApplyStatus } from "types/enums/apply.enum";
