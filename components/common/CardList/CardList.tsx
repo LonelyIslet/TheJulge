@@ -2,22 +2,21 @@ import PostCard from "components/common/PostCard/PostCard";
 import { INotice } from "types/dto";
 import styles from "./CardList.module.scss";
 
-interface INoticeWithTypeInfo extends INotice {
+interface INoticeWithClosedInfo extends INotice {
   id: string,
   closed: boolean,
 }
 
 interface CardListProps {
-  noticeList: INoticeWithTypeInfo[],
+  noticeList: INoticeWithClosedInfo[],
   name: string,
   imageUrl: string,
   address: string,
   originalHourlyPay: number,
-  shopId: string,
 }
 
 const CardList = ({
-  noticeList, name, imageUrl, address, originalHourlyPay, shopId,
+  noticeList, name, imageUrl, address, originalHourlyPay,
 }: CardListProps) => {
   return (
     <ul className={styles.cardList}>
@@ -33,7 +32,7 @@ const CardList = ({
               address={address}
               imageUrl={imageUrl}
               originalHourlyPay={originalHourlyPay}
-              href={`/api/0-2/the-julge/shops/${shopId}/notices/${i.id}`}
+              href={`/notice?id=${i.id}`}
             />
           </li>
         );
