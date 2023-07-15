@@ -8,9 +8,9 @@ const MyPageLayout = ({
   children,
 }: MyPageLayoutProps) => {
   return (
-    <section className={styles.layout}>
+    <div className={styles.layout}>
       {children}
-    </section>
+    </div>
   );
 };
 

@@ -1,23 +1,19 @@
 import Image from "next/image";
-import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import Link from "next/link";
+import CommonBtn from "components/common/CommonBtn/CommonBtn";
+import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import styles from "./ShopCard.module.scss";
-import CommonBtn from "../CommonBtn/CommonBtn";
 
 interface ShopCardProps {
   name: string;
-  address1: string;
+  address: string;
   imageUrl: string;
   description: string;
   category: string;
 }
 
 const ShopCard = ({
-  name,
-  address1,
-  imageUrl,
-  description,
-  category,
+  name, address, imageUrl, description, category,
 }: ShopCardProps) => {
   return (
     <section className={styles.shopCard}>
@@ -29,7 +25,7 @@ const ShopCard = ({
         <h2 className={styles.title}>{name}</h2>
         <div className={styles.addressContainer}>
           <Image src="/images/location-red.svg" className={styles.icon} alt="location" width={20} height={20} />
-          <p className={styles.address}>{address1}</p>
+          <p className={styles.address}>{address}</p>
         </div>
         <p className={styles.description}>
           {description}

@@ -24,10 +24,6 @@
   @include tablet {
     width: 100%;
   } 
-
-  @include mobile {
-    width: 35rem;
-  }
 }
 
 .table {
@@ -95,7 +91,6 @@
       }
 
       @include mobile {
-        width: 16.2rem;
         min-width: 16.2rem;
       }
     }
@@ -117,12 +112,9 @@
   padding: 1.2rem 0;
   max-width: 96.4rem;
   width: 96.4rem;
+  background-color: $white;
 
   @include tablet {
     width: 100%;
-  } 
-
-  @include mobile {
-    width: 35rem;
   }
 }

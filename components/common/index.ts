@@ -1,3 +1,4 @@
+import CardList from "./CardList/CardList";
 import CommonBtn from "./CommonBtn/CommonBtn";
 import CommonDetail from "./CommonDetail/CommonDetail";
 import CommonLayout from "./CommonLayout/CommonLayout";
@@ -20,6 +21,7 @@ import Toast from "./Toast/Toast";
 import Loader from "./Loader/Loader";
 
 export {
+  CardList,
   CommonBtn,
   CommonDetail,
   CommonLayout,

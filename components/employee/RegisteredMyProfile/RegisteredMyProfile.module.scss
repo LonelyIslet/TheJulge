@@ -1,0 +1,133 @@
+.container {
+  max-width: 95.7rem;
+  width: 100%;
+  display: flex;
+  
+  .blank {
+    width: 29.2rem;
+  }
+  
+  .userInfoContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    background-color: $red-10;
+    padding: 3.2rem;
+    border-radius: 1.2rem;
+
+    .userInfoDetail {
+      p:first-child {
+        color: $primary;
+        @include bold;
+        margin-bottom: 0.8rem;
+      }
+
+      h2 {
+        @include bold;
+        margin-bottom: 1.2rem;
+      }
+
+      .phone {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.2rem;
+        
+        span {
+          display: block;
+          color: $gray-50;
+          margin-left: 0.6rem;
+        }
+      }
+
+      .address {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.8rem;
+        
+        span {
+          display: block;
+          color: $gray-50;
+          margin-left: 0.6rem;
+        }
+      }
+    } 
+
+    .wrapperButton {
+      width: 16.9rem;
+    }
+  }
+
+
+  @include tablet {
+    width: calc(100% - 6.4rem);
+  }
+
+  @include mobile {
+    flex-direction: column;
+
+    .blank {
+      margin-bottom: 2.4rem;
+    }
+
+    .userInfoContainer {
+      
+      .userInfoDetail {
+        flex-shrink: 0;
+      }
+
+      .wrapperButton {
+        flex-shrink: 1;
+      }
+    }
+  }
+
+  @include x-mobile {
+    width: calc(100% - 2.4rem);
+
+    .blank {
+      margin-bottom: 1.6rem;
+    }
+
+    .userInfoContainer {
+      padding: 2rem;
+
+      .userInfoDetail {
+        p:first-child {
+          font-size: 1.4rem
+        }
+
+        h2 {
+          font-size: 2.4rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .phone {
+          margin-bottom: 0.8rem;
+          
+          span {
+            font-size: 1.4rem;
+          }
+        }
+
+        .address {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2.8rem;
+          
+          span {
+            display: block;
+            color: $gray-50;
+            margin-left: 0.6rem;
+          }
+        }
+      }
+
+      .wrapperButton {
+        width: 10.8rem;
+      }
+      
+    }
+  }
+}
+
