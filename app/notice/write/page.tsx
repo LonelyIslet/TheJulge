@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import EditNotice from "components/employer/EditNotice/EditNotice";
+import { EditNotice } from "components/employer";
 import styles from "./page.module.scss";
 
 const NoticeWrite = () => {
