@@ -42,10 +42,8 @@ const GlobalNav = () => {
   }, []);
 
   useLayoutEffect(() => {
-    if (getCookie("token")) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+    setIsLoggedIn(typeof getCookie("token") === "string");
+  }, [user]);
 
   const hasUnreadAlerts = (alerts: IAlert[]) => {
     return alerts.some((alert) => { return !alert.read; });
