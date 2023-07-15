@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./page.module.scss";
 
 interface NoticePageProps {
   children: React.ReactNode
@@ -6,7 +6,7 @@ interface NoticePageProps {
 
 const layout = ({ children }: NoticePageProps) => {
   return (
-    <div>
+    <div className={styles.layout}>
       {children}
     </div>
   );

@@ -1,0 +1,11 @@
+.layout {
+  .top {
+    @include flexbox(column, space-between, center);
+    padding: 6rem 0;
+  }
+
+  .bottom {
+
+  }
+
+}
