@@ -11,8 +11,8 @@ const GlobalNav = () => {
   const navRef = useRef(null);
   useResponsiveHeader(navRef);
   return (
-    <nav ref={navRef} className={styles.container}>
-      <div className={styles.contentContainer}>
+    <nav ref={navRef} className={styles.wrapper}>
+      <div className={styles.container}>
         <div className={styles.leftItems}>
           <Link href="/">
             <div className={styles.logo}>

@@ -1,3 +1,8 @@
+.container {
+  @include flexbox(column, false, flex-end);
+  position: relative;
+}
+
 .button {
   border-radius: 0.5rem;
   padding: 0.65rem 1.2rem;
@@ -7,4 +12,9 @@
     font-size: 1.4rem;
     color: $white;
   }
+}
+
+.filterWrapper {
+  position: absolute;
+  top: 3.8rem;
 }

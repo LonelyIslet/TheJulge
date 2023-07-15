@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ADDRESS_1 } from "constants/notice/address";
+import { ADDRESS_1 } from "constants/notice";
 import addCommasToString from "utils/addCommasToString";
 import styles from "./Filter.module.scss";
 
@@ -44,7 +44,7 @@ const Filter = ({
 
   };
 
-  const RenderAddressSet = Array.from(addressSet).map(((id) => {
+  const RenderAddressSet = Array.from(addressSet).map((id) => {
     return (
       <button
         key={id}
@@ -62,7 +62,7 @@ const Filter = ({
         </div>
       </button>
     );
-  }));
+  });
 
   return (
     <div className={styles.container}>

@@ -5,10 +5,10 @@ import { Filter } from "components/common";
 import styles from "./FilterButton.module.scss";
 
 const FilterButton = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
 
-  const onToggle = () => {
-    setIsClicked((prev) => { return !prev; });
+  const toggleShowPopup = () => {
+    setShowPopover((prev) => { return !prev; });
   };
 
   return (
@@ -16,18 +16,18 @@ const FilterButton = () => {
       <button
         type="button"
         className={styles.button}
-        onClick={onToggle}
+        onClick={toggleShowPopup}
       >
         <h2>
           상세 필터
           {/* Redux로 필터 갯수 상태관리 */}
         </h2>
       </button>
-      {isClicked
+      {showPopover
         && (
           <div className={styles.filterWrapper}>
             <Filter
-              onClose={onToggle}
+              onClose={toggleShowPopup}
             />
           </div>
         )}
