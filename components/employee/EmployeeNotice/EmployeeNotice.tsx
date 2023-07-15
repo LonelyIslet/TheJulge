@@ -30,7 +30,7 @@ const EmployeeNotice = () => {
         </CommonLayout>
       </div>
       <div className={styles.bottom}>
-        <CommonLayout category="below">
+        <CommonLayout position="below">
           <div>
             <h2>최근에 본 공고</h2>
           </div>
