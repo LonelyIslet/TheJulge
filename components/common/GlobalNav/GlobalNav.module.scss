@@ -62,7 +62,7 @@
 
   h2 {
     font-size: 1.6rem;
-
+    white-space: nowrap;
     @include mobile {
       font-size: 1.4rem;
     }
