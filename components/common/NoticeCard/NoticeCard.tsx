@@ -1,7 +1,7 @@
 import Image from "next/image";
+import classNames from "classnames/bind";
 import calculatePercentage from "utils/calculatePercentage";
 import formatTimeRange from "utils/formatTimeRange";
-import classNames from "classnames/bind";
 import styles from "./NoticeCard.module.scss";
 
 const cx = classNames.bind(styles);
@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 interface INoticeCardProps {
   hourlyPay: number;
   startsAt: string;
-  address1: string;
+  address: string;
   imageUrl: string;
   shopDescription: string;
   noticeDescription: string;
@@ -45,7 +45,7 @@ const getBgColorClass = (percentage: number) => {
 const NoticeCard = ({
   hourlyPay,
   startsAt,
-  address1,
+  address,
   imageUrl,
   shopDescription,
   noticeDescription,
@@ -73,10 +73,13 @@ const NoticeCard = ({
               {hourlyPay.toLocaleString()}
               원
             </h2>
-            <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
-              <p>{`기존시급보다 ${percentage}%`}</p>
-              <Image src="/images/arrow-white.svg" className={styles.arrow} width={15} height={15} alt="arrow" />
-            </div>
+            {percentage >= 5
+              && (
+                <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
+                  <p>{`기존시급보다 ${percentage}%`}</p>
+                  <Image src="/images/arrow-white.svg" className={styles.arrow} width={15} height={15} alt="arrow" />
+                </div>
+              )}
           </div>
           <div className={styles.timeContainer}>
             <Image src="/images/clock-red.svg" className={styles.icon} alt="location" width={20} height={20} />
@@ -84,9 +87,9 @@ const NoticeCard = ({
           </div>
           <div className={styles.addressContainer}>
             <Image src="/images/location-red.svg" className={styles.icon} alt="location" width={20} height={20} />
-            <p className={styles.address}>{address1}</p>
+            <p className={styles.address}>{address}</p>
           </div>
-          <p className={styles.shopDescription}>
+          <p className={styles.description}>
             {shopDescription}
           </p>
           <div className={styles.buttonContainer}>

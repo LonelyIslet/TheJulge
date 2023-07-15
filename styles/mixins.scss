@@ -16,6 +16,12 @@
   }
 }
 
+@mixin x-mobile {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
 @mixin bold {
   font-weight: 700;
 }
@@ -28,13 +34,13 @@
   position: fixed;
   top: $top;
   left: $left;
-  
+
   @if $right {
-		right: $right;
+    right: $right;
   }
-  
+
   @if $bottom {
-		bottom: $bottom;
+    bottom: $bottom;
   }
 }
 
@@ -54,8 +60,9 @@
 @mixin hoverScaleEffect($percentage) {
   $intensity: calc($percentage * 0.01 + 1);
   transition: transform 0.2s ease;
+
   &:hover {
-    transform: scale($intensity); 
+    transform: scale($intensity);
   }
 }
 
@@ -66,6 +73,7 @@
       transform: translateX($length);
     }
   }
+
   @if $direction == y {
     &:hover {
       transform: translateY($length);
@@ -81,6 +89,7 @@
 
 @mixin ellipsis($line: 1) {
   @if ($line == 1) {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -90,7 +99,6 @@
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    word-wrap: break-word;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: $line;
   }

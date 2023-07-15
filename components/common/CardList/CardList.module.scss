@@ -1,0 +1,16 @@
+.cardList {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 3rem 1.5rem;
+
+  @media (max-width: 680px) {
+    grid-gap: 1.6rem 0.8rem;
+  }
+}
+
+@media (max-width: 1050px) {
+  .cardList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
