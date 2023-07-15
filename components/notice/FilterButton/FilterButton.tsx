@@ -1,18 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Filter } from "components/common";
 import styles from "./FilterButton.module.scss";
 
 const FilterButton = () => {
   const [showPopover, setShowPopover] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const toggleShowPopup = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      setShowPopover(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      ref={containerRef}
+    >
       <button
         type="button"
         className={styles.button}
