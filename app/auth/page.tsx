@@ -35,7 +35,7 @@ const AuthPage = () => {
             <strong>더줄게</strong>
           </h1>
           <div style={{ width: "732px", height: "438px", position: "relative" }}>
-            <Image src="/images/landing-img.png" fill alt="랜딩 이미지" sizes="30vw" priority />
+            <Image src="/images/landing-img.png" fill alt="랜딩 이미지" sizes="100vw" priority />
           </div>
           <p>
             사장님도 알바님도 간편하게 서로를 찾을 수 있게.
