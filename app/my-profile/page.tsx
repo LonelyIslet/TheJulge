@@ -5,7 +5,7 @@ import { EmployeeTable } from "components/notice";
 import { DetailType } from "types/enums/detailPage.enum";
 import styles from "./page.module.scss";
 
-const MyPage = () => {
+const MyProfile = () => {
   return (
     <>
       <div className={styles.top}>
@@ -20,4 +20,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default MyProfile;
