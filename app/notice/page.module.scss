@@ -5,7 +5,8 @@
   }
 
   .bottom {
-
+    @include flexbox(column, space-between, center);
+    padding: 6rem 0 12rem
   }
 
 }
