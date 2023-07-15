@@ -2,13 +2,13 @@
 
 import { useState, useRef } from "react";
 import { Filter } from "components/common";
-import useClickOutside from "hooks/useClickOutside";
+import useOutsideClick from "hooks/useOutsideClick";
 import styles from "./FilterButton.module.scss";
 
 const FilterButton = () => {
   const [showPopover, setShowPopover] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  useClickOutside(containerRef, () => { return setShowPopover(false); });
+  useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
   const toggleShowPopup = () => {
     setShowPopover((prev) => { return !prev; });

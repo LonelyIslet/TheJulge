@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { SORT_OPTIONS } from "constants/notice";
-import useClickOutside from "hooks/useClickOutside";
+import useOutsideClick from "hooks/useOutsideClick";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
@@ -11,7 +11,7 @@ const SortButton = () => {
   const [sortOptionId, setSortOptionId] = useState(0);
   const [showPopover, setShowPopover] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  useClickOutside(containerRef, () => { return setShowPopover(false); });
+  useOutsideClick(containerRef, () => { return setShowPopover(false); });
 
   const toggleShowPopup = () => {
     setShowPopover((prev) => { return !prev; });
