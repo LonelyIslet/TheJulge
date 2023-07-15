@@ -27,9 +27,9 @@ const NoticePage = () => {
         <CommonShopDescription />
       </div>
       <div className={styles.bottom}>
-        {/* {isLoggedIn && <EmployeeNotice />} */}
-        {isLoggedIn && <EmployerNotice />}
-        {!isLoggedIn && <CommonDetail detailType={DetailType.LOGIN} />}
+        {isLoggedIn && <EmployeeNotice />}
+        {/* {isLoggedIn && <EmployerNotice />} */}
+        {/* {!isLoggedIn && <CommonDetail detailType={DetailType.LOGIN} />} */}
       </div>
     </div>
   );

@@ -19,22 +19,20 @@ const EmployeeNotice = () => {
   };
 
   return (
-    <div>
-      <CommonLayout position="below">
-        <div>
-          <h2>최근에 본 공고</h2>
-        </div>
-        <div>
-          <CardList
-            noticeList={notice}
-            name={shop.name}
-            address={shop.address1}
-            imageUrl={shop.imageUrl}
-            originalHourlyPay={shop.originalHourlyPay}
-          />
-        </div>
-      </CommonLayout>
-    </div>
+    <CommonLayout position="below">
+      <div>
+        <h2>최근에 본 공고</h2>
+      </div>
+      <div>
+        <CardList
+          noticeList={notice}
+          name={shop.name}
+          address={shop.address1}
+          imageUrl={shop.imageUrl}
+          originalHourlyPay={shop.originalHourlyPay}
+        />
+      </div>
+    </CommonLayout>
   );
 };
 
