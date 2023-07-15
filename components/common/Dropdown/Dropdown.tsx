@@ -10,7 +10,7 @@ interface DropdownProps {
   label: string
   id: string
   name: string
-  essential?: string
+  essential?: boolean
   onChange: (event:
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
@@ -118,7 +118,6 @@ const Dropdown = ({
             );
           }))}
         </div>
-
       </div>
     </div>
   );

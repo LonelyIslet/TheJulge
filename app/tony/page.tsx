@@ -1,16 +1,27 @@
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
+"use client";
+
+import { useState } from "react";
+import { Dropdown } from "components/common";
 
 const page = () => {
+  const [data, setData] = useState({});
+  const handleData = (e) => {
+    setData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
   return (
-    <CommonLayout position="above">
-      <header>
-        <p>식당</p>
-        <h2>도토리 식당</h2>
-      </header>
-      <article>
-        그외 다른 것들
-      </article>
-    </CommonLayout>
+    <Dropdown
+      type="address"
+      label="선호 지역"
+      id="address"
+      name="address"
+      essential
+      onChange={handleData}
+    />
   );
 };
 
