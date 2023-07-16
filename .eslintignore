@@ -1,2 +1,5 @@
 next.config.js
 next-sitemap.config.js
+app/kenny/page.tsx
+app/tony/page.tsx
+app/tina/page.tsx
