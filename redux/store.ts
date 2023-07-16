@@ -2,14 +2,14 @@ import { persistReducer } from "redux-persist";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import toastReducer from "redux/slices/toastSlice";
 import userReducer from "redux/slices/userSlice";
-import { authApi } from "redux/api/authApi";
+import { apiSlice } from "redux/slices/apiSlice";
 import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/es/storage";
 
 const reducer = combineReducers({
   toast: toastReducer,
   user: userReducer,
-  [authApi.reducerPath]: authApi.reducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
 const persistConfig = {
@@ -25,7 +25,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(authApi.middleware);
+    }).concat(apiSlice.middleware);
   },
 });
 
