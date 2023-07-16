@@ -1,7 +1,7 @@
 .layout {
   padding-top: 6rem;
   max-width: 96.4rem;
-  margin: 0 auto;
+  width: 100%;
 
   @include tablet {
     width: calc(100% - 6.4rem);
