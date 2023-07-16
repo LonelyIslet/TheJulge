@@ -31,7 +31,7 @@ const FilterButton = () => {
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <Filter />
+            <Filter onClose={handlePopoverToggle} />
           </Popover>
         )}
     </div>
