@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "types/dto";
 
-interface IUserState {
+export interface IUserState {
   token?: string;
   userInfo?: IUser;
 }
-
-// interface IUserWithTokenAndInfo extends IUserState {
-//   token: string;
-//   userInfo: IUser;
-// }
 
 const initialState: IUserState = {
   token: undefined,
