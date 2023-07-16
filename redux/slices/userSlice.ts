@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "types/dto";
+import { IShop, IUser } from "types/dto";
 
 export interface IUserState {
   token?: string;
@@ -18,6 +18,11 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<IUserState>) => {
       state.token = action.payload.token;
       state.userInfo = action.payload.userInfo;
+    },
+    setUserShop: (state, action: PayloadAction<{ item: IShop, href: string }>) => {
+      if (state.userInfo) {
+        state.userInfo.shop = action.payload;
+      }
     },
   },
 });
