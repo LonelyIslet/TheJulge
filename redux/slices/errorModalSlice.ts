@@ -11,7 +11,7 @@ const initialState: IErrorModalState = {
 };
 
 export const errorModalSlice = createSlice({
-  name: "toast",
+  name: "errorModal",
   initialState,
   reducers: {
     setShowModal: (state, action: PayloadAction<boolean>) => {
