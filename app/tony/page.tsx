@@ -1,15 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { CommonBtn, Dropdown } from "components/common";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import React, { useState } from "react";
+import { Dropdown } from "components/common";
 
 const page = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks
   const [data, setData] = useState({});
-  const handleData = (e) => {
+  const handleData = (event:
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => {
     setData((prev) => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [(event.target as HTMLInputElement)?.name]: (event.target as HTMLInputElement)?.value,
       };
     });
   };
