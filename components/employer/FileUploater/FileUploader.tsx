@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-// import axios, { AxiosResponse } from "axios";
 import classNames from "classnames/bind";
 import styles from "./FileUploader.module.scss";
 
@@ -55,35 +54,6 @@ const FileUploader = ({ shopImageUrl }: FileUploaderProps) => {
     return url.split("?")[0];
   };
 
-  // const handleUpload = (): void => {
-  //   if (selectedFile) {
-  //     axios
-  //       .post<MyResponse>(
-  //       "/images",
-  //       { name: selectedFile.name },
-  //       { headers: { Authorization: `Bearer ${token}` } },
-  //     )
-  //       .then((response: AxiosResponse<MyResponse>) => {
-  //         const { data } = response;
-  //         return data;
-  //       })
-  //       .then((response: MyResponse) => {
-  //         const { url } = response.item;
-
-  //         axios
-  //           .put(url, selectedFile)
-  //           .then(() => {
-  //             setImageUrl(removeQueryFromUrl(url));
-  //           })
-  //           .catch((err) => {
-  //             console.error(err);
-  //           });
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   }
-  // };
   const handleUpload = (): void => {
     if (selectedFile) {
       fetch("/images", {
