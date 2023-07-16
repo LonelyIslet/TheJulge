@@ -5,6 +5,10 @@ import Image from "next/image";
 import useDropdown from "hooks/useDropdown";
 import styles from "./Dropdown.module.scss";
 
+interface ICountValidation {
+  [key: string]: number;
+}
+
 interface DropdownProps {
   type: "address" | "category"
   label: string
@@ -16,8 +20,8 @@ interface DropdownProps {
   HTMLTextAreaElement> |
   React.MouseEvent<HTMLButtonElement>) => void
   rendering: boolean
-  countValidation: object
-  setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
+  countValidation: ICountValidation
+  setCountValidation: React.Dispatch<React.SetStateAction<ICountValidation>>;
 }
 
 const Dropdown = ({
@@ -83,6 +87,7 @@ const Dropdown = ({
       setCheckValidation(false);
     }
     setSwingValidationText(!swingValidationText);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rendering]);
 
   return (

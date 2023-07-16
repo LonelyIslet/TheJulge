@@ -4,6 +4,10 @@ import { useState } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
+interface IData {
+  [key: string]: string
+}
+
 interface ICountValidation {
   email: number;
   password: number;
@@ -24,7 +28,7 @@ const validationContentMap: {
 const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
-  data?: object,
+  data?: IData,
   name?: string,
   setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
   element?: "text" | "textarea",
@@ -47,7 +51,7 @@ const useInputValidation = (
     } else {
       setValidation(true);
     }
-    if (element === "textarea" && (data[name].length)) {
+    if (element === "textarea" && data && data[name as keyof IData] && data[name as keyof IData].length) {
       setValidation(true);
     }
     setToggle(!toggle);

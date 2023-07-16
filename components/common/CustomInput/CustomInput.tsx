@@ -6,6 +6,14 @@ import useInputValidation from "hooks/useInputValidation";
 import UserInput from "./UserInput";
 import styles from "./CustomInput.module.scss";
 
+interface ICountValidation {
+  [key: string]: number;
+}
+
+interface IData {
+  [key: string]: string;
+}
+
 interface CustomInputProps {
   element: "text" | "textarea";
   type?: React.HTMLInputTypeAttribute;
@@ -16,9 +24,9 @@ interface CustomInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   essential?: boolean;
   validationTarget?: ValidationTarget;
-  data?: object;
+  data?: IData;
   rendering?: boolean;
-  countValidation?: object
+  countValidation?: ICountValidation
   setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
 }
 
@@ -43,7 +51,7 @@ const CustomInput = ({
   } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
-    data as object,
+    data as IData,
     name,
     setCountValidation,
     element,
