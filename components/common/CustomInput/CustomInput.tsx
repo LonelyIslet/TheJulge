@@ -46,6 +46,7 @@ const CustomInput = ({
     data as object,
     name,
     setCountValidation,
+    element,
   );
 
   const [change, setChange] = useState(false);

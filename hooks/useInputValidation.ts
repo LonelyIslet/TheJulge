@@ -47,7 +47,7 @@ const useInputValidation = (
     } else {
       setValidation(true);
     }
-    if (element === "textarea" && data && name && (data[name].length)) {
+    if (element === "textarea" && (data[name].length)) {
       setValidation(true);
     }
     setToggle(!toggle);

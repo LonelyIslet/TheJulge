@@ -17,6 +17,7 @@ interface DropdownProps {
   React.MouseEvent<HTMLButtonElement>) => void
   rendering: boolean
   countValidation: object
+  setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
 }
 
 const Dropdown = ({
@@ -55,7 +56,7 @@ const Dropdown = ({
       setCountValidation((prev) => {
         return {
           ...prev,
-          [name as keyof ICountValidation]: prev[name as keyof ICountValidation] + 1,
+          [name]: prev[name] + 1,
         };
       });
     }
