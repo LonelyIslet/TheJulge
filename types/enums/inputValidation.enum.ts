@@ -5,6 +5,7 @@
  * @PASSWORD_CONFIRM 비밀번호 일치 유효성 검사
  * @TEL 전화번호 유효성 검사
  * @HOURLY_PAY 숫자 입력 시 원 단위가 인풋에 표시
+ * @ESSENTIAL 필수 항목 표시
  */
 
 export enum ValidationTarget {
@@ -13,4 +14,5 @@ export enum ValidationTarget {
   PASSWORD_CONFIRM = "PASSWORD_CONFIRM",
   TEL = "TEL",
   HOURLY_PAY = "HOURLY_PAY",
+  ESSENTIAL = "ESSENTIAL",
 }

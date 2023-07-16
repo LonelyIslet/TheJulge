@@ -61,6 +61,7 @@ const UserInput = ({
             id={id}
             name={name}
             onChange={(event) => { return onChange(event); }}
+            onBlur={onBlur}
           />
         )}
       {type === "password" && (
