@@ -1,8 +1,8 @@
 "use client";
 
-import useDropdown from "hooks/useDropdown";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import useDropdown from "hooks/useDropdown";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
@@ -28,6 +28,7 @@ const Dropdown = ({
   const divRef = useRef<HTMLDivElement>(null);
   const [checkValidaiton, setCheckValidation] = useState(true);
   const [inputValue, setInputValue] = useState<string>("");
+  const [swingValidationText, setSwingValidationText] = useState(false);
   const { toggle, setToggle, fetchData } = useDropdown(divRef, type);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,17 +38,21 @@ const Dropdown = ({
 
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const isPassedValidation = fetchData?.data.includes(e.target.value);
-    if (!(e.relatedTarget && e.relatedTarget.type === "button")) {
+    // 드롭 다운에 있는 버튼이 아닐 경우에만 유효성 검사 진행
+    if ((e.relatedTarget as HTMLButtonElement)?.type !== "button") {
       if (isPassedValidation) {
         setCheckValidation(true);
       } else {
         setCheckValidation(false);
       }
     }
-    if (e.relatedTarget?.type == "button") {
+    if ((e.relatedTarget as HTMLButtonElement)?.type === "button") {
       setCheckValidation(true);
+    }
+    if (!isPassedValidation) {
+      setSwingValidationText(!swingValidationText);
     }
   };
 
@@ -133,7 +138,7 @@ const Dropdown = ({
           })}
         </div>
       </div>
-      {!checkValidaiton && <p>유효성 검사 실패</p>}
+      {!toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
     </div>
   );
 };

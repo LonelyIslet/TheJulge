@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Dropdown } from "components/common";
+import { CommonBtn, Dropdown } from "components/common";
 
 const page = () => {
   const [data, setData] = useState({});
