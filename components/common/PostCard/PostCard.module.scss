@@ -8,10 +8,9 @@
   border-radius: 1.2rem;
   padding: 1.6rem;
   border: 0.1rem solid $gray-20;
-
-  &:hover .postImage {
-    transform: scale(1.2);
-    transition: transform 0.5s ease;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: $red-10;
   }
 
   @media (max-width: 680px) {
@@ -39,6 +38,7 @@
       &.isClosed {
         filter: brightness(0.4);
       }
+    transition: transform 0.5s ease;
     }
 
     .closedMessage {
