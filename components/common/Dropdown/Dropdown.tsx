@@ -102,9 +102,12 @@ const Dropdown = ({
           id="toggle"
         />
       )}
-      <div>
-        <div className={styles.container} ref={dropdownContainerRef}>
-          {toggle
+      <div
+        className={toggle ? styles.container
+          : styles.containerHide}
+        ref={dropdownContainerRef}
+      >
+        {toggle
         && inputValue
         && fetchData
         && fetchData.data.filter((list) => { return list.includes(inputValue); })
@@ -120,7 +123,7 @@ const Dropdown = ({
               </button>
             );
           }))}
-          {toggle
+        {toggle
           && !inputValue
           && fetchData
           && fetchData.data.map((list:string) => {
@@ -136,7 +139,6 @@ const Dropdown = ({
               </button>
             );
           })}
-        </div>
       </div>
       {!toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
     </div>
