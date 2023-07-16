@@ -83,10 +83,10 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {validationTarget && !validation && (
+      {/* {validationTarget && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
-      )}
-      {validationTarget && element === "text" && !!countValidation?.[name as keyof ICountValidation] && !validation && (
+      )} */}
+      {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>

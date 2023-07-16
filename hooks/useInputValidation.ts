@@ -50,11 +50,11 @@ const useInputValidation = (
     setToggle(!toggle);
   };
 
-  let validationContent: string = validationContentMap[validationTarget];
+  const validationContent: string = validationContentMap[validationTarget];
 
-  if (essential && value?.length === 0) {
-    validationContent = validationContentMap.ESSENTIAL;
-  }
+  // if (essential && value?.length === 0) {
+  //   validationContent = validationContentMap.ESSENTIAL;
+  // }
 
   return {
     validation, validationContent, handleBlur, toggle,

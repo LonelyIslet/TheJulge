@@ -21,19 +21,24 @@ const inputValidation = (
   const oneDigits = +value % 10;
   if (!value) return false;
   switch (validationTarget) {
-    case "EMAIL":
+    case ValidationTarget.EMAIL:
       return emailRegexp.test(value.toString());
-    case "PASSWORD":
+    case ValidationTarget.PASSWORD:
       return passwordRegexp.test(value.toString());
-    case "TEL":
+    case ValidationTarget.TEL:
       return telRegexp.test(value.toString());
-    case "HOURLY_PAY":
+    case ValidationTarget.HOURLY_PAY:
       if (!oneDigits && !tenDigits) {
         return true;
       }
       return false;
     case ValidationTarget.PASSWORD_CONFIRM:
       if (data && data.password === data.password_confirm) {
+        return true;
+      }
+      return false;
+    case ValidationTarget.ESSENTIAL:
+      if (value.length > 0) {
         return true;
       }
       return false;
