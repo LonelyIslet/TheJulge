@@ -1,29 +1,17 @@
-@mixin flexbox($direction, $justify: false, $align: false) {
-  display: flex;
-  flex-direction: $direction;
-
-  @if $justify {
-    justify-content: $justify;
-  }
-
-  @if $align {
-    align-items: $align;
-  }
-}
-
 .formContainer {
   @include flexbox(column, false, center);
   gap: 2rem;
   width: fit-content;
+  min-width: 41rem;
   height: 69.7rem;
   padding: 2.4rem 3rem;
   background: $white;
   border-radius: 2.2rem;
 
-  @media only screen and (max-width: 410px) {
-    
+  @include x-mobile {
     height: 100vh;
     width: 100vw;
+    min-width: auto;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -31,7 +19,7 @@
 
 .titleContainer {
   @include flexbox(row);
-  width:35rem;
+  width: 100%;
   .titleItem {
     @include flexbox(column);
     width: 50%;
@@ -75,9 +63,9 @@
 
 .submitButton {
 	@include flexbox(row, center, center);
-	padding: 1.4rem 13.6rem;
+  width: 100%;
+  padding: 1.4rem 0;
 	gap: 0.8rem;
-	align-self: stretch;
 	appearance: none;
 	-webkit-appearance: none;
 	border: none;
@@ -93,40 +81,3 @@
 		transform: scale(1.02);
 	}
 }
-
-// TODO: tony가 커스텀 인풋 merge하면 delete
-.inputContainer {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.8rem;
-  align-self: stretch;
-  padding-bottom: 2.4rem;
-  & span {
-    font-size: 1.6rem;
-  }
-  
-  & input {
-    width: 100%;
-    height: 5.8rem;
-    text-indent: 2rem;
-    font-size: 1.6rem;
-    border-radius: 0.6rem;
-    border: 1px solid var(--the-julge-gray-30, #CBC9CF);
-    background: var(--the-julge-white, #FFF);
-  }
-
-  & input::placeholder {
-    color: $gray-40;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:focus {
-      transition: background-color 600000s 0s, color 600000s 0s;
-  }
-  input[data-autocompleted] {
-      background-color: transparent !important;
-  }
-}
-

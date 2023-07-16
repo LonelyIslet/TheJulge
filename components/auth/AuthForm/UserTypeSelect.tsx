@@ -1,7 +1,9 @@
+import { UserType } from "types/enums/user.enum";
+import { ChangeEvent } from "react";
 import styles from "./UserTypeSelect.module.scss";
 
 interface UserTypeSelectProps {
-  onChange: (arg1: string)=>void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>void;
 }
 
 const RadioButtonIcon = () => {
@@ -23,11 +25,11 @@ const UserTypeSelect = ({
       <div className={styles.inputListContainer}>
         <div className={styles.inputContainer}>
           <input
-            onChange={(e) => { onChange(e.target.value); }}
+            onChange={(e) => { onChange(e); }}
             defaultChecked
             type="radio"
             name="type"
-            value="employee"
+            value={UserType.EMPLOYEE}
           />
           <div>
             <div className={styles.iconBox}>
@@ -38,10 +40,10 @@ const UserTypeSelect = ({
         </div>
         <div className={styles.inputContainer}>
           <input
-            onChange={(e) => { onChange(e.target.value); }}
+            onChange={(e) => { onChange(e); }}
             type="radio"
             name="type"
-            value="employer"
+            value={UserType.EMPLOYER}
           />
           <div>
             <div className={styles.iconBox}>
