@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSignupMutation } from "redux/api/authApi";
 import { CustomInput, Loader, Modal } from "components/common";
+import UserTypeSelect from "components/auth/AuthForm/UserTypeSelect";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import { UserType } from "types/enums/user.enum";
 import { ModalType } from "types/enums/modal.enum";
+import useSignup from "hooks/api/auth/useSignup";
 import inputValidation from "utils/inputValidation";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
-import UserTypeSelect from "./UserTypeSelect";
 import styles from "./AuthForm.module.scss";
 
 const SignupForm = () => {
   const router = useRouter();
   const [rendering, setRendering] = useState(false);
-  const [signup, { isLoading }] = useSignupMutation();
-  const [errorMsg, setErrorMsg] = useState("");
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const { signup, isLoading } = useSignup();
   const [isProceedModalOpen, setIsProceedModalOpen] = useState(false);
   const [countValidation, setCountValidation] = useState({
     email: 0,
@@ -51,21 +48,13 @@ const SignupForm = () => {
       password_confirm: 1,
     });
     if (isEmailValidationPassed && isPasswordValidationPassed) {
-      try {
-        await signup({
-          email: data.email,
-          password: data.password,
-          type: data.type,
-        }).unwrap();
+      const res = await signup({
+        email: data.email,
+        password: data.password,
+        type: data.type,
+      });
+      if (res) {
         setIsProceedModalOpen(true);
-      } catch (err) {
-        setIsErrorModalOpen(true);
-        if (isFetchBaseQueryError(err)) {
-          const errorObj = "error" in err ? err.error : err.data as { message: string };
-          if (typeof errorObj !== "string") {
-            setErrorMsg(errorObj.message);
-          }
-        }
       }
     }
   };
@@ -126,14 +115,6 @@ const SignupForm = () => {
           {isLoading ? <Loader /> : "회원가입"}
         </button>
       </form>
-      {isErrorModalOpen && (
-        <Modal
-          type={ModalType.CONFIRM}
-          message={errorMsg}
-          onClose={() => { setIsErrorModalOpen(false); }}
-          closeBtnLabel="닫기"
-        />
-      )}
       {isProceedModalOpen && (
         <Modal
           type={ModalType.ACTION}
