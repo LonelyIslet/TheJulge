@@ -2,7 +2,7 @@
 
 import useDropdown from "hooks/useDropdown";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
@@ -26,13 +26,29 @@ const Dropdown = ({
   essential,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
-
+  const [checkValidaiton, setCheckValidation] = useState(true);
   const [inputValue, setInputValue] = useState<string>("");
   const { toggle, setToggle, fetchData } = useDropdown(divRef, type);
 
   const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
     setInputValue(event.target.value);
+  };
+
+  const dropdownContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleBlur = (e) => {
+    const isPassedValidation = fetchData?.data.includes(e.target.value);
+    if (!(e.relatedTarget && e.relatedTarget.type === "button")) {
+      if (isPassedValidation) {
+        setCheckValidation(true);
+      } else {
+        setCheckValidation(false);
+      }
+    }
+    if (e.relatedTarget?.type == "button") {
+      setCheckValidation(true);
+    }
   };
 
   const handlePickData = ((event: React.MouseEvent<HTMLButtonElement>) => {
@@ -56,6 +72,7 @@ const Dropdown = ({
         name={name}
         value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
+        onBlur={handleBlur}
         placeholder="선택"
       />
       {toggle && (
@@ -81,26 +98,7 @@ const Dropdown = ({
         />
       )}
       <div>
-        {toggle && (
-        <div className={styles.container}>
-          {!inputValue
-          && fetchData
-          && fetchData.data.map((list:string) => {
-            return (
-              <button
-                type="button"
-                onClick={handlePickData}
-                className={styles.content}
-                key={list}
-                name={type === "address" ? "address" : "category"}
-              >
-                {list}
-              </button>
-            );
-          })}
-        </div>
-        )}
-        <div className={styles.container}>
+        <div className={styles.container} ref={dropdownContainerRef}>
           {toggle
         && inputValue
         && fetchData
@@ -117,8 +115,25 @@ const Dropdown = ({
               </button>
             );
           }))}
+          {toggle
+          && !inputValue
+          && fetchData
+          && fetchData.data.map((list:string) => {
+            return (
+              <button
+                type="button"
+                onClick={handlePickData}
+                className={styles.content}
+                key={list}
+                name={type === "address" ? "address" : "category"}
+              >
+                {list}
+              </button>
+            );
+          })}
         </div>
       </div>
+      {!checkValidaiton && <p>유효성 검사 실패</p>}
     </div>
   );
 };
