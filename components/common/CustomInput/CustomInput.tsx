@@ -6,18 +6,6 @@ import useInputValidation from "hooks/useInputValidation";
 import UserInput from "./UserInput";
 import styles from "./CustomInput.module.scss";
 
-interface IValidationType {
-  email?: string,
-  password?: string,
-  password_confirm?: string
-}
-
-interface ICountValidation {
-  email: number;
-  password: number;
-  password_confirm: number
-}
-
 interface CustomInputProps {
   element: "text" | "textarea";
   type?: React.HTMLInputTypeAttribute;
@@ -25,15 +13,13 @@ interface CustomInputProps {
   placeholder?: string;
   id: string;
   name: string;
-  onChange: (event:
-  React.ChangeEvent<HTMLInputElement |
-  HTMLTextAreaElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   essential?: boolean;
-  validationTarget?: ValidationTarget
-  data?: IValidationType;
+  validationTarget?: ValidationTarget;
+  data?: object;
   rendering?: boolean;
-  countValidation?: ICountValidation;
-  setCountValidation?: React.Dispatch<React.SetStateAction<ICountValidation>>;
+  countValidation?: object
+  setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
 }
 
 const CustomInput = ({
@@ -60,7 +46,6 @@ const CustomInput = ({
     data as object,
     name,
     setCountValidation,
-    element,
   );
 
   const [change, setChange] = useState(false);
@@ -83,7 +68,7 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
+      {validationTarget && !!countValidation?.[name] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>

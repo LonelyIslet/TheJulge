@@ -64,8 +64,9 @@ const EditProfile = () => {
     if (data.name.length && inputValidation(
       ValidationTarget.PHONE,
       data.phone,
+    // eslint-disable-next-line no-empty
     ) && isContainedAddress && data.bio.length) {
-      console.log("전송성공!");
+
     }
   };
 
@@ -86,7 +87,7 @@ const EditProfile = () => {
             data={data}
             rendering={rendering}
             countValidation={countValidation}
-            setCountValidation={setCountValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <CustomInput
             element="text"
@@ -101,7 +102,7 @@ const EditProfile = () => {
             data={data}
             rendering={rendering}
             countValidation={countValidation}
-            setCountValidation={setCountValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <Dropdown
             type="address"
@@ -112,6 +113,7 @@ const EditProfile = () => {
             essential
             rendering={rendering}
             countValidation={countValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
         </div>
         <CustomInput
@@ -126,7 +128,7 @@ const EditProfile = () => {
           data={data}
           rendering={rendering}
           countValidation={countValidation}
-          setCountValidation={setCountValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>등록하기</CommonBtn>
       </form>

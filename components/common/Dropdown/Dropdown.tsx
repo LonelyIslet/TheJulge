@@ -28,6 +28,7 @@ const Dropdown = ({
   essential,
   rendering,
   countValidation,
+  setCountValidation,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [checkValidaiton, setCheckValidation] = useState(true);
@@ -51,6 +52,12 @@ const Dropdown = ({
       } else {
         setCheckValidation(false);
       }
+      setCountValidation((prev) => {
+        return {
+          ...prev,
+          [name as keyof ICountValidation]: prev[name as keyof ICountValidation] + 1,
+        };
+      });
     }
     if ((e.relatedTarget as HTMLButtonElement)?.type === "button") {
       setCheckValidation(true);
@@ -151,7 +158,7 @@ const Dropdown = ({
             );
           })}
       </div>
-      {!!countValidation[name] && !toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
+      {!!countValidation?.[name] && !toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
     </div>
   );
 };
