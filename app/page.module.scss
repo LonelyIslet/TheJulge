@@ -1,0 +1,24 @@
+.header {
+  background-color: $red-10;
+}
+
+.noticeWrapper {
+  @include flexbox(column, false, flex-start);
+  margin: 0 auto;
+  padding: 6rem 24rem;
+  max-width: 192rem;
+
+  h1 {
+    font-size: 2.8rem;
+  }
+}
+
+.firstLine {
+  @include flexbox(row, space-between, center);
+  width: 100%;
+}
+
+.buttonContainer {
+  @include flexbox(row, space-between, center);
+  gap: 1rem;
+}

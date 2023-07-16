@@ -140,7 +140,7 @@ thejulge
 │  │  └─ table.ts
 │  └─ sample.ts
 ├─ hooks
-│  ├─ useClickOutside.ts
+│  ├─ useOutsideClick.ts
 │  ├─ useDropdown.ts
 │  ├─ useInputValidation.ts
 │  ├─ useResponsiveNavbar.ts

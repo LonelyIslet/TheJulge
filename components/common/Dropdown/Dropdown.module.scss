@@ -36,6 +36,10 @@
     position: relative;
   }
 
+  .containerHide {
+    display: none;
+  }
+
   .content {
     background-color: #fff;
     box-sizing: border-box;
@@ -49,6 +53,26 @@
 
     &:hover {
       background-color: $gray-10;
+    }
+  }
+
+  .validation {
+    color: $red-40;
+    animation: shake 0.2s ease;
+    margin: {
+      top: 0.8rem;
+      left: 0.8rem;
+      bottom: 0;
+    }
+  }
+
+  .swing {
+    color: $red-40;
+    animation: swing 0.3s ease;
+    margin: {
+      top: 0.8rem;
+      left: 0.8rem;
+      bottom: 0;
     }
   }
 
@@ -74,5 +98,35 @@
   /* Firefox  */
   input[type='number'] {
     -moz-appearance: textfield;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-0.3rem);
+  }
+  75% {
+    transform: translate(0.3rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes swing {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-0.3rem);
+  }
+  75% {
+    transform: translate(0.3rem);
+  }
+  100% {
+    transform: translate(0);
   }
 }

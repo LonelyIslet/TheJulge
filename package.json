@@ -12,12 +12,15 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@types/classnames": "^2.3.1",
+    "@types/redux-persist": "^4.3.1",
     "classnames": "^2.3.2",
     "next": "13.4.7",
     "next-sitemap": "^4.1.8",
     "react": "18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-redux": "^8.1.1",
+    "redux-persist": "^6.0.0",
     "typescript": "5.1.6"
   },
   "devDependencies": {

@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import classNames from "classnames/bind";
+import { ApplyStatus } from "types/enums/apply.enum";
 import { IAlert } from "types/dto";
 import formatTimeRange from "utils/formatTimeRange";
-import { ApplyStatus } from "types/enums/apply.enum";
 import showElapsedTime from "utils/showElapsedTime";
 import styles from "./NotificationBoard.module.scss";
 

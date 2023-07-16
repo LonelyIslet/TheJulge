@@ -41,7 +41,6 @@ export interface INotice {
     item: IShop,
     href: string,
   },
-
 }
 
 export interface IAlert {
@@ -61,7 +60,7 @@ export interface IAlert {
     item: INotice,
     href: string,
   },
-  links: object[],
+  links: ILink[],
 }
 
 export interface IUser {
@@ -73,8 +72,15 @@ export interface IUser {
   phone?: string,
   address?: string,
   bio?: string,
-  IShop?: {
+  shop?: {
     item: IShop,
     href: string,
   }
+}
+
+export interface ILink {
+  rel: string;
+  description: string;
+  method: string;
+  href: string;
 }
