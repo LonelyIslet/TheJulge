@@ -1,31 +1,39 @@
-.previewArea {
-  @include flexbox (row, center, center);
-  position: relative;
-  width: 48.4rem;
-  height: 27.6rem;
-  background-color: $gray-10;
-  border: 1px solid $gray-30;
-  cursor: pointer;
-  border-radius: 1rem;
-  overflow: hidden;
+.filePreviewer {
+  height: 35rem;
 
-  .shopImage {
-    &.isEditMode {
-      filter: brightness(0.5)
+  .previewArea {
+    @include flexbox (row, center, center);
+    position: relative;
+    height: 27.6rem;
+    background-color: $gray-10;
+    border: 1px solid $gray-30;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    .shopImage {
+      &.isEditMode {
+        filter: brightness(0.5)
+      }
+    }
+
+    .previewContainer {
+      @include flexbox (column, center, center);
+      z-index: 1;
+
+      .previewImg {
+        margin-bottom: 1rem;
+      }
+
+      .previewMessage {
+        color: $gray-40;
+        @include bold;
+      }
     }
   }
 
-  .previewContainer {
-    @include flexbox (column, center, center);
-    z-index: 1;
-
-    .previewImg {
-      margin-bottom: 1rem;
-    }
-
-    .previewMessage {
-      color: $gray-40;
-      @include bold;
-    }
+  .label {
+    display: block;
+    margin-bottom: 8px;
   }
 }

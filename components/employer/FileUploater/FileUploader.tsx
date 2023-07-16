@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import classNames from "classnames/bind";
 import styles from "./FileUploader.module.scss";
@@ -8,30 +8,13 @@ import styles from "./FileUploader.module.scss";
 const cx = classNames.bind(styles);
 
 interface FileUploaderProps {
-  shopImageUrl?: string,
+  previewUrl: string,
+  isEditMode: boolean,
+  onFileChange: (file: File | undefined) => void;
 }
 
-const FileUploader = ({ shopImageUrl }: FileUploaderProps) => {
-  const [selectedFile, setSelectedFile] = useState<File | undefined>();
-  const [previewUrl, setPreviewUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [isEditMode, setIsEditMode] = useState(false);
+const FileUploader = ({ onFileChange, previewUrl, isEditMode }: FileUploaderProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!shopImageUrl) return;
-    setPreviewUrl(shopImageUrl);
-    setImageUrl(shopImageUrl);
-    setIsEditMode(true);
-  }, [shopImageUrl]);
-
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMDUzZmVjOS01NjdjLTQ2MDktODQ0Zi1hZWIzOTgxMTEyN2UiLCJpYXQiOjE2ODk0Mzg5Mjd9.4NnBka67bMT7Yyrrk-1DkbtjhJdsDC4vqhMbDGDye2M";
-
-  interface MyResponse {
-    item: {
-      url: string
-    }
-  }
 
   const handleFileClick = () => {
     if (fileInputRef.current) {
@@ -41,51 +24,12 @@ const FileUploader = ({ shopImageUrl }: FileUploaderProps) => {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = event.target.files?.[0];
-
-    if (file) {
-      setSelectedFile(file);
-      const objectUrl = URL.createObjectURL(file);
-      setPreviewUrl(objectUrl);
-      setIsEditMode(false);
-    }
-  };
-
-  const removeQueryFromUrl = (url: string): string => {
-    return url.split("?")[0];
-  };
-
-  const handleUpload = (): void => {
-    if (selectedFile) {
-      fetch("/images", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ name: selectedFile.name }),
-      })
-        .then((response: Response) => { return response.json(); })
-        .then((data: MyResponse) => {
-          const { url } = data.item;
-          fetch(url, {
-            method: "PUT",
-            body: selectedFile,
-          })
-            .then(() => {
-              setImageUrl(removeQueryFromUrl(url));
-            })
-            .catch((err: Error) => {
-              console.error(err);
-            });
-        })
-        .catch((err: Error) => {
-          console.error(err);
-        });
-    }
+    onFileChange(file);
   };
 
   return (
     <div className={styles.filePreviewer}>
+      <label className={styles.label} htmlFor="file-input">가게 이미지</label>
       <div className={styles.previewArea} onClick={handleFileClick} role="presentation">
         {previewUrl && <Image src={previewUrl} alt={previewUrl} className={cx("shopImage", { isEditMode })} fill />}
         {isEditMode && previewUrl
@@ -106,13 +50,12 @@ const FileUploader = ({ shopImageUrl }: FileUploaderProps) => {
       <input
         ref={fileInputRef}
         id="file-input"
+        name="file"
         type="file"
         accept="image/*"
-        onChange={handleFileChange}
+        onChange={(e) => { handleFileChange(e); }}
         style={{ display: "none" }}
       />
-      <button type="submit" onClick={handleUpload}>제출</button>
-      <div>{`이미지 경로 : ${imageUrl}`}</div>
     </div>
   );
 };
