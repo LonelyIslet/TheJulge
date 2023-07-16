@@ -1,7 +1,7 @@
 import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IShop } from "types/dto";
 
-interface IGetShopInfoResponse {
+export interface IGetShopInfoResponse {
   item: IShop;
   links: ILink[];
 }
@@ -24,10 +24,10 @@ export const shopApi = apiSlice.injectEndpoints({
           };
         },
       }),
-      updateShopInfo: builder.mutation<IUpdateShopInfoResponse, IShop>({
-        query: (body) => {
+      updateShopInfo: builder.mutation<IUpdateShopInfoResponse, { shopId: string, body: IShop }>({
+        query: ({ shopId, body }) => {
           return {
-            url: "shops",
+            url: `shops/${shopId}`,
             method: "PUT",
             body,
           };

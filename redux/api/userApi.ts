@@ -1,5 +1,4 @@
 import { apiSlice } from "redux/slices/apiSlice";
-import { IUserState } from "redux/slices/userSlice";
 import { ILink, IUser } from "types/dto";
 import { Address1 } from "types/shop/address";
 
@@ -10,7 +9,7 @@ interface IGetUserInfoResponse {
 
 type IUpdateUserInfoResponse = IGetUserInfoResponse;
 
-interface IUserUpdateInfo {
+export interface IUserUpdateInfo {
   name: string;
   phone: string;
   address: Address1;
@@ -27,15 +26,13 @@ export const userApi = apiSlice.injectEndpoints({
       }),
       updateUserInfo: builder.mutation<IUpdateUserInfoResponse,
       {
-        user: IUserState,
+        userId: string,
         body: IUserUpdateInfo
       }>({
-        query: ({ user, body }) => {
-          const { token, userInfo } = user;
+        query: ({ userId, body }) => {
           return {
-            url: `users/${userInfo?.id as string}`,
+            url: `users/${userId}`,
             method: "PUT",
-            headers: { authorization: `Bearer ${token as string}` },
             body,
           };
         },

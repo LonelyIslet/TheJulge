@@ -74,8 +74,8 @@ export const noticeApi = apiSlice.injectEndpoints({
       IUpdateNoticeResponse,
       {
         shopId: string,
-        noticeId:
-        string, body: INotice
+        noticeId: string,
+        body: INotice
       }>({
         query: ({ shopId, noticeId, body }) => {
           return {

@@ -2,12 +2,12 @@ import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IUser } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 
-interface ICredentials {
+export interface ICredentials {
   email: string;
   password: string;
 }
 
-interface ICredentialsWithType extends ICredentials {
+export interface ICredentialsWithType extends ICredentials {
   type: UserType;
 }
 
