@@ -60,7 +60,7 @@ const CustomInput = ({
     data as object,
     name,
     setCountValidation,
-    essential,
+    element,
   );
 
   const [change, setChange] = useState(false);
@@ -83,9 +83,6 @@ const CustomInput = ({
         onBlur={handleBlur}
         onChange={onChange}
       />
-      {/* {validationTarget && !validation && (
-      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
-      )} */}
       {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}

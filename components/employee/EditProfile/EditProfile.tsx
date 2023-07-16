@@ -4,6 +4,8 @@ import { FormEvent, useState } from "react";
 import { CommonBtn, CustomInput, Dropdown } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import inputValidation from "utils/inputValidation";
+import { address } from "constants/dropdown/dropdownData";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -56,6 +58,15 @@ const EditProfile = () => {
       address: 1,
       bio: 1,
     });
+
+    const isContainedAddress = address.includes(data.address);
+    // 유효성 검사 완료 시 실행되는 함수 입력하면 됩니다.
+    if (data.name.length && inputValidation(
+      ValidationTarget.PHONE,
+      data.phone,
+    ) && isContainedAddress && data.bio.length) {
+      console.log("전송성공!");
+    }
   };
 
   return (
@@ -86,13 +97,22 @@ const EditProfile = () => {
             name="phone"
             essential
             onChange={handleData}
-            validationTarget={ValidationTarget.TEL}
+            validationTarget={ValidationTarget.PHONE}
             data={data}
             rendering={rendering}
             countValidation={countValidation}
             setCountValidation={setCountValidation}
           />
-          <Dropdown type="address" label="선호 지역" id="address" name="address" onChange={handleData} essential />
+          <Dropdown
+            type="address"
+            label="선호 지역"
+            id="address"
+            name="address"
+            onChange={handleData}
+            essential
+            rendering={rendering}
+            countValidation={countValidation}
+          />
         </div>
         <CustomInput
           element="textarea"

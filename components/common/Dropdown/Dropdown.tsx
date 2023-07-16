@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import useDropdown from "hooks/useDropdown";
 import styles from "./Dropdown.module.scss";
@@ -15,6 +15,8 @@ interface DropdownProps {
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
   React.MouseEvent<HTMLButtonElement>) => void
+  rendering: boolean
+  countValidation: object
 }
 
 const Dropdown = ({
@@ -24,6 +26,8 @@ const Dropdown = ({
   onChange,
   name,
   essential,
+  rendering,
+  countValidation,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [checkValidaiton, setCheckValidation] = useState(true);
@@ -65,6 +69,13 @@ const Dropdown = ({
     e.preventDefault();
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    if (inputValue.length === 0) {
+      setCheckValidation(false);
+    }
+    setSwingValidationText(!swingValidationText);
+  }, [rendering]);
 
   return (
     /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
@@ -140,7 +151,7 @@ const Dropdown = ({
             );
           })}
       </div>
-      {!toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
+      {!!countValidation[name] && !toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
     </div>
   );
 };

@@ -25,7 +25,7 @@ const inputValidation = (
       return emailRegexp.test(value.toString());
     case ValidationTarget.PASSWORD:
       return passwordRegexp.test(value.toString());
-    case ValidationTarget.TEL:
+    case ValidationTarget.PHONE:
       return telRegexp.test(value.toString());
     case ValidationTarget.HOURLY_PAY:
       if (!oneDigits && !tenDigits) {
