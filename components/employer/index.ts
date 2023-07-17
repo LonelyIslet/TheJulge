@@ -1,3 +1,3 @@
-import EditNotice from "./EditNotice/EditNotice";
+import EditNoticeForm from "./EditNoticeForm/EditNoticeForm";
 
-export { EditNotice };
+export { EditNoticeForm };

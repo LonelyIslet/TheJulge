@@ -3,9 +3,9 @@
 import { FormEvent, useState } from "react";
 import { CommonBtn, CustomInput } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
-import styles from "./EditNotice.module.scss";
+import styles from "./EditNoticeForm.module.scss";
 
-const EditNotice = () => {
+const EditNoticeForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState({});
 
@@ -51,4 +51,4 @@ const EditNotice = () => {
   );
 };
 
-export default EditNotice;
+export default EditNoticeForm;
