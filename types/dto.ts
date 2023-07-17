@@ -9,7 +9,8 @@ export interface IShop {
   address2: string,
   description?: string,
   imageUrl?: string,
-  originalHourlyPay: number
+  originalHourlyPay: number,
+  user?: IUser,
 }
 
 export interface IApplication {

@@ -8,4 +8,5 @@ export enum ApplyStatus {
   PENDING = "pending",
   REJECTED = "rejected",
   ACCEPTED = "accepted",
+  CANCELED = "canceled",
 }

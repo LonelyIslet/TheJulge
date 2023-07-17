@@ -1,11 +1,13 @@
 .container {
   @include flexbox(column);
+  background-color: $white;
   gap: 2.4rem;
   padding: 2.4rem 2rem;
   border: 1px solid $gray-20;
   border-radius: 1rem;
   width: 39rem;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+  z-index: 10;
 }
 
 .title {
