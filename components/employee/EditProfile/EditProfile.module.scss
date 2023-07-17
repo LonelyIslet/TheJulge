@@ -1,27 +1,32 @@
 .layout {
-  .inputBox {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  width: 100%;
+  
+  form {
+    .inputBox {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
 
-    @include tablet {
-      grid-template-columns: repeat(2, 1fr);
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      margin-bottom: 2rem;
     }
 
-    @include mobile {
-      grid-template-columns: repeat(1, 1fr);
+    textarea {
+      width: 100%;
+      height: 15.3rem;
+      resize: none;
     }
-  }
 
-  textarea {
-    width: 100%;
-    height: 15.3rem;
-    resize: none;
-  }
-
-  > button {
-    display: block;
-    width: 31.2rem;
-    margin: 10rem auto 0;
+   > button {
+      display: block;
+      width: 31.2rem;
+      margin: 10rem auto 0;
+    }
   }
 }

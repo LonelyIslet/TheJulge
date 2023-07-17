@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import useDropdown from "hooks/useDropdown";
 import styles from "./Dropdown.module.scss";
+
+interface ICountValidation {
+  [key: string]: number;
+}
 
 interface DropdownProps {
   type: "address" | "category"
@@ -15,6 +19,9 @@ interface DropdownProps {
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
   React.MouseEvent<HTMLButtonElement>) => void
+  rendering: boolean
+  countValidation: ICountValidation
+  setCountValidation: React.Dispatch<React.SetStateAction<ICountValidation>>;
 }
 
 const Dropdown = ({
@@ -24,6 +31,9 @@ const Dropdown = ({
   onChange,
   name,
   essential,
+  rendering,
+  countValidation,
+  setCountValidation,
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [checkValidaiton, setCheckValidation] = useState(true);
@@ -47,6 +57,12 @@ const Dropdown = ({
       } else {
         setCheckValidation(false);
       }
+      setCountValidation((prev) => {
+        return {
+          ...prev,
+          [name]: prev[name] + 1,
+        };
+      });
     }
     if ((e.relatedTarget as HTMLButtonElement)?.type === "button") {
       setCheckValidation(true);
@@ -65,6 +81,14 @@ const Dropdown = ({
     e.preventDefault();
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    if (inputValue.length === 0) {
+      setCheckValidation(false);
+    }
+    setSwingValidationText(!swingValidationText);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rendering]);
 
   return (
     /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
@@ -102,9 +126,12 @@ const Dropdown = ({
           id="toggle"
         />
       )}
-      <div>
-        <div className={styles.container} ref={dropdownContainerRef}>
-          {toggle
+      <div
+        className={toggle ? styles.container
+          : styles.containerHide}
+        ref={dropdownContainerRef}
+      >
+        {toggle
         && inputValue
         && fetchData
         && fetchData.data.filter((list) => { return list.includes(inputValue); })
@@ -120,7 +147,7 @@ const Dropdown = ({
               </button>
             );
           }))}
-          {toggle
+        {toggle
           && !inputValue
           && fetchData
           && fetchData.data.map((list:string) => {
@@ -136,9 +163,8 @@ const Dropdown = ({
               </button>
             );
           })}
-        </div>
       </div>
-      {!toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
+      {!!countValidation?.[name] && !toggle && !checkValidaiton && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>알맞은 값을 입력하세요.</p>}
     </div>
   );
 };

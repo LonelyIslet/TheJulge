@@ -1,7 +1,5 @@
-const page = () => {
-  return (
-    <div />
-  );
+const TonyPage = () => {
+  <div />;
 };
 
 export default page;
