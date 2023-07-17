@@ -2,7 +2,7 @@ import {
   CommonLayout, ShopCard,
 } from "components/common";
 
-interface EmployerShopProps {
+interface MyShopProps {
   name: string,
   address: string,
   imageUrl: string,
@@ -10,9 +10,9 @@ interface EmployerShopProps {
   category: string,
 }
 
-const EmployerShop = ({
+const MyShop = ({
   name, address, imageUrl, description, category,
-}: EmployerShopProps) => {
+}: MyShopProps) => {
   return (
     <CommonLayout position="above">
       <div>
@@ -31,4 +31,4 @@ const EmployerShop = ({
   );
 };
 
-export default EmployerShop;
+export default MyShop;

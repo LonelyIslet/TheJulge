@@ -1,6 +1,6 @@
 "use client";
 
-import { EmployerShop, EmployerNotice } from "components/employer";
+import { MyShop, MyNotice } from "components/employer";
 import { INotice } from "types/dto";
 import noticeList from "constants/mock/noticeList.json";
 import styles from "./page.module.scss";
@@ -26,7 +26,7 @@ const MyShopPage = () => {
   return (
     <div>
       <div className={styles.top}>
-        <EmployerShop
+        <MyShop
           name={shop.name}
           address={shop.address1}
           imageUrl={shop.imageUrl}
@@ -35,7 +35,7 @@ const MyShopPage = () => {
         />
       </div>
       <div className={styles.bottom}>
-        <EmployerNotice
+        <MyNotice
           noticeList={notice}
           name={shop.name}
           address={shop.address1}
