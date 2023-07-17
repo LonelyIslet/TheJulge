@@ -20,6 +20,8 @@ import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
 import CommonShopDescription from "./CommonShopDescription/CommonShopDescription";
 import Loader from "./Loader/Loader";
+import ErrorModalRoot from "./Modal/ErrorModalRoot";
+import ToastRoot from "./Toast/ToastRoot";
 
 export {
   CardList,
@@ -44,4 +46,6 @@ export {
   Table,
   Toast,
   CommonShopDescription,
+  ErrorModalRoot,
+  ToastRoot,
 };
