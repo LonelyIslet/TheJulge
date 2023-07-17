@@ -16,6 +16,7 @@ const EditNoticeForm = () => {
     description: 0,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState({
     hourlyPay: "", // 넘버 타입
     startsAt: "", // 문자열
