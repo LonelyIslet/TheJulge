@@ -19,6 +19,7 @@ import StatusChip from "./StatusChip/StatusChip";
 import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
 import Loader from "./Loader/Loader";
+import InputNumber from "./InputNumber/InputNumber";
 
 export {
   CardList,
@@ -42,4 +43,5 @@ export {
   StatusChip,
   Table,
   Toast,
+  InputNumber,
 };
