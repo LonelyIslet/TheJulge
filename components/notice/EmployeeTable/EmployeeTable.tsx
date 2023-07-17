@@ -1,8 +1,8 @@
 "use client";
 
-import Table from "components/common/Table/Table";
-import { EMPLOYEE_COLUMNS } from "constants/notice/table";
-import { IEmployeeNotices } from "types/notice/table";
+import { Table } from "components/common";
+import { IEmployeeNotices } from "types/notice/tables";
+import { EMPLOYEE_COLUMNS } from "constants/notice";
 
 interface EmployeeTableProps {
   applicationList: IEmployeeNotices[];

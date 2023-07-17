@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
 import styles from "./CustomInput.module.scss";
 
 interface UserInputProps {

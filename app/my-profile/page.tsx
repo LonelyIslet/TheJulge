@@ -2,6 +2,7 @@
 import { CommonDetail, CommonLayout, StatusChip } from "components/common";
 import { RegisteredMyProfile, ApplicationDetails } from "components/employee";
 import { EmployeeTable } from "components/notice";
+import RegisteredMyProfile from "components/employee/RegisteredMyProfile/RegisteredMyProfile";
 import { DetailType } from "types/enums/detailPage.enum";
 import styles from "./page.module.scss";
 

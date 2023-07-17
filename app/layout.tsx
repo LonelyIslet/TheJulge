@@ -1,9 +1,9 @@
 import StoreProvider from "redux/StoreProvider";
-import GlobalNav from "components/common/GlobalNav/GlobalNav";
-import GlobalFooter from "components/common/GlobalFooter/GlobalFooter";
+import { GlobalNav, GlobalFooter } from "components/common";
 import ToastRoot from "components/common/Toast/ToastRoot";
 import spoqaHanSansNeo from "styles/local.font";
 import "styles/globals.scss";
+import PersistGateContext from "components/auth/PersistGateContext/PersistGateContext";
 
 export const metadata = {
   title: "더줄게",
@@ -21,14 +21,16 @@ const RootLayout = ({
     <StoreProvider>
       <html lang="ko">
         <body className={spoqaHanSansNeo.className}>
-          <div id="toast-root" />
-          <ToastRoot />
-          <div id="modal-root" />
-          <GlobalNav />
-          <main>
-            {children}
-          </main>
-          <GlobalFooter />
+          <PersistGateContext>
+            <div id="toast-root" />
+            <ToastRoot />
+            <div id="modal-root" />
+            <GlobalNav />
+            <main>
+              {children}
+            </main>
+            <GlobalFooter />
+          </PersistGateContext>
         </body>
       </html>
     </StoreProvider>

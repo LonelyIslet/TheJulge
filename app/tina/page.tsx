@@ -1,5 +1,5 @@
 import {
-  CommonBtn, PostCard, NoticeCard, ShopCard, CardList,
+  CardList, CommonBtn, NoticeCard, PostCard, ShopCard,
 } from "components/common";
 import { INotice } from "types/dto";
 import data from "constants/mock/notice.json";

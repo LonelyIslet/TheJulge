@@ -11,6 +11,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://bootcamp-api.codeit.kr/api/0-2/the-julge/:path*",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
