@@ -17,8 +17,6 @@ const inputValidation = (
   value: string,
   data?: DataType,
 ): boolean => {
-  const tenDigits = (+value / 10) % 10;
-  const oneDigits = +value % 10;
   if (!value) return false;
   switch (validationTarget) {
     case ValidationTarget.EMAIL:
@@ -28,16 +26,20 @@ const inputValidation = (
     case ValidationTarget.PHONE:
       return telRegexp.test(value.toString());
     case ValidationTarget.HOURLY_PAY:
-      if (!oneDigits && !tenDigits) {
-        return true;
+      if (value.length <= 2) {
+        return false; // 문자열이 2자리보다 짧으면 true 반환
       }
-      return false;
+      if (value.slice(-2) === "00") {
+        return true; // 가져온 문자열이 "00"이면 false 반환
+      }
+      return false; // 가져온 문자열이 "00"이 아니면 true 반환
+
     case ValidationTarget.PASSWORD_CONFIRM:
       if (data && data.password === data.password_confirm) {
         return true;
       }
       return false;
-    case ValidationTarget.ESSENTIAL:
+    case ValidationTarget.REQUIRED:
       if (value.length > 0) {
         return true;
       }

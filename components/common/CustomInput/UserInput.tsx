@@ -24,8 +24,6 @@ const UserInput = ({
   onBlur,
   onChange,
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-  const inputStyle = type === "number" ? `${styles.userInput} ${styles.inputNumber}` : styles.userInput;
-
   const [isEyeToggled, setIsEyeToggled] = useState(false);
 
   const handleToggle = () => {
@@ -44,7 +42,7 @@ const UserInput = ({
       {element === "text"
         ? (
           <input
-            className={inputStyle}
+            className={styles.userInput}
             type={getInputType()}
             placeholder={placeholder}
             id={id}
@@ -75,7 +73,6 @@ const UserInput = ({
         height={16}
       />
       )}
-      {type === "number" && <span className={styles.unit}>원</span>}
     </div>
   );
 };
