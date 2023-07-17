@@ -38,9 +38,7 @@ const HomePage = async ({
             </div>
           </div>
           <div className={styles.cheesyNoticeList}>
-            <CardList
-              noticeList={noticeList}
-            />
+            <CardList noticeList={noticeList} />
           </div>
         </div>
       </main>
