@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { EditNotice } from "components/employer";
+import { EditNoticeForm } from "components/employer";
 import styles from "./page.module.scss";
 
 const NoticeWrite = () => {
@@ -12,7 +12,7 @@ const NoticeWrite = () => {
           <Image src="/images/close.svg" alt="닫기 버튼" width={30} height={30} />
         </Link>
       </div>
-      <EditNotice />
+      <EditNoticeForm />
     </>
   );
 };
