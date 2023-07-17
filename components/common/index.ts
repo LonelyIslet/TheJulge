@@ -24,7 +24,6 @@ import ErrorModalRoot from "./Modal/ErrorModalRoot";
 import ToastRoot from "./Toast/ToastRoot";
 import InputNumber from "./InputNumber/InputNumber";
 
-
 export {
   CardList,
   CommonBtn,
