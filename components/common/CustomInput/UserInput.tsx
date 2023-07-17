@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./CustomInput.module.scss";
 
+interface IData {
+  [key: string]: string;
+}
+
 interface UserInputProps {
   element: "text" | "textarea";
   type?: React.HTMLInputTypeAttribute;
@@ -11,8 +15,9 @@ interface UserInputProps {
   id: string;
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onChange :(event:
+  onChange: (event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  data: IData
 }
 
 const UserInput = ({
@@ -23,6 +28,7 @@ const UserInput = ({
   name,
   onBlur,
   onChange,
+  data,
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const inputStyle = type === "number" ? `${styles.userInput} ${styles.inputNumber}` : styles.userInput;
 
@@ -52,6 +58,7 @@ const UserInput = ({
             ref={ref}
             onBlur={onBlur}
             onChange={(event) => { return onChange(event); }}
+            defaultValue={data?.[name]}
           />
         )
         : (
@@ -62,18 +69,19 @@ const UserInput = ({
             name={name}
             onChange={(event) => { return onChange(event); }}
             onBlur={onBlur}
+            defaultValue={data?.[name]}
           />
         )}
       {type === "password" && (
-      <Image
-        src={isEyeToggled ? "/images/close-eye.svg"
-          : "/images/open-eye.svg"}
-        onClick={handleToggle}
-        className={styles.unit}
-        alt="비밀번호 표시/숨김 버튼"
-        width={16}
-        height={16}
-      />
+        <Image
+          src={isEyeToggled ? "/images/close-eye.svg"
+            : "/images/open-eye.svg"}
+          onClick={handleToggle}
+          className={styles.unit}
+          alt="비밀번호 표시/숨김 버튼"
+          width={16}
+          height={16}
+        />
       )}
       {type === "number" && <span className={styles.unit}>원</span>}
     </div>

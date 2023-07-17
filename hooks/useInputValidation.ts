@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
@@ -28,9 +28,10 @@ const validationContentMap: {
 const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
-  data?: IData,
+  setCountValidation?: React.Dispatch<React.SetStateAction<ICountValidation>>,
+  essential?: boolean,
   name?: string,
-  setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
+  data?: IData,
   element?: "text" | "textarea",
 ) => {
   const [validation, setValidation] = useState<boolean>(false);
@@ -57,7 +58,17 @@ const useInputValidation = (
     setToggle(!toggle);
   };
 
-  const validationContent: string = validationContentMap[validationTarget];
+  useEffect(() => {
+    if (validationTarget && !inputValidation(validationTarget, value, data)) {
+      setValidation(false);
+    } else {
+      setValidation(true);
+    }
+  }, [validationTarget, value, data]);
+
+  const validationContent: string = value?.length === 0 && essential
+    ? validationContentMap.ESSENTIAL
+    : validationContentMap[validationTarget];
 
   return {
     validation, validationContent, handleBlur, toggle,

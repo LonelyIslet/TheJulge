@@ -19,10 +19,10 @@ interface CustomInputProps {
   type?: React.HTMLInputTypeAttribute;
   label: string;
   placeholder?: string;
+  essential?: boolean;
   id: string;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  essential?: boolean;
   validationTarget?: ValidationTarget;
   data?: IData;
   rendering?: boolean;
@@ -51,9 +51,10 @@ const CustomInput = ({
   } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
-    data as IData,
-    name,
     setCountValidation,
+    essential,
+    name,
+    data as IData,
     element,
   );
 
@@ -61,7 +62,7 @@ const CustomInput = ({
 
   useEffect(() => {
     setChange(!change);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
 
   return (
@@ -76,9 +77,10 @@ const CustomInput = ({
         ref={inputRef}
         onBlur={handleBlur}
         onChange={onChange}
+        data={data as IData}
       />
       {validationTarget && !!countValidation?.[name] && !validation && (
-      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>
   );
