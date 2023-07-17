@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useInputValidation from "hooks/useInputValidation";
 import UserInput from "./UserInput";
@@ -24,7 +24,7 @@ interface CustomInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   required?: boolean;
   validationTarget?: ValidationTarget;
-  data?: IData;
+  data: IData;
   rendering?: boolean;
   countValidation?: ICountValidation
   setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
@@ -45,17 +45,16 @@ const CustomInput = ({
   countValidation,
   setCountValidation,
 }: CustomInputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [inputValue, setInputValue] = useState<string>(data?.[name] as string);
+  // const [inputValue, setInputValue] = useState<string>(data?.[name] as string);
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    inputValue,
+    data?.[name],
     name,
     required,
     setCountValidation,
-    data as IData,
+    data,
     element,
   );
 
@@ -74,12 +73,9 @@ const CustomInput = ({
         type={type}
         id={id}
         name={name}
-        ref={inputRef}
         onBlur={handleBlur}
         onChange={onChange}
         data={data}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
       />
       {validationTarget && !!countValidation?.[name] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
