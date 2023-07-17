@@ -21,7 +21,7 @@ const validationContentMap: {
   PASSWORD: "비밀번호가 유효하지 않습니다.",
   PASSWORD_CONFIRM: "비밀번호가 일치하지 않습니다.",
   HOURLY_PAY: "백원 단위로 입력해주세요.",
-  PHONE: "유효하지 않는 전화번호 입니다.",
+  PHONE: "유효하지 않은 전화번호 입니다.",
   ESSENTIAL: "필수 항목입니다.",
 };
 

@@ -1,4 +1,4 @@
-export const address = ["서울시 종로구",
+export const ADDRESS = ["서울시 종로구",
   "서울시 중구",
   "서울시 용산구",
   "서울시 성동구",
@@ -24,7 +24,7 @@ export const address = ["서울시 종로구",
   "서울시 송파구",
   "서울시 강동구"];
 
-export const category = [
+export const CATEGORY = [
   "한식",
   "중식",
   "일식",
