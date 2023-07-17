@@ -16,12 +16,6 @@
   }
 }
 
-@mixin x-mobile {
-  @media (max-width: 425px) {
-    @content;
-  }
-}
-
 @mixin bold {
   font-weight: 700;
 }
@@ -103,4 +97,3 @@
     -webkit-line-clamp: $line;
   }
 }
-

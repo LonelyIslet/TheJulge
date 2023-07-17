@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ADDRESS_1 } from "constants/notice";
+import { ADDRESS } from "constants/dropdown/dropdownData";
 import addCommasToString from "utils/addCommasToString";
 import styles from "./Filter.module.scss";
 
@@ -52,7 +52,7 @@ const Filter = ({
         className={styles.locationButton}
         onClick={() => { return handleDeleteLocation(id); }}
       >
-        {ADDRESS_1[id]?.label}
+        {ADDRESS[id]}
         <div className={styles.redCloseButton}>
           <Image
             fill
@@ -85,14 +85,14 @@ const Filter = ({
       <div className={styles.contents}>
         <p>위치</p>
         <div className={styles.location}>
-          {ADDRESS_1.map((address) => {
+          {ADDRESS.map((address, idx) => {
             return (
               <button
-                key={address.id}
+                key={address}
                 type="button"
-                onClick={() => { return handleAddressClick(address.id); }}
+                onClick={() => { return handleAddressClick(idx); }}
               >
-                {address.label}
+                {address}
               </button>
             );
           })}
