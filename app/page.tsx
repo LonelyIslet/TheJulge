@@ -1,8 +1,23 @@
-// import { CardList } from "components/common";
+import { CardList } from "components/common";
 import { FilterButton, SortButton } from "components/notice";
+import { INoticeData } from "types/dto";
+import parseNoticesData from "utils/parseNoticesData";
 import styles from "./page.module.scss";
 
-const HomePage = () => {
+export interface HomePageProps {
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
+}
+
+const HomePage = async ({
+  searchParams,
+}:HomePageProps) => {
+  // const { q } = searchParams;
+  const res = await fetch("https://bootcamp-api.codeit.kr/api/0-2/the-julge/notices");
+  const data: INoticeData = await res.json();
+  const noticeList = parseNoticesData(data);
+
   return (
     <>
       <header className={styles.header}>
@@ -23,7 +38,9 @@ const HomePage = () => {
             </div>
           </div>
           <div className={styles.cheesyNoticeList}>
-            {/* <CardList /> */}
+            <CardList
+              noticeList={noticeList}
+            />
           </div>
         </div>
       </main>

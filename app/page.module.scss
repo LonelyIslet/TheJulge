@@ -4,6 +4,7 @@
 
 .noticeWrapper {
   @include flexbox(column, false, flex-start);
+  gap: 3.2rem;
   margin: 0 auto;
   padding: 6rem 24rem;
   max-width: 192rem;
@@ -21,4 +22,8 @@
 .buttonContainer {
   @include flexbox(row, space-between, center);
   gap: 1rem;
+}
+
+.cheesyNoticeList {
+  width: 100%;
 }
