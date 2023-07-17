@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { CommonBtn, CustomInput, Dropdown } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
-import { ValidationTarget } from "types/enums/inputValidation.enum";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -37,7 +36,7 @@ const EditProfile = () => {
     <div className={styles.layout}>
       <div className={styles.inputBox}>
         <CustomInput element="text" type="text" label="이름" placeholder="입력" id="name" name="name" essential onChange={handleData} />
-        <CustomInput element="text" type="tel" label="연락처" placeholder="입력" id="phone" name="phone" essential onChange={handleData} validationTarget={ValidationTarget.TEL} />
+        <CustomInput element="text" type="tel" label="연락처" placeholder="입력" id="phone" name="phone" essential onChange={handleData} />
         <Dropdown type="address" label="선호 지역" id="address" name="address" onChange={handleData} />
       </div>
       <CustomInput element="textarea" label="소개" placeholder="입력" id="bio" name="bio" onChange={handleData} />

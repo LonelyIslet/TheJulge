@@ -10,7 +10,7 @@ interface UserInputProps {
   placeholder?: string;
   id: string;
   name: string;
-  onBlur: React.FocusEventHandler<HTMLInputElement>;
+  onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onChange :(event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
@@ -61,6 +61,7 @@ const UserInput = ({
             id={id}
             name={name}
             onChange={(event) => { return onChange(event); }}
+            onBlur={onBlur}
           />
         )}
       {type === "password" && (

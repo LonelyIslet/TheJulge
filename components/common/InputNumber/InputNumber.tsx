@@ -1,19 +1,86 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ValidationTarget } from "types/enums/inputValidation.enum";
+import useInputValidation from "hooks/useInputValidation";
 import styles from "./InputNumber.module.scss";
 
-const InputNumber = ({ id, label, essential }) => {
-  const [value, setValue] = useState("");
+interface ICountValidation {
+  [key: string]: number;
+}
+interface IData {
+  [key: string]: string;
+}
 
-  const changeEnteredNum = (e: ChangeEvent<HTMLInputElement>) => {
+interface CustomInputProps {
+  label: string;
+  placeholder?: string;
+  id: string;
+  name: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  essential?: boolean;
+  validationTarget?: ValidationTarget;
+  data?: IData;
+  rendering?: boolean;
+  countValidation?: ICountValidation
+  setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
+  unit?: string
+}
+
+const InputNumber = ({
+  label,
+  placeholder,
+  essential,
+  id,
+  name,
+  validationTarget,
+  onChange,
+  data,
+  rendering,
+  countValidation,
+  setCountValidation,
+  unit,
+}: CustomInputProps) => {
+  const [value, setValue] = useState("");
+  const {
+    validation, validationContent, handleBlur, toggle,
+  } = useInputValidation(
+    validationTarget as ValidationTarget,
+    value,
+    data as IData,
+    name,
+    setCountValidation,
+  );
+
+  const [change, setChange] = useState(false);
+
+  const changeEnteredNum = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValue(Number(e.target.value.replace(/[^0-9]/g, "")).toLocaleString());
+    onChange(e);
   };
+
+  useEffect(() => {
+    setChange(!change);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggle, rendering]);
 
   return (
     <div className={styles.container}>
-      <label htmlFor="id">테시트</label>
-      <input id="id" value={value} onChange={changeEnteredNum} />
+      <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
+      <div className={styles.input}>
+        <input
+          className={styles.userInput}
+          id={id}
+          value={value}
+          placeholder={placeholder}
+          onChange={changeEnteredNum}
+          onBlur={handleBlur}
+        />
+        <span className={styles.unit}>{unit}</span>
+      </div>
+      {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
+      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+      )}
     </div>
   );
 };
