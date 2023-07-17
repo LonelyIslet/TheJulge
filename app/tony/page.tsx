@@ -2,4 +2,4 @@ const TonyPage = () => {
   <div />;
 };
 
-export default page;
+export default TonyPage;
