@@ -32,7 +32,7 @@ const EditProfile = () => {
     const fetchData = {
       name: "임병욱",
       phone: "010-4388-5448",
-      address: "경기도 용인시 신봉2로 154",
+      address: "서울시 용산구",
       bio: "또딱또딲또딱",
     };
     setData(fetchData);
@@ -125,6 +125,7 @@ const EditProfile = () => {
             rendering={rendering}
             countValidation={countValidation}
             setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
+            data={data}
           />
         </div>
         <CustomInput

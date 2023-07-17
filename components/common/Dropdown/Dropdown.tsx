@@ -9,6 +9,9 @@ interface ICountValidation {
   [key: string]: number;
 }
 
+interface IData {
+  [key: string]: string;
+}
 interface DropdownProps {
   type: "address" | "category"
   label: string
@@ -22,6 +25,7 @@ interface DropdownProps {
   rendering: boolean
   countValidation: ICountValidation
   setCountValidation: React.Dispatch<React.SetStateAction<ICountValidation>>;
+  data: IData
 }
 
 const Dropdown = ({
@@ -29,6 +33,7 @@ const Dropdown = ({
   label,
   id,
   onChange,
+  data,
   name,
   required,
   rendering,
@@ -37,7 +42,7 @@ const Dropdown = ({
 }: DropdownProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [checkValidaiton, setCheckValidation] = useState(true);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(data[name]);
   const [swingValidationText, setSwingValidationText] = useState(false);
   const { toggle, setToggle, fetchData } = useDropdown(divRef, type);
 

@@ -50,7 +50,7 @@ const CustomInput = ({
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    data?.[name],
+    data[name],
     name,
     required,
     setCountValidation,
