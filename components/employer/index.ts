@@ -1,3 +1,7 @@
 import EditNoticeForm from "./EditNoticeForm/EditNoticeForm";
+import EmployerNotice from "./EmployerNotice/EmployerNotice";
 
-export { EditNoticeForm };
+export {
+  EmployerNotice,
+  EditNoticeForm
+};

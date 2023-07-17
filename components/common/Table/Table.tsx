@@ -1,7 +1,7 @@
 "use client";
 
 import Pagination from "components/common/Pagination/Pagination";
-import { INoticesColumn } from "types/notice/table";
+import { INoticesColumn } from "types/notice/tables";
 import styles from "./Table.module.scss";
 
 interface TableTemplateProps<T> {

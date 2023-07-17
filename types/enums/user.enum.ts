@@ -4,6 +4,6 @@
  * @EMPLOYER - 사장님 회원
  */
 export enum UserType {
-  EMPLOYEE = "EMPLOYEE",
-  EMPLOYER = "EMPLOYER",
+  EMPLOYEE = "employee",
+  EMPLOYER = "employer",
 }

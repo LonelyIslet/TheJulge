@@ -1,4 +1,4 @@
-export const ADDRESS_1 = [
+const ADDRESS_1 = [
   { id: 0, label: "서울시 강동구" },
   { id: 1, label: "서울시 종로구" },
   { id: 2, label: "서울시 중구" },
@@ -25,3 +25,5 @@ export const ADDRESS_1 = [
   { id: 23, label: "서울시 강남구" },
   { id: 24, label: "서울시 송파구" },
 ];
+
+export default ADDRESS_1;

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { CommonBtn, CustomInput, Dropdown } from "components/common";
+import CommonBtn from "components/common/CommonBtn/CommonBtn";
+import CustomInput from "components/common/CustomInput/CustomInput";
+import Dropdown from "components/common/Dropdown/Dropdown";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import styles from "./EditProfile.module.scss";
