@@ -50,6 +50,16 @@
     }
   }
 
+  .input {
+    position: relative;
+  }
+
+  .unit {
+    position: absolute;
+    top: calc((5.8rem - 2rem) / 2);
+    right: 1.5rem;
+  }
+
   input:-webkit-autofill { 
     -webkit-box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black; 
     box-shadow: 0 0 0 3rem $white inset ; -webkit-text-fill-color: $black;
