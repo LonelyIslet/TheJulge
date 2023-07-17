@@ -72,7 +72,7 @@ const EditNoticeForm = () => {
             validationTarget={ValidationTarget.HOURLY_PAY}
             rendering={rendering}
             countValidation={countValidation}
-            setCountValidation={setCountValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <CustomInput
             label="시작 일시"
@@ -86,7 +86,7 @@ const EditNoticeForm = () => {
             rendering={rendering}
             validationTarget={ValidationTarget.REQUIRED}
             countValidation={countValidation}
-            setCountValidation={setCountValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <InputNumber
             label="업무 시간"
@@ -99,7 +99,7 @@ const EditNoticeForm = () => {
             validationTarget={ValidationTarget.REQUIRED}
             rendering={rendering}
             countValidation={countValidation}
-            setCountValidation={setCountValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
         </div>
         <CustomInput
@@ -116,7 +116,6 @@ const EditNoticeForm = () => {
           size={ButtonSize.LARGE}
         >
           등록하기
-
         </CommonBtn>
       </form>
     </div>
