@@ -1,20 +1,58 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import classNames from "classnames/bind";
+import useInputValidation from "hooks/useInputValidation";
+import { ValidationTarget } from "types/enums/inputValidation.enum";
 import styles from "./FileUploader.module.scss";
 
 const cx = classNames.bind(styles);
-
-interface FileUploaderProps {
-  previewUrl: string,
-  isEditMode: boolean,
-  onFileChange: (file: File | undefined) => void;
+interface ICountValidation {
+  [key: string]: number;
 }
 
-const FileUploader = ({ onFileChange, previewUrl, isEditMode }: FileUploaderProps) => {
+interface FileUploaderProps {
+  name: string,
+  id: string
+  previewUrl: string,
+  isEditMode: boolean,
+  validationTarget?: ValidationTarget;
+  countValidation?: ICountValidation;
+  rendering: boolean
+  essential?: boolean
+  onFileChange: (file: File) => void;
+  setCountValidation: React.Dispatch<React.SetStateAction<object>>;
+}
+
+const FileUploader = ({
+  name,
+  id,
+  onFileChange,
+  previewUrl,
+  isEditMode,
+  rendering,
+  countValidation,
+  validationTarget,
+  setCountValidation,
+  essential,
+}: FileUploaderProps) => {
+  const [change, setChange] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const {
+    validation, validationContent, handleBlur, toggle,
+  } = useInputValidation(
+    validationTarget as ValidationTarget,
+    previewUrl,
+    setCountValidation,
+    essential,
+    name,
+  );
+
+  useEffect(() => {
+    setChange(!change);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggle, rendering]);
 
   const handleFileClick = () => {
     if (fileInputRef.current) {
@@ -23,13 +61,14 @@ const FileUploader = ({ onFileChange, previewUrl, isEditMode }: FileUploaderProp
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file: File | undefined = event.target.files?.[0];
+    const fileInput = event.target as HTMLInputElement;
+    const file: File = fileInput.files?.[0] as File;
     onFileChange(file);
   };
 
   return (
     <div className={styles.filePreviewer}>
-      <label className={styles.label} htmlFor="file-input">가게 이미지</label>
+      <label className={styles.label} htmlFor={id}>가게 이미지</label>
       <div className={styles.previewArea} onClick={handleFileClick} role="presentation">
         {previewUrl && <Image src={previewUrl} alt={previewUrl} className={cx("shopImage", { isEditMode })} fill />}
         {isEditMode && previewUrl
@@ -49,13 +88,17 @@ const FileUploader = ({ onFileChange, previewUrl, isEditMode }: FileUploaderProp
       </div>
       <input
         ref={fileInputRef}
-        id="file-input"
-        name="file"
+        id={id}
+        name={name}
         type="file"
         accept="image/*"
-        onChange={(e) => { handleFileChange(e); }}
+        onChange={handleFileChange}
         style={{ display: "none" }}
+        onBlur={handleBlur}
       />
+      {validationTarget && !!countValidation?.[name] && !validation && (
+        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+      )}
     </div>
   );
 };
