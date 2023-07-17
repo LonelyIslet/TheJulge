@@ -5,7 +5,7 @@ import { CommonBtn, CustomInput, Dropdown } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
-import { address } from "constants/dropdown/dropdownData";
+import { ADDRESS } from "constants/dropdown/dropdownData";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -59,7 +59,7 @@ const EditProfile = () => {
       bio: 1,
     });
 
-    const isContainedAddress = address.includes(data.address);
+    const isContainedAddress = ADDRESS.includes(data.address);
     // 유효성 검사 완료 시 실행되는 함수 입력하면 됩니다.
     if (data.name.length && inputValidation(
       ValidationTarget.PHONE,
