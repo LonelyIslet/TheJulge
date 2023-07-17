@@ -1,7 +1,7 @@
 .layout {
   padding-top: 6rem;
   max-width: 96.4rem;
-  width: 100%;
+  margin: 0 auto;
 
   @include tablet {
     width: calc(100% - 6.4rem);
@@ -11,7 +11,7 @@
     width: calc(100% - 2.4rem);
   }
   
-  header {
+ .header {
     margin-bottom: 3.2rem;
     @include flexbox(row, space-between, center);
     span {

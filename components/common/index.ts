@@ -18,6 +18,7 @@ import ShopCard from "./ShopCard/ShopCard";
 import StatusChip from "./StatusChip/StatusChip";
 import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
+import CommonShopDescription from "./CommonShopDescription/CommonShopDescription";
 import Loader from "./Loader/Loader";
 
 export {
@@ -42,4 +43,5 @@ export {
   StatusChip,
   Table,
   Toast,
+  CommonShopDescription,
 };

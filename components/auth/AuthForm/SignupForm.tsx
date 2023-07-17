@@ -77,7 +77,7 @@ const SignupForm = () => {
           data={data}
           rendering={rendering}
           countValidation={countValidation}
-          setCountValidation={setCountValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CustomInput
           element="text"
@@ -91,7 +91,7 @@ const SignupForm = () => {
           data={data}
           rendering={rendering}
           countValidation={countValidation}
-          setCountValidation={setCountValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CustomInput
           element="text"
@@ -105,7 +105,7 @@ const SignupForm = () => {
           data={data}
           rendering={rendering}
           countValidation={countValidation}
-          setCountValidation={setCountValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <UserTypeSelect onChange={handleData} />
         <button
