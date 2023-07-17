@@ -40,14 +40,6 @@
     }
   }
 
-  .show {
-    display: block;
-  }
-
-  .hide {
-    display: none;
-  }
-
   .swing {
     color: $red-40;
     animation: swing 0.3s ease;
@@ -55,15 +47,6 @@
       top: 0.8rem;
       left: 0.8rem;
       bottom: 0;
-    }
-  }
-
-  .inputNumber {
-    padding: {
-      top: 1.6rem;
-      right: 3rem;
-      bottom: 1.6rem;
-      left: 2rem;
     }
   }
 
@@ -84,21 +67,6 @@
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  /* Firefox  */
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-
-  .input {
-    position: relative;
-  }
-
-  .unit {
-    position: absolute;
-    top: calc((5.8rem - 2rem) / 2);
-    right: 1.5rem;
   }
 }
 
