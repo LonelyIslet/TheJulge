@@ -46,11 +46,12 @@ const CustomInput = ({
   setCountValidation,
 }: CustomInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState<string>(data?.[name] as string);
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    inputRef.current?.value as string,
+    inputValue,
     name,
     required,
     setCountValidation,
@@ -64,7 +65,6 @@ const CustomInput = ({
     setChange(!change);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
-
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
@@ -77,6 +77,9 @@ const CustomInput = ({
         ref={inputRef}
         onBlur={handleBlur}
         onChange={onChange}
+        data={data}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
       />
       {validationTarget && !!countValidation?.[name] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>

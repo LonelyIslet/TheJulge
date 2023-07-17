@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
@@ -36,7 +36,6 @@ const useInputValidation = (
 ) => {
   const [validation, setValidation] = useState<boolean>(false);
   const [toggle, setToggle] = useState(false);
-
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (ValidationTarget && setCountValidation && name) {
@@ -57,6 +56,18 @@ const useInputValidation = (
     }
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    if (validationTarget && !inputValidation(validationTarget, value, data)) {
+      setValidation(false);
+    } else {
+      setValidation(true);
+    }
+    if (element === "textarea" && data && data[name as keyof IData] && data[name as keyof IData].length) {
+      setValidation(true);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const validationContent: string = value?.length === 0 && required
     ? validationContentMap.REQUIRED

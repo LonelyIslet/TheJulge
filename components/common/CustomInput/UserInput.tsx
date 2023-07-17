@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./CustomInput.module.scss";
 
+interface IData {
+  [key: string]: string;
+}
+
 interface UserInputProps {
   element: "text" | "textarea";
   type?: React.HTMLInputTypeAttribute;
@@ -13,6 +17,9 @@ interface UserInputProps {
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onChange :(event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  data?: IData
+  inputValue: string
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const UserInput = ({
@@ -23,8 +30,16 @@ const UserInput = ({
   name,
   onBlur,
   onChange,
+  data,
+  setInputValue,
+  inputValue,
 }: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const [isEyeToggled, setIsEyeToggled] = useState(false);
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+    onChange(e);
+  };
 
   const handleToggle = () => {
     setIsEyeToggled(!isEyeToggled);
@@ -42,6 +57,7 @@ const UserInput = ({
       {element === "text"
         ? (
           <input
+            value={inputValue}
             className={styles.userInput}
             type={getInputType()}
             placeholder={placeholder}
@@ -49,17 +65,20 @@ const UserInput = ({
             name={name}
             ref={ref}
             onBlur={onBlur}
-            onChange={(event) => { return onChange(event); }}
+            onChange={handleChangeInput}
+            defaultValue={data?.[name]}
           />
         )
         : (
           <textarea
+            value={inputValue}
             className={styles.userTextArea}
             placeholder={placeholder}
             id={id}
             name={name}
-            onChange={(event) => { return onChange(event); }}
+            onChange={handleChangeInput}
             onBlur={onBlur}
+            defaultValue={data?.[name]}
           />
         )}
       {type === "password" && (

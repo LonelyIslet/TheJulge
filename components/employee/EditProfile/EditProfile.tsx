@@ -28,6 +28,15 @@ const EditProfile = () => {
     bio: "",
   });
 
+  useState(() => {
+    const fetchData = {
+      name: "임병욱",
+      phone: "010-4388-5448",
+      address: "경기도 용인시 신봉2로 154",
+      bio: "또딱또딲또딱",
+    };
+    setData(fetchData);
+  });
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
