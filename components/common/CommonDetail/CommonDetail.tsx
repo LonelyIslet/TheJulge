@@ -6,7 +6,7 @@ import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
 import styles from "./CommonDetail.module.scss";
 
-type Detail = "EMPLOYER" | "EMPLOYEE" | "APPLICATION_DETAILS" | "NOTICE_DETAILS";
+type Detail = "EMPLOYER" | "EMPLOYEE" | "APPLICATION_DETAILS" | "LOGIN";
 
 interface IDetail {
   title: string;
@@ -16,10 +16,10 @@ interface IDetail {
 }
 
 interface IInfo {
-  EMPLOYER: IDetail
+  EMPLOYER : IDetail
   EMPLOYEE: IDetail
   APPLICATION_DETAILS: IDetail
-  NOTICE_DETAILS: IDetail
+  LOGIN: IDetail
 }
 
 const CommonDetail = ({ detailType }: { detailType: Detail }) => {
@@ -43,15 +43,15 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
       buttonText: "공고 보러가기",
       onClick: () => { return router.push("/"); },
     },
-    NOTICE_DETAILS: {
-      title: "내가 등록한 공고",
-      description: "공고를 등록해 보세요.",
-      buttonText: "공고 등록하기",
-      onClick: () => { return router.push("/notice/write"); },
+    LOGIN: {
+      title: "최근에 본 공고",
+      description: "로그인 하면 최근에 본 공고들을 볼 수 있어요",
+      buttonText: "로그인 하기",
+      onClick: () => { return router.push("/auth"); },
     },
   };
 
-  const dataType: IDetail = info[detailType];
+  const dataType:IDetail = info[detailType];
 
   return (
     <CommonLayout position="above">
