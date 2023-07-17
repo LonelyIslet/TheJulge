@@ -84,7 +84,7 @@ const EditNoticeForm = () => {
             onChange={handleData}
             required
             rendering={rendering}
-            validationTarget={ValidationTarget.REQUIRED}
+            validationTarget={ValidationTarget.DATE}
             countValidation={countValidation}
             setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
