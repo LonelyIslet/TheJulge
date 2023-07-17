@@ -22,7 +22,7 @@ interface CustomInputProps {
   id: string;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  essential?: boolean;
+  required?: boolean;
   validationTarget?: ValidationTarget;
   data?: IData;
   rendering?: boolean;
@@ -35,7 +35,7 @@ const CustomInput = ({
   label,
   type,
   placeholder,
-  essential,
+  required,
   id,
   name,
   validationTarget,
@@ -51,11 +51,11 @@ const CustomInput = ({
   } = useInputValidation(
     validationTarget as ValidationTarget,
     inputRef.current?.value as string,
-    data as IData,
     name,
+    required,
     setCountValidation,
+    data as IData,
     element,
-    essential,
   );
 
   const [change, setChange] = useState(false);
@@ -67,7 +67,7 @@ const CustomInput = ({
 
   return (
     <div className={styles.box}>
-      <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
+      <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
       <UserInput
         element={element}
         placeholder={placeholder}

@@ -40,12 +40,53 @@ const EditNoticeForm = () => {
     <div className={styles.layout}>
       <form onSubmit={handleSubmit}>
         <div className={styles.inputBox}>
-          <CustomInput element="text" type="number" label="시급" placeholder="입력" id="hourlyPay" name="hourlyPay" essential onChange={handleData} />
-          <CustomInput element="text" type="text" label="시작 일시" placeholder="입력" id="startsAt" name="startsAt" essential onChange={handleData} />
-          <CustomInput element="text" type="text" label="업무 시간" placeholder="입력" id="workhour" name="workhour" essential onChange={handleData} />
+          <CustomInput
+            element="text"
+            type="number"
+            label="시급"
+            placeholder="입력"
+            id="hourlyPay"
+            name="hourlyPay"
+            required
+            onChange={handleData}
+          />
+          <CustomInput
+            element="text"
+            type="text"
+            label="시작 일시"
+            placeholder="입력"
+            id="startsAt"
+            name="startsAt"
+            required
+            onChange={handleData}
+          />
+          <CustomInput
+            element="text"
+            type="text"
+            label="업무 시간"
+            placeholder="입력"
+            id="workhour"
+            name="workhour"
+            required
+            onChange={handleData}
+          />
         </div>
-        <CustomInput element="textarea" label="공고 설명" placeholder="입력" id="description" name="description" onChange={handleData} />
-        <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>등록하기</CommonBtn>
+        <CustomInput
+          element="textarea"
+          label="공고 설명"
+          placeholder="입력"
+          id="description"
+          name="description"
+          onChange={handleData}
+        />
+        <CommonBtn
+          type="submit"
+          style={ButtonStyle.SOLID}
+          size={ButtonSize.LARGE}
+        >
+          등록하기
+
+        </CommonBtn>
       </form>
     </div>
   );

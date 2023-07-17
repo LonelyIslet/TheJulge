@@ -39,7 +39,7 @@ const inputValidation = (
         return true;
       }
       return false;
-    case ValidationTarget.ESSENTIAL:
+    case ValidationTarget.REQUIRED:
       if (value.length > 0) {
         return true;
       }

@@ -83,9 +83,9 @@ const EditProfile = () => {
             placeholder="입력"
             id="name"
             name="name"
-            essential
+            required
             onChange={handleData}
-            validationTarget={ValidationTarget.ESSENTIAL}
+            validationTarget={ValidationTarget.REQUIRED}
             data={data}
             rendering={rendering}
             countValidation={countValidation}
@@ -98,7 +98,7 @@ const EditProfile = () => {
             placeholder="입력"
             id="phone"
             name="phone"
-            essential
+            required
             onChange={handleData}
             validationTarget={ValidationTarget.PHONE}
             data={data}
@@ -112,7 +112,7 @@ const EditProfile = () => {
             id="address"
             name="address"
             onChange={handleData}
-            essential
+            required
             rendering={rendering}
             countValidation={countValidation}
             setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
@@ -125,8 +125,8 @@ const EditProfile = () => {
           id="bio"
           name="bio"
           onChange={handleData}
-          essential
-          validationTarget={ValidationTarget.ESSENTIAL}
+          required
+          validationTarget={ValidationTarget.REQUIRED}
           data={data}
           rendering={rendering}
           countValidation={countValidation}

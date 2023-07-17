@@ -18,7 +18,7 @@ interface CustomInputProps {
   id: string;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  essential?: boolean;
+  required?: boolean;
   validationTarget?: ValidationTarget;
   data?: IData;
   rendering?: boolean;
@@ -30,7 +30,7 @@ interface CustomInputProps {
 const InputNumber = ({
   label,
   placeholder,
-  essential,
+  required,
   id,
   name,
   validationTarget,
@@ -47,9 +47,10 @@ const InputNumber = ({
   } = useInputValidation(
     validationTarget as ValidationTarget,
     value,
-    data as IData,
     name,
+    required,
     setCountValidation,
+    data as IData,
   );
 
   const [change, setChange] = useState(false);
@@ -66,15 +67,17 @@ const InputNumber = ({
 
   return (
     <div className={styles.container}>
-      <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
+      <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
       <div className={styles.input}>
         <input
           className={styles.userInput}
           id={id}
+          name={name}
           value={value}
           placeholder={placeholder}
           onChange={changeEnteredNum}
           onBlur={handleBlur}
+          inputMode="numeric"
         />
         <span className={styles.unit}>{unit}</span>
       </div>

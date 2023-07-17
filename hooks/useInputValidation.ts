@@ -22,17 +22,17 @@ const validationContentMap: {
   PASSWORD_CONFIRM: "비밀번호가 일치하지 않습니다.",
   HOURLY_PAY: "백원 단위로 입력해주세요.",
   PHONE: "유효하지 않은 전화번호 입니다.",
-  ESSENTIAL: "필수 항목입니다.",
+  REQUIRED: "필수 항목입니다.",
 };
 
 const useInputValidation = (
   validationTarget: ValidationTarget,
   value: string,
-  data?: IData,
   name?: string,
+  required?: boolean,
   setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
+  data?: IData,
   element?: "text" | "textarea",
-  essential?: boolean,
 ) => {
   const [validation, setValidation] = useState<boolean>(false);
   const [toggle, setToggle] = useState(false);
@@ -58,8 +58,8 @@ const useInputValidation = (
     setToggle(!toggle);
   };
 
-  const validationContent: string = value?.length === 0 && essential
-    ? validationContentMap.ESSENTIAL
+  const validationContent: string = value?.length === 0 && required
+    ? validationContentMap.REQUIRED
     : validationContentMap[validationTarget];
 
   return {

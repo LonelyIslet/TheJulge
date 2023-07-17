@@ -14,7 +14,7 @@ interface DropdownProps {
   label: string
   id: string
   name: string
-  essential?: boolean
+  required?: boolean
   onChange: (event:
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
@@ -30,7 +30,7 @@ const Dropdown = ({
   id,
   onChange,
   name,
-  essential,
+  required,
   rendering,
   countValidation,
   setCountValidation,
@@ -94,7 +94,7 @@ const Dropdown = ({
     /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
     jsx-a11y/no-static-element-interactions */
     <div className={styles.box} ref={divRef} onClick={handleToggle}>
-      <label className={styles.label} htmlFor={id}>{essential ? `${label}*` : label}</label>
+      <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
       <input
         id={id}
         className={styles.userInput}
