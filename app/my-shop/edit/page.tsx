@@ -8,7 +8,7 @@ import { FileUploader } from "components/employer";
 import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
 import styles from "./page.module.scss";
 
-interface MyResponse {
+interface FileData {
   item: {
     url: string
   }
@@ -20,9 +20,17 @@ const MyShopEditPage = () => {
   const [previewUrl, setPreviewUrl] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [data, setData] = useState({});
+  const [rendering, setRendering] = useState(false);
+
+  const [countValidation, setCountValidation] = useState({
+    name: 0,
+    phone: 0,
+    address: 0,
+    bio: 0,
+  });
 
   const hasShop = false;
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMDUzZmVjOS01NjdjLTQ2MDktODQ0Zi1hZWIzOTgxMTEyN2UiLCJpYXQiOjE2ODk0Mzg5Mjd9.4NnBka67bMT7Yyrrk-1DkbtjhJdsDC4vqhMbDGDye2M";
+  const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMDUzZmVjOS01NjdjLTQ2MDktODQ0Zi1hZWIzOTgxMTEyN2UiLCJpYXQiOjE2ODk0Mzg5Mjd9.4NnBka67bMT7Yyrrk-1DkbtjhJdsDC4vqhMbDGDye2M";
 
   useEffect(() => {
     if (hasShop) {
@@ -71,15 +79,15 @@ const MyShopEditPage = () => {
     };
     if (selectedFile) {
       try {
-        const response = await fetch("/images", {
+        const response = await fetch("/api/images", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${TOKEN}`,
           },
           body: JSON.stringify({ name: selectedFile.name }),
         });
-        const fileData = await response.json() as MyResponse;
+        const fileData = await response.json() as FileData;
         const { url } = fileData.item;
         await fetch(url, {
           method: "PUT",
@@ -129,6 +137,9 @@ const MyShopEditPage = () => {
             name="name"
             essential
             onChange={handleData}
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <Dropdown
             type="category"
@@ -136,13 +147,21 @@ const MyShopEditPage = () => {
             id="category"
             name="category"
             onChange={handleData}
+            essential
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <Dropdown
-            type="address" // address1로 등록 
+            type="address" //address1로 등록
             label="주소"
             id="address1"
             name="address1"
             onChange={handleData}
+            essential
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
           />
           <CustomInput
             element="text"
