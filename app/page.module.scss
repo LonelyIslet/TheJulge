@@ -1,3 +1,25 @@
+.layout {
+  @include flexbox(column, space-between, center);
+  .top {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0;
+    background-color: $red-10;
+    overflow-x: hidden;
+
+    @include x-mobile {
+      padding: 4rem 0;
+    }
+  }
+
+
+  .bottom {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0 12rem;
+  }
+}
+
 .header {
   background-color: $red-10;
 }
@@ -5,12 +27,14 @@
 .noticeWrapper {
   @include flexbox(column, false, flex-start);
   margin: 0 auto;
-  padding: 6rem 24rem;
-  max-width: 192rem;
-
+  padding: 6rem 0 3rem 0;
+  width: 100%;
+  max-width: 96.4rem;
+  gap: 3.1rem;
   h1 {
     font-size: 2.8rem;
   }
+  overflow-x: hidden;
 }
 
 .firstLine {
@@ -22,3 +46,4 @@
   @include flexbox(row, space-between, center);
   gap: 1rem;
 }
+

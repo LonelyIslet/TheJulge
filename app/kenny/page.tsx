@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
-  CommonBtn, Modal, NotificationBoard, StatusChip,
+  CommonBtn, Modal, NoticeCard, NotificationBoard, PostCard, StatusChip,
 } from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
@@ -22,10 +22,30 @@ import useErrorModal from "hooks/useErrorModal";
 import useUpdateProfile from "hooks/api/user/useUpdateProfile";
 import { Address1 } from "types/shop/address";
 import useUpdateShop from "hooks/api/shop/useUpdateShop";
+import InfiniteCarousel from "components/common/InfiniteCarousel/InfiniteCarousel";
+import data from "constants/mock/notice.json";
+import noticeList from "constants/mock/noticeList.json";
+import useDisableDraggableChildren from "hooks/useDisableDraggableChildren";
+
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
   return i.item as IAlert;
 });
+
+const images = [
+  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
+  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
+  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
+  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
+  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
+  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
+  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
+  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
+  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
+  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
+  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
+  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320"
+];
 
 const Page = () => {
   const user = useAppSelector((state) => { return state.user; });
@@ -40,6 +60,8 @@ const Page = () => {
   const { updateProfile } = useUpdateProfile();
   // const [updateProfile, { error }] = useUpdateUserInfoMutation();
   const { updateShop } = useUpdateShop();
+  const targetRef = useRef<HTMLDivElement>(null);
+  // useDisableDraggableChildren(targetRef);
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(user);
@@ -62,12 +84,9 @@ const Page = () => {
     const body = {
       name: "김카멜", phone: "010-8768-9603", address: "서울시 강서구" as Address1, bio: "사막같이 열악한 환경속에서도 낙타마냥 일하겠습니다.",
     };
-
-    try{
-      const res = await updateProfile(userId, body);
+    const res = await updateProfile(userId, body);
+    if(res) {
       console.log(res);
-    } finally {
-      console.log("request over");
     }
   };
   const handleUpdateShop = async ()=>{
@@ -160,6 +179,29 @@ const Page = () => {
         />
       )}
       {/* {error && <span>에러발생</span>} */}
+      <div style={{width: "967PX", height: "405px", margin: "0 auto"}}>
+          <InfiniteCarousel itemCount={5} itemsPerView={3}>
+            {({index}) => {
+              const modulo = index % noticeList.items.length;
+              const noticeIndex = modulo < 0 ? noticeList.items.length + modulo : modulo;
+              return (
+                  <div draggable={false} style={{margin: "0 0.7rem", height: "300px"}}>
+                    <PostCard 
+                      hourlyPay={noticeList.items[noticeIndex].item.hourlyPay}
+                      startsAt={noticeList.items[noticeIndex].item.startsAt}
+                      workhour={noticeList.items[noticeIndex].item.workhour}
+                      address={noticeList.items[noticeIndex].item.shop.item.address1}
+                      imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl}
+                      originalHourlyPay={noticeList.items[noticeIndex].item.shop.item.originalHourlyPay}
+                      closed={noticeList.items[noticeIndex].item.closed}
+                      name={noticeList.items[noticeIndex].item.shop.item.name}
+                      href={noticeList.items[noticeIndex].item.shop.href}
+                    />
+                  </div>
+              );
+            }}
+          </InfiniteCarousel>
+      </div>
     </main>
   );
 };

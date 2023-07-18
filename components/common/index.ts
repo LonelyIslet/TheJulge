@@ -20,6 +20,9 @@ import Table from "./Table/Table";
 import Toast from "./Toast/Toast";
 import CommonShopDescription from "./CommonShopDescription/CommonShopDescription";
 import Loader from "./Loader/Loader";
+import InfiniteCarousel from "./InfiniteCarousel/InfiniteCarousel";
+import Spinner from "./Spinner/Spinner";
+import Twiggler from "./Twiggler/Twiggler";
 
 export {
   CardList,
@@ -44,4 +47,7 @@ export {
   Table,
   Toast,
   CommonShopDescription,
+  InfiniteCarousel,
+  Spinner,
+  Twiggler,
 };
