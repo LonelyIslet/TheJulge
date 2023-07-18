@@ -4,7 +4,7 @@ export interface INoticesColumn<T> {
 }
 
 export interface IEmployerNotices {
-  id: number;
+  id: string;
   name: string;
   intro: string;
   phoneNumber: string;
