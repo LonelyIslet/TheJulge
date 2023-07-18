@@ -16,7 +16,7 @@ const HomePage = async ({
   const noticeList = await getNotices(keyword);
 
   return (
-    <>
+    <div className={styles.layout}>
       <div className={styles.top}>
         <CommonLayout position="below">
           <div className={styles.noticeWrapper}>
@@ -43,7 +43,7 @@ const HomePage = async ({
           </div>
         </CommonLayout>
       </main>
-    </>
+    </div>
   );
 };
 

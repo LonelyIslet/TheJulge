@@ -1,7 +1,7 @@
 .container {
   @include flexbox(column);
   position: relative;
-  z-index: 10;
+  z-index: 6;
 }
 
 .button {
