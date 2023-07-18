@@ -1,8 +1,8 @@
 import StoreProvider from "redux/StoreProvider";
-import { GlobalNav, GlobalFooter } from "components/common";
-import ToastRoot from "components/common/Toast/ToastRoot";
-import PersistGateContext from "components/auth/PersistGateContext/PersistGateContext";
-import ErrorModalRoot from "components/common/Modal/ErrorModalRoot";
+import {
+  GlobalNav, GlobalFooter, ErrorModalRoot, ToastRoot,
+} from "components/common";
+import { PersistGateContext } from "components/auth";
 import spoqaHanSansNeo from "styles/local.font";
 import "styles/globals.scss";
 

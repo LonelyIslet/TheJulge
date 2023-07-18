@@ -23,6 +23,9 @@ import Loader from "./Loader/Loader";
 import InfiniteCarousel from "./InfiniteCarousel/InfiniteCarousel";
 import Spinner from "./Spinner/Spinner";
 import Twiggler from "./Twiggler/Twiggler";
+import ErrorModalRoot from "./Modal/ErrorModalRoot";
+import ToastRoot from "./Toast/ToastRoot";
+import InputNumber from "./InputNumber/InputNumber";
 
 export {
   CardList,
@@ -46,8 +49,11 @@ export {
   StatusChip,
   Table,
   Toast,
+  InputNumber,
   CommonShopDescription,
   InfiniteCarousel,
   Spinner,
   Twiggler,
+  ErrorModalRoot,
+  ToastRoot,
 };
