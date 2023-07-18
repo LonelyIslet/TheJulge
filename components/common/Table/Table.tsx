@@ -12,7 +12,7 @@ interface TableTemplateProps<T> {
   onPageClick: (page: number) => void;
 }
 
-const Table = <T extends { id: number }>({
+const Table = <T extends { id: string }>({
   data,
   columns,
   currentPage,
@@ -27,7 +27,7 @@ const Table = <T extends { id: number }>({
             <tr>
               {columns.map((column) => {
                 return (
-                  <th key={column.id as number}>
+                  <th key={column.id as string}>
                     <span>
                       {column.label}
                     </span>
@@ -42,7 +42,7 @@ const Table = <T extends { id: number }>({
                 <tr key={item.id}>
                   {columns.map((column) => {
                     return (
-                      <td key={column.id as number}>
+                      <td key={column.id as string}>
                         <span>
                           {item[column.id]}
                         </span>

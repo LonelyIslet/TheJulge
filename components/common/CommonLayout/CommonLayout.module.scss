@@ -25,6 +25,11 @@
     }
   }
   
+  article {
+    position: relative;
+    touch-action: none;
+  }
+
   @include tablet {
     width: calc(100% - 6.4rem);
   }

@@ -1,5 +1,8 @@
-import { CardList, CommonLayout } from "components/common";
+import {
+  CardList, CommonLayout,
+} from "components/common";
 import { FilterButton, SortButton } from "components/notice";
+import RecommendedNoticeList from "components/notice/RecommendedNoticeList/RecommendedNoticeList";
 import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
@@ -19,16 +22,13 @@ const HomePage = async ({
     <div className={styles.layout}>
       <div className={styles.top}>
         <CommonLayout position="below">
-          <div className={styles.noticeWrapper}>
-            <h1>맞춤 공고</h1>
-            <div className={styles.premiumNoticeList}>
-              {/* <CardList /> */}
-            </div>
+          <div>
+            <h2>맞춤 공고</h2>
           </div>
+          <RecommendedNoticeList />
         </CommonLayout>
       </div>
-      <main className={styles.bottom}>
-        {/* <div className={styles.noticeWrapper}> */}
+      <div className={styles.bottom}>
         <CommonLayout position="below">
           <div className={styles.firstLine}>
             <h2>전체 공고</h2>
@@ -37,12 +37,11 @@ const HomePage = async ({
               <FilterButton />
             </div>
           </div>
-          {/* </div> */}
           <div className={styles.noticeList}>
             <CardList noticeList={noticeList} />
           </div>
         </CommonLayout>
-      </main>
+      </div>
     </div>
   );
 };
