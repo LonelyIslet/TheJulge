@@ -45,7 +45,6 @@ const CustomInput = ({
   countValidation,
   setCountValidation,
 }: CustomInputProps) => {
-  // const [inputValue, setInputValue] = useState<string>(data?.[name] as string);
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
