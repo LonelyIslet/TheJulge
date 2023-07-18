@@ -7,9 +7,11 @@ import { CommonShopDescription, CommonDetail } from "components/common";
 import { EmployerNotice } from "components/employer";
 import { EmployeeNotice } from "components/employee";
 import { DetailType } from "types/enums/detailPage.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
 import styles from "./page.module.scss";
 
 const NoticePage = () => {
+  const userData = useAppSelector((state) => { return state.user; });
   // 1. 사장 페이지와 알바생 페이지 구분
   // 2. 레이아웃은 동일함
   // 3. 데이터 응답에서 온 type을 받아 사장과 알바생을 구분하여 페이지를 제작해야됨
