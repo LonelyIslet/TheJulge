@@ -2,7 +2,7 @@ import { ApplyStatus } from "./enums/apply.enum";
 import { UserType } from "./enums/user.enum";
 
 export interface IShop {
-  id?: string,
+  id: string,
   name: string,
   category: string,
   address1: string,
@@ -10,7 +10,7 @@ export interface IShop {
   description?: string,
   imageUrl?: string,
   originalHourlyPay: number,
-  user?: IUser,
+  user: IUser,
 }
 
 export interface IApplication {
@@ -51,7 +51,7 @@ export interface INotice {
   startsAt: string,
   workhour: number,
   closed: boolean,
-  shop?: {
+  shop: {
     item: IShop,
     href: string,
   },

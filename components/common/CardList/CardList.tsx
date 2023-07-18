@@ -7,13 +7,13 @@ interface INoticeWithClosedInfo extends INotice {
   closed: boolean,
 }
 
-interface CardListProps {
+interface Props {
   noticeList: INoticeWithClosedInfo[],
 }
 
 const CardList = ({
   noticeList,
-}: CardListProps) => {
+}: Props) => {
   return (
     <ul className={styles.cardList}>
       {noticeList.map((i) => {
@@ -24,10 +24,10 @@ const CardList = ({
               startsAt={i.startsAt}
               workhour={i.workhour}
               closed={i.closed}
-              name={i.shop?.item.name}
-              address={i.shop?.item.address}
-              imageUrl={i.shop?.item.imageUrl}
-              originalHourlyPay={i.shop?.item.originalHourlyPay}
+              name={i.shop.item.name}
+              address={i.shop.item.address1}
+              imageUrl={i.shop.item.imageUrl}
+              originalHourlyPay={i.shop.item.originalHourlyPay}
               href={`/notice?id=${i.id}`}
             />
           </li>

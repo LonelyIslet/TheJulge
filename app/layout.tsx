@@ -4,6 +4,7 @@ import {
 } from "components/common";
 import { PersistGateContext } from "components/auth";
 import spoqaHanSansNeo from "styles/local.font";
+import styles from "./page.module.scss";
 import "styles/globals.scss";
 
 export const metadata = {
@@ -28,7 +29,7 @@ const RootLayout = ({
             <div id="modal-root" />
             <ErrorModalRoot />
             <GlobalNav />
-            <main>
+            <main className={styles.layout}>
               {children}
             </main>
             <GlobalFooter />

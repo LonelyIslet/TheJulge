@@ -1,5 +1,5 @@
 import {
-  CardList, CommonBtn, NoticeCard, PostCard, ShopCard,
+  , CommonBtn, NoticeCard, PostCard, ShopCard,
 } from "components/common";
 import { INotice } from "types/dto";
 import data from "constants/mock/notice.json";
@@ -68,13 +68,7 @@ const Page = () => {
       >
         <CommonBtn responsive>신청하기</CommonBtn>
       </NoticeCard>
-      <CardList
-        noticeList={notice}
-        name={shop.name}
-        address={shop.address1}
-        imageUrl={shop.imageUrl}
-        originalHourlyPay={originalHourlyPay}
-      />
+        {/* < noticeList={noticeList.items} /> */}
     </main>
   );
 };
