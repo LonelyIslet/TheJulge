@@ -42,7 +42,7 @@ const Table = <T extends { id: string }>({
                 <tr key={item.id}>
                   {columns.map((column) => {
                     return (
-                      <td key={column.id as number}>
+                      <td key={column.id as string}>
                         <span>
                           {item[column.id]}
                         </span>
