@@ -1,25 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useInputValidation from "hooks/useInputValidation";
-import UserInput from "./UserInput";
-import styles from "./CustomInput.module.scss";
+import styles from "./InputNumber.module.scss";
 
 interface ICountValidation {
   [key: string]: number;
 }
-
 interface IData {
   [key: string]: string;
 }
 
 interface CustomInputProps {
-  element: "text" | "textarea";
-  type?: React.HTMLInputTypeAttribute;
   label: string;
   placeholder?: string;
-  essential?: boolean;
   id: string;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -29,12 +24,11 @@ interface CustomInputProps {
   rendering?: boolean;
   countValidation?: ICountValidation
   setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
+  unit?: string
 }
 
-const CustomInput = ({
-  element,
+const InputNumber = ({
   label,
-  type,
   placeholder,
   required,
   id,
@@ -45,47 +39,53 @@ const CustomInput = ({
   rendering,
   countValidation,
   setCountValidation,
+  unit,
 }: CustomInputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState("");
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    inputRef.current?.value as string,
+    value,
     name,
     required,
-    essential,
     setCountValidation,
     data as IData,
-    element,
   );
 
   const [change, setChange] = useState(false);
 
+  const changeEnteredNum = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValue(Number(e.target.value.replace(/[^0-9]/g, "")).toLocaleString());
+    onChange(e);
+  };
+
   useEffect(() => {
     setChange(!change);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
 
   return (
-    <div className={styles.box}>
+    <div className={styles.container}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
-      <UserInput
-        element={element}
-        placeholder={placeholder}
-        type={type}
-        id={id}
-        name={name}
-        ref={inputRef}
-        onBlur={handleBlur}
-        onChange={onChange}
-        data={data as IData}
-      />
-      {validationTarget && !!countValidation?.[name] && !validation && (
-        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+      <div className={styles.input}>
+        <input
+          className={styles.userInput}
+          id={id}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={changeEnteredNum}
+          onBlur={handleBlur}
+          inputMode="numeric"
+        />
+        <span className={styles.unit}>{unit}</span>
+      </div>
+      {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
+      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>
   );
 };
 
-export default CustomInput;
+export default InputNumber;

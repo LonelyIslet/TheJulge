@@ -1,13 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IUser } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 
-interface ICredentials {
+export interface ICredentials {
   email: string;
   password: string;
 }
 
-interface ICredentialsWithType extends ICredentials {
+export interface ICredentialsWithType extends ICredentials {
   type: UserType;
 }
 
@@ -31,9 +31,7 @@ interface SignupResponse {
   links: ILink[];
 }
 
-export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
+export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => {
     return {
       signin: builder.mutation<SigninResponse, ICredentials>({

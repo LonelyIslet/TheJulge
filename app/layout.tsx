@@ -1,9 +1,10 @@
 import StoreProvider from "redux/StoreProvider";
-import { GlobalNav, GlobalFooter } from "components/common";
-import ToastRoot from "components/common/Toast/ToastRoot";
+import {
+  GlobalNav, GlobalFooter, ErrorModalRoot, ToastRoot,
+} from "components/common";
+import { PersistGateContext } from "components/auth";
 import spoqaHanSansNeo from "styles/local.font";
 import "styles/globals.scss";
-import PersistGateContext from "components/auth/PersistGateContext/PersistGateContext";
 
 export const metadata = {
   title: "더줄게",
@@ -25,6 +26,7 @@ const RootLayout = ({
             <div id="toast-root" />
             <ToastRoot />
             <div id="modal-root" />
+            <ErrorModalRoot />
             <GlobalNav />
             <main>
               {children}

@@ -1,22 +1,18 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { setUser } from "redux/slices/userSlice";
-import { useSigninMutation } from "redux/api/authApi";
 import useAppDispatch from "redux/hooks/useAppDispatch";
-import { CustomInput, Loader, Modal } from "components/common";
+import { CustomInput, Loader } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import { ModalType } from "types/enums/modal.enum";
+import useSignin from "hooks/api/auth/useSignin";
 import inputValidation from "utils/inputValidation";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [rendering, setRendering] = useState(false);
-  const [signin, { isLoading }] = useSigninMutation();
-  const [errorMsg, setErrorMsg] = useState("");
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const { signin, isLoading } = useSignin();
   const [countValidation, setCountValidation] = useState({
     email: 0,
     password: 0,
@@ -50,74 +46,56 @@ const SigninForm = () => {
       password_confirm: 1,
     });
     if (isEmailValidationPassed && isPasswordValidationPassed) {
-      try {
-        const res = await signin({ email: data.email, password: data.password }).unwrap();
+      const res = await signin({ email: data.email, password: data.password });
+      if (res) {
         const { item: { token, user: { item: userInfo } } } = res;
         dispatch(setUser({ token, userInfo }));
         router.push("/");
-      } catch (err) {
-        setIsErrorModalOpen(true);
-        if (isFetchBaseQueryError(err)) {
-          const errorObj = "error" in err ? err.error : err.data as { message: string };
-          if (typeof errorObj !== "string") {
-            setErrorMsg(errorObj.message);
-          }
-        }
       }
     }
   };
 
   return (
-    <>
-      <form
-        className={styles.form}
+    <form
+      className={styles.form}
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onSubmit={handleSubmitSignin}
+      onSubmit={handleSubmitSignin}
+    >
+      <CustomInput
+        element="text"
+        type="text"
+        label="이메일"
+        placeholder="입력"
+        id="email"
+        name="email"
+        validationTarget={ValidationTarget.EMAIL}
+        onChange={handleData}
+        data={data}
+        rendering={rendering}
+        countValidation={countValidation}
+        setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
+      />
+      <CustomInput
+        element="text"
+        type="password"
+        label="비밀번호"
+        placeholder="입력"
+        id="password"
+        name="password"
+        validationTarget={ValidationTarget.PASSWORD}
+        onChange={handleData}
+        data={data}
+        rendering={rendering}
+        countValidation={countValidation}
+        setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
+      />
+      <button
+        type="submit"
+        className={styles.submitButton}
       >
-        <CustomInput
-          element="text"
-          type="text"
-          label="이메일"
-          placeholder="입력"
-          id="email"
-          name="email"
-          validationTarget={ValidationTarget.EMAIL}
-          onChange={handleData}
-          data={data}
-          rendering={rendering}
-          countValidation={countValidation}
-          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
-        />
-        <CustomInput
-          element="text"
-          type="password"
-          label="비밀번호"
-          placeholder="입력"
-          id="password"
-          name="password"
-          validationTarget={ValidationTarget.PASSWORD}
-          onChange={handleData}
-          data={data}
-          rendering={rendering}
-          countValidation={countValidation}
-          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
-        />
-        <button
-          type="submit"
-          className={styles.submitButton}
-        >
-          {isLoading ? <Loader /> : "로그인 하기"}
-        </button>
-      </form>
-      {isErrorModalOpen && (
-        <Modal
-          type={ModalType.CONFIRM}
-          message={errorMsg}
-          onClose={() => { setIsErrorModalOpen(false); }}
-          closeBtnLabel="닫기"
-        />
-      )}
-    </>
+        {isLoading ? <Loader /> : "로그인 하기"}
+      </button>
+    </form>
   );
 };
 

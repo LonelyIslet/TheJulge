@@ -8,7 +8,7 @@ const labelMap = {
 };
 
 interface StatusChipProps {
-  status: ApplyStatus;
+  status: Exclude<ApplyStatus, ApplyStatus.CANCELED>;
 }
 
 const StatusChip = ({
