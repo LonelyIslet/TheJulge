@@ -1,5 +1,5 @@
 import {
-  , CommonBtn, NoticeCard, PostCard, ShopCard,
+  CommonBtn, NoticeCard, PostCard, ShopCard,
 } from "components/common";
 import { INotice } from "types/dto";
 import data from "constants/mock/notice.json";
@@ -32,8 +32,8 @@ const Page = () => {
     originalHourlyPay: 2,
   };
 
-  const notice: INoticeWithClosedInfo[] = (
-    noticeList.items as { item: INoticeWithClosedInfo }[]).map(({ item }) => { return item; });
+  // const notice: INoticeWithClosedInfo[] = (
+  //   noticeList.items as { item: INoticeWithClosedInfo }[]).map(({ item }) => { return item; });
 
   return (
     <main className={styles.main}>
