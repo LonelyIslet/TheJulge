@@ -1,4 +1,4 @@
-import { HomePageHero, HomePageMain } from "components/notice";
+import { HomePageMain } from "components/notice";
 import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
 import styles from "./page.module.scss";
@@ -32,9 +32,6 @@ const HomePage = async ({
 
   return (
     <div className={styles.layout}>
-      <div className={styles.top}>
-        <HomePageHero />
-      </div>
       <div className={styles.bottom}>
         <HomePageMain
           noticeList={noticeList}

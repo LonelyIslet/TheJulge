@@ -2,18 +2,13 @@ import PostCard from "components/common/PostCard/PostCard";
 import { INotice } from "types/dto";
 import styles from "./CardList.module.scss";
 
-interface INoticeWithClosedInfo extends INotice {
-  id: string,
-  closed: boolean,
-}
-
-interface Props {
-  noticeList: INoticeWithClosedInfo[],
+interface CardListProps {
+  noticeList: INotice[],
 }
 
 const CardList = ({
   noticeList,
-}: Props) => {
+}: CardListProps) => {
   return (
     <ul className={styles.cardList}>
       {noticeList.map((i) => {

@@ -58,6 +58,11 @@ export interface INotice {
   },
 }
 
+export interface IgetNoticesParams {
+  keyword: string,
+  sort: string,
+}
+
 export interface IAlert {
   id?: string,
   createdAt: string,
