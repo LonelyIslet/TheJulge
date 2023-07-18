@@ -1,8 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./CustomInput.module.scss";
+
+interface IData {
+  [key: string]: string;
+}
 
 interface UserInputProps {
   element: "text" | "textarea";
@@ -13,6 +17,7 @@ interface UserInputProps {
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onChange :(event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  data: IData
 }
 
 const UserInput = ({
@@ -23,8 +28,14 @@ const UserInput = ({
   name,
   onBlur,
   onChange,
-}: UserInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  data,
+
+}: UserInputProps) => {
   const [isEyeToggled, setIsEyeToggled] = useState(false);
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    onChange(e);
+  };
 
   const handleToggle = () => {
     setIsEyeToggled(!isEyeToggled);
@@ -42,23 +53,24 @@ const UserInput = ({
       {element === "text"
         ? (
           <input
+            value={data?.[name] || ""}
             className={styles.userInput}
             type={getInputType()}
             placeholder={placeholder}
             id={id}
             name={name}
-            ref={ref}
             onBlur={onBlur}
-            onChange={(event) => { return onChange(event); }}
+            onChange={handleChangeInput}
           />
         )
         : (
           <textarea
+            value={data?.[name]}
             className={styles.userTextArea}
             placeholder={placeholder}
             id={id}
             name={name}
-            onChange={(event) => { return onChange(event); }}
+            onChange={handleChangeInput}
             onBlur={onBlur}
           />
         )}
@@ -77,4 +89,4 @@ const UserInput = ({
   );
 };
 
-export default React.forwardRef(UserInput);
+export default UserInput;
