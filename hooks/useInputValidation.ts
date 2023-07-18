@@ -23,6 +23,7 @@ const validationContentMap: {
   HOURLY_PAY: "백원 단위로 입력해주세요.",
   PHONE: "유효하지 않은 전화번호 입니다.",
   REQUIRED: "필수 항목입니다.",
+  DATE: "YYYY-MM-dd hh:mm 형식으로 작성해주세요",
 };
 
 const useInputValidation = (
