@@ -12,7 +12,7 @@ export interface IEmployerNotices {
 }
 
 export interface IEmployeeNotices {
-  id: number;
+  id: string;
   store: string;
   date: string;
   hourlyPay: number;
