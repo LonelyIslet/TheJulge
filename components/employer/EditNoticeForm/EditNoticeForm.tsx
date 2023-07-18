@@ -49,6 +49,7 @@ const EditNoticeForm = () => {
             name="hourlyPay"
             required
             onChange={handleData}
+            data={data}
           />
           <CustomInput
             element="text"
@@ -59,6 +60,7 @@ const EditNoticeForm = () => {
             name="startsAt"
             required
             onChange={handleData}
+            data={data}
           />
           <CustomInput
             element="text"
@@ -69,6 +71,7 @@ const EditNoticeForm = () => {
             name="workhour"
             required
             onChange={handleData}
+            data={data}
           />
         </div>
         <CustomInput
@@ -78,6 +81,7 @@ const EditNoticeForm = () => {
           id="description"
           name="description"
           onChange={handleData}
+          data={data}
         />
         <CommonBtn
           type="submit"
