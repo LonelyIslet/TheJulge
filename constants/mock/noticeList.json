@@ -1,164 +1,397 @@
 {
-  "offset": 0,
-  "limit": 10,
-  "items": [
-      {
-          "item": {
-              "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
-              "hourlyPay": 30000,
-              "startsAt": "2023-09-14T18:00:00.000Z",
-              "workhour": 2,
-              "description": "오세요",
-              "closed": false
-          },
-          "links": [
-              {
-                  "rel": "self",
-                  "description": "공고 정보",
-                  "method": "GET",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/5e0d5d6a-81c4-40cd-8e3b-1680f252f696"
-              },
-              {
-                  "rel": "update",
-                  "description": "공고 수정",
-                  "method": "PUT",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
-                  "body": {
-                      "hourlyPay": "number",
-                      "startsAt": "string",
-                      "workhour": "number",
-                      "description": "string"
-                  }
-              }
-          ]
-      },
-      {
-          "item": {
-              "id": "8dc59205-0028-44de-98f9-221aa6469964",
-              "hourlyPay": 25000,
-              "startsAt": "2023-09-04T18:00:00.000Z",
-              "workhour": 3,
-              "description": "오세요",
-              "closed": false
-          },
-          "links": [
-              {
-                  "rel": "self",
-                  "description": "공고 정보",
-                  "method": "GET",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/8dc59205-0028-44de-98f9-221aa6469964"
-              },
-              {
-                  "rel": "update",
-                  "description": "공고 수정",
-                  "method": "PUT",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/8dc59205-0028-44de-98f9-221aa6469964",
-                  "body": {
-                      "hourlyPay": "number",
-                      "startsAt": "string",
-                      "workhour": "number",
-                      "description": "string"
-                  }
-              }
-          ]
-      },
-      {
-          "item": {
-              "id": "a3508afd-b787-40d7-b071-ecff0c3397f7",
-              "hourlyPay": 17000,
-              "startsAt": "2023-08-15T15:00:00.000Z",
-              "workhour": 3,
-              "description": "진심으로 다할 분만 지원해주세요",
-              "closed": false
-          },
-          "links": [
-              {
-                  "rel": "self",
-                  "description": "공고 정보",
-                  "method": "GET",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/a3508afd-b787-40d7-b071-ecff0c3397f7"
-              },
-              {
-                  "rel": "update",
-                  "description": "공고 수정",
-                  "method": "PUT",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/a3508afd-b787-40d7-b071-ecff0c3397f7",
-                  "body": {
-                      "hourlyPay": "number",
-                      "startsAt": "string",
-                      "workhour": "number",
-                      "description": "string"
-                  }
-              }
-          ]
-      },
-      {
-          "item": {
-              "id": "2f988ead-d226-43e4-8ea0-dd9747981544",
-              "hourlyPay": 30000,
-              "startsAt": "2023-07-07T18:00:00.000Z",
-              "workhour": 2,
-              "description": "도와주세요",
-              "closed": false
-          },
-          "links": [
-              {
-                  "rel": "self",
-                  "description": "공고 정보",
-                  "method": "GET",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/2f988ead-d226-43e4-8ea0-dd9747981544"
-              },
-              {
-                  "rel": "update",
-                  "description": "공고 수정",
-                  "method": "PUT",
-                  "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/2f988ead-d226-43e4-8ea0-dd9747981544",
-                  "body": {
-                      "hourlyPay": "number",
-                      "startsAt": "string",
-                      "workhour": "number",
-                      "description": "string"
-                  }
-              }
-          ]
-      }
-  ],
-  "links": [
-      {
-          "ref": "self",
-          "description": "현재 페이지",
-          "method": "GET",
-          "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices?offset=0&limit=10"
-      },
-      {
-          "rel": "prev",
-          "description": "이전 페이지",
-          "method": "GET",
-          "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices?offset=0&limit=10"
-      },
-      {
-          "rel": "next",
-          "description": "다음 페이지",
-          "method": "GET",
-          "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices?offset=10&limit=10"
-      },
-      {
-          "rel": "create",
-          "description": "공고 생성",
-          "method": "POST",
-          "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices",
-          "body": {
-              "hourlyPay": "number",
-              "startsAt": "string",
-              "workhour": "number",
-              "description": "string"
-          }
-      },
-      {
-          "rel": "shop",
-          "description": "가게 정보",
-          "method": "GET",
-          "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
-      }
-  ]
+    "offset": 0,
+    "limit": 10,
+    "address": [],
+    "items": [
+        {
+            "item": {
+                "id": "e3cd225e-98ba-4452-850c-b3017d6b0fa4",
+                "hourlyPay": 33000,
+                "startsAt": "2023-12-14T18:00:00.000Z",
+                "workhour": 12,
+                "description": "도와주세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "69ea7414-03a8-4ed2-a5bc-535fc07ac9a3",
+                        "name": "성경만두",
+                        "category": "한식",
+                        "address1": "서울시 종로구",
+                        "address2": "수표로 88",
+                        "description": "만두 맛집",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/4afd2d91-2d3a-48ce-a931-64a6d8b517fd-mandu.jpeg",
+                        "originalHourlyPay": 30000
+                    },
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3/notices/e3cd225e-98ba-4452-850c-b3017d6b0fa4"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "d796223b-0802-4be0-82cd-be3501550faa",
+                "hourlyPay": 33000,
+                "startsAt": "2023-11-14T18:00:00.000Z",
+                "workhour": 11,
+                "description": "오세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "69ea7414-03a8-4ed2-a5bc-535fc07ac9a3",
+                        "name": "성경만두",
+                        "category": "한식",
+                        "address1": "서울시 종로구",
+                        "address2": "수표로 88",
+                        "description": "만두 맛집",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/4afd2d91-2d3a-48ce-a931-64a6d8b517fd-mandu.jpeg",
+                        "originalHourlyPay": 30000
+                    },
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3/notices/d796223b-0802-4be0-82cd-be3501550faa"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "da67b8f4-c2b3-443d-b29e-f7a9ac261ae1",
+                "hourlyPay": 33000,
+                "startsAt": "2023-10-14T18:00:00.000Z",
+                "workhour": 10,
+                "description": "오세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "69ea7414-03a8-4ed2-a5bc-535fc07ac9a3",
+                        "name": "성경만두",
+                        "category": "한식",
+                        "address1": "서울시 종로구",
+                        "address2": "수표로 88",
+                        "description": "만두 맛집",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/4afd2d91-2d3a-48ce-a931-64a6d8b517fd-mandu.jpeg",
+                        "originalHourlyPay": 30000
+                    },
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3/notices/da67b8f4-c2b3-443d-b29e-f7a9ac261ae1"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/69ea7414-03a8-4ed2-a5bc-535fc07ac9a3"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "25f2fbf0-25ae-42e4-a0d3-fc3b0d41022f",
+                "hourlyPay": 110000,
+                "startsAt": "2023-09-29T14:00:00.000Z",
+                "workhour": 3,
+                "description": "SOS",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "4d1957e4-0422-49c3-80b3-9871b8860004",
+                        "name": "The Xef",
+                        "category": "양식",
+                        "address1": "서울시 용산구",
+                        "address2": "백범로77길 33",
+                        "description": "스페인 음식점",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/d3fdf139-8b17-46ac-8e72-9ceb9893ae68-xef.jpeg",
+                        "originalHourlyPay": 50000
+                    },
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004/notices/25f2fbf0-25ae-42e4-a0d3-fc3b0d41022f"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "8d3f1d17-8a3a-46e1-ab1f-3a38fdbaa54c",
+                "hourlyPay": 100000,
+                "startsAt": "2023-09-19T14:00:00.000Z",
+                "workhour": 1,
+                "description": "도와주세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "4d1957e4-0422-49c3-80b3-9871b8860004",
+                        "name": "The Xef",
+                        "category": "양식",
+                        "address1": "서울시 용산구",
+                        "address2": "백범로77길 33",
+                        "description": "스페인 음식점",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/d3fdf139-8b17-46ac-8e72-9ceb9893ae68-xef.jpeg",
+                        "originalHourlyPay": 50000
+                    },
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004/notices/8d3f1d17-8a3a-46e1-ab1f-3a38fdbaa54c"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "87a1fc47-2832-4c26-9718-5fff9e9500c3",
+                "hourlyPay": 25000,
+                "startsAt": "2023-09-18T20:00:00.000Z",
+                "workhour": 2,
+                "description": "제대로된 알바만 오십쇼.",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "4d1957e4-0422-49c3-80b3-9871b8860004",
+                        "name": "The Xef",
+                        "category": "양식",
+                        "address1": "서울시 용산구",
+                        "address2": "백범로77길 33",
+                        "description": "스페인 음식점",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/d3fdf139-8b17-46ac-8e72-9ceb9893ae68-xef.jpeg",
+                        "originalHourlyPay": 50000
+                    },
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004/notices/87a1fc47-2832-4c26-9718-5fff9e9500c3"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "c492fe2d-b616-4c95-a479-7d8791ee83f8",
+                "hourlyPay": 25000,
+                "startsAt": "2023-09-18T20:00:00.000Z",
+                "workhour": 2,
+                "description": "제대로된 알바만 오십쇼.",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "4d1957e4-0422-49c3-80b3-9871b8860004",
+                        "name": "The Xef",
+                        "category": "양식",
+                        "address1": "서울시 용산구",
+                        "address2": "백범로77길 33",
+                        "description": "스페인 음식점",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/d3fdf139-8b17-46ac-8e72-9ceb9893ae68-xef.jpeg",
+                        "originalHourlyPay": 50000
+                    },
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004/notices/c492fe2d-b616-4c95-a479-7d8791ee83f8"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "5e0d5d6a-81c4-40cd-8e3b-1680f252f696",
+                "hourlyPay": 30000,
+                "startsAt": "2023-09-14T18:00:00.000Z",
+                "workhour": 2,
+                "description": "오세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "02479698-8aeb-4c72-9a20-8381148c11c9",
+                        "name": "진주회관",
+                        "category": "한식",
+                        "address1": "서울시 중구",
+                        "address2": "세종대로11길 26",
+                        "description": "콩국수 맛집",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/1bdb43c8-ff08-4a46-81b0-7f91efced98c-jinju4.png",
+                        "originalHourlyPay": 20000
+                    },
+                    "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9/notices/5e0d5d6a-81c4-40cd-8e3b-1680f252f696"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/02479698-8aeb-4c72-9a20-8381148c11c9"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "8e114c5b-e97f-4d62-bb03-a385b0716e48",
+                "hourlyPay": 100000,
+                "startsAt": "2023-09-09T14:00:00.000Z",
+                "workhour": 1,
+                "description": "도와주세요",
+                "closed": false,
+                "shop": {
+                    "item": {
+                        "id": "4d1957e4-0422-49c3-80b3-9871b8860004",
+                        "name": "The Xef",
+                        "category": "양식",
+                        "address1": "서울시 용산구",
+                        "address2": "백범로77길 33",
+                        "description": "스페인 음식점",
+                        "imageUrl": "https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/0-1/the-julge/d3fdf139-8b17-46ac-8e72-9ceb9893ae68-xef.jpeg",
+                        "originalHourlyPay": 50000
+                    },
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004/notices/8e114c5b-e97f-4d62-bb03-a385b0716e48"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/4d1957e4-0422-49c3-80b3-9871b8860004"
+                }
+            ]
+        },
+        {
+            "item": {
+                "id": "32954090-e696-47f7-8ede-ba54f3ff37d6",
+                "hourlyPay": 40000,
+                "startsAt": "2023-09-08T10:00:00.000Z",
+                "workhour": 3,
+                "description": "저희 동물원 낙타 놀아주실 분 구해요, 난이도 꽤 있으니 책임감 있는 분만 와주세요",
+                "closed": true,
+                "shop": {
+                    "item": {
+                        "id": "d7821872-5348-416b-a14e-0856a3fdb2a3",
+                        "name": "The Zoo",
+                        "category": "기타",
+                        "address1": "서울시 강서구",
+                        "address2": "화곡로 302(화곡동)",
+                        "description": "화곡동에 위치한 카페 겸 실내 동물원입니다.",
+                        "imageUrl": "https://images.unsplash.com/photo-1630906086851-65a063a8cdd5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1665&q=80",
+                        "originalHourlyPay": 30000
+                    },
+                    "href": "/api/0-2/the-julge/shops/d7821872-5348-416b-a14e-0856a3fdb2a3"
+                }
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "description": "공고 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/d7821872-5348-416b-a14e-0856a3fdb2a3/notices/32954090-e696-47f7-8ede-ba54f3ff37d6"
+                },
+                {
+                    "rel": "shop",
+                    "description": "가게 정보",
+                    "method": "GET",
+                    "href": "/api/0-2/the-julge/shops/d7821872-5348-416b-a14e-0856a3fdb2a3"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "description": "현재 페이지",
+            "method": "GET",
+            "href": "/api/0-2/the-julge/notices?offset=0&limit=10"
+        },
+        {
+            "rel": "prev",
+            "description": "이전 페이지",
+            "method": "GET",
+            "href": "/api/0-2/the-julge/notices?offset=0&limit=10"
+        },
+        {
+            "rel": "next",
+            "description": "다음 페이지",
+            "method": "GET",
+            "href": "/api/0-2/the-julge/notices?offset=10&limit=10"
+        }
+    ]
 }

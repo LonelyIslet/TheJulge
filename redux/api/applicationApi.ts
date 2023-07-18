@@ -90,7 +90,7 @@ export const applicationApi = apiSlice.injectEndpoints({
       }>({
         query: ({ userId, params }) => {
           return {
-            url: `user/${userId}/applications`,
+            url: `users/${userId}/applications`,
             params,
           };
         },
