@@ -11,7 +11,7 @@ export interface HomePageProps {
 
 const HomePage = async ({
   searchParams,
-}:HomePageProps) => {
+}: HomePageProps) => {
   const keyword = searchParams.q as string;
   const noticeList = await getNotices(keyword);
 
