@@ -67,7 +67,7 @@ const useInputValidation = (
       setValidation(true);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data]);
 
   const validationContent: string = value?.length === 0 && required
     ? validationContentMap.REQUIRED

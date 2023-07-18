@@ -95,16 +95,26 @@ const Dropdown = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rendering]);
 
+  useEffect(() => {
+    const isPassedValidation = fetchData?.data.includes(data[name]);
+    if (isPassedValidation) {
+      setCheckValidation(true);
+    } else {
+      setCheckValidation(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rendering]);
+
   return (
     /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
     jsx-a11y/no-static-element-interactions */
     <div className={styles.box} ref={divRef} onClick={handleToggle}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
       <input
+        value={data[name]}
         id={id}
         className={styles.userInput}
         name={name}
-        value={inputValue}
         onChange={(e) => { return handleInputValue(e); }}
         onBlur={handleBlur}
         placeholder="선택"

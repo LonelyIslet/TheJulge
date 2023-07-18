@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import CustomInput from "components/common/CustomInput/CustomInput";
 import Dropdown from "components/common/Dropdown/Dropdown";
@@ -8,11 +12,29 @@ import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
+import useAppSelector from "redux/hooks/useAppSelector";
+import useUpdateProfile from "hooks/api/user/useUpdateProfile";
+import { setUser } from "redux/slices/userSlice";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import useToast from "hooks/useToast";
+import useErrorModal from "hooks/useErrorModal";
+import { Address1 } from "types/shop/address";
+import { Loader } from "components/common";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [rendering, setRendering] = useState(false);
+  const userData = useAppSelector((state) => { return state.user; });
+  const dispatch = useAppDispatch();
+  const { userInfo } = userData;
+  const { updateProfile, isLoading } = useUpdateProfile();
+  const router = useRouter();
+  const { showToast } = useToast();
+  const { showErrorModal } = useErrorModal();
+  if (!userInfo) {
+    showErrorModal("로그인이 필요합니다.");
+    router.push("/");
+  }
 
   const [countValidation, setCountValidation] = useState({
     name: 0,
@@ -24,19 +46,24 @@ const EditProfile = () => {
   const [data, setData] = useState({
     name: "",
     phone: "",
-    address: "",
+    address: "서울시 강남구" as Address1,
     bio: "",
   });
 
-  useState(() => {
-    const fetchData = {
-      name: "임병욱",
-      phone: "010-4388-5448",
-      address: "서울시 용산구",
-      bio: "또딱또딲또딱",
-    };
-    setData(fetchData);
-  });
+  useEffect(() => {
+    if (!userData) {
+      return;
+    }
+    if (userInfo) {
+      setData({
+        name: userInfo.name as string,
+        phone: userInfo.phone as string,
+        address: userInfo.address as Address1,
+        bio: userInfo.bio as string,
+      });
+    }
+  }, []);
+
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
@@ -60,7 +87,7 @@ const EditProfile = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setRendering(!rendering);
     setCountValidation({
@@ -77,7 +104,12 @@ const EditProfile = () => {
       data.phone,
     // eslint-disable-next-line no-empty
     ) && isContainedAddress && data.bio.length) {
-
+      const res = await updateProfile(userInfo!.id!, data);
+      if (res) {
+        dispatch(setUser({ token: userData.token, userInfo: res.item }));
+        showToast("편집이 완료되었습니다.");
+        router.push("/my-profile");
+      }
     }
   };
 
@@ -142,7 +174,7 @@ const EditProfile = () => {
           countValidation={countValidation}
           setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
-        <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>등록하기</CommonBtn>
+        <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>{isLoading ? <Loader /> : "등록하기"}</CommonBtn>
       </form>
     </div>
   );
