@@ -3,6 +3,10 @@
   height: 11.6rem;
   width: 100%;
 
+  img {
+    cursor: pointer;
+  }
+
   .label {
     display: block;
     margin-bottom: 8px;
@@ -28,6 +32,9 @@
     border: 0.1rem solid $gray-30;
     border-radius: 0.6rem;
     outline: none;
+    line-height: 2.6rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
   }
 
   .validation {
@@ -48,6 +55,16 @@
       left: 0.8rem;
       bottom: 0;
     }
+  }
+
+  .input {
+    position: relative;
+  }
+
+  .unit {
+    position: absolute;
+    top: calc((5.8rem - 2rem) / 2);
+    right: 1.5rem;
   }
 
   input:-webkit-autofill { 

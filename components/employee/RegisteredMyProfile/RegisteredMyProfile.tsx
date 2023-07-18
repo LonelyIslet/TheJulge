@@ -1,16 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { CommonBtn } from "components/common";
+import { CommonDetail, CommonBtn } from "components/common";
 import { ButtonStyle } from "types/enums/button.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
+import { DetailType } from "types/enums/detailPage.enum";
 import styles from "./RegisteredMyProfile.module.scss";
 
-interface RegisteredMyProfileProps {
-  name: string
-  phone: string
-  address: string
-}
+const RegisteredMyProfile = () => {
+  const userData = useAppSelector((state) => { return state.user; });
+  const { userInfo } = userData;
 
-const RegisteredMyProfile = ({ name, phone, address }: RegisteredMyProfileProps) => {
+  if (userInfo && !userInfo.name) {
+    return <CommonDetail detailType={DetailType.EMPLOYEE} />;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.blank}>
@@ -19,17 +24,19 @@ const RegisteredMyProfile = ({ name, phone, address }: RegisteredMyProfileProps)
       <div className={styles.userInfoContainer}>
         <div className={styles.userInfoDetail}>
           <p>이름</p>
-          <h2>{name}</h2>
+          <h2>{userInfo?.name}</h2>
           <div className={styles.phone}>
             <Image src="/images/phone.svg" alt="전화번호" width={16} height={20} />
-            <span>{phone}</span>
+            <span>{userInfo?.phone}</span>
           </div>
           <div className={styles.address}>
             <Image src="/images/location-red.svg" alt="주소" width={16} height={20} />
-            <span>{`선호 지역: ${address}`}</span>
+            <span>
+              {`선호 지역: ${userInfo?.address as string}`}
+            </span>
           </div>
           <p>
-            열심히 일하겠습니다.
+            {userInfo?.bio}
           </p>
         </div>
         <div className={styles.wrapperButton}>

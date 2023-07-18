@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 
@@ -23,6 +23,7 @@ const validationContentMap: {
   HOURLY_PAY: "백원 단위로 입력해주세요.",
   PHONE: "유효하지 않은 전화번호 입니다.",
   REQUIRED: "필수 항목입니다.",
+  DATE: "YYYY-MM-dd hh:mm 형식으로 작성해주세요",
 };
 
 const useInputValidation = (
@@ -30,13 +31,13 @@ const useInputValidation = (
   value: string,
   name?: string,
   required?: boolean,
+  rendering?: boolean,
   setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
   data?: IData,
   element?: "text" | "textarea",
 ) => {
   const [validation, setValidation] = useState<boolean>(false);
   const [toggle, setToggle] = useState(false);
-
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (ValidationTarget && setCountValidation && name) {
@@ -57,6 +58,18 @@ const useInputValidation = (
     }
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    if (validationTarget && !inputValidation(validationTarget, value, data)) {
+      setValidation(false);
+    } else {
+      setValidation(true);
+    }
+    if (element === "textarea" && data && data[name as keyof IData] && data[name as keyof IData].length) {
+      setValidation(true);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rendering]);
 
   const validationContent: string = value?.length === 0 && required
     ? validationContentMap.REQUIRED

@@ -6,6 +6,7 @@
  * @PHONE 전화번호 유효성 검사
  * @HOURLY_PAY 숫자 입력 시 원 단위가 인풋에 표시
  * @REQUIRED 필수 항목 표시
+ * @DATE 날짜 유효성 검사
  */
 
 export enum ValidationTarget {
@@ -15,4 +16,5 @@ export enum ValidationTarget {
   PHONE = "PHONE",
   HOURLY_PAY = "HOURLY_PAY",
   REQUIRED = "REQUIRED",
+  DATE = "DATE",
 }

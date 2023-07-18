@@ -16,7 +16,7 @@ interface PostCardProps {
   workhour: number;
   name: string;
   address: string;
-  imageUrl: string | undefined;
+  imageUrl?: string;
   originalHourlyPay: number;
   href: string;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useInputValidation from "hooks/useInputValidation";
 import UserInput from "./UserInput";
@@ -24,7 +24,7 @@ interface CustomInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   required?: boolean;
   validationTarget?: ValidationTarget;
-  data?: IData;
+  data: IData;
   rendering?: boolean;
   countValidation?: ICountValidation
   setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
@@ -45,16 +45,16 @@ const CustomInput = ({
   countValidation,
   setCountValidation,
 }: CustomInputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    inputRef.current?.value as string,
+    data[name],
     name,
     required,
+    rendering,
     setCountValidation,
-    data as IData,
+    data,
     element,
   );
 
@@ -64,7 +64,6 @@ const CustomInput = ({
     setChange(!change);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
-
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
@@ -74,9 +73,9 @@ const CustomInput = ({
         type={type}
         id={id}
         name={name}
-        ref={inputRef}
         onBlur={handleBlur}
         onChange={onChange}
+        data={data}
       />
       {validationTarget && !!countValidation?.[name] && !validation && (
       <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>

@@ -11,6 +11,8 @@ const emailRegexp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const passwordRegexp = /^(?=.*[a-zA-Z가-힣!@#$%^&*()_+={}|[\]\\';:/?.,<>]).{8,16}$/;
 // 전화번호 유효성 검사
 const telRegexp = /^01[016789]-\d{3,4}-\d{4}$/;
+// 날짜 유효성 검사
+const dateRegexp = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
 
 const inputValidation = (
   validationTarget: ValidationTarget,
@@ -44,6 +46,8 @@ const inputValidation = (
         return true;
       }
       return false;
+    case ValidationTarget.DATE:
+      return dateRegexp.test(value);
     default:
       return false;
   }

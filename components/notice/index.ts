@@ -4,6 +4,7 @@ import FilterButton from "./FilterButton/FilterButton";
 import HomePageHero from "./HomePageHero/HomePageHero";
 import HomePageMain from "./HomePageMain/HomePageMain";
 import SortButton from "./SortButton/SortButton";
+import RecommendedNoticeList from "./RecommendedNoticeList/RecommendedNoticeList";
 
 export {
   EmployeeTable,
@@ -12,4 +13,5 @@ export {
   HomePageMain,
   HomePageHero,
   SortButton,
+  RecommendedNoticeList,
 };

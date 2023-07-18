@@ -49,6 +49,7 @@ const InputNumber = ({
     value,
     name,
     required,
+    rendering,
     setCountValidation,
     data as IData,
   );

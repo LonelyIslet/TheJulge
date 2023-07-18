@@ -21,7 +21,7 @@ export interface IGetNoticeResponse {
   links: ILink[];
 }
 
-type SortOption = "pay" | "hour" | "shop";
+export type SortOption = "pay" | "hour" | "shop";
 
 interface INoticeQueryParam {
   offset?: number;
@@ -40,9 +40,17 @@ export const noticeApi = apiSlice.injectEndpoints({
     return {
       getNotices: builder.query<IGetNoticeResponse, INoticeQueryParam >({
         query: (params) => {
+          const createSearchParams = (paramObj: INoticeQueryParam) => {
+            return new URLSearchParams(Object.entries(paramObj).flatMap(([key, values]) => {
+              return (Array.isArray(values) ? values.map((value) => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+                return [key, value];
+              }) : [[key, values]]);
+            }));
+          };
           return {
             url: "notices",
-            params,
+            params: createSearchParams(params),
           };
         },
       }),
