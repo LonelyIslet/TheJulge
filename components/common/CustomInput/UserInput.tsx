@@ -17,7 +17,7 @@ interface UserInputProps {
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onChange :(event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  data?: IData
+  data: IData
 }
 
 const UserInput = ({
@@ -53,7 +53,7 @@ const UserInput = ({
       {element === "text"
         ? (
           <input
-            value={data?.[name]}
+            value={data?.[name] || ""}
             className={styles.userInput}
             type={getInputType()}
             placeholder={placeholder}

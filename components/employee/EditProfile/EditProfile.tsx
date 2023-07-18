@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
@@ -20,6 +21,7 @@ import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
 import { Address1 } from "types/shop/address";
 import { Loader } from "components/common";
+import { IUserUpdateInfo } from "redux/api/userApi";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -46,12 +48,12 @@ const EditProfile = () => {
   const [data, setData] = useState({
     name: "",
     phone: "",
-    address: "서울시 강남구" as Address1,
+    address: "",
     bio: "",
   });
 
   useEffect(() => {
-    if (!userData) {
+    if (userInfo && !userInfo.name) {
       return;
     }
     if (userInfo) {
@@ -68,15 +70,7 @@ const EditProfile = () => {
   React.ChangeEvent<HTMLInputElement |
   HTMLTextAreaElement> |
   React.MouseEvent<HTMLButtonElement>) => {
-    if (event.type === "click") {
-      const target = event.target as HTMLButtonElement;
-      setData((prev) => {
-        return {
-          ...prev,
-          [target.name]: target.textContent,
-        };
-      });
-    } else if (event.type === "change") {
+    if (event.type === "change") {
       const target = event.target as HTMLInputElement | HTMLTextAreaElement;
       setData((prev) => {
         return {
@@ -99,12 +93,12 @@ const EditProfile = () => {
 
     const isContainedAddress = ADDRESS.includes(data.address);
     // 유효성 검사 완료 시 실행되는 함수 입력하면 됩니다.
-    if (data.name.length && inputValidation(
+    if (data && data?.name?.length && inputValidation(
       ValidationTarget.PHONE,
       data.phone,
     // eslint-disable-next-line no-empty
     ) && isContainedAddress && data.bio.length) {
-      const res = await updateProfile(userInfo!.id!, data);
+      const res = await updateProfile(userInfo!.id!, data as IUserUpdateInfo);
       if (res) {
         dispatch(setUser({ token: userData.token, userInfo: res.item }));
         showToast("편집이 완료되었습니다.");
@@ -156,7 +150,6 @@ const EditProfile = () => {
             required
             rendering={rendering}
             countValidation={countValidation}
-            setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
             data={data}
           />
         </div>
@@ -174,7 +167,14 @@ const EditProfile = () => {
           countValidation={countValidation}
           setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
-        <CommonBtn type="submit" style={ButtonStyle.SOLID} size={ButtonSize.LARGE}>{isLoading ? <Loader /> : "등록하기"}</CommonBtn>
+        <CommonBtn
+          type="submit"
+          style={ButtonStyle.SOLID}
+          size={ButtonSize.LARGE}
+        >
+          {isLoading ? <Loader /> : "등록하기"}
+
+        </CommonBtn>
       </form>
     </div>
   );

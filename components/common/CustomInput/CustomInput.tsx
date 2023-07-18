@@ -53,6 +53,7 @@ const CustomInput = ({
     data[name],
     name,
     required,
+    rendering,
     setCountValidation,
     data,
     element,

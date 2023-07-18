@@ -30,6 +30,7 @@ const useInputValidation = (
   value: string,
   name?: string,
   required?: boolean,
+  rendering?: boolean,
   setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
   data?: IData,
   element?: "text" | "textarea",
@@ -67,7 +68,7 @@ const useInputValidation = (
       setValidation(true);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [rendering]);
 
   const validationContent: string = value?.length === 0 && required
     ? validationContentMap.REQUIRED
