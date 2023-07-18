@@ -19,12 +19,17 @@
       font-weight: 700;
     }
 
-    h2 {
+    & > h2 {
       font-weight: 700;
       font-size: 2.8rem;
     }
   }
   
+  article {
+    position: relative;
+    touch-action: none;
+  }
+
   @include tablet {
     width: calc(100% - 6.4rem);
   }
@@ -37,7 +42,7 @@
 
   @media (max-width: 430px) {
     header {
-      h2 {
+      & > h2 {
         font-size: 2rem;
       }
     }

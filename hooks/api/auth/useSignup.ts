@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
-import { ICredentialsWithType, useSigninMutation } from "redux/api/authApi";
+import { ICredentialsWithType, useSignupMutation } from "redux/api/authApi";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import useErrorModal from "hooks/useErrorModal";
 
 const useSignup = () => {
-  const [sendRequest, { isLoading, isError }] = useSigninMutation();
+  const [sendRequest, { isLoading, isError }] = useSignupMutation();
   const { showErrorModal } = useErrorModal();
 
   const signup = async (

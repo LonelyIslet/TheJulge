@@ -1,5 +1,6 @@
 import { ApplyStatus } from "./enums/apply.enum";
 import { UserType } from "./enums/user.enum";
+import { Address1 } from "./shop/address";
 
 export interface IShop {
   id?: string,
@@ -71,7 +72,7 @@ export interface IUser {
   type: UserType,
   name?: string,
   phone?: string,
-  address?: string,
+  address?: Address1,
   bio?: string,
   shop?: {
     item: IShop,

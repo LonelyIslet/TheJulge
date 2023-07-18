@@ -5,10 +5,11 @@ const labelMap = {
   [ApplyStatus.PENDING]: "대기중",
   [ApplyStatus.ACCEPTED]: "승인 완료",
   [ApplyStatus.REJECTED]: "거절됨",
+  [ApplyStatus.CANCELED]: "취소됨",
 };
 
 interface StatusChipProps {
-  status: Exclude<ApplyStatus, ApplyStatus.CANCELED>;
+  status: ApplyStatus;
 }
 
 const StatusChip = ({
