@@ -1,10 +1,23 @@
-// import { CardList } from "components/common";
+import {
+  CardList, CommonLayout,
+} from "components/common";
 import { FilterButton, SortButton } from "components/notice";
 import RecommendedNoticeList from "components/notice/RecommendedNoticeList/RecommendedNoticeList";
-import { CommonLayout } from "components/common";
+import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
-const HomePage = () => {
+export interface HomePageProps {
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
+}
+
+const HomePage = async ({
+  searchParams,
+}:HomePageProps) => {
+  const keyword = searchParams.q as string;
+  const noticeList = await getNotices(keyword);
+
   return (
     <div className={styles.layout}>
       <div className={styles.top}>
@@ -15,9 +28,8 @@ const HomePage = () => {
           <RecommendedNoticeList />
         </CommonLayout>
       </div>
-      <main className={styles.bottom}>
+      <div className={styles.bottom}>
         <CommonLayout position="below">
-          {/* <div className={styles.noticeWrapper}> */}
           <div className={styles.firstLine}>
             <h2>전체 공고</h2>
             <div className={styles.buttonContainer}>
@@ -25,12 +37,11 @@ const HomePage = () => {
               <FilterButton />
             </div>
           </div>
-          <div className={styles.cheesyNoticeList}>
-            {/* <CardList /> */}
+          <div className={styles.noticeList}>
+            <CardList noticeList={noticeList} />
           </div>
-          {/* </div> */}
         </CommonLayout>
-      </main>
+      </div>
     </div>
   );
 };

@@ -32,14 +32,27 @@ export interface IApplication {
   }
 }
 
+export interface Iitem {
+  item: INotice,
+}
+
+export interface INoticeData {
+  offset: number,
+  limit: number,
+  address: string[],
+  keyword?: string,
+  items: Iitem,
+  links: ILink[],
+}
+
 export interface INotice {
-  id?: string,
+  id: string,
   hourlyPay: number,
   description: string,
   startsAt: string,
   workhour: number,
-  closed?: boolean,
-  shop?: {
+  closed: boolean,
+  shop: {
     item: IShop,
     href: string,
   },
