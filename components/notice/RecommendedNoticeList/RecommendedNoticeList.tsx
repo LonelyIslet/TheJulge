@@ -60,7 +60,7 @@ const RecommendedNoticeList = () => {
                   }
                   closed={noticeList.items[noticeIndex].item.closed}
                   name={noticeList.items[noticeIndex].item.shop.item.name}
-                  href={noticeList.items[noticeIndex].item.shop.href}
+                  href={`shops/${noticeList.items[noticeIndex].item.shop.item.id as string}/notices/${noticeList.items[noticeIndex].item.id}`}
                 />
               </div>
             );
