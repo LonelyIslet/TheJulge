@@ -4,9 +4,11 @@ import { FormEvent, useState } from "react";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import { useParams } from "next/navigation";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
+  const params = useParams();
   const [rendering, setRendering] = useState(false);
 
   const [countValidation, setCountValidation] = useState({
