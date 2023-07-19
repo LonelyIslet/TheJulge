@@ -4,16 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { setUser } from "redux/slices/userSlice";
 import useAppSelector from "redux/hooks/useAppSelector";
-import useAppDispatch from "redux/hooks/useAppDispatch";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import Popover from "components/common/Popover/Popover";
 import NotificationBoard from "components/common/NotificationBoard/NotificationBoard";
 import { IAlert } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 import mockAlertData from "constants/mock/alerts.json";
-import useToast from "hooks/useToast";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";
 
@@ -23,8 +20,6 @@ const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
 
 const GlobalNav = () => {
   const user = useAppSelector((state) => { return state.user; });
-  const { showToast } = useToast();
-  const dispatch = useAppDispatch();
   const router = useRouter();
   const [alertList, setAlertList] = useState<IAlert[]>([]);
   const navRef = useRef(null);
@@ -41,9 +36,7 @@ const GlobalNav = () => {
   };
 
   const handleSignOut = () => {
-    dispatch(setUser({ token: undefined, userInfo: undefined }));
-    showToast("로그아웃 되었습니다.");
-    router.push("/");
+    router.push("/signout");
   };
 
   return (
