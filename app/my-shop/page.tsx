@@ -5,7 +5,7 @@ import { INotice } from "types/dto";
 import { withAuth, withUserType } from "components/hocs";
 import { UserType } from "types/enums/user.enum";
 import noticeList from "constants/mock/noticeList.json";
-import styles from "@/page.module.scss";
+import styles from "./page.module.scss";
 
 interface INoticeWithClosedInfo extends INotice {
   id: string,
