@@ -9,8 +9,8 @@ const usePostNotice = () => {
   const { showErrorModal } = useErrorModal();
 
   const postNotice = async (
-    shopId: number,
-    body: INotice,
+    shopId: string,
+    body: Partial<INotice>,
   ) => {
     try {
       const data = await sendRequest({ shopId, body }).unwrap();
