@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CustomInput, Loader, Modal } from "components/common";
 import UserTypeSelect from "components/auth/AuthForm/UserTypeSelect";
