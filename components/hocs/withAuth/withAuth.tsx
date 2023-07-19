@@ -17,7 +17,7 @@ const withAuth = (Component: ComponentType) => {
         redirect("/auth?mode=signin");
       }
       setIsAuthorized(true);
-    }, []);
+    }, [user.token, showErrorModal]);
     if (!isAuthorized) return null;
     return (
       <Component {...props} />
