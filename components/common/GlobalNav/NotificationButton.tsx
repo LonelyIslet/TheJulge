@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useGetAlertsByUserIdQuery } from "redux/api/alertApi";
+import Popover from "components/common/Popover/Popover";
+import NotificationBoard from "components/common/NotificationBoard/NotificationBoard";
 import { IAlert } from "types/dto";
-import Popover from "../Popover/Popover";
-import NotificationBoard from "../NotificationBoard/NotificationBoard";
 import styles from "./NotificationButton.module.scss";
 
 interface NotificationButtonProps {
