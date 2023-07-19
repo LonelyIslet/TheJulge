@@ -1,4 +1,4 @@
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
+import { CommonLayout } from "components/common";
 // import CardList from "components/common/CardList/CardList";
 // import { INotice } from "types/dto";
 // import noticeList from "constants/mock/noticeList.json";

@@ -1,6 +1,6 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IUser } from "types/dto";
 import { UserType } from "types/enums/user.enum";
+import { apiSlice } from "redux/slices/apiSlice";
 
 export interface ICredentials {
   email: string;

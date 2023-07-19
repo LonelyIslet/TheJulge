@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
-import StatusChip from "components/common/StatusChip/StatusChip";
-import EmployerTable from "components/notice/EmployerTable/EmployerTable";
+import { CommonLayout, StatusChip } from "components/common";
+import { EmployerTable } from "components/notice";
 import { ApplyStatus } from "types/enums/apply.enum";
 
 const EmployerNotice = () => {

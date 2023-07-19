@@ -34,7 +34,7 @@ const NotificationBoard = ({
           개
         </h2>
         <button type="button" className={styles.closeBtn} onClick={onClose}>
-          <Image src="/images/close.svg" fill alt="닫기 버튼" />
+          <Image src="/images/close.svg" alt="닫기 버튼" fill />
         </button>
       </div>
       <ul className={styles.itemList}>
@@ -42,6 +42,7 @@ const NotificationBoard = ({
           const {
             shop: { item: shop }, notice: { item: notice }, createdAt, result,
           } = item;
+
           return (
             <li key={item.id} className={styles.item}>
               <div className={cx("ellipsis", `${result}`)} />

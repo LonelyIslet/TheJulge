@@ -1,15 +1,13 @@
-/* eslint-disable consistent-return */
-
 "use client";
 
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import NoticeCard from "components/common/NoticeCard/NoticeCard";
 import CommonBtn from "components/common/CommonBtn/CommonBtn";
 import CommonLayout from "components/common/CommonLayout/CommonLayout";
-import { useParams } from "next/navigation";
-import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
-import { useEffect, useState } from "react";
 import { INotice, IUser } from "types/dto";
 import { ButtonStyle } from "types/enums/button.enum";
+import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
 import styles from "./CommonShopDescription.module.scss";
 
 const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
@@ -36,7 +34,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
       return;
     }
     const { item } = shopInfo;
-    setNoticeInfo(item);
+    setNoticeInfo(item as INotice);
   }, [shopInfo]);
 
   if (isError) {

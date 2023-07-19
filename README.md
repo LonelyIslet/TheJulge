@@ -15,7 +15,6 @@
 이 어플리케이션은 [https://www.thejulge.com](https://www.thejulge.com)에서 접속할 수 있습니다.
 
 ## 프로젝트 구조
-
 ```
 thejulge
 ├─ .eslintignore
@@ -42,8 +41,33 @@ thejulge
 │  │  ├─ layout.tsx
 │  │  ├─ page.module.scss
 │  │  └─ page.tsx
+│  ├─ my-shop
+│  │  ├─ edit
+│  │  │  ├─ page.module.scss
+│  │  │  └─ page.tsx
+│  │  ├─ layout.tsx
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
 │  ├─ page.module.scss
-│  └─ page.tsx
+│  ├─ page.tsx
+│  ├─ posts
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
+│  ├─ shops
+│  │  └─ [shopId]
+│  │     └─ notices
+│  │        ├─ [noticesId]
+│  │        │  ├─ page.module.scss
+│  │        │  └─ page.tsx
+│  │        ├─ layout.tsx
+│  │        ├─ page.module.scss
+│  │        ├─ page.tsx
+│  │        └─ write
+│  │           ├─ layout.tsx
+│  │           ├─ page.module.scss
+│  │           └─ page.tsx
+│  └─ signout
+│     └─ page.tsx
 ├─ components
 │  ├─ auth
 │  │  ├─ AuthForm
@@ -53,8 +77,13 @@ thejulge
 │  │  │  ├─ SignupForm.tsx
 │  │  │  ├─ UserTypeSelect.module.scss
 │  │  │  └─ UserTypeSelect.tsx
+│  │  ├─ PersistGateContext
+│  │  │  └─ PersistGateContext.tsx
 │  │  └─ index.ts
 │  ├─ common
+│  │  ├─ CardList
+│  │  │  ├─ CardList.module.scss
+│  │  │  └─ CardList.tsx
 │  │  ├─ CommonBtn
 │  │  │  ├─ CommonBtn.module.scss
 │  │  │  └─ CommonBtn.tsx
@@ -64,6 +93,9 @@ thejulge
 │  │  ├─ CommonLayout
 │  │  │  ├─ CommonLayout.module.scss
 │  │  │  └─ CommonLayout.tsx
+│  │  ├─ CommonShopDescription
+│  │  │  ├─ CommonShopDescription.module.scss
+│  │  │  └─ CommonShopDescription.tsx
 │  │  ├─ CustomInput
 │  │  │  ├─ CustomInput.module.scss
 │  │  │  ├─ CustomInput.tsx
@@ -80,7 +112,18 @@ thejulge
 │  │  ├─ GlobalNav
 │  │  │  ├─ GlobalNav.module.scss
 │  │  │  └─ GlobalNav.tsx
+│  │  ├─ InfiniteCarousel
+│  │  │  ├─ InfiniteCarousel.module.scss
+│  │  │  ├─ InfiniteCarousel.tsx
+│  │  │  └─ ItemFrame.tsx
+│  │  ├─ InputNumber
+│  │  │  ├─ InputNumber.module.scss
+│  │  │  └─ InputNumber.tsx
+│  │  ├─ Loader
+│  │  │  ├─ Loader.module.scss
+│  │  │  └─ Loader.tsx
 │  │  ├─ Modal
+│  │  │  ├─ ErrorModalRoot.tsx
 │  │  │  ├─ Modal.module.scss
 │  │  │  ├─ Modal.tsx
 │  │  │  └─ ModalPortal.tsx
@@ -106,6 +149,9 @@ thejulge
 │  │  ├─ ShopCard
 │  │  │  ├─ ShopCard.module.scss
 │  │  │  └─ ShopCard.tsx
+│  │  ├─ Spinner
+│  │  │  ├─ Spinner.module.scss
+│  │  │  └─ Spinner.tsx
 │  │  ├─ StatusChip
 │  │  │  ├─ StatusChip.module.scss
 │  │  │  └─ StatusChip.tsx
@@ -117,53 +163,136 @@ thejulge
 │  │  │  ├─ Toast.tsx
 │  │  │  ├─ ToastPortal.tsx
 │  │  │  └─ ToastRoot.tsx
+│  │  ├─ Twiggler
+│  │  │  ├─ Twiggler.module.scss
+│  │  │  └─ Twiggler.tsx
 │  │  └─ index.ts
 │  ├─ employee
+│  │  ├─ ApplicationDetails
+│  │  │  └─ ApplicationDetails.tsx
 │  │  ├─ EditProfile
 │  │  │  ├─ EditProfile.module.scss
 │  │  │  └─ EditProfile.tsx
+│  │  ├─ EmployeeNotice
+│  │  │  └─ EmployeeNotice.tsx
+│  │  ├─ RegisteredMyProfile
+│  │  │  ├─ RegisteredMyProfile.module.scss
+│  │  │  └─ RegisteredMyProfile.tsx
 │  │  └─ index.ts
 │  ├─ employer
+│  │  ├─ EditNoticeForm
+│  │  │  ├─ EditNoticeForm.module.scss
+│  │  │  └─ EditNoticeForm.tsx
+│  │  ├─ EmployerNotice
+│  │  │  └─ EmployerNotice.tsx
+│  │  ├─ FileUploater
+│  │  │  ├─ FileUploader.module.scss
+│  │  │  └─ FileUploader.tsx
+│  │  ├─ MyNotice
+│  │  │  └─ MyNotice.tsx
+│  │  ├─ MyShop
+│  │  │  └─ MyShop.tsx
 │  │  └─ index.ts
-│  ├─ index.ts
+│  ├─ hocs
+│  │  ├─ index.ts
+│  │  ├─ withAuth
+│  │  │  └─ withAuth.tsx
+│  │  └─ withUserType
+│  │     └─ withUserType.tsx
 │  └─ notice
 │     ├─ EmployeeTable
 │     │  └─ EmployeeTable.tsx
 │     ├─ EmployerTable
 │     │  └─ EmployerTable.tsx
+│     ├─ FilterButton
+│     │  ├─ FilterButton.module.scss
+│     │  └─ FilterButton.tsx
+│     ├─ HomePageHero
+│     │  └─ HomePageHero.tsx
+│     ├─ HomePageMain
+│     │  ├─ HomePageMain.module.scss
+│     │  └─ HomePageMain.tsx
+│     ├─ RecommendedNoticeList
+│     │  ├─ RecommendedNoticeList.module.scss
+│     │  └─ RecommendedNoticeList.tsx
+│     ├─ SortButton
+│     │  ├─ SortButton.module.scss
+│     │  ├─ SortButton.tsx
+│     │  └─ SortDropdown
+│     │     ├─ SortDropdown.module.scss
+│     │     └─ SortDropdown.tsx
 │     └─ index.ts
 ├─ constants
+│  ├─ auth
+│  │  └─ user.ts
+│  ├─ dropdown
+│  │  └─ dropdownData.ts
 │  ├─ mock
 │  │  ├─ alerts.json
-│  │  └─ notice.json
-│  ├─ notice
-│  │  └─ table.ts
-│  └─ sample.ts
+│  │  ├─ notice.json
+│  │  └─ noticeList.json
+│  └─ notice
+│     ├─ index.ts
+│     ├─ options
+│     │  └─ SORT_OPTIONS.ts
+│     └─ tables
+│        └─ columns.ts
 ├─ hooks
-│  ├─ useOutsideClick.ts
+│  ├─ api
+│  │  ├─ alert
+│  │  │  └─ useReadAlert.ts
+│  │  ├─ application
+│  │  │  ├─ useAcceptApplication.ts
+│  │  │  ├─ useCancelApplication.ts
+│  │  │  ├─ usePostApplication.ts
+│  │  │  └─ useRejectApplication.ts
+│  │  ├─ auth
+│  │  │  ├─ useSignin.ts
+│  │  │  └─ useSignup.ts
+│  │  ├─ image
+│  │  │  └─ usePostImageName.ts
+│  │  ├─ notice
+│  │  │  ├─ usePostNotice.ts
+│  │  │  └─ useUpdateNotice.ts
+│  │  ├─ shop
+│  │  │  ├─ usePostShop.ts
+│  │  │  └─ useUpdateShop.ts
+│  │  └─ user
+│  │     ├─ useLazyGetUserInfo.ts
+│  │     └─ useUpdateProfile.ts
+│  ├─ useDisableDraggableChildren.ts
 │  ├─ useDropdown.ts
+│  ├─ useErrorModal.ts
 │  ├─ useInputValidation.ts
+│  ├─ useMediaQuery.ts
+│  ├─ useOutsideClick.ts
 │  ├─ useResponsiveNavbar.ts
 │  └─ useToast.ts
-├─ next-sitemap.config.js
-├─ next.config.js
 ├─ package-lock.json
 ├─ package.json
 ├─ public
 │  ├─ data
 │  │  ├─ dropdownAddress.json
 │  │  └─ dropdownShopCategory.json
-│  ├─ images /
-│  ├─ robots.txt
-│  ├─ sitemap-0.xml
-│  └─ sitemap.xml
+│  └─ images /
 ├─ redux
 │  ├─ StoreProvider.tsx
+│  ├─ api
+│  │  ├─ alertApi.ts
+│  │  ├─ applicationApi.ts
+│  │  ├─ authApi.ts
+│  │  ├─ imageApi.ts
+│  │  ├─ noticeApi.ts
+│  │  ├─ shopApi.ts
+│  │  └─ userApi.ts
 │  ├─ hooks
 │  │  ├─ useAppDispatch.ts
 │  │  └─ useAppSelector.ts
 │  ├─ slices
-│  │  └─ toastSlice.ts
+│  │  ├─ apiSlice.ts
+│  │  ├─ errorModalSlice.ts
+│  │  ├─ toastSlice.ts
+│  │  └─ userSlice.ts
 │  └─ store.ts
 ├─ styles
 │  ├─ globals.scss
@@ -179,15 +308,28 @@ thejulge
 │  │  ├─ detailPage.enum.ts
 │  │  ├─ inputValidation.enum.ts
 │  │  ├─ modal.enum.ts
+│  │  ├─ sort.enum.ts
 │  │  └─ user.enum.ts
 │  ├─ global.d.ts
 │  ├─ notice
-│  │  └─ table.d.ts
+│  │  ├─ filter.ts
+│  │  └─ tables.ts
+│  └─ shop
+│     └─ address.ts
 └─ utils
+   ├─ api
+   │  └─ getNotices.ts
    ├─ calculatePercentage.ts
+   ├─ dateToStr.ts
    ├─ formatTimeRange.ts
    ├─ getBgColorClass.ts
    ├─ inputValidation.ts
+   ├─ notice
+   │  ├─ addCommasToString.ts
+   │  ├─ calcOptions.ts
+   │  ├─ parseFilterToObject.ts
+   │  └─ parseQuery.ts
+   ├─ predicateErrorType.ts
    └─ showElapsedTime.ts
 
 ```
@@ -215,7 +357,7 @@ thejulge
 - [x] public assets 추출
 - [x] 랜딩 페이지 작성
 - [x] 리소스 완성
-- [ ] 공고 페이지 완성
+- [x] 공고 페이지 완성
 - [ ] 가게 정보 상세 페이지 완성
 - [ ] 가게 정보 등록/수정 페이지 완성
 - [ ] 공고 등록/수정 페이지 완성

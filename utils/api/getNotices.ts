@@ -1,6 +1,6 @@
-import { IGetNoticeResponse } from "redux/api/noticeApi";
 import { INotice } from "types/dto";
 import { GetNoticesProps } from "types/notice/filter";
+import { IGetNoticeResponse } from "redux/api/noticeApi";
 import parseQuery from "utils/notice/parseQuery";
 
 const getNotices = async ({

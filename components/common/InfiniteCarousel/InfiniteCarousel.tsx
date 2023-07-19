@@ -7,7 +7,7 @@ import Image from "next/image";
 import {
   PanInfo, ValueAnimationTransition, animate, motion, useMotionValue,
 } from "framer-motion";
-import ItemFrame from "./ItemFrame";
+import ItemFrame from "components/common/InfiniteCarousel/ItemFrame";
 import styles from "./InfiniteCarousel.module.scss";
 
 const transition: ValueAnimationTransition = {

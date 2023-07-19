@@ -37,5 +37,15 @@ next-env.d.ts
 # vscode
 /.vscode
 
-# env files
-.env
+next
+.next
+/next
+/.next
+node_modules
+.node_modules
+/node_modules
+/.node_modules
+git
+.git
+/.git
+/git

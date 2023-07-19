@@ -5,13 +5,13 @@ import CommonLayout from "./CommonLayout/CommonLayout";
 import CommonShopDescription from "./CommonShopDescription/CommonShopDescription";
 import CustomInput from "./CustomInput/CustomInput";
 import Dropdown from "./Dropdown/Dropdown";
+import ErrorModalRoot from "./Modal/ErrorModalRoot";
 import Filter from "./Filter/Filter";
 import GlobalFooter from "./GlobalFooter/GlobalFooter";
 import GlobalNav from "./GlobalNav/GlobalNav";
 import InfiniteCarousel from "./InfiniteCarousel/InfiniteCarousel";
 import InputNumber from "./InputNumber/InputNumber";
 import Loader from "./Loader/Loader";
-import ErrorModalRoot from "./Modal/ErrorModalRoot";
 import Modal from "./Modal/Modal";
 import NoticeCard from "./NoticeCard/NoticeCard";
 import NotificationBoard from "./NotificationBoard/NotificationBoard";
@@ -35,13 +35,13 @@ export {
   CommonShopDescription,
   CustomInput,
   Dropdown,
+  ErrorModalRoot,
   Filter,
   GlobalFooter,
   GlobalNav,
   InfiniteCarousel,
   InputNumber,
   Loader,
-  ErrorModalRoot,
   Modal,
   NoticeCard,
   NotificationBoard,

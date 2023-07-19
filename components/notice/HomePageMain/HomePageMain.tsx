@@ -1,7 +1,7 @@
 import { CardList, CommonLayout } from "components/common";
-import { INotice } from "types/dto";
-import SortButton from "components/notice/SortButton/SortButton";
 import FilterButton from "components/notice/FilterButton/FilterButton";
+import SortButton from "components/notice/SortButton/SortButton";
+import { INotice } from "types/dto";
 import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {

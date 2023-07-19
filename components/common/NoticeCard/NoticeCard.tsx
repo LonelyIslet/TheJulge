@@ -33,12 +33,15 @@ const getBgColorClass = (percentage: number) => {
   if (percentage > 75) {
     return styles["bg-75-100"];
   }
+
   if (percentage > 50) {
     return styles["bg-50-75"];
   }
+
   if (percentage > 25) {
     return styles["bg-25-50"];
   }
+
   return styles["bg-0-25"];
 };
 
@@ -63,7 +66,13 @@ const NoticeCard = ({
     <section className={styles.noticeCardContainer}>
       <div className={styles.noticeCard}>
         <div className={styles.noticeImageContainer}>
-          <Image src={imageUrl} className={cx("noticeImage", { isClosed })} alt="notice-card" fill />
+          <Image
+            src={imageUrl}
+            className={cx("noticeImage", { isClosed })}
+            alt="Notice Card"
+            fill
+            priority
+          />
           {isClosed && <p className={styles.closedMessage}>{getClosedMessage(closed, isPassed)}</p>}
         </div>
         <div className={styles.noticeAboutContainer}>
@@ -77,16 +86,34 @@ const NoticeCard = ({
               && (
                 <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
                   <p>{`기존시급보다 ${percentage}%`}</p>
-                  <Image src="/images/arrow-white.svg" className={styles.arrow} width={15} height={15} alt="arrow" />
+                  <Image
+                    src="/images/arrow-white.svg"
+                    className={styles.arrow}
+                    alt="Arrow"
+                    width={15}
+                    height={15}
+                  />
                 </div>
               )}
           </div>
           <div className={styles.timeContainer}>
-            <Image src="/images/clock-red.svg" className={styles.icon} alt="location" width={20} height={20} />
+            <Image
+              src="/images/clock-red.svg"
+              className={styles.icon}
+              alt="Location"
+              width={20}
+              height={20}
+            />
             <p className={styles.time}>{formatTimeRange(startsAt, workhour)}</p>
           </div>
           <div className={styles.addressContainer}>
-            <Image src="/images/location-red.svg" className={styles.icon} alt="location" width={20} height={20} />
+            <Image
+              src="/images/location-red.svg"
+              className={styles.icon}
+              alt="Location"
+              width={20}
+              height={20}
+            />
             <p className={styles.address}>{address}</p>
           </div>
           <p className={styles.description}>
@@ -97,7 +124,6 @@ const NoticeCard = ({
           </div>
         </div>
       </div>
-
       <div className={styles.noticeDescriptionContainer}>
         <h3 className={styles.noticeDescriptionTitle}>공고 설명</h3>
         <p className={styles.noticeDescription}>{noticeDescription}</p>

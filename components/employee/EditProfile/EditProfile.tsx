@@ -9,16 +9,16 @@ import {
 } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import inputValidation from "utils/inputValidation";
+import { Address1 } from "types/shop/address";
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import useAppDispatch from "redux/hooks/useAppDispatch";
-import useAppSelector from "redux/hooks/useAppSelector";
+import { IUserUpdateInfo } from "redux/api/userApi";
 import useUpdateProfile from "hooks/api/user/useUpdateProfile";
 import { setUser } from "redux/slices/userSlice";
+import useAppDispatch from "redux/hooks/useAppDispatch";
+import useAppSelector from "redux/hooks/useAppSelector";
 import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
-import { Address1 } from "types/shop/address";
-import { IUserUpdateInfo } from "redux/api/userApi";
+import inputValidation from "utils/inputValidation";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -53,6 +53,7 @@ const EditProfile = () => {
     if (userInfo && !userInfo.name) {
       return;
     }
+
     if (userInfo) {
       setData({
         name: userInfo.name as string,

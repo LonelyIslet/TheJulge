@@ -1,7 +1,6 @@
-// import { useState } from "react";
 import { HomePageHero, HomePageMain } from "components/notice";
-import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
+import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
 interface HomePageProps {

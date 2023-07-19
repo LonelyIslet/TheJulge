@@ -31,9 +31,11 @@
 		h1 {
 			@include font-style(3.6rem);
 		}
+
 		strong {
 			@include font-style(4.8rem);
 		}
+
 		p {
 			@include font-style(2rem);
 			margin-top: 4rem;
@@ -59,11 +61,13 @@ nav.header {
 		top: 2.5rem;
     left: 3.2rem;
 	}
+
 	@include mobile {
 		top: 1.75rem;
 		left: 2rem;
 	}
-	@include x-mobile {
+
+  @include x-mobile {
 		width: 8.164rem;
 		height: 1.5rem;
 	}
