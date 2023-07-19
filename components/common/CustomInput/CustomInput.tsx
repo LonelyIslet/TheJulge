@@ -11,7 +11,7 @@ interface ICountValidation {
 }
 
 interface IData {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 interface CustomInputProps {
@@ -49,7 +49,7 @@ const CustomInput = ({
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    data[name],
+    data[name] as string,
     name,
     required,
     rendering,
@@ -62,7 +62,7 @@ const CustomInput = ({
 
   useEffect(() => {
     setChange(!change);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
 
   return (
@@ -79,7 +79,7 @@ const CustomInput = ({
         data={data}
       />
       {validationTarget && !!countValidation?.[name] && !validation && (
-      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>
   );

@@ -10,7 +10,7 @@ interface ICountValidation {
 }
 
 interface IData {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 interface DropdownProps {
   type: "address" | "category"
@@ -86,24 +86,24 @@ const Dropdown = ({
         ref={dropdownContainerRef}
       >
         {toggle
-        && fetchData
-        && fetchData.data.map(((list: string) => {
-          return (
-            <div className={styles.select} key={list}>
-              <input
-                id={list}
-                name={name}
-                type="radio"
-                value={list}
-                className={styles.content}
-                onChange={handleInputValue}
-              />
-              <label htmlFor={list}>
-                {list}
-              </label>
-            </div>
-          );
-        }))}
+          && fetchData
+          && fetchData.data.map(((list: string) => {
+            return (
+              <div className={styles.select} key={list}>
+                <input
+                  id={list}
+                  name={name}
+                  type="radio"
+                  value={list}
+                  className={styles.content}
+                  onChange={handleInputValue}
+                />
+                <label htmlFor={list}>
+                  {list}
+                </label>
+              </div>
+            );
+          }))}
       </div>
       {!!countValidation?.[name] && !toggle && !clickCount && !data[name] && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>필수 항목입니다..</p>}
     </div>
