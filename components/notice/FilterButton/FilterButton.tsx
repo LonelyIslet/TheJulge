@@ -9,11 +9,13 @@ import styles from "./FilterButton.module.scss";
 
 interface FilterButtonProps {
   filter?: string;
+  sortOptionId: number;
   keyword: string;
 }
 
 const FilterButton = ({
   filter,
+  sortOptionId,
   keyword,
 }: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
@@ -55,6 +57,7 @@ const FilterButton = ({
             <Filter
               filter={filter}
               keyword={keyword}
+              sortOptionId={sortOptionId}
               onClose={handlePopoverToggle}
             />
           </Popover>

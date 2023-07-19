@@ -4,7 +4,7 @@ export interface FilterOptions {
   hourlyPayGte: number,
 }
 
-export interface GetNoticesProps {
+export interface GetNoticesParams {
   keyword?: string,
   sort?: string,
   filter?: string,

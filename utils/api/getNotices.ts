@@ -1,5 +1,5 @@
 import { INotice } from "types/dto";
-import { GetNoticesProps } from "types/notice/filter";
+import { GetNoticesParams } from "types/notice/filter";
 import { IGetNoticeResponse } from "redux/api/noticeApi";
 import parseQuery from "utils/notice/parseQuery";
 
@@ -7,7 +7,7 @@ const getNotices = async ({
   keyword,
   sort,
   filter,
-}: GetNoticesProps) => {
+}: GetNoticesParams) => {
   if (!process.env.API_BASE_URL) {
     return [];
   }

@@ -40,6 +40,7 @@ const HomePageMain = ({
           <FilterButton
             filter={filter}
             keyword={keyword}
+            sortOptionId={sortOptionId}
           />
         </div>
       </div>

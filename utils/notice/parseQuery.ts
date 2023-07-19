@@ -1,12 +1,12 @@
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import { GetNoticesProps } from "types/notice/filter";
+import { GetNoticesParams } from "types/notice/filter";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
 
 const parseQuery = ({
   keyword,
   sort,
   filter,
-}: GetNoticesProps) => {
+}: GetNoticesParams) => {
   let queryString = "";
 
   if (keyword || sort || filter) {

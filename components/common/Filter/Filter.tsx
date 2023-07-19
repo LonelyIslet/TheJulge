@@ -4,21 +4,25 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
+import { SORT_OPTIONS } from "constants/notice";
 import { FilterOptions } from "types/notice/filter";
 import addCommasToString from "utils/notice/addCommasToString";
 import dateToStr from "utils/dateToStr";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
+import makeQuery from "utils/notice/makeQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
   filter?: string;
   keyword: string;
+  sortOptionId: number;
   onClose: () => void;
 }
 
 const Filter = ({
   filter,
   keyword,
+  sortOptionId,
   onClose,
 }: FilterProps) => {
   let options: FilterOptions;
@@ -75,36 +79,15 @@ const Filter = ({
   };
 
   const handleApply = () => {
-    let query = "";
-
-    if (keyword) {
-      query += `?keyword=${keyword}&`;
-      if (address.size || hourlyPayGte || startsAtGte) {
-        query += "filter=";
-      }
-    } else if (address.size || hourlyPayGte || startsAtGte) {
-      query += "?filter=";
-    }
-
-    if (address.size) {
-      query += "address$";
-      address.forEach((item) => {
-        query += `${item}$`;
-      });
-    }
-
-    if (hourlyPayGte) {
-      query += `hourlyPayGte$${hourlyPayGte}$`;
-    }
-
-    if (startsAtGte) {
-      const sagStr = startsAtGte.toISOString();
-      query += `startsAtGte$${sagStr}`;
-    }
-
-    query = query.replace(/\$$/, "");
-
+    const filterOptions = {
+      address,
+      startsAtGte,
+      hourlyPayGte,
+    };
+    const sort = SORT_OPTIONS[sortOptionId].option;
+    const query = makeQuery({ keyword, sort, filterOptions });
     onClose();
+
     router.push(`/notices/${query}`);
   };
 
