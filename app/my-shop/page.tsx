@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CommonLayout, ShopCard, NoticeCard, CommonBtn,
 } from "components/common";
@@ -5,6 +7,8 @@ import {
 import noticeData from "constants/mock/notice.json";
 // import noticeList from "constants/mock/noticeList.json";
 import styles from "@/page.module.scss";
+import { withAuth, withUserType } from "components/hocs";
+import { UserType } from "types/enums/user.enum";
 
 // interface INoticeWithClosedInfo extends INotice {
 //   id: string,
@@ -75,4 +79,4 @@ const MyShopPage = () => {
   );
 };
 
-export default MyShopPage;
+export default withAuth(withUserType(MyShopPage, UserType.EMPLOYER));
