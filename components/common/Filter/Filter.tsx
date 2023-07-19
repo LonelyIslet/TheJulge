@@ -79,6 +79,9 @@ const Filter = ({
 
     if (keyword) {
       query += `?keyword=${keyword}&`;
+      if (address.size || hourlyPayGte || startsAtGte) {
+        query += "filter=";
+      }
     } else if (address.size || hourlyPayGte || startsAtGte) {
       query += "?filter=";
     }
