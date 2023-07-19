@@ -20,9 +20,9 @@ interface FileUploaderProps {
   validationTarget?: ValidationTarget;
   countValidation?: ICountValidation;
   rendering: boolean
-  // essential?: boolean
+  required?: boolean
   onFileChange: (file: File) => void;
-  // setCountValidation: React.Dispatch<React.SetStateAction<object>>;
+  setCountValidation: React.Dispatch<React.SetStateAction<object>>;
 }
 
 const FileUploader = ({
@@ -34,20 +34,24 @@ const FileUploader = ({
   rendering,
   countValidation,
   validationTarget,
-  // setCountValidation,
-  // essential,
+  setCountValidation,
+  required,
+  data,
 }: FileUploaderProps) => {
-  const [change, setChange] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const {
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
     previewUrl,
     name,
-    // required,
-    // setCountValidation,
+    required,
+    rendering,
+    setCountValidation,
+    data,
   );
+
+  const [change, setChange] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setChange(!change);
@@ -68,7 +72,7 @@ const FileUploader = ({
 
   return (
     <div className={styles.filePreviewer}>
-      <label className={styles.label} htmlFor={id}>가게 이미지</label>
+      <label className={styles.label} htmlFor={id}>가게 이미지*</label>
       <div className={styles.previewArea} onClick={handleFileClick} role="presentation">
         {previewUrl && <Image src={previewUrl} alt={previewUrl} className={cx("shopImage", { isEditMode })} fill />}
         {isEditMode && previewUrl
