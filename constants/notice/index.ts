@@ -1,6 +1,5 @@
 import SORT_OPTIONS from "./options/SORT_OPTIONS";
-import EMPLOYEE_COLUMNS from "./tables/EMPLOYEE_COLUMNS";
-import EMPLOYER_COLUMNS from "./tables/EMPLOYER_COLUMNS";
+import { EMPLOYEE_COLUMNS, EMPLOYER_COLUMNS } from "./tables/columns";
 
 export {
   SORT_OPTIONS,

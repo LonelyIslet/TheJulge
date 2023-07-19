@@ -62,8 +62,7 @@ const InputNumber = ({
   };
 
   useEffect(() => {
-    setChange(!change);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setChange((prevChange) => { return !prevChange; });
   }, [toggle, rendering]);
 
   return (

@@ -3,7 +3,7 @@
  * @PENDING 대기중
  * @REJECTED 거절됨
  * @ACCEPTED 승인 완료
- */
+*/
 export enum ApplyStatus {
   PENDING = "pending",
   REJECTED = "rejected",

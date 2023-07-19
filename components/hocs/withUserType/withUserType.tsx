@@ -10,6 +10,7 @@ const withUserType = (Component: ComponentType, userType: UserType) => {
     const user = useAppSelector((state) => { return state.user; });
     const { showErrorModal } = useErrorModal();
     const [isAuthorized, setIsAuthorized] = useState(false);
+
     useEffect(() => {
       if (!user.userInfo) return;
       if (user.userInfo.type !== userType) {
@@ -18,11 +19,14 @@ const withUserType = (Component: ComponentType, userType: UserType) => {
       }
       setIsAuthorized(true);
     }, [showErrorModal, user.userInfo]);
+
     if (!isAuthorized) return null;
+
     return (
       <Component {...props} />
     );
   };
+
   return WithUserTypeHOC;
 };
 

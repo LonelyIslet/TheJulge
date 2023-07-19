@@ -5,12 +5,12 @@
 import { useEffect, useState } from "react";
 import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
 import useAppSelector from "redux/hooks/useAppSelector";
-import CommonLayout from "components/common/CommonLayout/CommonLayout";
-import StatusChip from "components/common/StatusChip/StatusChip";
-import EmployeeTable from "components/notice/EmployeeTable/EmployeeTable";
+import {
+  CommonDetail, CommonLayout, Loader, StatusChip,
+} from "components/common";
+import { EmployeeTable } from "components/notice";
 import { IEmployeeNotices } from "types/notice/tables";
 import formatTimeRange from "utils/formatTimeRange";
-import { CommonDetail, Loader } from "components/common";
 import { DetailType } from "types/enums/detailPage.enum";
 
 const ApplicationDetails = () => {

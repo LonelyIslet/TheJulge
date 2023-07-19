@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useAppSelector from "redux/hooks/useAppSelector";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import Popover from "components/common/Popover/Popover";
 import NotificationBoard from "components/common/NotificationBoard/NotificationBoard";
 import { IAlert } from "types/dto";
 import { UserType } from "types/enums/user.enum";
 import mockAlertData from "constants/mock/alerts.json";
+import useAppSelector from "redux/hooks/useAppSelector";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";
 
