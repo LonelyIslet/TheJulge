@@ -1,12 +1,21 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useParams } from "next/navigation";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
+import convertToNumber from "utils/formattingStringTonumber";
+import convertToISODate from "utils/formattingData";
+import { usePostNoticeMutation } from "redux/api/noticeApi";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
+  const params = useParams();
+  const { postNotice } = usePostNoticeMutation();
+
+  const user = useAppSelector((state) => { return state.user; });
   const [rendering, setRendering] = useState(false);
 
   const [countValidation, setCountValidation] = useState({
@@ -47,7 +56,7 @@ const EditNoticeForm = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setRendering(!rendering);
     setCountValidation({
@@ -56,6 +65,19 @@ const EditNoticeForm = () => {
       workhour: 1,
       description: 1,
     });
+    const formattedData = {
+      hourlyPay: convertToNumber(data.hourlyPay),
+      startsAt: convertToISODate(data.startsAt),
+      workhour: convertToNumber(data.workhour),
+      description: data.description,
+    };
+
+    if (formattedData.hourlyPay > 100
+      && !formattedData.startsAt.length
+      && formattedData.workhour > 0) {
+      const response = await postNotice({ shopId: params.shopId, body: formattedData });
+      console.log(response);
+    }
   };
 
   return (
