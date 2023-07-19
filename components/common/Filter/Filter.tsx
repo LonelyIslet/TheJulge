@@ -70,7 +70,7 @@ const Filter = ({
     setAddress(new Set<number>());
     setHourlyPayGte(0);
     setHpgPresent("");
-    setStartsAtGte(new Date());
+    setStartsAtGte(null);
     setSagPresent("");
   };
 
@@ -101,10 +101,9 @@ const Filter = ({
       query += `startsAtGte$${sagStr}`;
     }
 
-    query = query.replace(/&$/, "");
+    query = query.replace(/\$$/, "");
 
     onClose();
-
     router.push(`/posts/${query}`);
   };
 
@@ -183,7 +182,7 @@ const Filter = ({
               }}
               onChange={(e) => {
                 setSagPresent(e.target.value);
-                setStartsAtGte(new Date(e.target.value));
+                setStartsAtGte(e.target.value ? new Date(e.target.value) : null);
               }}
             />
           </div>

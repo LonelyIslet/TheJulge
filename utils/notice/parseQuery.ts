@@ -1,4 +1,7 @@
+import { ADDRESS } from "constants/dropdown/dropdownData";
 import { GetNoticesProps } from "types/notice/filter";
+import dateToStr from "utils/dateToStr";
+import parseFilterToObject from "utils/notice/parseFilterToObject";
 
 const parseQuery = ({
   keyword,
@@ -20,7 +23,22 @@ const parseQuery = ({
   }
 
   if (filter) {
+    const options = parseFilterToObject(filter);
 
+    if (options.address.size) {
+      options.address.forEach((id) => {
+        queryString += `address=${ADDRESS[id]}&`;
+      });
+    }
+
+    if (options.hourlyPayGte) {
+      queryString += `hourlyPayGte=${options.hourlyPayGte}`;
+    }
+
+    if (options.startsAtGte) {
+      const startsAtGte = dateToStr(options.startsAtGte);
+      queryString += `startsAt=${startsAtGte}`;
+    }
   }
 
   queryString = queryString.replace(/&$/, "");
