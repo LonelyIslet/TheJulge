@@ -1,4 +1,10 @@
-const homeQueryStr = (keyword?: string, sort?: string) => {
+import { GetNoticesProps } from "types/notice/filter";
+
+const homeQueryStr = ({
+  keyword,
+  sort,
+  filter,
+}: GetNoticesProps) => {
   let queryString = "";
 
   if (keyword) {

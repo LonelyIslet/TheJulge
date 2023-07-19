@@ -8,14 +8,12 @@ import styles from "./FilterButton.module.scss";
 
 interface FilterButtonProps {
   options?: FilterOptions;
+  keyword: string;
 }
 
 const FilterButton = ({
-  options = {
-    address: null,
-    startsAtGte: null,
-    hourlyPayGte: null,
-  },
+  options,
+  keyword,
 }: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
 
@@ -23,7 +21,10 @@ const FilterButton = ({
     setShowPopover((prev) => { return !prev; });
   };
 
-  const optionsNum = calcOptions(options);
+  let optionsNum = 0;
+  if (options) {
+    optionsNum = calcOptions(options);
+  }
 
   return (
     <div
@@ -45,7 +46,11 @@ const FilterButton = ({
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <Filter onClose={handlePopoverToggle} />
+            <Filter
+              options={options}
+              keyword={keyword}
+              onClose={handlePopoverToggle}
+            />
           </Popover>
         )}
     </div>

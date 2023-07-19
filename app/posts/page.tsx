@@ -3,19 +3,18 @@ import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
 import styles from "./page.module.scss";
 
-interface HomePageProps {
+interface PostsPageProps {
   searchParams: {
     [key: string]: string | undefined
   }
 }
 
-const HomePage = async ({
+const PostsPage = async ({
   searchParams,
-}: HomePageProps) => {
-  const { keyword, sort } = searchParams;
-  const noticeList = await getNotices(keyword, sort);
+}: PostsPageProps) => {
+  const { keyword, sort, filter } = searchParams;
+  const noticeList = await getNotices({ keyword, sort, filter });
   let sortOptionId = 0;
-
   switch (sort) {
     case SortOptions.PAY:
       sortOptionId = 1;
@@ -43,4 +42,4 @@ const HomePage = async ({
   );
 };
 
-export default HomePage;
+export default PostsPage;

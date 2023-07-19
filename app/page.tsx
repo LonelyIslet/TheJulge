@@ -1,3 +1,4 @@
+// import { useState } from "react";
 import { HomePageHero, HomePageMain } from "components/notice";
 import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
@@ -12,8 +13,8 @@ interface HomePageProps {
 const HomePage = async ({
   searchParams,
 }: HomePageProps) => {
-  const { keyword, sort } = searchParams;
-  const noticeList = await getNotices(keyword, sort);
+  const { keyword, sort, filter } = searchParams;
+  const noticeList = await getNotices({ keyword, sort, filter });
   let sortOptionId = 0;
 
   switch (sort) {
