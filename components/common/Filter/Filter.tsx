@@ -170,6 +170,7 @@ const Filter = ({
           <div className={styles.inputWrapper}>
             <input
               type={inputType}
+              min={dateToStr(new Date())}
               id="fromDate"
               name="fromDate"
               autoComplete="off"

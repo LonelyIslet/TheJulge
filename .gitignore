@@ -36,16 +36,3 @@ next-env.d.ts
 
 # vscode
 /.vscode
-
-next
-.next
-/next
-/.next
-node_modules
-.node_modules
-/node_modules
-/.node_modules
-git
-.git
-/.git
-/git

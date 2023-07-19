@@ -18,9 +18,11 @@ const getNotices = async ({
   const res = await fetch(`${process.env.API_BASE_URL}/notices${queryString}`);
   const data = await res.json() as IGetNoticeResponse;
 
-  data.items.forEach((noticeItem) => {
-    items.push(noticeItem.item);
-  });
+  if (data.items) {
+    data.items.forEach((noticeItem) => {
+      items.push(noticeItem.item);
+    });
+  }
 
   return items;
 };

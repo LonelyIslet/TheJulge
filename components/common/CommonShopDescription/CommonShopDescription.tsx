@@ -34,7 +34,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
       return;
     }
     const { item } = shopInfo;
-    setNoticeInfo(item as INotice);
+    setNoticeInfo(item);
   }, [shopInfo]);
 
   if (isError) {
