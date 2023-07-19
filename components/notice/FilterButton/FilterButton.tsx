@@ -2,14 +2,28 @@
 
 import { useState } from "react";
 import { Filter, Popover } from "components/common";
+import { FilterOptions } from "types/notice/filter";
+import calcOptions from "utils/notice/calcOptions";
 import styles from "./FilterButton.module.scss";
 
-const FilterButton = () => {
+interface FilterButtonProps {
+  options?: FilterOptions;
+}
+
+const FilterButton = ({
+  options = {
+    address: null,
+    startsAtGte: null,
+    hourlyPayGte: null,
+  },
+}: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
+
+  const optionsNum = calcOptions(options);
 
   return (
     <div
@@ -22,7 +36,7 @@ const FilterButton = () => {
       >
         <h2>
           상세 필터
-          {/* Redux로 필터 갯수 상태관리 */}
+          {optionsNum ? ` (${optionsNum})` : ""}
         </h2>
       </button>
       {showPopover

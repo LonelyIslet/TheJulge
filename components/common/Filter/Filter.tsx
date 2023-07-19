@@ -3,19 +3,28 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import addCommasToString from "utils/addCommasToString";
+import { FilterOptions } from "types/notice/filter";
+import addCommasToString from "utils/notice/addCommasToString";
+import calcOptions from "utils/notice/calcOptions";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
+  options?: FilterOptions;
   onClose?: () => void;
 }
 
 const Filter = ({
+  options = {
+    address: null,
+    startsAtGte: null,
+    hourlyPayGte: null,
+  },
   onClose,
 }: FilterProps) => {
-  const [fromDate, setFromDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState("");
   const [fromPay, setFromPay] = useState("");
   const [addressSet, setAddressSet] = useState(new Set<number>());
+  const [inputType, setInputType] = useState("text");
 
   const handleAddressClick = (id: number) => {
     addressSet.add(id);
@@ -105,18 +114,21 @@ const Filter = ({
           <label htmlFor="fromDate">시작일</label>
           <div className={styles.inputWrapper}>
             <input
-              type="date"
+              type={inputType}
               id="fromDate"
               name="fromDate"
               autoComplete="off"
-              value={
-              `${fromDate.getFullYear().toString()
-              }-${
-                (fromDate.getMonth() + 1).toString().padStart(2, "0")
-              }-${
-                fromDate.getDate().toString().padStart(2, "0")}`
-            }
+              value={fromDate}
+              placeholder="입력"
+              onFocus={() => {
+                setInputType("date");
+              }}
+              onBlur={(e) => {
+                setInputType("text");
+                setFromDate("");
+              }}
               onChange={(e) => {
+                setFromDate(e.target.value);
                 setFromDate(new Date(e.target.value));
               }}
             />
