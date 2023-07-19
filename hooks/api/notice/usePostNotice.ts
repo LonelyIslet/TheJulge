@@ -9,7 +9,7 @@ const usePostNotice = () => {
   const { showErrorModal } = useErrorModal();
 
   const postNotice = async (
-    shopId: number,
+    shopId: string,
     body: INotice,
   ) => {
     try {

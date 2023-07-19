@@ -1,21 +1,26 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 "use client";
 
-import { FormEvent, useState } from "react";
-import { useParams } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import useAppSelector from "redux/hooks/useAppSelector";
 import convertToNumber from "utils/formattingStringTonumber";
 import convertToISODate from "utils/formattingData";
-import { usePostNoticeMutation } from "redux/api/noticeApi";
+import usePostNotice from "hooks/api/notice/usePostNotice";
+import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
+import formattingStringToDate from "utils/fomattingStringToDate";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
   const params = useParams();
-  const { postNotice } = usePostNoticeMutation();
+  const search = useSearchParams();
+  const { postNotice } = usePostNotice();
 
-  const user = useAppSelector((state) => { return state.user; });
+  const { data: NoticeInitialInfo, isLoading } = useGetNoticeByShopAndNoticeIdQuery({ shopId: params.shopId, noticeId: search.get("id") as string });
+
   const [rendering, setRendering] = useState(false);
 
   const [countValidation, setCountValidation] = useState({
@@ -25,13 +30,24 @@ const EditNoticeForm = () => {
     description: 0,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState({
     hourlyPay: "", // 넘버 타입
     startsAt: "", // 문자열
     workhour: "", // 넘버
     description: "", // 문자열
   });
+
+  useEffect(() => {
+    if (!isLoading) {
+      setData({
+        hourlyPay: Number(String(NoticeInitialInfo?.item?.hourlyPay)?.replace(/[^0-9]/g, "")).toLocaleString(), // 넘버 타입
+        startsAt: formattingStringToDate(NoticeInitialInfo?.item.startsAt as string), // 문자열
+        workhour: String(NoticeInitialInfo?.item.workhour), // 넘버
+        description: NoticeInitialInfo?.item.description as string, // 문자열
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
@@ -65,6 +81,7 @@ const EditNoticeForm = () => {
       workhour: 1,
       description: 1,
     });
+
     const formattedData = {
       hourlyPay: convertToNumber(data.hourlyPay),
       startsAt: convertToISODate(data.startsAt),
@@ -73,10 +90,11 @@ const EditNoticeForm = () => {
     };
 
     if (formattedData.hourlyPay > 100
-      && !formattedData.startsAt.length
-      && formattedData.workhour > 0) {
-      const response = await postNotice({ shopId: params.shopId, body: formattedData });
-      console.log(response);
+      && formattedData.startsAt.length !== 0
+      && formattedData.workhour > 0
+      && formattedData.description.length !== 0
+    ) {
+      const response = await postNotice(params.shopId, formattedData);
     }
   };
 
@@ -136,6 +154,11 @@ const EditNoticeForm = () => {
           name="description"
           onChange={handleData}
           data={data}
+          required
+          validationTarget={ValidationTarget.REQUIRED}
+          rendering={rendering}
+          countValidation={countValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CommonBtn
           type="submit"

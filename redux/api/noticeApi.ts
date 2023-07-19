@@ -62,7 +62,7 @@ export const noticeApi = apiSlice.injectEndpoints({
           };
         },
       }),
-      postNotice: builder.mutation<IPostNoticeResposne, { shopId: number, body: INotice }>({
+      postNotice: builder.mutation<IPostNoticeResposne, { shopId: string, body: INotice }>({
         query: ({ shopId, body }) => {
           return {
             url: `shops/${shopId}/notices`,

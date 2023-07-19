@@ -6,7 +6,7 @@ import useInputValidation from "hooks/useInputValidation";
 import styles from "./InputNumber.module.scss";
 
 interface ICountValidation {
-  [key: string]: number;
+  [key: string]: number | string;
 }
 interface IData {
   [key: string]: string | number;
@@ -65,6 +65,11 @@ const InputNumber = ({
     setChange(!change);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
+
+  useEffect(() => {
+    setValue(Number(String(data?.[name])?.replace(/[^0-9]/g, "")).toLocaleString());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   return (
     <div className={styles.container}>
