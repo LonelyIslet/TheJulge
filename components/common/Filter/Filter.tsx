@@ -105,7 +105,7 @@ const Filter = ({
     query = query.replace(/\$$/, "");
 
     onClose();
-    router.push(`/posts/${query}`);
+    router.push(`/notices/${query}`);
   };
 
   const RenderAddressSet = Array.from(address).map((id) => {
