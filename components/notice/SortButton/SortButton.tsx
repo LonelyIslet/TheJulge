@@ -2,22 +2,35 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Popover } from "components/common";
+import homeQueryStr from "utils/homeQueryStr";
 import { SORT_OPTIONS } from "constants/notice";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
-const SortButton = () => {
-  const [sortOptionId, setSortOptionId] = useState(0);
+interface SortButtonProps {
+  sortOptionId: number,
+}
+
+const SortButton = ({
+  sortOptionId,
+}: SortButtonProps) => {
+  const [optionId, setOptionId] = useState(sortOptionId);
   const [showPopover, setShowPopover] = useState(false);
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get("keyword") || "";
+  const router = useRouter();
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
   const handleOptionSelect = (id: number) => {
-    setSortOptionId(id);
+    setOptionId(id);
     setShowPopover((prev) => { return !prev; });
+    const queryString = homeQueryStr(keyword, SORT_OPTIONS[id].option);
+    router.push(queryString);
   };
 
   return (
@@ -30,7 +43,7 @@ const SortButton = () => {
         onClick={handlePopoverToggle}
       >
         <h2>
-          {SORT_OPTIONS[sortOptionId]?.label}
+          {SORT_OPTIONS[optionId].label}
         </h2>
         <Image
           width={10}
@@ -45,7 +58,7 @@ const SortButton = () => {
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <SortDropdown onOptionClick={handleOptionSelect} />
+            <SortDropdown onClick={handleOptionSelect} />
           </Popover>
         )}
     </div>

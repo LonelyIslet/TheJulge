@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { setUser } from "redux/slices/userSlice";
 import useAppSelector from "redux/hooks/useAppSelector";

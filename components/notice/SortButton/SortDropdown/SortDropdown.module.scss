@@ -14,5 +14,9 @@
   &:not(:last-of-type) {
     border-bottom: 1px solid $gray-20;
   }
+
+  &:hover {
+    background-color: $gray-10;
+  }
 }
 

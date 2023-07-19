@@ -9,12 +9,12 @@
 .container {
   @include flexbox(row, false, center);
   gap: 4rem;
-  padding: 1.5rem 20.8rem;
+  padding: 1.5rem 0;
   margin: 0 auto;
-  max-width: 192rem;
+  max-width: 96.4rem;
 
   @include tablet {
-    max-width: 84.8rem;
+    width: calc(100% - 6.4rem);
     padding: 1.5rem 3.2rem; 
   }
 

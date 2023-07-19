@@ -4,27 +4,28 @@ import { SORT_OPTIONS } from "constants/notice";
 import styles from "./SortDropdown.module.scss";
 
 interface SortDropdownProps {
-  onOptionClick: (id: number) => void;
+  onClick: (id: number) => void;
 }
 
 const SortDropdown = ({
-  onOptionClick,
+  onClick,
 }: SortDropdownProps) => {
   return (
     <div className={styles.container}>
-      {SORT_OPTIONS.map((option) => {
+      {SORT_OPTIONS.map((item) => {
         return (
           <button
-            key={option.id}
+            key={item.id}
             type="button"
             className={styles.option}
-            onClick={() => { return onOptionClick(option.id); }}
+            onClick={() => { return onClick(item.id); }}
           >
-            {option.label}
+            {item.label}
           </button>
         );
       })}
     </div>
   );
 };
+
 export default SortDropdown;

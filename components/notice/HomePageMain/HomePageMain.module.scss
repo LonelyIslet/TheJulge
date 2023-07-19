@@ -1,0 +1,18 @@
+.firstLine {
+  @include flexbox(row, space-between, center);
+  width: 100%;
+}
+
+.buttonContainer {
+  @include flexbox(row, space-between, center);
+  gap: 1rem;
+}
+
+.noticeList {
+  margin: 0 auto;
+  max-width: 144rem;
+}
+
+.keyword {
+  color: $primary;
+}

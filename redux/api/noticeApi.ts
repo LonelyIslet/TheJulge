@@ -10,7 +10,7 @@ interface INoticeResponse {
 type IPostNoticeResposne = INoticeResponse;
 type IUpdateNoticeResponse = INoticeResponse;
 
-interface IGetNoticeResponse {
+export interface IGetNoticeResponse {
   offset: number,
   limit: number,
   address: Address1[],
