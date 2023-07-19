@@ -174,7 +174,6 @@ const EditProfile = () => {
           size={ButtonSize.LARGE}
         >
           {isLoading ? <Loader /> : "등록하기"}
-
         </CommonBtn>
       </form>
     </div>
