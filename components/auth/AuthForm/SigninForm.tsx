@@ -1,18 +1,25 @@
-import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
 import { setUser } from "redux/slices/userSlice";
 import useAppDispatch from "redux/hooks/useAppDispatch";
 import { CustomInput, Loader } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useSignin from "hooks/api/auth/useSignin";
 import inputValidation from "utils/inputValidation";
+// import useAppSelector from "redux/hooks/useAppSelector";
+import useLazyGetUserInfo from "hooks/api/user/useLazyGetUserInfo";
+import useAppSelector from "redux/hooks/useAppSelector";
 import styles from "./AuthForm.module.scss";
 
 const SigninForm = () => {
+  const user = useAppSelector((state) => { return state.user; });
   const dispatch = useAppDispatch();
-  const router = useRouter();
   const [rendering, setRendering] = useState(false);
+  // const router = useRouter();
   const { signin, isLoading } = useSignin();
+  const {
+    getUserInfo, userInfoData, isUserInfoLoading,
+  } = useLazyGetUserInfo();
   const [countValidation, setCountValidation] = useState({
     email: 0,
     password: 0,
@@ -34,6 +41,10 @@ const SigninForm = () => {
     });
   };
 
+  const setUserState = async (token: string, userId: string) => {
+    await getUserInfo(userId);
+  };
+
   const handleSubmitSignin = async (event: FormEvent) => {
     event.preventDefault();
     const isEmailValidationPassed: boolean = inputValidation(ValidationTarget.EMAIL, data.email);
@@ -48,12 +59,19 @@ const SigninForm = () => {
     if (isEmailValidationPassed && isPasswordValidationPassed) {
       const res = await signin({ email: data.email, password: data.password });
       if (res) {
-        const { item: { token, user: { item: userInfo } } } = res;
-        dispatch(setUser({ token, userInfo }));
-        router.push("/");
+        const { item: { token, user: { item: { id } } } } = res;
+        dispatch(setUser({ ...user, token }));
+        await setUserState(token, id as string);
       }
     }
   };
+
+  useEffect(() => {
+    if (userInfoData) {
+      const newUserInfo = { ...user, userInfo: userInfoData.item };
+      dispatch(setUser(newUserInfo));
+    }
+  }, [userInfoData, user, dispatch]);
 
   return (
     <form
@@ -93,7 +111,7 @@ const SigninForm = () => {
         type="submit"
         className={styles.submitButton}
       >
-        {isLoading ? <Loader /> : "로그인 하기"}
+        {(isLoading || isUserInfoLoading) ? <Loader /> : "로그인 하기"}
       </button>
     </form>
   );

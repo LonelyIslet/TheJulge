@@ -18,7 +18,7 @@ const CommonLayout = ({
       <header className={headerStyle}>
         {title}
       </header>
-      <article draggable="true">
+      <article>
         {content}
       </article>
     </div>
