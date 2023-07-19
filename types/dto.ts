@@ -5,9 +5,9 @@ import { Address1 } from "./shop/address";
 export interface IShop {
   id?: string,
   name: string,
-  category: string,
+  category?: string,
   address1: string,
-  address2: string,
+  address2?: string,
   description?: string,
   imageUrl?: string,
   originalHourlyPay: number,
@@ -48,13 +48,13 @@ export interface INoticeData {
 export interface INotice {
   id: string,
   hourlyPay: number,
-  description: string,
+  description?: string,
   startsAt: string,
   workhour: number,
   closed: boolean,
   shop: {
     item: IShop,
-    href: string,
+    href?: string,
   },
 }
 

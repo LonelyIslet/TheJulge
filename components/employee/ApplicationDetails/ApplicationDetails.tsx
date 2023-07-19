@@ -3,15 +3,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
-import useAppSelector from "redux/hooks/useAppSelector";
+import { CommonDetail, Loader } from "components/common";
 import CommonLayout from "components/common/CommonLayout/CommonLayout";
 import StatusChip from "components/common/StatusChip/StatusChip";
 import EmployeeTable from "components/notice/EmployeeTable/EmployeeTable";
+import EmployeeNotice from "components/employee/EmployeeNotice/EmployeeNotice";
+import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
 import { IEmployeeNotices } from "types/notice/tables";
-import formatTimeRange from "utils/formatTimeRange";
-import { CommonDetail, Loader } from "components/common";
 import { DetailType } from "types/enums/detailPage.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
+import formatTimeRange from "utils/formatTimeRange";
 
 const ApplicationDetails = () => {
   const user = useAppSelector((state) => { return state.user; });
@@ -48,10 +49,13 @@ const ApplicationDetails = () => {
     }));
   }, [data]);
 
-  if (!isLoading && data?.items.length === 0) {
-    return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
+  if (user.userInfo?.type === "employee" || user.userInfo?.type === undefined) {
+    return <EmployeeNotice />;
   }
 
+  if (user.userInfo?.type === "employer" && !isLoading && data?.items.length === 0) {
+    return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
+  }
   return (
     <CommonLayout position="below">
       <div>
