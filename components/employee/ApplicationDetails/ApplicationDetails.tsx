@@ -21,7 +21,10 @@ const ApplicationDetails = () => {
     userId: user.userInfo?.id ?? "no-user",
     params: { offset: 0, limit: 6 },
   });
-  const onPageClick = () => {};
+  const [pageNum, setPageNum] = useState(1);
+  const onPageClick = (val) => {
+    setPageNum(val);
+  };
   const [applicationList, setApplicationList] = useState<IEmployeeNotices[]>([]);
   useEffect(() => {
     if (!data) {
@@ -52,7 +55,7 @@ const ApplicationDetails = () => {
         {isLoading ? <Loader /> : (
           <EmployeeTable
             applicationList={applicationList}
-            currentPage={5}
+            currentPage={pageNum}
             lastPage={6}
             onPageClick={onPageClick}
           />

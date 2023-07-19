@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CustomInput, Loader, Modal } from "components/common";
 import UserTypeSelect from "components/auth/AuthForm/UserTypeSelect";
@@ -35,6 +35,7 @@ const SignupForm = () => {
       };
     });
   };
+
   // 함수가 실행되면 유효성 검사가 시작됨
   const handleSubmitSignup = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -47,7 +48,9 @@ const SignupForm = () => {
       password: 1,
       password_confirm: 1,
     });
-    if (isEmailValidationPassed && isPasswordValidationPassed) {
+    if (isEmailValidationPassed
+      && isPasswordValidationPassed
+      && data.password === data.password_confirm) {
       const res = await signup({
         email: data.email,
         password: data.password,
@@ -58,6 +61,7 @@ const SignupForm = () => {
       }
     }
   };
+
   return (
     <>
       <form

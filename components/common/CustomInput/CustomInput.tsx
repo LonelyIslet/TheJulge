@@ -64,6 +64,7 @@ const CustomInput = ({
     setChange(!change);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
+
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
