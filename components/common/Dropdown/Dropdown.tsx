@@ -55,8 +55,8 @@ const Dropdown = ({
   };
 
   useEffect(() => {
-    setSwingValidationText(!swingValidationText);
-  }, [swingValidationText, rendering]);
+    setSwingValidationText((prevSwingValidationText) => { return !prevSwingValidationText; });
+  }, [rendering]);
 
   return (
     <div className={styles.box} ref={divRef} onClick={handleToggle} role="presentation">

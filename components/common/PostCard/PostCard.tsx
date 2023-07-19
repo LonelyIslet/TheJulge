@@ -50,7 +50,7 @@ const PostCard = ({
   return (
     <Link href={href} className={cx("postCard", { isClosed })}>
       <div className={styles.postImageContainer}>
-        <Image src={imageUrl} className={cx("postImage", { isClosed })} alt="post-card" fill />
+        <Image src={imageUrl} className={cx("postImage", { isClosed })} alt="post-card" fill priority />
         {isClosed && <p className={styles.closedMessage}>{getClosedMessage()}</p>}
       </div>
       <h2 className={cx("name", { isClosed })}>{name}</h2>

@@ -61,9 +61,9 @@ const CustomInput = ({
   const [change, setChange] = useState(false);
 
   useEffect(() => {
-    setChange(!change);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setChange((prevChange) => { return !prevChange; });
   }, [toggle, rendering]);
+
   return (
     <div className={styles.box}>
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
@@ -77,8 +77,11 @@ const CustomInput = ({
         onChange={onChange}
         data={data}
       />
-      {validationTarget && !!countValidation?.[name] && !validation && (
-      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+      {validationTarget
+      && !!countValidation?.[name]
+      && !validation
+      && (
+        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>
   );
