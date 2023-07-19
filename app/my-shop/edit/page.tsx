@@ -344,4 +344,10 @@
 //   );
 // };
 
-// export default MyShopEditPage;
+const Page = () => {
+  return (
+    <main />
+  );
+};
+
+export default Page;
