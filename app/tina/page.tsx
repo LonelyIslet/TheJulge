@@ -5,6 +5,7 @@ import { INotice } from "types/dto";
 import data from "constants/mock/notice.json";
 import noticeList from "constants/mock/noticeList.json";
 import styles from "@/page.module.scss";
+import { ButtonStyle } from "types/enums/button.enum";
 
 const Page = () => {
   interface INoticeWithClosedInfo extends INotice {
@@ -66,9 +67,9 @@ const Page = () => {
         workhour={workhour}
         originalHourlyPay={originalHourlyPay}
       >
-        <CommonBtn responsive>신청하기</CommonBtn>
+        <CommonBtn style={ButtonStyle.DISABLE} responsive>신청하기</CommonBtn>
       </NoticeCard>
-        {/* < noticeList={noticeList.items} /> */}
+      {/* < noticeList={noticeList.items} /> */}
     </main>
   );
 };
