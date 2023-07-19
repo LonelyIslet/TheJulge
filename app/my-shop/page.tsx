@@ -10,6 +10,11 @@ interface INoticeWithClosedInfo extends INotice {
   closed: boolean,
 }
 
+// interface INoticeWithClosedInfo extends INotice {
+//   id: string,
+//   closed: boolean,
+// }
+
 const MyShopPage = () => {
   const notice: INoticeWithClosedInfo[] = (
     noticeList.items as { item: INoticeWithClosedInfo }[]).map(({ item }) => { return item; });

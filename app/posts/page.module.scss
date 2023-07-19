@@ -1,0 +1,20 @@
+.layout {
+  @include flexbox(column, true, center);
+  .top {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0;
+    background-color: $red-10;
+    overflow-x: hidden;
+
+    @include x-mobile {
+      padding: 4rem 0;
+    }
+  }
+
+  .bottom {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 6rem 0 12rem;
+  }
+}
