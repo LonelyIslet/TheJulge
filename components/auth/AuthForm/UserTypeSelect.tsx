@@ -1,5 +1,4 @@
 import { UserType } from "types/enums/user.enum";
-import { ChangeEvent } from "react";
 import styles from "./UserTypeSelect.module.scss";
 
 interface UserTypeSelectProps {

@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { usePostImageNameMutation } from "redux/api/imageApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
@@ -21,6 +20,7 @@ const usePostImageName = () => {
         }
       }
       console.error(err);
+      return undefined;
     }
   };
 

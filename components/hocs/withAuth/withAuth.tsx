@@ -17,12 +17,15 @@ const withAuth = (Component: ComponentType) => {
         redirect("/auth?mode=signin");
       }
       setIsAuthorized(true);
-    }, []);
+    }, [showErrorModal, user.token]);
+
     if (!isAuthorized) return null;
+
     return (
       <Component {...props} />
     );
   };
+
   return WithAuthHOC;
 };
 

@@ -16,7 +16,6 @@ const EditNoticeForm = () => {
     description: 0,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState({
     hourlyPay: "", // 넘버 타입
     startsAt: "", // 문자열
@@ -24,10 +23,12 @@ const EditNoticeForm = () => {
     description: "", // 문자열
   });
 
-  const handleData = (event:
-  React.ChangeEvent<HTMLInputElement |
-  HTMLTextAreaElement> |
-  React.MouseEvent<HTMLButtonElement>) => {
+  const handleData = (
+    event:
+    React.ChangeEvent<HTMLInputElement |
+    HTMLTextAreaElement> |
+    React.MouseEvent<HTMLButtonElement>,
+  ) => {
     if (event.type === "click") {
       const target = event.target as HTMLButtonElement;
       setData((prev) => {

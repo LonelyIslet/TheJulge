@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -14,12 +12,15 @@ const RecommendedNoticeList = () => {
   const { matches: showOnlyTwo } = useMediaQuery(530);
   const ref = useRef<HTMLDivElement>(null);
   let params;
+
   if (user.userInfo?.address) {
     params = { address: [user.userInfo.address] };
   } else {
     params = { limit: 6, sort: "pay" as SortOption };
   }
+
   const { data: noticeList, isLoading } = useGetNoticesQuery(params);
+
   useEffect(() => {
     if (ref.current) {
       ref.current.addEventListener("touchstart", (e) => {
@@ -28,15 +29,19 @@ const RecommendedNoticeList = () => {
       }, { passive: false });
     }
   }, [ref]);
+
   if (isLoading) {
     return (
       <div className={styles.container}>
         <Spinner />
       </div>
     );
-  } if (!noticeList?.items.length) {
+  }
+
+  if (!noticeList?.items.length) {
     return (<div className={styles.loadingContainer}>회원님을 위한 맞춤공고가 없어요</div>);
   }
+
   return (
     <div ref={ref}>
       <div className={styles.container}>
@@ -54,7 +59,7 @@ const RecommendedNoticeList = () => {
                   startsAt={noticeList.items[noticeIndex].item.startsAt}
                   workhour={noticeList.items[noticeIndex].item.workhour}
                   address={noticeList.items[noticeIndex].item.shop.item.address1}
-                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl}
+                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl as string}
                   originalHourlyPay={
                     noticeList.items[noticeIndex].item.shop.item.originalHourlyPay
                   }

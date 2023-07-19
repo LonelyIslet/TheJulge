@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import classNames from "classnames/bind";
-import useInputValidation from "hooks/useInputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import useInputValidation from "hooks/useInputValidation";
 import styles from "./FileUploader.module.scss";
 
 const cx = classNames.bind(styles);
