@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { IAlert } from "types/dto";
 import Popover from "../Popover/Popover";
 import NotificationBoard from "../NotificationBoard/NotificationBoard";
-// import { Popover, NotificationBoard } from "components/common";
 import styles from "./NotificationButton.module.scss";
 
 const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
