@@ -19,10 +19,12 @@ const withAuth = (Component: ComponentType) => {
       setIsAuthorized(true);
     }, [user.token, showErrorModal]);
     if (!isAuthorized) return null;
+
     return (
       <Component {...props} />
     );
   };
+
   return WithAuthHOC;
 };
 

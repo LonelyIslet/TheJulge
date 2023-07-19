@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { CommonDetail, CommonBtn } from "components/common";
 import { ButtonStyle } from "types/enums/button.enum";
-import useAppSelector from "redux/hooks/useAppSelector";
 import { DetailType } from "types/enums/detailPage.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
 import styles from "./RegisteredMyProfile.module.scss";
 
 const RegisteredMyProfile = () => {

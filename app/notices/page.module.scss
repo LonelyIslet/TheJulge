@@ -1,5 +1,6 @@
 .layout {
   @include flexbox(column, true, center);
+
   .top {
     @include flexbox(column, space-between, center);
     width: 100%;

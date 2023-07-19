@@ -1,12 +1,12 @@
+"use client";
+
 import { FormEvent, useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
 import { setUser } from "redux/slices/userSlice";
 import useAppDispatch from "redux/hooks/useAppDispatch";
 import { CustomInput, Loader } from "components/common";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useSignin from "hooks/api/auth/useSignin";
 import inputValidation from "utils/inputValidation";
-// import useAppSelector from "redux/hooks/useAppSelector";
 import useLazyGetUserInfo from "hooks/api/user/useLazyGetUserInfo";
 import useAppSelector from "redux/hooks/useAppSelector";
 import styles from "./AuthForm.module.scss";
@@ -15,7 +15,6 @@ const SigninForm = () => {
   const user = useAppSelector((state) => { return state.user; });
   const dispatch = useAppDispatch();
   const [rendering, setRendering] = useState(false);
-  // const router = useRouter();
   const { signin, isLoading } = useSignin();
   const {
     getUserInfo, userInfoData, isUserInfoLoading,

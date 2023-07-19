@@ -1,6 +1,6 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, INotice } from "types/dto";
 import { Address1 } from "types/shop/address";
+import { apiSlice } from "redux/slices/apiSlice";
 
 interface INoticeResponse {
   item: INotice;

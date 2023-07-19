@@ -1,27 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import CommonBtn from "components/common/CommonBtn/CommonBtn";
-import CustomInput from "components/common/CustomInput/CustomInput";
-import Dropdown from "components/common/Dropdown/Dropdown";
+import {
+  CommonBtn, CustomInput, Dropdown, Loader,
+} from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import inputValidation from "utils/inputValidation";
+import { Address1 } from "types/shop/address";
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import useAppSelector from "redux/hooks/useAppSelector";
+import { IUserUpdateInfo } from "redux/api/userApi";
 import useUpdateProfile from "hooks/api/user/useUpdateProfile";
 import { setUser } from "redux/slices/userSlice";
 import useAppDispatch from "redux/hooks/useAppDispatch";
+import useAppSelector from "redux/hooks/useAppSelector";
 import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
-import { Address1 } from "types/shop/address";
-import { Loader } from "components/common";
-import { IUserUpdateInfo } from "redux/api/userApi";
+import inputValidation from "utils/inputValidation";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -56,6 +53,7 @@ const EditProfile = () => {
     if (userInfo && !userInfo.name) {
       return;
     }
+
     if (userInfo) {
       setData({
         name: userInfo.name as string,
@@ -64,7 +62,7 @@ const EditProfile = () => {
         bio: userInfo.bio as string,
       });
     }
-  }, []);
+  }, [userInfo]);
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
@@ -93,16 +91,19 @@ const EditProfile = () => {
 
     const isContainedAddress = ADDRESS.includes(data.address);
     // 유효성 검사 완료 시 실행되는 함수 입력하면 됩니다.
-    if (data && data?.name?.length && inputValidation(
-      ValidationTarget.PHONE,
-      data.phone,
-    // eslint-disable-next-line no-empty
-    ) && isContainedAddress && data.bio.length) {
-      const res = await updateProfile(userInfo!.id!, data as IUserUpdateInfo);
-      if (res) {
-        dispatch(setUser({ token: userData.token, userInfo: res.item }));
-        showToast("편집이 완료되었습니다.");
-        router.push("/my-profile");
+    if (
+      data
+      && data?.name?.length
+      && inputValidation(ValidationTarget.PHONE, data.phone)
+      && isContainedAddress
+      && data.bio.length) {
+      if (userInfo && userInfo.id) {
+        const res = await updateProfile(userInfo.id, data as IUserUpdateInfo);
+        if (res) {
+          dispatch(setUser({ token: userData.token, userInfo: res.item }));
+          showToast("편집이 완료되었습니다.");
+          router.push("/my-profile");
+        }
       }
     }
   };
@@ -173,7 +174,6 @@ const EditProfile = () => {
           size={ButtonSize.LARGE}
         >
           {isLoading ? <Loader /> : "등록하기"}
-
         </CommonBtn>
       </form>
     </div>

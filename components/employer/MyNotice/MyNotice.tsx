@@ -24,7 +24,7 @@ const MyNotice = ({
       />
     </CommonLayout>
   ) : (
-    <CommonDetail detailType={DetailType.NOTICE_DETAILS} />
+    <CommonDetail detailType={DetailType.NOTICE_DETAILS as DetailType} />
   );
 };
 

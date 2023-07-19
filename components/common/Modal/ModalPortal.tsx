@@ -11,9 +11,9 @@ const ModalPortal = ({
   children,
 }: ModalPortalProps) => {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
-
     return () => { return setMounted(false); };
   }, []);
 

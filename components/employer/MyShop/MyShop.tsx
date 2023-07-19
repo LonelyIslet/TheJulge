@@ -1,6 +1,4 @@
-import {
-  CommonLayout, ShopCard,
-} from "components/common";
+import { CommonLayout, ShopCard } from "components/common";
 
 interface MyShopProps {
   name: string,

@@ -35,6 +35,8 @@
   background: rgb(0, 0, 0);
   opacity: 0.4;
   animation: fadeInBg 0.5s;
+  z-index: 1000;
+
   @keyframes fadeInBg {
     0% {
       opacity: 0;
@@ -43,7 +45,6 @@
       opacity: 0.4;
     }
   }
-  z-index: 1000;
 }
 
 .container {
@@ -57,6 +58,7 @@
   border-radius: 1.2rem;
   transform: translate(-50%, -50%);
   animation: fadeInModal 0.5s;
+  z-index: 1000;
   
   @keyframes fadeInModal {
     0% {
@@ -66,7 +68,6 @@
       opacity: 1.5;
     }
   }
-  z-index: 1000;
 }
 
 .modalHeader {

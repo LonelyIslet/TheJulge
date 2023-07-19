@@ -4,10 +4,10 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useAppSelector from "redux/hooks/useAppSelector";
 import SearchBar from "components/common/SearchBar/SearchBar";
 import NotificationButton from "components/common/GlobalNav/NotificationButton";
 import { UserType } from "types/enums/user.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";
 

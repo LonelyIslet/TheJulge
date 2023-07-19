@@ -1,5 +1,5 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IShop } from "types/dto";
+import { apiSlice } from "redux/slices/apiSlice";
 
 export interface IGetShopInfoResponse {
   item: IShop;

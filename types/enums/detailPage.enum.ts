@@ -6,7 +6,6 @@
  * @NOTICE_DETAILS 사장님 가게 정보 상세페이지에서 사용
  * @LOGIN 최근에 본 공고를 보기위한 로그인 컴포넌트
  */
-
 export enum DetailType {
   EMPLOYER = "EMPLOYER",
   EMPLOYEE = "EMPLOYEE",
