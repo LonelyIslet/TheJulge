@@ -11,7 +11,7 @@ interface ICountValidation {
 }
 
 interface IData {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 interface CustomInputProps {
@@ -49,7 +49,7 @@ const CustomInput = ({
     validation, validationContent, handleBlur, toggle,
   } = useInputValidation(
     validationTarget as ValidationTarget,
-    data[name],
+    data[name] as string,
     name,
     required,
     rendering,

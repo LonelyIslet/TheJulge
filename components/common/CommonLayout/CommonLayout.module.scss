@@ -2,7 +2,7 @@
   max-width: 96.4rem;
   width: 100%;
   background-color: inherit;
-
+  overflow-x: clip;
   header.above {
     margin-bottom: 2.4rem;
   }
@@ -12,7 +12,7 @@
   }
 
   header {
-    p {
+    & > p {
       color: $primary;
       font-size: 1.6rem;
       margin-bottom: 0.8rem;

@@ -1,4 +1,6 @@
 import { RegisteredMyProfile, ApplicationDetails } from "components/employee";
+import { withAuth, withUserType } from "components/hocs";
+import { UserType } from "types/enums/user.enum";
 import styles from "./page.module.scss";
 
 const MyProfilePage = () => {
@@ -14,4 +16,4 @@ const MyProfilePage = () => {
   );
 };
 
-export default MyProfilePage;
+export default withAuth(withUserType(MyProfilePage, UserType.EMPLOYEE));

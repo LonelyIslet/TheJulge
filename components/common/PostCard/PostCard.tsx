@@ -50,17 +50,35 @@ const PostCard = ({
   return (
     <Link href={href} className={cx("postCard", { isClosed })}>
       <div className={styles.postImageContainer}>
-        <Image src={imageUrl} className={cx("postImage", { isClosed })} alt="post-card" fill priority />
+        <Image
+          src={imageUrl}
+          className={cx("postImage", { isClosed })}
+          alt="Post Card"
+          fill
+          priority
+        />
         {isClosed && <p className={styles.closedMessage}>{getClosedMessage()}</p>}
       </div>
       <h2 className={cx("name", { isClosed })}>{name}</h2>
       <div className={styles.information}>
         <div className={cx("time", { isClosed })}>
-          <Image src={isClosed ? "/images/clock-gray.svg" : "images/clock-red.svg"} className={cx("icon", isClosed)} alt="clock" width={15} height={15} />
+          <Image
+            src={isClosed ? "/images/clock-gray.svg" : "images/clock-red.svg"}
+            className={cx("icon", isClosed)}
+            alt="Clock"
+            width={15}
+            height={15}
+          />
           <p>{formatTimeRange(startsAt, workhour)}</p>
         </div>
         <div className={cx("address", { isClosed })}>
-          <Image src={isClosed ? "/images/location-gray.svg" : "images/location-red.svg"} className={cx("icon", isClosed)} alt="location" width={15} height={15} />
+          <Image
+            src={isClosed ? "/images/location-gray.svg" : "images/location-red.svg"}
+            className={cx("icon", isClosed)}
+            alt="Location"
+            width={15}
+            height={15}
+          />
           <p>{address}</p>
         </div>
       </div>
@@ -73,7 +91,13 @@ const PostCard = ({
           && (
             <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
               <p>{`기존시급보다 ${percentage}%`}</p>
-              <Image src="/images/arrow-white.svg" className={styles.arrowDt} width={15} height={15} alt="arrow" />
+              <Image
+                src="/images/arrow-white.svg"
+                className={styles.arrowDt}
+                width={15}
+                height={15}
+                alt="Arrow"
+              />
               <div className={styles.arrowMb}>
                 <CustomArrow isClosed={isClosed} percentage={percentage} />
               </div>

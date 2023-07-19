@@ -34,7 +34,7 @@ const RecommendedNoticeList = () => {
         <Spinner />
       </div>
     );
-  } if (!noticeList) {
+  } if (!noticeList?.items.length) {
     return (<div className={styles.loadingContainer}>회원님을 위한 맞춤공고가 없어요</div>);
   }
   return (
