@@ -15,6 +15,7 @@ const PostsPage = async ({
   const { keyword, sort, filter } = searchParams;
   const noticeList = await getNotices({ keyword, sort, filter });
   let sortOptionId = 0;
+
   switch (sort) {
     case SortOptions.PAY:
       sortOptionId = 1;

@@ -78,10 +78,8 @@ const Filter = ({
     let query = "";
 
     if (keyword) {
-      query += `?keyword=${keyword}`;
-    }
-
-    if (address.size || hourlyPayGte || startsAtGte) {
+      query += `?keyword=${keyword}&`;
+    } else if (address.size || hourlyPayGte || startsAtGte) {
       query += "?filter=";
     }
 

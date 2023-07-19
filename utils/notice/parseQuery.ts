@@ -1,6 +1,5 @@
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import { GetNoticesProps } from "types/notice/filter";
-import dateToStr from "utils/dateToStr";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
 
 const parseQuery = ({
@@ -32,12 +31,12 @@ const parseQuery = ({
     }
 
     if (options.hourlyPayGte) {
-      queryString += `hourlyPayGte=${options.hourlyPayGte}`;
+      queryString += `hourlyPayGte=${options.hourlyPayGte}&`;
     }
 
     if (options.startsAtGte) {
-      const startsAtGte = dateToStr(options.startsAtGte);
-      queryString += `startsAt=${startsAtGte}`;
+      const startsAtGte = options.startsAtGte.toISOString();
+      queryString += `startsAtGte=${startsAtGte}`;
     }
   }
 
