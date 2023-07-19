@@ -56,13 +56,13 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
           <NoticeCard
             hourlyPay={noticeInfo.hourlyPay}
             startsAt={noticeInfo.startsAt}
-            address={noticeInfo?.shop?.item.address1 as string}
+            address={noticeInfo?.shop?.item.address1}
             imageUrl={noticeInfo.shop?.item.imageUrl as string}
             shopDescription={noticeInfo?.shop?.item.description as string}
             noticeDescription={noticeInfo.description}
-            closed={noticeInfo?.closed as boolean}
+            closed={noticeInfo?.closed}
             workhour={noticeInfo.workhour}
-            originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay as number}
+            originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay}
           >
             {(noticeInfo?.closed || user?.type === "employer" || user?.type === undefined) && (
             <CommonBtn
