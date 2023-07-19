@@ -15,6 +15,8 @@ interface IPaginationParam {
 interface IGetApplicationsResponse {
   offset: number;
   limit: number;
+  count: number;
+  hasNext: boolean;
   items: IApplicationResponse[];
   links: ILink[];
 }
