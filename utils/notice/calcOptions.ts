@@ -4,7 +4,7 @@ const calcOptions = (filterOptions: FilterOptions) => {
   let num = 0;
 
   if (filterOptions.address) {
-    num += filterOptions.address.length;
+    num += filterOptions.address.size;
   }
 
   if (filterOptions.startsAtGte) {

@@ -41,6 +41,7 @@ const HomePage = async ({
           noticeList={noticeList}
           keyword={keyword}
           sortOptionId={sortOptionId}
+          filter={filter}
         />
       </div>
     </div>

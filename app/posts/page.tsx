@@ -36,6 +36,7 @@ const PostsPage = async ({
           noticeList={noticeList}
           keyword={keyword}
           sortOptionId={sortOptionId}
+          filter={filter}
         />
       </div>
     </div>

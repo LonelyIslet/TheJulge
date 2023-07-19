@@ -6,28 +6,37 @@ import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import { FilterOptions } from "types/notice/filter";
 import addCommasToString from "utils/notice/addCommasToString";
+import dateToStr from "utils/dateToStr";
+import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  options?: FilterOptions;
+  filter?: string;
   keyword: string;
   onClose: () => void;
 }
 
 const Filter = ({
-  options = {
-    address: new Set<number>(),
-    startsAtGte: null,
-    hourlyPayGte: 0,
-  },
+  filter,
   keyword,
   onClose,
 }: FilterProps) => {
+  let options: FilterOptions;
+  if (filter) {
+    options = parseFilterToObject(filter);
+  } else {
+    options = {
+      address: new Set<number>(),
+      startsAtGte: null,
+      hourlyPayGte: 0,
+    };
+  }
+
   const [address, setAddress] = useState(options.address);
   const [startsAtGte, setStartsAtGte] = useState(options.startsAtGte);
   const [sagPresent, setSagPresent] = useState(() => {
     if (options.startsAtGte) {
-      return options.startsAtGte.toString();
+      return dateToStr(options.startsAtGte);
     }
     return "";
   });
@@ -58,6 +67,7 @@ const Filter = ({
   };
 
   const onReset = () => {
+    setAddress(new Set<number>());
     setHourlyPayGte(0);
     setHpgPresent("");
     setStartsAtGte(new Date());
@@ -76,20 +86,24 @@ const Filter = ({
     }
 
     if (address.size) {
-      query += "address";
+      query += "address$";
       address.forEach((item) => {
-        query += `%${item}`;
+        query += `${item}$`;
       });
     }
 
     if (hourlyPayGte) {
-      query += `hourlyPayGte%${hourlyPayGte}`;
+      query += `hourlyPayGte$${hourlyPayGte}$`;
     }
 
     if (startsAtGte) {
       const sagStr = startsAtGte.toISOString();
-      query += `startsAtGte%${sagStr}`;
+      query += `startsAtGte$${sagStr}`;
     }
+
+    query = query.replace(/&$/, "");
+
+    onClose();
 
     router.push(`/posts/${query}`);
   };

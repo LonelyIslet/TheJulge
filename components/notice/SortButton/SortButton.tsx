@@ -5,15 +5,17 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Popover } from "components/common";
 import { SORT_OPTIONS } from "constants/notice";
-import homeQueryStr from "utils/homeQueryStr";
+import parseQuery from "utils/notice/parseQuery";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
 interface SortButtonProps {
+  filter: string,
   sortOptionId: number,
 }
 
 const SortButton = ({
+  filter,
   sortOptionId,
 }: SortButtonProps) => {
   const [optionId, setOptionId] = useState(sortOptionId);
@@ -29,7 +31,8 @@ const SortButton = ({
   const handleOptionSelect = (id: number) => {
     setOptionId(id);
     setShowPopover((prev) => { return !prev; });
-    const queryString = homeQueryStr(keyword, SORT_OPTIONS[id].option);
+    const sort = SORT_OPTIONS[id].option;
+    const queryString = parseQuery({ keyword, sort, filter });
     router.push(queryString);
   };
 

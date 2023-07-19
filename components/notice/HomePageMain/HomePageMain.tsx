@@ -2,21 +2,20 @@ import { CardList, CommonLayout } from "components/common";
 import { INotice } from "types/dto";
 import SortButton from "components/notice/SortButton/SortButton";
 import FilterButton from "components/notice/FilterButton/FilterButton";
-import { FilterOptions } from "types/notice/filter";
 import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {
   noticeList: INotice[],
   keyword?: string,
   sortOptionId?: number,
-  filterOptions?: FilterOptions,
+  filter?: string,
 }
 
 const HomePageMain = ({
   noticeList,
   keyword = "",
   sortOptionId = 0,
-  filterOptions,
+  filter = "",
 }: HomePageMainProps) => {
   return (
     <CommonLayout position="below">
@@ -35,10 +34,11 @@ const HomePageMain = ({
           )}
         <div className={styles.buttonContainer}>
           <SortButton
+            filter={filter}
             sortOptionId={sortOptionId}
           />
           <FilterButton
-            options={filterOptions}
+            filter={filter}
             keyword={keyword}
           />
         </div>

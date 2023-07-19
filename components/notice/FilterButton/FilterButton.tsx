@@ -4,15 +4,16 @@ import { useState } from "react";
 import { Filter, Popover } from "components/common";
 import { FilterOptions } from "types/notice/filter";
 import calcOptions from "utils/notice/calcOptions";
+import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./FilterButton.module.scss";
 
 interface FilterButtonProps {
-  options?: FilterOptions;
+  filter?: string;
   keyword: string;
 }
 
 const FilterButton = ({
-  options,
+  filter,
   keyword,
 }: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
@@ -21,9 +22,14 @@ const FilterButton = ({
     setShowPopover((prev) => { return !prev; });
   };
 
+  let filterOptions: FilterOptions | undefined;
+  if (filter) {
+    filterOptions = parseFilterToObject(filter);
+  }
+
   let optionsNum = 0;
-  if (options) {
-    optionsNum = calcOptions(options);
+  if (filterOptions) {
+    optionsNum = calcOptions(filterOptions);
   }
 
   return (
@@ -47,7 +53,7 @@ const FilterButton = ({
             onClose={handlePopoverToggle}
           >
             <Filter
-              options={options}
+              filter={filter}
               keyword={keyword}
               onClose={handlePopoverToggle}
             />

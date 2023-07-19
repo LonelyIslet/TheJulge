@@ -1,7 +1,7 @@
 import { IGetNoticeResponse } from "redux/api/noticeApi";
 import { INotice } from "types/dto";
 import { GetNoticesProps } from "types/notice/filter";
-import homeQueryStr from "utils/homeQueryStr";
+import parseQuery from "utils/notice/parseQuery";
 
 const getNotices = async ({
   keyword,
@@ -12,7 +12,7 @@ const getNotices = async ({
     return [];
   }
 
-  const queryString = homeQueryStr({ keyword, sort, filter });
+  const queryString = parseQuery({ keyword, sort, filter });
 
   const items: INotice[] = [];
   const res = await fetch(`${process.env.API_BASE_URL}/notices${queryString}`);
