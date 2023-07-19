@@ -19,7 +19,7 @@ interface DropdownProps {
   name: string
   required?: boolean
   onChange: (event:
-  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+    React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   rendering: boolean
   countValidation: ICountValidation
   data: IData
@@ -105,7 +105,7 @@ const Dropdown = ({
             );
           }))}
       </div>
-      {!!countValidation?.[name] && !toggle && !clickCount && !data[name] && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>필수 항목입니다..</p>}
+      {!!countValidation?.[name] && !toggle && !clickCount && !data[name] && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>필수 항목입니다.</p>}
     </div>
   );
 };
