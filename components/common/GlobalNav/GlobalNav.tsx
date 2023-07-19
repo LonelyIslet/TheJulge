@@ -42,7 +42,7 @@ const GlobalNav = () => {
           />
         </div>
         <div className={styles.rightItems}>
-          {!user.token ? (
+          {!user.userInfo ? (
             <>
               <Link href="/auth?mode=signin">
                 <h2>
@@ -70,7 +70,8 @@ const GlobalNav = () => {
               <button className={styles.logoutBtn} onClick={handleSignOut}>
                 <h2>로그아웃</h2>
               </button>
-              <NotificationButton />
+              { user.userInfo.type === UserType.EMPLOYEE
+                && <NotificationButton userId={user.userInfo.id as string} />}
             </>
           )}
         </div>

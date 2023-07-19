@@ -1,27 +1,51 @@
-import Image from "next/image";
-import mockAlertData from "constants/mock/alerts.json";
+"use client";
+
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useGetAlertsByUserIdQuery } from "redux/api/alertApi";
 import { IAlert } from "types/dto";
 import Popover from "../Popover/Popover";
 import NotificationBoard from "../NotificationBoard/NotificationBoard";
 import styles from "./NotificationButton.module.scss";
 
-const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
-  return i.item as IAlert;
-});
+interface NotificationButtonProps {
+  userId: string;
+}
 
-const NotificationButton = () => {
+const NotificationButton = ({ userId }: NotificationButtonProps) => {
   const [alertList, setAlertList] = useState<IAlert[]>([]);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const { data, isSuccess } = useGetAlertsByUserIdQuery(
+    { userId, params: { offset: 0, limit: 6 } },
+    {
+      pollingInterval: process.env.NODE_ENV === "production" ? 10000 : 3000,
+    },
+  );
+  const [isInitialList, setIsInitialList] = useState(true);
 
   useEffect(() => {
-    // TOOD: api 호출을 통해 유저의 알림을 받아와 alertList에 setting한다.
-    setAlertList(ALERT_LIST);
-  }, []);
+    if (isSuccess) {
+      setIsInitialList(false);
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (data) {
+      setAlertList(
+        data.items.filter((i) => { return !i.item.read; })
+          .map((i) => { return i.item; }),
+      );
+    }
+  }, [data]);
 
   const hasUnreadAlerts = (alerts: IAlert[]) => {
     return alerts.some((alert) => { return !alert.read; });
   };
+
+  const handleReadAlert = (alertId: string) => {
+    setAlertList((prev) => { return prev.filter((i) => { return i.id !== alertId; }); });
+  };
+
   return (
     <div className={styles.notificationIcon}>
       <Image
@@ -41,8 +65,10 @@ const NotificationButton = () => {
         right="0rem"
       >
         <NotificationBoard
-          alertList={ALERT_LIST}
+          alertList={alertList}
+          isLoading={isInitialList}
           onClose={() => { setIsNotificationOpen(false); }}
+          onRead={handleReadAlert}
         />
       </Popover>
       )}
