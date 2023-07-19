@@ -4,9 +4,9 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import CommonBtn from "components/common/CommonBtn/CommonBtn";
-import CustomInput from "components/common/CustomInput/CustomInput";
-import Dropdown from "components/common/Dropdown/Dropdown";
+import {
+  CommonBtn, CustomInput, Dropdown, Loader,
+} from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
@@ -18,7 +18,6 @@ import useAppDispatch from "redux/hooks/useAppDispatch";
 import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
 import { Address1 } from "types/shop/address";
-import { Loader } from "components/common";
 import { IUserUpdateInfo } from "redux/api/userApi";
 import styles from "./EditProfile.module.scss";
 
