@@ -9,7 +9,7 @@ interface ICountValidation {
   [key: string]: number;
 }
 interface IData {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 interface CustomInputProps {
@@ -49,6 +49,7 @@ const InputNumber = ({
     value,
     name,
     required,
+    rendering,
     setCountValidation,
     data as IData,
   );
@@ -62,7 +63,7 @@ const InputNumber = ({
 
   useEffect(() => {
     setChange(!change);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, rendering]);
 
   return (
@@ -82,7 +83,7 @@ const InputNumber = ({
         <span className={styles.unit}>{unit}</span>
       </div>
       {validationTarget && !!countValidation?.[name as keyof ICountValidation] && !validation && (
-      <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
+        <p className={change ? `${styles.validation}` : `${styles.swing}`}>{validationContent}</p>
       )}
     </div>
   );

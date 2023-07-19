@@ -68,6 +68,7 @@ const EditNoticeForm = () => {
             id="hourlyPay"
             name="hourlyPay"
             onChange={handleData}
+            data={data}
             required
             unit="원"
             validationTarget={ValidationTarget.HOURLY_PAY}
@@ -83,6 +84,7 @@ const EditNoticeForm = () => {
             name="startsAt"
             type="text"
             onChange={handleData}
+            data={data}
             required
             rendering={rendering}
             validationTarget={ValidationTarget.DATE}
@@ -95,6 +97,7 @@ const EditNoticeForm = () => {
             id="workhour"
             name="workhour"
             onChange={handleData}
+            data={data}
             required
             unit="시간"
             validationTarget={ValidationTarget.REQUIRED}
@@ -110,6 +113,7 @@ const EditNoticeForm = () => {
           id="description"
           name="description"
           onChange={handleData}
+          data={data}
         />
         <CommonBtn
           type="submit"
