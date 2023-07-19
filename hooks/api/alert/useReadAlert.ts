@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { useReadAlertMutation } from "redux/api/alertApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
@@ -22,6 +21,7 @@ const useReadAlert = () => {
         }
       }
       console.error(err);
+      return err;
     }
   };
 

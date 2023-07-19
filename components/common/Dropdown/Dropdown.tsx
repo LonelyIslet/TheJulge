@@ -18,8 +18,7 @@ interface DropdownProps {
   id: string
   name: string
   required?: boolean
-  onChange: (event:
-  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   rendering: boolean
   countValidation: ICountValidation
   data: IData
@@ -55,14 +54,10 @@ const Dropdown = ({
 
   useEffect(() => {
     setSwingValidationText(!swingValidationText);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rendering]);
+  }, [swingValidationText, rendering]);
 
   return (
-    /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
-    jsx-a11y/no-static-element-interactions */
-    <div className={styles.box} ref={divRef} onClick={handleToggle}>
+    <div className={styles.box} ref={divRef} onClick={handleToggle} role="presentation">
       <label className={styles.label} htmlFor={id}>{required ? `${label}*` : label}</label>
       <div
         id={id}
@@ -105,7 +100,17 @@ const Dropdown = ({
           );
         }))}
       </div>
-      {!!countValidation?.[name] && !toggle && !clickCount && !data[name] && <p className={swingValidationText ? `${styles.validation}` : `${styles.swing}`}>필수 항목입니다..</p>}
+      {!!countValidation?.[name]
+        && !toggle
+        && !clickCount
+        && !data[name]
+        && (
+        <p className={swingValidationText
+          ? `${styles.validation}` : `${styles.swing}`}
+        >
+          필수 항목입니다..
+        </p>
+        )}
     </div>
   );
 };

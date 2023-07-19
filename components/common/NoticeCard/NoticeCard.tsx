@@ -6,7 +6,7 @@ import styles from "./NoticeCard.module.scss";
 
 const cx = classNames.bind(styles);
 
-interface INoticeCardProps {
+interface NoticeCardProps {
   hourlyPay: number;
   startsAt: string;
   address: string;
@@ -53,7 +53,7 @@ const NoticeCard = ({
   workhour,
   originalHourlyPay,
   children,
-}: INoticeCardProps) => {
+}: NoticeCardProps) => {
   const isPassed = new Date() > new Date(startsAt);
   const isClosed = closed || isPassed;
   const percentage = calculatePercentage(hourlyPay, originalHourlyPay);

@@ -1,27 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import CommonBtn from "components/common/CommonBtn/CommonBtn";
-import CustomInput from "components/common/CustomInput/CustomInput";
-import Dropdown from "components/common/Dropdown/Dropdown";
+import {
+  CommonBtn, CustomInput, Dropdown, Loader,
+} from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import inputValidation from "utils/inputValidation";
+import { Address1 } from "types/shop/address";
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import useAppSelector from "redux/hooks/useAppSelector";
-import useUpdateProfile from "hooks/api/user/useUpdateProfile";
-import { setUser } from "redux/slices/userSlice";
 import useAppDispatch from "redux/hooks/useAppDispatch";
+import { setUser } from "redux/slices/userSlice";
+import { IUserUpdateInfo } from "redux/api/userApi";
+import useUpdateProfile from "hooks/api/user/useUpdateProfile";
 import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
-import { Address1 } from "types/shop/address";
-import { Loader } from "components/common";
-import { IUserUpdateInfo } from "redux/api/userApi";
+import inputValidation from "utils/inputValidation";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {
@@ -52,19 +49,14 @@ const EditProfile = () => {
     bio: "",
   });
 
-  useEffect(() => {
-    if (userInfo && !userInfo.name) {
-      return;
-    }
-    if (userInfo) {
-      setData({
-        name: userInfo.name as string,
-        phone: userInfo.phone as string,
-        address: userInfo.address as Address1,
-        bio: userInfo.bio as string,
-      });
-    }
-  }, []);
+  if (userInfo?.name) {
+    setData({
+      name: userInfo.name,
+      phone: userInfo.phone as string,
+      address: userInfo.address as Address1,
+      bio: userInfo.bio as string,
+    });
+  }
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
@@ -96,10 +88,10 @@ const EditProfile = () => {
     if (data && data?.name?.length && inputValidation(
       ValidationTarget.PHONE,
       data.phone,
-    // eslint-disable-next-line no-empty
     ) && isContainedAddress && data.bio.length) {
       const res = await updateProfile(userInfo!.id!, data as IUserUpdateInfo);
       if (res) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         dispatch(setUser({ token: userData.token, userInfo: res.item }));
         showToast("편집이 완료되었습니다.");
         router.push("/my-profile");
@@ -173,7 +165,6 @@ const EditProfile = () => {
           size={ButtonSize.LARGE}
         >
           {isLoading ? <Loader /> : "등록하기"}
-
         </CommonBtn>
       </form>
     </div>

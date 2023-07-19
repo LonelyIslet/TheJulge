@@ -1,6 +1,5 @@
-/* eslint-disable consistent-return */
-import { usePostShopMutation } from "redux/api/shopApi";
 import { IShop } from "types/dto";
+import { usePostShopMutation } from "redux/api/shopApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
@@ -22,6 +21,7 @@ const usePostShop = () => {
         }
       }
       console.error(err);
+      return err;
     }
   };
 

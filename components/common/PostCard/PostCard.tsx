@@ -16,7 +16,7 @@ interface PostCardProps {
   workhour: number;
   name: string;
   address: string;
-  imageUrl?: string;
+  imageUrl: string;
   originalHourlyPay: number;
   href: string;
 }
@@ -50,8 +50,7 @@ const PostCard = ({
   return (
     <Link href={href} className={cx("postCard", { isClosed })}>
       <div className={styles.postImageContainer}>
-        {/* base src 설정하기 */}
-        <Image src={imageUrl || ""} className={cx("postImage", { isClosed })} alt="post-card" fill />
+        <Image src={imageUrl} className={cx("postImage", { isClosed })} alt="post-card" fill />
         {isClosed && <p className={styles.closedMessage}>{getClosedMessage()}</p>}
       </div>
       <h2 className={cx("name", { isClosed })}>{name}</h2>

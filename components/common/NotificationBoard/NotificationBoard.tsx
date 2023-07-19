@@ -47,10 +47,7 @@ const NotificationBoard = ({
               <div className={cx("ellipsis", `${result}`)} />
               <p className={styles.content}>
                 {shop.name}
-                {`(${formatTimeRange(notice.startsAt, notice.workhour, false)})`}
-                {" "}
-                공고 지원이
-                {" "}
+                {`(${formatTimeRange(notice.startsAt, notice.workhour, false)}) 공고 지원이 `}
                 <span className={cx(`${result}`)}>{labelMap[result]}</span>
                 되었어요.
               </p>

@@ -87,7 +87,7 @@
 		-webkit-appearance: none;
 
 		&:hover {
-  		cursor: pointer;
+      cursor: pointer;
 		}
 
 		&:checked + div .iconBox svg .background {
@@ -96,7 +96,7 @@
 
 		&:checked + div .iconBox svg .stroke,
 		&:checked + div .iconBox svg .check {
-  		stroke-dashoffset: 0;
+      stroke-dashoffset: 0;
 		}
 	}
 }

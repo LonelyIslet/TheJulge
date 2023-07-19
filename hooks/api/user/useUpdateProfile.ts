@@ -1,7 +1,6 @@
-/* eslint-disable consistent-return */
 import { IUserUpdateInfo, useUpdateUserInfoMutation } from "redux/api/userApi";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import useErrorModal from "hooks/useErrorModal";
+import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
 const useUpdateProfile = () => {
   const [sendRequest, { isLoading, isError }] = useUpdateUserInfoMutation();
@@ -22,6 +21,7 @@ const useUpdateProfile = () => {
         }
       }
       console.error(err);
+      return err;
     }
   };
 

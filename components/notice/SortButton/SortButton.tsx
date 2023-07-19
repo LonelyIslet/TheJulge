@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Popover } from "components/common";
-import homeQueryStr from "utils/homeQueryStr";
 import { SORT_OPTIONS } from "constants/notice";
+import homeQueryStr from "utils/homeQueryStr";
 import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 

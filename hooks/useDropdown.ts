@@ -6,7 +6,7 @@ interface IData {
   data: string[]
 }
 
-const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {
+const useDropdown = async (ref: RefObject<HTMLElement>, type: string) => {
   const [toggle, setToggle] = useState(false);
   const [fetchData, setFetchData] = useState<IData>();
 
@@ -30,11 +30,7 @@ const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {
     }
   };
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    getDropdownData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  await getDropdownData();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

@@ -58,7 +58,6 @@ const EmployerNotice = () => {
           lastPage={9}
           onPageClick={onPageClick}
         />
-
       </div>
     </CommonLayout>
   );

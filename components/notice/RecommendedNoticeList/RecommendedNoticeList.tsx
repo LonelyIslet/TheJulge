@@ -54,7 +54,7 @@ const RecommendedNoticeList = () => {
                   startsAt={noticeList.items[noticeIndex].item.startsAt}
                   workhour={noticeList.items[noticeIndex].item.workhour}
                   address={noticeList.items[noticeIndex].item.shop.item.address1}
-                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl}
+                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl as string}
                   originalHourlyPay={
                     noticeList.items[noticeIndex].item.shop.item.originalHourlyPay
                   }

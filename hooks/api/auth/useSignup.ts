@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { ICredentialsWithType, useSignupMutation } from "redux/api/authApi";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import useErrorModal from "hooks/useErrorModal";
@@ -21,6 +20,7 @@ const useSignup = () => {
         }
       }
       console.error(err);
+      return err;
     }
   };
 
