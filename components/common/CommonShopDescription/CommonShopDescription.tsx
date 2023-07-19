@@ -8,95 +8,80 @@ import CommonLayout from "components/common/CommonLayout/CommonLayout";
 import { useParams } from "next/navigation";
 import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
 import { useEffect, useState } from "react";
-import { INotice, IUser } from "types/dto";
-import { ButtonStyle } from "types/enums/button.enum";
-import styles from "./CommonShopDescription.module.scss";
+import { INotice } from "types/dto";
+import Loader from "../Loader/Loader";
 
-const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
+const CommonShopDescription = () => {
   const router = useParams();
   const [noticeInfo, setNoticeInfo] = useState<INotice>();
-
-  const { data: shopInfo, isLoading, isError } = useGetNoticeByShopAndNoticeIdQuery({
+  const { data, isLoading, isError } = useGetNoticeByShopAndNoticeIdQuery({
     shopId: router.shopId,
     noticeId: router.noticesId,
   });
 
-  // 알바 공고내역 보면서 신청하기 or 편집하기
-
-  const handleApplyJob = () => {
-
-  };
-
-  const handleEditNotice = () => {
-
-  };
-
   useEffect(() => {
-    if (!shopInfo) {
+    if (!data) {
       return;
     }
-    const { item } = shopInfo;
+    const { item } = data;
     setNoticeInfo(item);
-  }, [shopInfo]);
+  }, [data]);
 
   if (isError) {
     return null;
   }
 
-  let renderingUi;
-
-  if (noticeInfo && !isLoading) {
-    renderingUi = (
-      <CommonLayout position="above">
-        <div>
-          <p>{noticeInfo?.shop?.item.category}</p>
-          <h2>{noticeInfo?.shop?.item.name}</h2>
-        </div>
-        <div>
-          <NoticeCard
-            hourlyPay={noticeInfo.hourlyPay}
-            startsAt={noticeInfo.startsAt}
-            address={noticeInfo?.shop?.item.address1 as string}
-            imageUrl={noticeInfo.shop?.item.imageUrl as string}
-            shopDescription={noticeInfo?.shop?.item.description as string}
-            noticeDescription={noticeInfo.description}
-            closed={noticeInfo?.closed as boolean}
-            workhour={noticeInfo.workhour}
-            originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay as number}
-          >
-            {(noticeInfo?.closed || user?.type === "employer" || user?.type === undefined) && (
-            <CommonBtn
-              onClick={handleApplyJob}
-              style={ButtonStyle.DISABLE}
-            >
-              신청 불가
-            </CommonBtn>
-            )}
-            {!noticeInfo?.closed && user?.type === "employee"
-              ? <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>
-              : <CommonBtn onClick={handleEditNotice}>편집하기</CommonBtn>}
-          </NoticeCard>
-        </div>
-      </CommonLayout>
-    );
-  } else {
-    renderingUi = (
-      <CommonLayout position="above">
-        <div className={styles.skeletonContainer}>
-          <div className={styles.headerSkeleton} />
-          <div className={styles.mainSkeleton}>
-            <div />
+  return (
+    <CommonLayout position="above">
+      {(noticeInfo && !isLoading)
+        ? (
+          <>
             <div>
-              <div />
+              <p>{noticeInfo?.shop?.item.category}</p>
+              <h2>{noticeInfo?.shop?.item.name}</h2>
             </div>
-          </div>
-          <div className={styles.footerSkeleton} />
-        </div>
-      </CommonLayout>
-    );
-  }
-
-  return renderingUi;
+            <div>
+              <NoticeCard
+                hourlyPay={noticeInfo.hourlyPay}
+                startsAt={noticeInfo.startsAt}
+                address={noticeInfo?.shop?.item.address1 as string}
+                imageUrl={noticeInfo.shop?.item.imageUrl as string}
+                shopDescription={noticeInfo?.shop?.item.description as string}
+                noticeDescription={noticeInfo.description}
+                closed={noticeInfo?.closed as boolean}
+                workhour={noticeInfo.workhour}
+                originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay as number}
+              >
+                <CommonBtn>신청하기</CommonBtn>
+              </NoticeCard>
+            </div>
+          </>
+        )
+        : (
+          <>
+            <div>
+              <p>{noticeInfo?.shop?.item.category}</p>
+              <h2>{noticeInfo?.shop?.item.name}</h2>
+            </div>
+            <div>
+              <NoticeCard
+                hourlyPay={noticeInfo.hourlyPay}
+                startsAt={noticeInfo.startsAt}
+                address={noticeInfo?.shop?.item.address1 as string}
+                imageUrl={noticeInfo.shop?.item.imageUrl as string}
+                shopDescription={noticeInfo?.shop?.item.description as string}
+                noticeDescription={noticeInfo.description}
+                closed={noticeInfo?.closed as boolean}
+                workhour={noticeInfo.workhour}
+                originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay as number}
+              >
+                <CommonBtn>신청하기</CommonBtn>
+              </NoticeCard>
+            </div>
+          </>
+        )}
+    </CommonLayout>
+  );
 };
 
 export default CommonShopDescription;
