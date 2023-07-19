@@ -1,3 +1,5 @@
+"use client";
+
 import { RegisteredMyProfile, ApplicationDetails } from "components/employee";
 import { withAuth, withUserType } from "components/hocs";
 import { UserType } from "types/enums/user.enum";
