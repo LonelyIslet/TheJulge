@@ -37,7 +37,8 @@ const UserInput = ({
     onChange(e);
   };
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent<HTMLImageElement>) => {
+    e.preventDefault();
     setIsEyeToggled(!isEyeToggled);
   };
 
@@ -78,7 +79,7 @@ const UserInput = ({
         <Image
           src={isEyeToggled ? "/images/close-eye.svg"
             : "/images/open-eye.svg"}
-          onClick={handleToggle}
+          onMouseDown={handleToggle}
           className={styles.unit}
           alt="비밀번호 표시/숨김 버튼"
           width={16}

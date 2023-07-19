@@ -71,7 +71,7 @@ export const noticeApi = apiSlice.injectEndpoints({
           };
         },
       }),
-      getNoticeByShopAndNoticeId: builder.query<IGetNoticeResponse,
+      getNoticeByShopAndNoticeId: builder.query<INoticeResponse,
       {
         shopId: string,
         noticeId: string

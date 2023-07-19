@@ -15,14 +15,21 @@ import { DetailType } from "types/enums/detailPage.enum";
 
 const ApplicationDetails = () => {
   const user = useAppSelector((state) => { return state.user; });
+  const [pageNum, setPageNum] = useState(1);
+
   const {
     data, isLoading,
   } = useGetApplicationsByUserIdQuery({
     userId: user.userInfo?.id ?? "no-user",
-    params: { offset: 0, limit: 6 },
+    params: { offset: pageNum - 1, limit: 5 },
   });
-  const onPageClick = () => {};
+
+  const onPageClick = (selectedPageNum: number) => {
+    setPageNum(selectedPageNum);
+  };
+
   const [applicationList, setApplicationList] = useState<IEmployeeNotices[]>([]);
+
   useEffect(() => {
     if (!data) {
       return;
@@ -40,9 +47,11 @@ const ApplicationDetails = () => {
       };
     }));
   }, [data]);
+
   if (!isLoading && data?.items.length === 0) {
     return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
   }
+
   return (
     <CommonLayout position="below">
       <div>
@@ -52,8 +61,8 @@ const ApplicationDetails = () => {
         {isLoading ? <Loader /> : (
           <EmployeeTable
             applicationList={applicationList}
-            currentPage={5}
-            lastPage={6}
+            currentPage={pageNum}
+            lastPage={Math.ceil((data?.count ?? 0) / 5)}
             onPageClick={onPageClick}
           />
         )}
