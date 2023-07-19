@@ -3,15 +3,15 @@ import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
 import styles from "./page.module.scss";
 
-interface PostsPageProps {
+interface NoticesPageProps {
   searchParams: {
     [key: string]: string | undefined
   }
 }
 
-const PostsPage = async ({
+const NoticesPage = async ({
   searchParams,
-}: PostsPageProps) => {
+}: NoticesPageProps) => {
   const { keyword, sort, filter } = searchParams;
   const noticeList = await getNotices({ keyword, sort, filter });
   let sortOptionId = 0;
@@ -44,4 +44,4 @@ const PostsPage = async ({
   );
 };
 
-export default PostsPage;
+export default NoticesPage;
