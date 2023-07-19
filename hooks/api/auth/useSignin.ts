@@ -20,7 +20,7 @@ const useSignin = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

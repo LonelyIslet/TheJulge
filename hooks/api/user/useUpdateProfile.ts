@@ -21,7 +21,7 @@ const useUpdateProfile = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

@@ -21,7 +21,7 @@ const usePostShop = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

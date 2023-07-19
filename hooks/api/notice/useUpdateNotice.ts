@@ -23,7 +23,7 @@ const useUpdateNotice = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

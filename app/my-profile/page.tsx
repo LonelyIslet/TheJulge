@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RegisteredMyProfile, ApplicationDetails } from "components/employee";
 import styles from "./page.module.scss";
 

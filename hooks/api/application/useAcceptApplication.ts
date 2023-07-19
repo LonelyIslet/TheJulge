@@ -21,7 +21,7 @@ const useAcceptApplication = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

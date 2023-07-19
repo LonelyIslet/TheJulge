@@ -22,7 +22,7 @@ const usePostNotice = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

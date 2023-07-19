@@ -21,7 +21,7 @@ const useReadAlert = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

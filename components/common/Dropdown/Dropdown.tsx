@@ -49,7 +49,9 @@ const Dropdown = ({
 
   const handleToggle = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
-    setToggle(!toggle);
+    if (setToggle) {
+      setToggle(!toggle);
+    }
   };
 
   useEffect(() => {

@@ -21,7 +21,7 @@ const usePostApplication = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 

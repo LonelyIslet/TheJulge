@@ -22,7 +22,7 @@ const useUpdateShop = () => {
         }
       }
       console.error(err);
-      return err;
+      return undefined;
     }
   };
 
