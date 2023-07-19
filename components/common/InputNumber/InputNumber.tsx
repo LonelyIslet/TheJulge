@@ -64,7 +64,10 @@ const InputNumber = ({
   useEffect(() => {
     setChange(!change);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggle, rendering]);
+    if (data?.[name]) {
+      setValue(Number((data?.[name] as string).replace(/[^0-9]/g, "")).toLocaleString());
+    }
+  }, [toggle, rendering, data, name]);
 
   return (
     <div className={styles.container}>
