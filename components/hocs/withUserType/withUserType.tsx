@@ -3,27 +3,27 @@ import { ComponentType, useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import useAppSelector from "redux/hooks/useAppSelector";
 import useErrorModal from "hooks/useErrorModal";
+import { UserType } from "types/enums/user.enum";
 
-const withAuth = (Component: ComponentType) => {
-  const WithAuthHOC = <P extends object>(props: P) => {
+const withUserType = (Component: ComponentType, userType: UserType) => {
+  const WithUserTypeHOC = <P extends object>(props: P) => {
     const user = useAppSelector((state) => { return state.user; });
     const { showErrorModal } = useErrorModal();
     const [isAuthorized, setIsAuthorized] = useState(false);
-
     useEffect(() => {
-      if (!user.token) {
-        showErrorModal("로그인이 필요합니다.");
-        setIsAuthorized(false);
-        redirect("/auth?mode=signin");
+      if (!user.userInfo) return;
+      if (user.userInfo.type !== userType) {
+        showErrorModal("권한이 없습니다.");
+        redirect("/");
       }
       setIsAuthorized(true);
-    }, []);
+    }, [showErrorModal, user.userInfo]);
     if (!isAuthorized) return null;
     return (
       <Component {...props} />
     );
   };
-  return WithAuthHOC;
+  return WithUserTypeHOC;
 };
 
-export default withAuth;
+export default withUserType;
