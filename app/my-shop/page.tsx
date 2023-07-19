@@ -39,10 +39,6 @@ const MyShopPage = () => {
       <div className={styles.bottom}>
         <MyNotice
           noticeList={notice}
-          name={shop.name}
-          address={shop.address1}
-          imageUrl={shop.imageUrl}
-          originalHourlyPay={shop.originalHourlyPay}
         />
       </div>
     </div>

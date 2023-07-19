@@ -20,9 +20,9 @@ interface FileUploaderProps {
   validationTarget?: ValidationTarget;
   countValidation?: ICountValidation;
   rendering: boolean
-  essential?: boolean
+  // essential?: boolean
   onFileChange: (file: File) => void;
-  setCountValidation: React.Dispatch<React.SetStateAction<object>>;
+  // setCountValidation: React.Dispatch<React.SetStateAction<object>>;
 }
 
 const FileUploader = ({
@@ -34,8 +34,8 @@ const FileUploader = ({
   rendering,
   countValidation,
   validationTarget,
-  setCountValidation,
-  essential,
+  // setCountValidation,
+  // essential,
 }: FileUploaderProps) => {
   const [change, setChange] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -44,9 +44,9 @@ const FileUploader = ({
   } = useInputValidation(
     validationTarget as ValidationTarget,
     previewUrl,
-    setCountValidation,
-    essential,
     name,
+    // required,
+    // setCountValidation,
   );
 
   useEffect(() => {

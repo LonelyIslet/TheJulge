@@ -19,7 +19,7 @@ interface DropdownProps {
   name: string
   required?: boolean
   onChange: (event:
-    React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   rendering: boolean
   countValidation: ICountValidation
   data: IData

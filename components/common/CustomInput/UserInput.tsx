@@ -16,7 +16,7 @@ interface UserInputProps {
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onChange: (event:
-    React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   data: IData
 }
 

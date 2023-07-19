@@ -11,24 +11,16 @@ interface INoticeWithClosedInfo extends INotice {
 
 interface MyNoticeProps {
   noticeList: INoticeWithClosedInfo[],
-  name: string,
-  address: string,
-  imageUrl: string,
-  originalHourlyPay: number,
 }
 
 const MyNotice = ({
-  noticeList, name, address, imageUrl, originalHourlyPay,
+  noticeList,
 }: MyNoticeProps) => {
   return noticeList.length !== 0 ? (
     <CommonLayout position="below">
       <h2>내가 등록한 공고</h2>
       <CardList
         noticeList={noticeList}
-        name={name}
-        address={address}
-        imageUrl={imageUrl}
-        originalHourlyPay={originalHourlyPay}
       />
     </CommonLayout>
   ) : (
