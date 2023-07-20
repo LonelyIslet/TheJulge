@@ -85,7 +85,7 @@ const PostCard = ({
         </div>
         <div className={styles.hourlyPayContainer}>
           <p className={cx("hourlyPay", { isClosed })}>
-            {hourlyPay.toLocaleString()}
+            {hourlyPay?.toLocaleString()}
             원
           </p>
           {percentage >= 5
