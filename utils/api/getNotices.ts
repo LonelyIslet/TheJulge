@@ -1,7 +1,17 @@
-import { GetNoticesParams } from "types/notice/filter";
 import { IGetNoticeResponse } from "redux/api/noticeApi";
+import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
 import generateAPIQuery from "utils/notice/generateAPIQuery";
 import LIMIT from "constants/notice/options/LIMIT";
+
+export interface GetNoticesParams {
+  page?: number,
+  keyword?: string,
+  sort?: Sort,
+  address?: Address1[],
+  startsAtGte?: string,
+  hourlyPayGte?: number,
+}
 
 const getNotices = async ({
   page,

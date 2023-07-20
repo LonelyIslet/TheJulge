@@ -1,4 +1,4 @@
-import { FilterOptions } from "types/notice/filter";
+import { FilterOptions } from "types/notice/queries";
 
 const calcOptions = (filterOptions: FilterOptions) => {
   let num = 0;

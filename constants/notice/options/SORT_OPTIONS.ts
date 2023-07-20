@@ -1,8 +1,10 @@
-const SORT_OPTIONS = [
-  { id: 0, option: "time", label: "마감임박순" },
-  { id: 1, option: "pay", label: "시급많은순" },
-  { id: 2, option: "hour", label: "시간적은순" },
-  { id: 3, option: "shop", label: "가나다순" },
-];
+import { Sort } from "types/notice/queries";
+
+const SORT_OPTIONS: Record<Sort, string> = {
+  time: "마감임박순",
+  pay: "시급많은순",
+  hour: "시간적은순",
+  shop: "가나다순",
+};
 
 export default SORT_OPTIONS;

@@ -23,7 +23,7 @@ export interface IGetNoticeResponse {
   links: ILink[];
 }
 
-export type SortOption = "time" | "pay" | "hour" | "shop" | undefined;
+export type SortOption = "time" | "pay" | "hour" | "shop";
 
 interface INoticeQueryParam {
   offset?: number;

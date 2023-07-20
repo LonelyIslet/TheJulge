@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Filter, Popover } from "components/common";
-import { FilterOptions } from "types/notice/filter";
+import { FilterOptions } from "types/notice/queries";
 import calcOptions from "utils/notice/calcOptions";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./FilterButton.module.scss";

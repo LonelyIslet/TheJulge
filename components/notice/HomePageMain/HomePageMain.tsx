@@ -1,36 +1,58 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { CardList, CommonLayout, Pagination } from "components/common";
 import FilterButton from "components/notice/FilterButton/FilterButton";
 import SortButton from "components/notice/SortButton/SortButton";
 import { INotice } from "types/dto";
+import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
+import generateNoticesPageQuery from "utils/notice/generateNotciesPageQuery";
 import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {
   noticeList: INotice[],
-  offset?: number,
   limit: number,
   currentPage: number,
   lastPage: number,
   keyword?: string,
-  sortId?: number,
-  address?: string[],
+  sort?: Sort,
+  address?: Address1[],
   startsAtGte?: string,
   hourlyPayGte?: number,
 }
 
 const HomePageMain = ({
   noticeList,
-  offset,
   limit,
   currentPage,
   lastPage,
   keyword,
-  sortId,
+  sort,
   address,
   startsAtGte,
   hourlyPayGte,
 }: HomePageMainProps) => {
+  const router = useRouter();
+
+  const handlePageClick = (page: number) => {
+    const queryString = generateNoticesPageQuery({
+      page,
+      limit,
+      keyword,
+      sort,
+      address,
+      startsAtGte,
+      hourlyPayGte,
+    });
+
+    if (keyword) {
+      router.push(`/notices${queryString}`);
+    } else {
+      router.push(queryString);
+    }
+  };
+
   return (
     <>
       <CommonLayout position="below">
@@ -49,19 +71,17 @@ const HomePageMain = ({
             )}
           <div className={styles.buttonContainer}>
             <SortButton
-              offset={offset}
               limit={limit}
               keyword={keyword}
-              sortId={sortId}
+              sort={sort}
               address={address}
               startsAtGte={startsAtGte}
               hourlyPayGte={hourlyPayGte}
             />
             <FilterButton
-              offset={offset}
               limit={limit}
               keyword={keyword}
-              sortId={sortId}
+              sort={sort}
               address={address}
               startsAtGte={startsAtGte}
               hourlyPayGte={hourlyPayGte}
@@ -75,7 +95,7 @@ const HomePageMain = ({
       <Pagination
         currentPage={currentPage}
         lastPage={lastPage}
-        onPageClick={() => {}}
+        onPageClick={handlePageClick}
       />
     </>
   );

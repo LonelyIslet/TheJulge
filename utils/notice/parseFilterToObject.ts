@@ -1,4 +1,4 @@
-import { FilterOptions } from "types/notice/filter";
+import { FilterOptions } from "types/notice/queries";
 
 const parseFilterToObject = (filter: string) => {
   const obj: FilterOptions = {

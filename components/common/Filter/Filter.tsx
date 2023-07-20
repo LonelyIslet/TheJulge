@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import { SORT_OPTIONS } from "constants/notice";
-import { FilterOptions } from "types/notice/filter";
+import { FilterOptions } from "types/notice/queries";
 import addCommasToString from "utils/notice/addCommasToString";
 import dateToStr from "utils/dateToStr";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
-import makeQuery from "utils/notice/makeQuery";
+import makeQuery from "utils/notice/generateNotciesPageQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {

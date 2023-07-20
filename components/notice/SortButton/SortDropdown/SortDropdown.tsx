@@ -1,10 +1,11 @@
 "use client";
 
+import { Sort } from "types/notice/queries";
 import { SORT_OPTIONS } from "constants/notice";
 import styles from "./SortDropdown.module.scss";
 
 interface SortDropdownProps {
-  onSortOptionClick?: (id: number) => void;
+  onSortOptionClick: (option?: Sort) => void;
 }
 
 const SortDropdown = ({
@@ -12,15 +13,22 @@ const SortDropdown = ({
 }: SortDropdownProps) => {
   return (
     <div className={styles.container}>
-      {SORT_OPTIONS.map((item) => {
+      <button
+        type="button"
+        className={styles.option}
+        onClick={() => { return onSortOptionClick(); }}
+      >
+        최신등록순
+      </button>
+      {Object.entries(SORT_OPTIONS).map(([key, value]) => {
         return (
           <button
-            key={item.id}
+            key={key}
             type="button"
             className={styles.option}
-            onClick={() => { return onClick(item.id); }}
+            onClick={() => { return onSortOptionClick(key as Sort); }}
           >
-            {item.label}
+            {value}
           </button>
         );
       })}
