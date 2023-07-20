@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, RefObject } from "react";
+import {
+  useState, useEffect, RefObject, useCallback,
+} from "react";
 
 interface IData {
   data: string[]
@@ -10,7 +12,7 @@ const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {
   const [toggle, setToggle] = useState(false);
   const [fetchData, setFetchData] = useState<IData>();
 
-  const getDropdownData = async () => {
+  const getDropdownData = useCallback(async () => {
     try {
       let response;
       if (type === "address") {
@@ -28,13 +30,11 @@ const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [type]);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    getDropdownData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    getDropdownData().catch((err) => { return console.error(err); });
+  }, [getDropdownData]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

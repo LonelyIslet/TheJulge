@@ -1,9 +1,9 @@
 "use client";
 
+import { ModalType } from "types/enums/modal.enum";
 import useAppSelector from "redux/hooks/useAppSelector";
 import useAppDispatch from "redux/hooks/useAppDispatch";
 import { setShowModal } from "redux/slices/errorModalSlice";
-import { ModalType } from "types/enums/modal.enum";
 import Modal from "./Modal";
 
 const ErrorModalRoot = () => {
@@ -19,6 +19,7 @@ const ErrorModalRoot = () => {
       />
     );
   }
+
   return null;
 };
 

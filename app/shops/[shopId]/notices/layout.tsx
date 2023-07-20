@@ -4,7 +4,9 @@ interface NoticePageProps {
   children: React.ReactNode
 }
 
-const layout = ({ children }: NoticePageProps) => {
+const layout = ({
+  children,
+}: NoticePageProps) => {
   return (
     <div className={styles.layout}>
       {children}

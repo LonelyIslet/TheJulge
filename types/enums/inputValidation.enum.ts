@@ -8,7 +8,6 @@
  * @REQUIRED 필수 항목 표시
  * @DATE 날짜 유효성 검사
  */
-
 export enum ValidationTarget {
   EMAIL = "EMAIL",
   PASSWORD = "PASSWORD",

@@ -2,14 +2,35 @@
 
 import { useState } from "react";
 import { Filter, Popover } from "components/common";
+import { FilterOptions } from "types/notice/filter";
+import calcOptions from "utils/notice/calcOptions";
+import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./FilterButton.module.scss";
 
-const FilterButton = () => {
+interface FilterButtonProps {
+  filter?: string;
+  keyword: string;
+}
+
+const FilterButton = ({
+  filter,
+  keyword,
+}: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
+
+  let filterOptions: FilterOptions | undefined;
+  if (filter) {
+    filterOptions = parseFilterToObject(filter);
+  }
+
+  let optionsNum = 0;
+  if (filterOptions) {
+    optionsNum = calcOptions(filterOptions);
+  }
 
   return (
     <div
@@ -22,7 +43,7 @@ const FilterButton = () => {
       >
         <h2>
           상세 필터
-          {/* Redux로 필터 갯수 상태관리 */}
+          {optionsNum ? ` (${optionsNum})` : ""}
         </h2>
       </button>
       {showPopover
@@ -31,7 +52,11 @@ const FilterButton = () => {
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <Filter onClose={handlePopoverToggle} />
+            <Filter
+              filter={filter}
+              keyword={keyword}
+              onClose={handlePopoverToggle}
+            />
           </Popover>
         )}
     </div>
