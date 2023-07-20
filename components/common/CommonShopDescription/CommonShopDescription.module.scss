@@ -22,12 +22,11 @@
     animation: shake 3s ease infinite;
 
 
-   div:first-child {
-      flex-grow: 2.5;
-      border-radius: 1rem;
-      background-color: $gray-20;
-    animation: shake 3s ease infinite;
-
+    div:first-child {
+        flex-grow: 2.5;
+        border-radius: 1rem;
+        background-color: $gray-20;
+      animation: shake 3s ease infinite;
     }
 
     div:last-child {
@@ -48,12 +47,10 @@
     border-radius: 1rem;
     background-color: $gray-20;
     animation: shake 3s ease infinite;
-
   }
 }
 
 @keyframes shake {
- 
   0% {
     opacity: 0.5;
   }
@@ -72,6 +69,5 @@
 
   100% {
     opacity: 0.5;
-
   }
 }

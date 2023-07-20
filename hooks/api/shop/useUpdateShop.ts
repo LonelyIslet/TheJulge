@@ -1,6 +1,5 @@
-/* eslint-disable consistent-return */
-import { useUpdateShopInfoMutation } from "redux/api/shopApi";
 import { IShop } from "types/dto";
+import { useUpdateShopInfoMutation } from "redux/api/shopApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
@@ -23,6 +22,7 @@ const useUpdateShop = () => {
         }
       }
       console.error(err);
+      return undefined;
     }
   };
 

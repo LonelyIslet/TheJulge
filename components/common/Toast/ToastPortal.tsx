@@ -13,7 +13,6 @@ const ToastPortal = ({
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
-
     return () => { return setMounted(false); };
   }, []);
 

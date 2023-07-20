@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import inputValidation from "utils/inputValidation";
 
 interface IData {
   [key: string]: string | number

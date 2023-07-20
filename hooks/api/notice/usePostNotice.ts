@@ -1,6 +1,5 @@
-/* eslint-disable consistent-return */
-import { usePostNoticeMutation } from "redux/api/noticeApi";
 import { INotice } from "types/dto";
+import { usePostNoticeMutation } from "redux/api/noticeApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
@@ -23,6 +22,7 @@ const usePostNotice = () => {
         }
       }
       console.error(err);
+      return undefined;
     }
   };
 

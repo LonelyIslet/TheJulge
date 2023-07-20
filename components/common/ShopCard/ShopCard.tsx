@@ -18,13 +18,25 @@ const ShopCard = ({
   return (
     <section className={styles.shopCard}>
       <div className={styles.shopImageContainer}>
-        <Image src={imageUrl} className={styles.shopImage} alt="shop-card" fill />
+        <Image
+          src={imageUrl}
+          className={styles.shopImage}
+          alt="Shop Card"
+          fill
+          priority
+        />
       </div>
       <div className={styles.shopDescriptionContainer}>
         <h3 className={styles.subtitle}>{category}</h3>
         <h2 className={styles.title}>{name}</h2>
         <div className={styles.addressContainer}>
-          <Image src="/images/location-red.svg" className={styles.icon} alt="location" width={20} height={20} />
+          <Image
+            src="/images/location-red.svg"
+            className={styles.icon}
+            alt="Location"
+            width={20}
+            height={20}
+          />
           <p className={styles.address}>{address}</p>
         </div>
         <p className={styles.description}>
