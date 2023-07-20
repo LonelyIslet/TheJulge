@@ -7,7 +7,7 @@ import { ADDRESS } from "constants/dropdown/dropdownData";
 import { Address1 } from "types/shop/address";
 import { Sort } from "types/notice/queries";
 import dateToStr from "utils/dateToStr";
-import addCommasToString from "utils/notice/addCommasToString";
+import formatStringNumberWithCommas from "utils/notice/formatStringNumberWithCommas";
 import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
 import styles from "./Filter.module.scss";
 
@@ -35,7 +35,7 @@ const Filter = ({
   const initialSagPresent = initialStartsAtGte ? dateToStr(initialStartsAtGte) : "";
   const [sagPresent, setSagPresent] = useState(initialSagPresent);
   const [hourlyPayGteState, setHourlyPayGteState] = useState(hourlyPayGte);
-  const initialHpgPresent = hourlyPayGte ? addCommasToString(String(hourlyPayGte)) : "0";
+  const initialHpgPresent = hourlyPayGte ? formatStringNumberWithCommas(String(hourlyPayGte)) : "0";
   const [hpgPresent, setHpgPresent] = useState(initialHpgPresent);
   const [inputType, setInputType] = useState("text");
   const router = useRouter();
@@ -53,7 +53,7 @@ const Filter = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, "");
     const numericValue = rawValue.replace(/\D/g, "");
-    const formattedValue = addCommasToString(numericValue);
+    const formattedValue = formatStringNumberWithCommas(numericValue);
 
     setHourlyPayGteState(Number(numericValue));
     setHpgPresent(formattedValue);

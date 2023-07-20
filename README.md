@@ -341,7 +341,7 @@ thejulge
    ├─ getFirstValue.ts
    ├─ inputValidation.ts
    ├─ notice
-   │  ├─ addCommasToString.ts
+   │  ├─ formatStringNumberWithCommas.ts
    │  ├─ generateAPIQuery.ts
    │  └─ generateNoticesPageQuery.ts
    ├─ predicateErrorType.ts
