@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import {
   CommonDetail, CommonLayout, Loader, StatusChip,
 } from "components/common";
-import { EmployeeTable } from "components/notice";
+import CommonLayout from "components/common/CommonLayout/CommonLayout";
+import StatusChip from "components/common/StatusChip/StatusChip";
+import EmployeeTable from "components/notice/EmployeeTable/EmployeeTable";
+import EmployeeNotice from "components/employee/EmployeeNotice/EmployeeNotice";
+import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
 import { IEmployeeNotices } from "types/notice/tables";
 import { DetailType } from "types/enums/detailPage.enum";
 import useAppSelector from "redux/hooks/useAppSelector";
-import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
 import formatTimeRange from "utils/formatTimeRange";
 
 const ApplicationDetails = () => {
@@ -36,22 +39,25 @@ const ApplicationDetails = () => {
     }
     setApplicationList(data.items.map((i) => {
       const { item } = i;
-      const { startsAt } = item.notice!.item;
-      const workHour = item.notice!.item.workhour;
+      const { startsAt } = item.notice.item;
+      const workHour = item.notice.item.workhour;
       return {
         id: item.id as string,
         store: item.shop!.item.name,
         date: formatTimeRange(startsAt, workHour),
-        hourlyPay: item.notice!.item.hourlyPay,
+        hourlyPay: item.notice.item.hourlyPay,
         state: <StatusChip status={item.status} />,
       };
     }));
   }, [data]);
 
-  if (!isLoading && data?.items.length === 0) {
-    return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
+  if (user.userInfo?.type === "employee" || user.userInfo?.type === undefined) {
+    return <EmployeeNotice />;
   }
 
+  if (user.userInfo?.type === "employer" && !isLoading && data?.items.length === 0) {
+    return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
+  }
   return (
     <CommonLayout position="below">
       <div>
