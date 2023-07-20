@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { setUser } from "redux/slices/userSlice";
 import useAppDispatch from "redux/hooks/useAppDispatch";
 import { CustomInput, Loader } from "components/common";
+import SigninProcess from "components/auth/SigninProcess/SigninProcess";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useSignin from "hooks/api/auth/useSignin";
 import inputValidation from "utils/inputValidation";
@@ -17,7 +18,7 @@ const SigninForm = () => {
   const [rendering, setRendering] = useState(false);
   const { signin, isLoading } = useSignin();
   const {
-    getUserInfo, userInfoData, isUserInfoLoading,
+    getUserInfo, userInfoData, isUserInfoLoading, isUserInfoFetching,
   } = useLazyGetUserInfo();
   const [countValidation, setCountValidation] = useState({
     email: 0,
@@ -40,7 +41,7 @@ const SigninForm = () => {
     });
   };
 
-  const setUserState = async (token: string, userId: string) => {
+  const setUserState = async (userId: string) => {
     await getUserInfo(userId);
   };
 
@@ -60,7 +61,7 @@ const SigninForm = () => {
       if (res) {
         const { item: { token, user: { item: { id } } } } = res;
         dispatch(setUser({ ...user, token }));
-        await setUserState(token, id as string);
+        await setUserState(id as string);
       }
     }
   };
@@ -72,6 +73,9 @@ const SigninForm = () => {
     }
   }, [userInfoData, user, dispatch]);
 
+  if ((isLoading || isUserInfoLoading) || isUserInfoFetching || isUserInfoLoading) {
+    return <SigninProcess isSigningIn={isLoading} isFetchingUserInfo={isUserInfoFetching} />;
+  }
   return (
     <form
       className={styles.form}
