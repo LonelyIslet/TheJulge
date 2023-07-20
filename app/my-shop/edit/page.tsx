@@ -22,7 +22,7 @@
 
 // // interface FileData {
 // //   item: {
-// //     url: string
+// //     url: string;
 // //   }
 // // }
 

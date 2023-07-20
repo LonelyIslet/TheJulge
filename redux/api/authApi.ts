@@ -13,20 +13,20 @@ export interface ICredentialsWithType extends ICredentials {
 
 interface SigninResponse {
   item: {
-    token: string,
+    token: string;
     user: {
-      item: IUser,
-      href: string
-    }
+      item: IUser;
+      href: string;
+    };
   };
   links: ILink[];
 }
 
 interface SignupResponse {
   item: {
-    id: string,
-    type: UserType,
-    email: string,
+    id: string;
+    type: UserType;
+    email: string;
   };
   links: ILink[];
 }

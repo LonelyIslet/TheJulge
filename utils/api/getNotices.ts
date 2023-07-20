@@ -5,12 +5,12 @@ import generateAPIQuery from "utils/notice/generateAPIQuery";
 import LIMIT from "constants/notice/options/LIMIT";
 
 export interface GetNoticesParams {
-  page?: number,
-  keyword?: string,
-  sort?: Sort,
-  address?: Address1[],
-  startsAtGte?: string,
-  hourlyPayGte?: number,
+  page?: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const getNotices = async ({

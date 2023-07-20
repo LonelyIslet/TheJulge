@@ -5,7 +5,7 @@ import {
 } from "react";
 
 interface IData {
-  data: string[]
+  data: string[];
 }
 
 const useDropdown = (ref: RefObject<HTMLElement>, type: string) => {

@@ -11,14 +11,14 @@ type IPostNoticeResposne = INoticeResponse;
 type IUpdateNoticeResponse = INoticeResponse;
 
 export interface IGetNoticeResponse {
-  offset: number,
-  limit: number,
-  count: number,
-  address: Address1[],
-  keyword?: string,
+  offset: number;
+  limit: number;
+  count: number;
+  address: Address1[];
+  keyword?: string;
   items: {
-    item: INotice,
-    links: ILink[]
+    item: INotice;
+    links: ILink[];
   }[];
   links: ILink[];
 }

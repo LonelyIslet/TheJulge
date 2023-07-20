@@ -3,7 +3,7 @@ import { INotice } from "types/dto";
 import styles from "./CardList.module.scss";
 
 interface CardListProps {
-  noticeList: INotice[],
+  noticeList: INotice[];
 }
 
 const CardList = ({

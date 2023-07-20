@@ -8,17 +8,17 @@ import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
 interface IProcessedParams {
-  page?: number,
-  keyword?: string,
-  sort?: Sort,
-  address?: Address1[],
-  startsAtGte?: string,
-  hourlyPayGte?: number,
+  page?: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 interface NoticesPageProps {
   searchParams: {
-    [key: string]: string | undefined
+    [key: string]: string | undefined;
   }
 }
 

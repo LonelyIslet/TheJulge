@@ -3,12 +3,12 @@ import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
 
 interface GenerateNotciesPageQueryParams {
-  page?: number,
-  keyword?: string,
-  sort?: Sort,
-  address?: Address1[],
-  startsAtGte?: string,
-  hourlyPayGte?: number,
+  page?: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const generateNoticesPageQuery = ({

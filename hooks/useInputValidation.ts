@@ -5,7 +5,7 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 import inputValidation from "utils/inputValidation";
 
 interface IData {
-  [key: string]: string | number
+  [key: string]: string | number;
 }
 
 interface ICountValidation {

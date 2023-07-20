@@ -1,7 +1,7 @@
 import styles from "./page.module.scss";
 
 interface NoticePageProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const layout = ({

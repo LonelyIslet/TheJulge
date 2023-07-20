@@ -13,14 +13,14 @@ interface ICountValidation {
 }
 
 interface FileUploaderProps {
-  name: string,
-  id: string
-  previewUrl: string,
-  isEditMode: boolean,
+  name: string;
+  id: string;
+  previewUrl: string;
+  isEditMode: boolean;
   validationTarget?: ValidationTarget;
   countValidation?: ICountValidation;
-  rendering: boolean
-  // essential?: boolean
+  rendering: boolean;
+  // essential?: boolean;
   onFileChange: (file: File) => void;
   // setCountValidation: React.Dispatch<React.SetStateAction<object>>;
 }

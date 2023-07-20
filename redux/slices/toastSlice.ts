@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IToastState {
   isShowing: boolean;
-  message: string
+  message: string;
 }
 
 const initialState: IToastState = {

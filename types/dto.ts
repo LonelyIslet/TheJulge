@@ -3,79 +3,79 @@ import { UserType } from "./enums/user.enum";
 import { Address1 } from "./shop/address";
 
 export interface IShop {
-  id?: string,
-  name: string,
-  category?: string,
-  address1: string,
-  address2?: string,
-  description?: string,
-  imageUrl?: string,
-  originalHourlyPay: number,
-  user?: IUser,
+  id?: string;
+  name: string;
+  category?: string;
+  address1: string;
+  address2?: string;
+  description?: string;
+  imageUrl?: string;
+  originalHourlyPay: number;
+  user?: IUser;
 }
 
 export interface IApplication {
-  id?: string,
-  status: ApplyStatus,
-  createdAt?: string,
+  id?: string;
+  status: ApplyStatus;
+  createdAt?: string;
   user?: {
-    item: IUser,
-    href: string,
-  }
+    item: IUser;
+    href: string;
+  };
   shop?: {
-    item: IShop,
-    href: string,
-  },
+    item: IShop;
+    href: string;
+  };
   notice: {
-    item: INotice,
-    href: string
-  }
+    item: INotice;
+    href: string;
+  };
 }
 
 export interface INoticeData {
-  offset: number,
-  limit: number,
-  address: string[],
-  keyword?: string,
-  items: Iitem,
-  links: ILink[],
+  offset: number;
+  limit: number;
+  address: string[];
+  keyword?: string;
+  items: Iitem;
+  links: ILink[];
 }
 
 export interface INotice {
-  id: string,
-  hourlyPay: number,
-  description?: string,
-  startsAt: string,
-  workhour: number,
-  closed: boolean,
+  id: string;
+  hourlyPay: number;
+  description?: string;
+  startsAt: string;
+  workhour: number;
+  closed: boolean;
   shop: {
-    item: IShop,
-    href?: string,
-  },
+    item: IShop;
+    href?: string;
+  };
 }
 
 export interface IgetNoticesParams {
-  keyword: string,
-  sort: string,
+  keyword: string;
+  sort: string;
 }
 
 export interface Iitem {
-  item: INotice,
+  item: INotice;
 }
 
 export interface IUser {
-  id?: string,
-  email: string,
-  password?: string,
-  type: UserType,
-  name?: string,
-  phone?: string,
-  address?: Address1,
-  bio?: string,
+  id?: string;
+  email: string;
+  password?: string;
+  type: UserType;
+  name?: string;
+  phone?: string;
+  address?: Address1;
+  bio?: string;
   shop?: {
-    item: IShop,
-    href: string,
-  }
+    item: IShop;
+    href: string;
+  };
 }
 
 export interface ILink {
@@ -86,21 +86,21 @@ export interface ILink {
 }
 
 export interface IAlert {
-  id?: string,
-  createdAt: string,
-  result: ApplyStatus.ACCEPTED | ApplyStatus.REJECTED,
-  read: boolean,
+  id?: string;
+  createdAt: string;
+  result: ApplyStatus.ACCEPTED | ApplyStatus.REJECTED;
+  read: boolean;
   application: {
-    item: IApplication,
-    href: string,
-  },
+    item: IApplication;
+    href: string;
+  };
   shop: {
-    item: IShop,
-    href: string,
-  },
+    item: IShop;
+    href: string;
+  };
   notice: {
-    item: INotice,
-    href: string,
-  },
-  links: ILink[],
+    item: INotice;
+    href: string;
+  };
+  links: ILink[];
 }

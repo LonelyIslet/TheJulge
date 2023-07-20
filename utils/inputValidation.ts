@@ -2,7 +2,7 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 
 interface DataType {
   password?: string;
-  password_confirm?: string
+  password_confirm?: string;
 }
 
 // 이메일 유효성 검사

@@ -11,14 +11,14 @@ import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
 import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {
-  noticeList: INotice[],
-  currentPage: number,
-  lastPage: number,
-  keyword?: string,
-  sort?: Sort,
-  address?: Address1[],
-  startsAtGte?: string,
-  hourlyPayGte?: number,
+  noticeList: INotice[];
+  currentPage: number;
+  lastPage: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const HomePageMain = ({

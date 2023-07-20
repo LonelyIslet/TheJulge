@@ -8,8 +8,8 @@ import noticeList from "constants/mock/noticeList.json";
 import styles from "./page.module.scss";
 
 interface INoticeWithClosedInfo extends INotice {
-  id: string,
-  closed: boolean,
+  id: string;
+  closed: boolean;
 }
 
 const MyShopPage = () => {

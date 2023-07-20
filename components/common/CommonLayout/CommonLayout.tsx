@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./CommonLayout.module.scss";
 
 interface LayoutProps {
-  children: React.ReactNode
-  position: "above" | "below"
+  children: React.ReactNode;
+  position: "above" | "below";
 }
 
 const CommonLayout = ({

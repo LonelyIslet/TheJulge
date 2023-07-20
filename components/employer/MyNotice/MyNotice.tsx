@@ -5,12 +5,12 @@ import { DetailType } from "types/enums/detailPage.enum";
 import { INotice } from "types/dto";
 
 interface INoticeWithClosedInfo extends INotice {
-  id: string,
-  closed: boolean,
+  id: string;
+  closed: boolean;
 }
 
 interface MyNoticeProps {
-  noticeList: INoticeWithClosedInfo[],
+  noticeList: INoticeWithClosedInfo[];
 }
 
 const MyNotice = ({

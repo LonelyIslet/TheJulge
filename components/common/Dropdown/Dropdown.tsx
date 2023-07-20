@@ -13,15 +13,15 @@ interface IData {
   [key: string]: string | number;
 }
 interface DropdownProps {
-  type: "address" | "category"
-  label: string
-  id: string
-  name: string
-  required?: boolean
-  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-  rendering: boolean
-  countValidation: ICountValidation
-  data: IData
+  type: "address" | "category";
+  label: string;
+  id: string;
+  name: string;
+  required?: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  rendering: boolean;
+  countValidation: ICountValidation;
+  data: IData;
 }
 
 const Dropdown = ({

@@ -1,12 +1,12 @@
 import LIMIT from "constants/notice/options/LIMIT";
 
 interface GenerateAPIQueryParams {
-  offset?: number,
-  keyword?: string,
-  sort?: string,
-  address?: string[],
-  startsAtGte?: string,
-  hourlyPayGte?: number,
+  offset?: number;
+  keyword?: string;
+  sort?: string;
+  address?: string[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const generateAPIQuery = ({

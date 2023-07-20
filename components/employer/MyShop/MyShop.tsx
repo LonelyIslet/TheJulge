@@ -1,11 +1,11 @@
 import { CommonLayout, ShopCard } from "components/common";
 
 interface MyShopProps {
-  name: string,
-  address: string,
-  imageUrl: string,
-  description: string,
-  category: string,
+  name: string;
+  address: string;
+  imageUrl: string;
+  description: string;
+  category: string;
 }
 
 const MyShop = ({
