@@ -1,0 +1,98 @@
+.container {
+	@include fixed(0,0,0,0);
+	background-color: $red-40;
+	z-index: 9999;
+	@include flexbox(column, center, center);
+	gap: 2rem;
+	.loadingAnimation {
+		.loader {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		} 
+
+		.car {
+			&__body {
+				animation: shake 0.2s ease-in-out infinite alternate;
+			}
+			
+			&__line {
+				transform-origin: center right;
+				stroke-dasharray: 22;
+				animation: line 0.8s ease-in-out infinite;
+				animation-fill-mode: both;
+
+				&--top {
+					animation-delay: 0s;
+				}
+
+				&--middle {
+					animation-delay: 0.2s;
+				}
+
+				&--bottom {
+					animation-delay: 0.4s;
+				}
+			}
+		}
+		
+		@keyframes shake {
+			0% {
+				transform: translateY(-1%);
+			}
+			100% {
+				transform: translateY(3%);
+			}
+		}
+		
+		@keyframes line {
+			0% {
+				stroke-dashoffset: 22;
+			}	
+			25% {
+				stroke-dashoffset: 22;
+			}
+			50% {
+				stroke-dashoffset: 0;
+			}
+			51% {
+				stroke-dashoffset: 0;
+			}
+			80% {
+				stroke-dashoffset: -22;
+			}
+			100% {
+				stroke-dashoffset: -22;
+			}
+		}
+	}
+
+	.loadingText {
+		color: $white;
+		font-size: 2rem;
+	}
+	.loadingText::after {
+		position: absolute;
+		display: inline-block;
+		animation: dotty steps(1,end) 1s infinite;
+		content: '';
+	}
+}
+
+@keyframes dotty {
+	0% {
+		content: '';
+	}
+	25% {
+		content: '.'; 
+	}
+	50% {
+		content: '..';
+	}
+	75% {
+		content: '...';
+	}
+	100% {
+		content: '';
+	}
+}
