@@ -9,7 +9,7 @@ export interface IShop {
   address1: string,
   address2?: string,
   description?: string,
-  imageUrl?: string,
+  imageUrl: string,
   originalHourlyPay: number,
   user?: IUser,
 }
