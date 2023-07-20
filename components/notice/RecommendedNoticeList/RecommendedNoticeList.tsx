@@ -60,13 +60,13 @@ const RecommendedNoticeList = () => {
                   startsAt={noticeList.items[noticeIndex].item.startsAt}
                   workhour={noticeList.items[noticeIndex].item.workhour}
                   address={noticeList.items[noticeIndex].item.shop.item.address1}
-                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl}
+                  imageUrl={noticeList.items[noticeIndex].item.shop.item.imageUrl as string}
                   originalHourlyPay={
                     noticeList.items[noticeIndex].item.shop.item.originalHourlyPay
                   }
                   closed={noticeList.items[noticeIndex].item.closed}
                   name={noticeList.items[noticeIndex].item.shop.item.name}
-                  href={noticeList.items[noticeIndex].item.shop.href}
+                  href={noticeList.items[noticeIndex].item.shop.href as string}
                 />
               </div>
             );
