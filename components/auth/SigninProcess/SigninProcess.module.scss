@@ -6,11 +6,10 @@
 	gap: 2rem;
 	.loadingAnimation {
 		.loader {
-	
 			display: flex;
 			align-items: center;
 			justify-content: center;
-		}   
+		} 
 
 		.car {
 			&__body {
@@ -22,12 +21,15 @@
 				stroke-dasharray: 22;
 				animation: line 0.8s ease-in-out infinite;
 				animation-fill-mode: both;
+
 				&--top {
 					animation-delay: 0s;
 				}
+
 				&--middle {
 					animation-delay: 0.2s;
 				}
+
 				&--bottom {
 					animation-delay: 0.4s;
 				}
@@ -75,13 +77,22 @@
 		animation: dotty steps(1,end) 1s infinite;
 		content: '';
 	}
-	
 }
 
 @keyframes dotty {
-		0%   { content: ''; }
-		25%  { content: '.'; }
-		50%  { content: '..'; }
-		75%  { content: '...'; }
-		100% { content: ''; }
+	0% {
+		content: '';
+	}
+	25% {
+		content: '.'; 
+	}
+	50% {
+		content: '..';
+	}
+	75% {
+		content: '...';
+	}
+	100% {
+		content: '';
+	}
 }
