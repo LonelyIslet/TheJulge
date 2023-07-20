@@ -71,7 +71,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
             address={noticeInfo?.shop?.item.address1}
             imageUrl={noticeInfo.shop?.item.imageUrl as string}
             shopDescription={noticeInfo?.shop?.item?.description as string}
-            noticeDescription={noticeInfo?.description}
+            noticeDescription={noticeInfo?.description ?? ""}
             closed={noticeInfo?.closed}
             workhour={noticeInfo?.workhour}
             originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay}
