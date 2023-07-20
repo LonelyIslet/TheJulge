@@ -1,14 +1,7 @@
 import { INotice } from "types/dto";
-import { usePostNoticeMutation } from "redux/api/noticeApi";
+import { IEditNotice, usePostNoticeMutation } from "redux/api/noticeApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
-
-interface IPostNotice {
-  hourlyPay: number,
-  startsAt: string,
-  workhour: number,
-  description: string,
-}
 
 const usePostNotice = () => {
   const [sendRequest, { isLoading, isError }] = usePostNoticeMutation();
@@ -16,7 +9,7 @@ const usePostNotice = () => {
 
   const postNotice = async (
     shopId: string,
-    body: IPostNotice,
+    body: IEditNotice,
   ) => {
     try {
       const data = await sendRequest({ shopId, body }).unwrap();
