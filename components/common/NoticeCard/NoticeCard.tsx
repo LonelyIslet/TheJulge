@@ -10,7 +10,7 @@ interface NoticeCardProps {
   hourlyPay: number;
   startsAt: string;
   address: string;
-  imageUrl: string;
+  imageUrl?: string;
   shopDescription: string;
   noticeDescription?: string;
   closed: boolean;
