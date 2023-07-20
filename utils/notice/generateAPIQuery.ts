@@ -31,8 +31,10 @@ const generateAPIQuery = ({
     queryString += `keyword=${keyword}&`;
   }
 
-  if (sort && sort !== "default") {
+  if (sort) {
     queryString += `sort=${sort}&`;
+  } else {
+    queryString += "sort=time";
   }
 
   if (address?.length) {

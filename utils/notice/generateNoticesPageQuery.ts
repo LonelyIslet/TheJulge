@@ -31,7 +31,7 @@ const generateNoticesPageQuery = ({
     queryString += `keyword=${keyword}&`;
   }
 
-  if (sort && sort !== "default") {
+  if (sort && sort !== "time") {
     queryString += `sort=${sort}&`;
   }
 

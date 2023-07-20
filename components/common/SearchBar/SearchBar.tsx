@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
@@ -14,7 +14,9 @@ const SearchBar = ({
   className = "",
   placeholder = "",
 }: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get("keyword");
+  const [searchQuery, setSearchQuery] = useState(keyword || "");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,12 +24,17 @@ const SearchBar = ({
     if (searchQuery) {
       router.push(`/notices/?keyword=${searchQuery}`);
     }
-    setSearchQuery("");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
+
+  useEffect(() => {
+    if (!keyword) {
+      setSearchQuery("");
+    }
+  }, [keyword]);
 
   return (
     <form

@@ -71,7 +71,7 @@ const SortButton = ({
         onClick={handlePopoverToggle}
       >
         <h2>
-          {sortOption && sortOption !== "default" ? SORT_OPTIONS[sortOption] : "최신등록순"}
+          {sortOption ? SORT_OPTIONS[sortOption] : "마감임박순"}
         </h2>
         <Image
           width={10}
