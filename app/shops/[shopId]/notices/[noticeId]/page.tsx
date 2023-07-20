@@ -10,7 +10,6 @@ import styles from "./page.module.scss";
 
 const NoticePage = () => {
   const user = useAppSelector((state) => { return state.user; });
-
   return (
     <>
       <div className={styles.top}>

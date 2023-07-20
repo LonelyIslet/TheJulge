@@ -94,6 +94,7 @@ const EditNoticeForm = () => {
       && formattedData.workhour > 0
       && formattedData.description.length !== 0
     ) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const response = await postNotice(params.shopId, formattedData);
     }
   };
