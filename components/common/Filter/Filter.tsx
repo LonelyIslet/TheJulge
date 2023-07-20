@@ -5,42 +5,38 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import { SORT_OPTIONS } from "constants/notice";
-import { FilterOptions } from "types/notice/queries";
-import addCommasToString from "utils/notice/addCommasToString";
+import { Address1 } from "types/shop/address";
+import { Sort } from "types/notice/queries";
 import dateToStr from "utils/dateToStr";
+import addCommasToString from "utils/notice/addCommasToString";
 import parseFilterToObject from "utils/notice/parseFilterToObject";
 import makeQuery from "utils/notice/generateNotciesPageQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  filter?: string;
-  keyword: string;
-  sortOptionId: number;
+  limit: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
   onClose: () => void;
 }
 
 const Filter = ({
-  filter,
+  limit,
   keyword,
-  sortOptionId,
+  sort,
+  address,
+  startsAtGte,
+  hourlyPayGte,
   onClose,
 }: FilterProps) => {
-  let options: FilterOptions;
-  if (filter) {
-    options = parseFilterToObject(filter);
-  } else {
-    options = {
-      address: new Set<number>(),
-      startsAtGte: null,
-      hourlyPayGte: 0,
-    };
-  }
-
   const [address, setAddress] = useState(options.address);
   const [startsAtGte, setStartsAtGte] = useState(options.startsAtGte);
   const [sagPresent, setSagPresent] = useState(() => {
-    if (options.startsAtGte) {
-      return dateToStr(options.startsAtGte);
+    if (startsAtGte) {
+      return dateToStr(startsAtGte);
     }
     return "";
   });

@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Popover } from "components/common";
 import SortDropdown from "components/notice/SortButton/SortDropdown/SortDropdown";
-import { Address1 } from "types/shop/address";
 import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
 import generateNotciesPageQuery from "utils/notice/generateNotciesPageQuery";
 import styles from "./SortButton.module.scss";
 
