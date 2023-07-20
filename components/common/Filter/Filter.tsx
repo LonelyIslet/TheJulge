@@ -4,13 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import { SORT_OPTIONS } from "constants/notice";
 import { Address1 } from "types/shop/address";
 import { Sort } from "types/notice/queries";
 import dateToStr from "utils/dateToStr";
 import addCommasToString from "utils/notice/addCommasToString";
-import parseFilterToObject from "utils/notice/parseFilterToObject";
-import makeQuery from "utils/notice/generateNotciesPageQuery";
+import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
@@ -32,29 +30,26 @@ const Filter = ({
   hourlyPayGte,
   onClose,
 }: FilterProps) => {
-  const [address, setAddress] = useState(options.address);
-  const [startsAtGte, setStartsAtGte] = useState(options.startsAtGte);
-  const [sagPresent, setSagPresent] = useState(() => {
-    if (startsAtGte) {
-      return dateToStr(startsAtGte);
-    }
-    return "";
-  });
-  const [hourlyPayGte, setHourlyPayGte] = useState(options.hourlyPayGte);
-  const [hpgPresent, setHpgPresent] = useState(
-    () => { return addCommasToString(String(options.hourlyPayGte)); },
-  );
+  const initialAddress = address?.length ? new Set<Address1>(address) : new Set<Address1>();
+  const [addressSet, setAddressSet] = useState(initialAddress);
+  const initialStartsAtGte = startsAtGte ? new Date(startsAtGte) : undefined;
+  const [startsAtGteDate, setStartsAtGteDate] = useState(initialStartsAtGte);
+  const initialSagPresent = initialStartsAtGte ? dateToStr(initialStartsAtGte) : "";
+  const [sagPresent, setSagPresent] = useState(initialSagPresent);
+  const [hourlyPayGteState, setHourlyPayGteState] = useState(hourlyPayGte);
+  const initialHpgPresent = addCommasToString(String(hourlyPayGte));
+  const [hpgPresent, setHpgPresent] = useState(initialHpgPresent);
   const [inputType, setInputType] = useState("text");
   const router = useRouter();
 
-  const handleAddressClick = (id: number) => {
-    address.add(id);
-    setAddress(new Set(address));
+  const handleAddressClick = (option: Address1) => {
+    addressSet.add(option);
+    setAddressSet(new Set(addressSet));
   };
 
-  const handleDeleteLocation = (id: number) => {
-    address.delete(id);
-    setAddress(new Set(address));
+  const handleDeleteLocation = (option: Address1) => {
+    addressSet.delete(option);
+    setAddressSet(new Set(address));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,45 +57,52 @@ const Filter = ({
     const numericValue = rawValue.replace(/\D/g, "");
     const formattedValue = addCommasToString(numericValue);
 
-    setHourlyPayGte(Number(numericValue));
+    setHourlyPayGteState(Number(numericValue));
     setHpgPresent(formattedValue);
   };
 
   const onReset = () => {
-    setAddress(new Set<number>());
-    setHourlyPayGte(0);
+    setAddressSet(new Set<Address1>());
+    setHourlyPayGteState(0);
     setHpgPresent("");
-    setStartsAtGte(null);
+    setStartsAtGteDate(undefined);
     setSagPresent("");
   };
 
   const handleApply = () => {
-    const filterOptions = {
-      address,
-      startsAtGte,
-      hourlyPayGte,
-    };
-    const sort = SORT_OPTIONS[sortOptionId].option;
-    const query = makeQuery({ keyword, sort, filterOptions });
+    const queryString = generateNoticesPageQuery({
+      page: 1,
+      limit,
+      keyword,
+      sort,
+      address: Array.from(addressSet),
+      startsAtGte: startsAtGteDate?.toISOString(),
+      hourlyPayGte: hourlyPayGteState,
+    });
+
     onClose();
 
-    router.push(`/notices/${query}`);
+    if (keyword) {
+      router.push(`/notices${queryString}`);
+    } else {
+      router.push(queryString);
+    }
   };
 
-  const RenderAddressSet = Array.from(address).map((id) => {
+  const RenderAddressSet = Array.from(addressSet).map((option) => {
     return (
       <button
-        key={id}
+        key={option}
         type="button"
         className={styles.locationButton}
-        onClick={() => { return handleDeleteLocation(id); }}
+        onClick={() => { return handleDeleteLocation(option); }}
       >
-        {ADDRESS[id]}
+        {option}
         <div className={styles.redCloseButton}>
           <Image
             fill
             src="/images/close-red.svg"
-            alt="Close Red"
+            alt="Red Close Button"
           />
         </div>
       </button>
@@ -121,19 +123,19 @@ const Filter = ({
           <Image
             fill
             src="/images/close.svg"
-            alt="Close"
+            alt="Close Button"
           />
         </button>
       </div>
       <div className={styles.contents}>
         <p>위치</p>
         <div className={styles.location}>
-          {ADDRESS.map((item, idx) => {
+          {ADDRESS.map((item) => {
             return (
               <button
                 key={item}
                 type="button"
-                onClick={() => { return handleAddressClick(idx); }}
+                onClick={() => { return handleAddressClick(item as Address1); }}
               >
                 {item}
               </button>
@@ -163,7 +165,7 @@ const Filter = ({
               }}
               onChange={(e) => {
                 setSagPresent(e.target.value);
-                setStartsAtGte(e.target.value ? new Date(e.target.value) : null);
+                setStartsAtGteDate(e.target.value ? new Date(e.target.value) : undefined);
               }}
             />
           </div>

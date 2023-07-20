@@ -7,7 +7,7 @@ import SortButton from "components/notice/SortButton/SortButton";
 import { INotice } from "types/dto";
 import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
-import generateNoticesPageQuery from "utils/notice/generateNotciesPageQuery";
+import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
 import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {
