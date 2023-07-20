@@ -4,13 +4,20 @@ import { INotice } from "types/dto";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
+interface IPostNotice {
+  hourlyPay: number,
+  startsAt: string,
+  workhour: number,
+  description: string,
+}
+
 const usePostNotice = () => {
   const [sendRequest, { isLoading, isError }] = usePostNoticeMutation();
   const { showErrorModal } = useErrorModal();
 
   const postNotice = async (
     shopId: string,
-    body: INotice,
+    body: IPostNotice,
   ) => {
     try {
       const data = await sendRequest({ shopId, body }).unwrap();
