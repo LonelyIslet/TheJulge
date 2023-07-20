@@ -8,6 +8,10 @@ import useInputValidation from "hooks/useInputValidation";
 import styles from "./FileUploader.module.scss";
 
 const cx = classNames.bind(styles);
+
+interface IData {
+  [key: string]: string;
+}
 interface ICountValidation {
   [key: string]: number;
 }
@@ -23,6 +27,7 @@ interface FileUploaderProps {
   required?: boolean
   onFileChange: (file: File) => void;
   setCountValidation: React.Dispatch<React.SetStateAction<object>>;
+  data: IData;
 }
 
 const FileUploader = ({

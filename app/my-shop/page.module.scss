@@ -13,6 +13,10 @@
   }
 
   .bottom {
+    &.isHidden {
+      display: none;
+    }
+
     @include flexbox(column, space-between, center);
     padding: 6rem 0 12rem;
     background-color: $gray-5;
