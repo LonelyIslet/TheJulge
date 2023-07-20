@@ -26,6 +26,10 @@ export interface IApplication {
     item: IShop,
     href: string,
   },
+  notice: {
+    item: INotice,
+    href: string
+  }
 }
 
 export interface INoticeData {
