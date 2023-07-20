@@ -1,6 +1,6 @@
 import Image from "next/image";
+import ModalPortal from "components/common/Modal/ModalPortal";
 import { ModalType } from "types/enums/modal.enum";
-import ModalPortal from "./ModalPortal";
 import styles from "./Modal.module.scss";
 
 const modalIconSrcMap = {

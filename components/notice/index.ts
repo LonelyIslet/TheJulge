@@ -3,8 +3,8 @@ import EmployerTable from "./EmployerTable/EmployerTable";
 import FilterButton from "./FilterButton/FilterButton";
 import HomePageHero from "./HomePageHero/HomePageHero";
 import HomePageMain from "./HomePageMain/HomePageMain";
-import SortButton from "./SortButton/SortButton";
 import RecommendedNoticeList from "./RecommendedNoticeList/RecommendedNoticeList";
+import SortButton from "./SortButton/SortButton";
 
 export {
   EmployeeTable,
@@ -12,6 +12,6 @@ export {
   FilterButton,
   HomePageMain,
   HomePageHero,
-  SortButton,
   RecommendedNoticeList,
+  SortButton,
 };

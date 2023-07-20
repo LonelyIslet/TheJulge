@@ -1,4 +1,5 @@
-export const ADDRESS = ["서울시 강남구",
+export const ADDRESS = [
+  "서울시 강남구",
   "서울시 강동구",
   "서울시 강서구",
   "서울시 강북구",
@@ -22,7 +23,8 @@ export const ADDRESS = ["서울시 강남구",
   "서울시 서초구",
   "서울시 종로구",
   "서울시 송파구",
-  "서울시 중랑구"];
+  "서울시 중랑구",
+];
 
 export const CATEGORY = [
   "한식",

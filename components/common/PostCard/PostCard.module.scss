@@ -1,238 +1,267 @@
-.postCard {
+.postCardContainer {
+  container-type: inline-size;
   display: block;
-  flex-direction: column;
-  justify-content: space-between;
-  width: auto;
-  height: auto;
-  background-color: white;
-  border-radius: 1.2rem;
-  padding: 1.6rem;
-  border: 0.1rem solid $gray-20;
-  @include hoverScaleEffect(1);
 
-  @media (max-width: 680px) {
-    padding: 1rem;
-  }
-
-  &.isClosed {
-    pointer-events: none;
-  }
-
-  .postImageContainer {
-    position: relative;
-    border-radius: 1.2rem;
-    overflow: hidden;
+  .postCard {
+    flex-direction: column;
+    justify-content: space-between;
     width: auto;
     height: auto;
-    aspect-ratio: 1.7;
-    margin-bottom: 1.8rem;
+    background-color: white;
+    border-radius: 1.2rem;
+    padding: 1.6rem;
+    border: 0.1rem solid $gray-20;
+    transition: background-color 0.2s ease;
+    container-type: inline-size;
+    container-name: myLayout;
 
-    @media (max-width: 680px) {
-      margin-bottom: 1.2rem;
+    @container (max-width: 260px) {
+      padding: 1rem;
     }
 
-    .postImage {
-      &.isClosed {
-        filter: brightness(0.4);
+    &:hover {
+      background-color: $red-10;
+    }
+
+    &.isClosed {
+      pointer-events: none;
+    }
+
+    .postImageContainer {
+      position: relative;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      width: auto;
+      height: auto;
+      aspect-ratio: 1.7;
+      margin-bottom: 1.8rem;
+
+      @container myLayout (max-width: 260px) {
+        margin-bottom: 1.2rem;
       }
-    transition: transform 0.5s ease;
+
+      .postImage {
+        &.isClosed {
+          filter: brightness(0.4);
+        }
+
+        transition: transform 0.5s ease;
+      }
+
+      .closedMessage {
+        font-size: 2.8rem;
+        font-weight: 400;
+        color: $gray-30;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include bold;
+
+        @container myLayout (max-width: 260px) {
+          font-size: clamp(1.6rem, 1.0340rem + 1.5094vw, 2rem);
+        }
+      }
+
+      .postImage {
+        border-radius: 1rem;
+      }
+
+      .closedMessage {
+        font-size: 2rem;
+        white-space: pre;
+      }
     }
 
-    .closedMessage {
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: $gray-30;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      @include bold;
+    .name {
+      margin-bottom: 2rem;
+      font-size: 2rem;
 
-      @media (max-width: 680px) {
+      @container myLayout (max-width: 260px) {
+        margin-bottom: 0.5rem;
         font-size: clamp(1.6rem, 1.0340rem + 1.5094vw, 2rem);
       }
-    }
 
-    .postImage {
-      border-radius: 1rem;
-    }
-
-    .closedMessage {
-      font-size: 2rem;
-      white-space: pre;
-    }
-  }
-
-  .name {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-
-    @media (max-width: 680px) {
-      margin-bottom: 0.5rem;
-      font-size: clamp(1.6rem, 1.0340rem + 1.5094vw, 2rem);
-    }
-
-    &.isClosed {
-      color: $gray-30;
-    }
-  }
-
-  .information {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-bottom: 2rem;
-
-    @media (max-width: 680px) {
-      margin-bottom: 1.6rem;
-      gap: 0;
-    }
-
-    .time {
-      margin-bottom: 0.3rem;
-
-      @media (max-width: 680px) {
-        margin-bottom: 0.8rem;
+      &.isClosed {
+        color: $gray-30;
       }
     }
 
-    .time,
-    .address {
+    .information {
       display: flex;
-      align-items: flex-start;
-      color: $gray-50;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+
+      @container myLayout (max-width: 260px) {
+        margin-bottom: 1.6rem;
+        gap: 0;
+      }
+
+      .time {
+        margin-bottom: 0.3rem;
+
+        @container myLayout (max-width: 260px) {
+          margin-bottom: 0.8rem;
+        }
+      }
+
+      .time,
+      .address {
+        display: flex;
+        align-items: flex-start;
+        color: $gray-50;
+
+        &.isClosed {
+          color: $gray-30;
+        }
+
+        .icon {
+          margin-right: 0.5rem;
+          margin-top: 0.2rem;
+
+          @container myLayout (max-width: 260px) {
+            width: 1.3rem;
+          }
+        }
+
+        p {
+          font-size: 1.4rem;
+
+          @container myLayout (max-width: 260px) {
+            font-size: clamp(1.2rem, 0.9170rem + 0.7547vw, 1.4rem);
+          }
+        }
+      }
+    }
+
+    .hourlyPayContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+
+      .hourlyPay {
+        font-size: 2.4rem;
+        @include bold;
+        @include ellipsis(1);
+        max-width: 100%;
+
+        @container myLayout (max-width: 260px) {
+          margin-bottom: 2rem;
+          font-size: clamp(1.8rem, 1.5170rem + 0.7547vw, 2rem);
+        }
+
+        &.isClosed {
+          color: $gray-30;
+        }
+      }
 
       &.isClosed {
         color: $gray-30;
       }
 
-      .icon {
-        margin-right: 0.5rem;
-        margin-top: 0.2rem;
-
-        @media (max-width: 680px) {
-          width: 1.3rem;
-        }
+      @container myLayout (max-width: 260px) {
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
       }
+    }
+
+    .payPercentage {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      padding: 0.4em 0.8em;
+      color: $white;
+      border-radius: 2rem;
+      gap: 0.5rem;
+      white-space: nowrap;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      // display: block;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
 
       p {
-        font-size: 1.4rem;
-
-        @media (max-width: 680px) {
-          font-size: clamp(1.2rem, 0.9170rem + 0.7547vw, 1.4rem);
-        }
-      }
-    }
-  }
-
-  .hourlyPayContainer {
-
-    .hourlyPay {
-      font-size: 2.4rem;
-      @include bold;
-
-      @media (max-width: 680px) {
-        margin-bottom: 2rem;
-        font-size: clamp(1.8rem, 1.5170rem + 0.7547vw, 2rem);
+        max-width: 100%;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
-      &.isClosed {
-        color: $gray-30;
+      $intensity: (
+        "0-25": $red-20,
+        "25-50": $red-30,
+        "50-75": $red-40,
+        "75-100": $primary
+      );
+
+    @each $range,
+    $color in $intensity {
+      &.bg-#{$range} {
+        background-color: $color;
       }
     }
 
+    .arrowMb {
+      display: none;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
+      @container myLayout (max-width: 260px) {
+        display: block;
+      }
+    }
+
+    .arrowDt {
+      display: block;
+
+      @container myLayout (max-width: 260px) {
+        display: none;
+      }
+    }
+
+    .icon {
+      width: 1.3rem;
+      margin-right: 0.2rem;
+    }
 
     &.isClosed {
-      color: $gray-30;
+      background-color: $gray-30;
     }
 
-    @media (max-width: 680px) {
-      position: relative;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.4rem;
-    }
-  }
-
-  .payPercentage {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    padding: 0.4em 0.8em;
-    color: $white;
-    border-radius: 2rem;
-    gap: 0.5rem;
-    white-space: nowrap;
-    justify-content: center;
-    width: fit-content;
-
-    @media (max-width: 680px) {
+    @container myLayout (max-width: 260px) {
       font-size: clamp(1.2rem, 0.9170rem + 0.7547vw, 1.4rem);
       position: absolute;
       bottom: 0;
-    }
-
-    $intensity: (
-      "0-25": $red-20,
-      "25-50": $red-30,
-      "50-75": $red-40,
-      "75-100": $primary
-    );
-
-  @each $range,
-  $color in $intensity {
-    &.bg-#{$range} {
-      background-color: $color;
-
-      @media (max-width: 680px) {
-        background-color: $white;
-        color: $color;
-      }
-    }
-  }
-
-  &.isClosed {
-    background-color: $gray-30;
-  }
-
-  .arrowMb {
-    display: none;
-
-    @media (max-width: 680px) {
-      display: block;
-    }
-  }
-
-  .arrowDt {
-    display: block;
-
-    @media (max-width: 680px) {
-      display: none;
-    }
-  }
-
-  .icon {
-    width: 1.3rem;
-    margin-right: 0.2rem;
-  }
-
-  @media (max-width: 680px) {
-    background-color: $white;
-    padding: 0;
-    font-size: 1.2rem;
-
-    .icon {
-      display: none;
-    }
-
-    &.isClosed {
       background-color: $white;
-      color: $gray-20;
+      padding: 0;
+      font-size: 1.2rem;
+
+      $intensity: ("0-25": $red-20,
+        "25-50": $red-30,
+        "50-75": $red-40,
+        "75-100": $primary );
+
+      @each $range,
+      $color in $intensity {
+        &.bg-#{$range} {
+          background-color: $white;
+          color: $color;
+        }
+      }
+
+      .icon {
+        display: none;
+      }
+
+      &.isClosed {
+        background-color: $white;
+        color: $gray-20;
+      }
     }
   }
 }

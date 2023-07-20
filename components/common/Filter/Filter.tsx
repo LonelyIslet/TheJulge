@@ -2,29 +2,59 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
-import addCommasToString from "utils/addCommasToString";
+import { FilterOptions } from "types/notice/filter";
+import addCommasToString from "utils/notice/addCommasToString";
+import dateToStr from "utils/dateToStr";
+import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  onClose?: () => void;
+  filter?: string;
+  keyword: string;
+  onClose: () => void;
 }
 
 const Filter = ({
+  filter,
+  keyword,
   onClose,
 }: FilterProps) => {
-  const [fromDate, setFromDate] = useState(new Date());
-  const [fromPay, setFromPay] = useState("");
-  const [addressSet, setAddressSet] = useState(new Set<number>());
+  let options: FilterOptions;
+  if (filter) {
+    options = parseFilterToObject(filter);
+  } else {
+    options = {
+      address: new Set<number>(),
+      startsAtGte: null,
+      hourlyPayGte: 0,
+    };
+  }
+
+  const [address, setAddress] = useState(options.address);
+  const [startsAtGte, setStartsAtGte] = useState(options.startsAtGte);
+  const [sagPresent, setSagPresent] = useState(() => {
+    if (options.startsAtGte) {
+      return dateToStr(options.startsAtGte);
+    }
+    return "";
+  });
+  const [hourlyPayGte, setHourlyPayGte] = useState(options.hourlyPayGte);
+  const [hpgPresent, setHpgPresent] = useState(
+    () => { return addCommasToString(String(options.hourlyPayGte)); },
+  );
+  const [inputType, setInputType] = useState("text");
+  const router = useRouter();
 
   const handleAddressClick = (id: number) => {
-    addressSet.add(id);
-    setAddressSet(new Set(addressSet));
+    address.add(id);
+    setAddress(new Set(address));
   };
 
   const handleDeleteLocation = (id: number) => {
-    addressSet.delete(id);
-    setAddressSet(new Set(addressSet));
+    address.delete(id);
+    setAddress(new Set(address));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,19 +62,53 @@ const Filter = ({
     const numericValue = rawValue.replace(/\D/g, "");
     const formattedValue = addCommasToString(numericValue);
 
-    setFromPay(formattedValue);
+    setHourlyPayGte(Number(numericValue));
+    setHpgPresent(formattedValue);
   };
 
   const onReset = () => {
-    setFromPay("");
-    setFromDate(new Date());
+    setAddress(new Set<number>());
+    setHourlyPayGte(0);
+    setHpgPresent("");
+    setStartsAtGte(null);
+    setSagPresent("");
   };
 
-  const onApply = () => {
+  const handleApply = () => {
+    let query = "";
 
+    if (keyword) {
+      query += `?keyword=${keyword}&`;
+      if (address.size || hourlyPayGte || startsAtGte) {
+        query += "filter=";
+      }
+    } else if (address.size || hourlyPayGte || startsAtGte) {
+      query += "?filter=";
+    }
+
+    if (address.size) {
+      query += "address$";
+      address.forEach((item) => {
+        query += `${item}$`;
+      });
+    }
+
+    if (hourlyPayGte) {
+      query += `hourlyPayGte$${hourlyPayGte}$`;
+    }
+
+    if (startsAtGte) {
+      const sagStr = startsAtGte.toISOString();
+      query += `startsAtGte$${sagStr}`;
+    }
+
+    query = query.replace(/\$$/, "");
+
+    onClose();
+    router.push(`/notices/${query}`);
   };
 
-  const RenderAddressSet = Array.from(addressSet).map((id) => {
+  const RenderAddressSet = Array.from(address).map((id) => {
     return (
       <button
         key={id}
@@ -85,14 +149,14 @@ const Filter = ({
       <div className={styles.contents}>
         <p>위치</p>
         <div className={styles.location}>
-          {ADDRESS.map((address, idx) => {
+          {ADDRESS.map((item, idx) => {
             return (
               <button
-                key={address}
+                key={item}
                 type="button"
                 onClick={() => { return handleAddressClick(idx); }}
               >
-                {address}
+                {item}
               </button>
             );
           })}
@@ -105,19 +169,22 @@ const Filter = ({
           <label htmlFor="fromDate">시작일</label>
           <div className={styles.inputWrapper}>
             <input
-              type="date"
+              type={inputType}
+              min={dateToStr(new Date())}
               id="fromDate"
               name="fromDate"
               autoComplete="off"
-              value={
-              `${fromDate.getFullYear().toString()
-              }-${
-                (fromDate.getMonth() + 1).toString().padStart(2, "0")
-              }-${
-                fromDate.getDate().toString().padStart(2, "0")}`
-            }
+              value={sagPresent}
+              placeholder="입력"
+              onFocus={() => {
+                setInputType("date");
+              }}
+              onBlur={() => {
+                setInputType("text");
+              }}
               onChange={(e) => {
-                setFromDate(new Date(e.target.value));
+                setSagPresent(e.target.value);
+                setStartsAtGte(e.target.value ? new Date(e.target.value) : null);
               }}
             />
           </div>
@@ -132,7 +199,7 @@ const Filter = ({
               name="fromPay"
               placeholder="입력"
               pattern="[0-9]*"
-              value={fromPay}
+              value={hpgPresent === "0" ? "" : hpgPresent}
               onChange={handleChange}
               inputMode="numeric"
             />
@@ -151,7 +218,7 @@ const Filter = ({
           <button
             type="button"
             className={styles.applyButton}
-            onClick={onApply}
+            onClick={handleApply}
           >
             적용하기
           </button>

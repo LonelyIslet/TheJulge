@@ -2,6 +2,7 @@
 	0% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -11,6 +12,7 @@
   0% {
     opacity: 1;
 	}
+
 	100% {
 		opacity: 0;
 	}
@@ -22,10 +24,10 @@
 	display: inline-flex;
 	padding: 1rem 1.6rem;
 	align-items: flex-start;
-
 	border-radius: 0.5rem;
 	background: $red-30;
 	z-index: 10000;
+
 	& span {
 		font-size: 1.6rem;
 		text-align: center;

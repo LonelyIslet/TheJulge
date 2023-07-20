@@ -20,35 +20,42 @@
 .titleContainer {
   @include flexbox(row);
   width: 100%;
+
   .titleItem {
     @include flexbox(column);
     width: 50%;
     height: 6rem;
     cursor: pointer;
+
     &:hover {
       .title {
         color: $gray-40;
       }
+
       .line {
         background-color: $gray-40;
       }
     }
+
     .title {
       @include flexbox(row, center, center);
-      height: 5.6rem;
       @include bold;
+      height: 5.6rem;
       font-size: 2.8rem;
       transition: color 0.2s ease;
       color: $gray-20;
     }
+
     .title.active {
       color: $primary;
     }
+
     .line {
       height: 0.4rem;
       background-color: $gray-20;
       transition: background-color 0.2s ease;
     }
+
     .line.active {
       background-color: $primary;;
     }
@@ -72,12 +79,12 @@
 	border-radius: 0.6rem;
 	background: $primary;
 	cursor: pointer;
-
 	@include bold;
 	color: $white;
 	font-size: 1.6rem;
 	transition: transform 0.2s ease;
-	&:hover {
+
+  &:hover {
 		transform: scale(1.02);
 	}
 }

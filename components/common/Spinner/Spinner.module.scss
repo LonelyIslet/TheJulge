@@ -28,15 +28,13 @@ $scale: 1.3;
 	}
 }
 
- @keyframes spinny {
+@keyframes spinny {
 	0% {
 		transform: rotate(0deg) scale(1);
 	}
- 
 	50% {
 		transform: rotate(45deg) scale($scale);
 	}
- 
 	100% {
 		transform: rotate(360deg) scale(1);
 	}

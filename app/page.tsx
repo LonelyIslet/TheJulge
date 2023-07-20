@@ -1,6 +1,6 @@
 import { HomePageHero, HomePageMain } from "components/notice";
-import getNotices from "utils/api/getNotices";
 import { SortOptions } from "types/enums/sort.enum";
+import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
 interface HomePageProps {
@@ -12,8 +12,8 @@ interface HomePageProps {
 const HomePage = async ({
   searchParams,
 }: HomePageProps) => {
-  const { keyword, sort } = searchParams;
-  const noticeList = await getNotices(keyword, sort);
+  const { keyword, sort, filter } = searchParams;
+  const noticeList = await getNotices({ keyword, sort, filter });
   let sortOptionId = 0;
 
   switch (sort) {
@@ -40,6 +40,7 @@ const HomePage = async ({
           noticeList={noticeList}
           keyword={keyword}
           sortOptionId={sortOptionId}
+          filter={filter}
         />
       </div>
     </div>

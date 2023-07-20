@@ -1,5 +1,5 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { ILink } from "types/dto";
+import { apiSlice } from "redux/slices/apiSlice";
 
 interface IPostImageNameResponse {
   item: {
