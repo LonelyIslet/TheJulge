@@ -1,6 +1,6 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { IApplication, ILink } from "types/dto";
 import { ApplyStatus } from "types/enums/apply.enum";
+import { apiSlice } from "redux/slices/apiSlice";
 
 interface IApplicationResponse {
   item: IApplication;

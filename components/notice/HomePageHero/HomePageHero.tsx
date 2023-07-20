@@ -1,5 +1,5 @@
 import { CommonLayout } from "components/common";
-import RecommendedNoticeList from "../RecommendedNoticeList/RecommendedNoticeList";
+import RecommendedNoticeList from "components/notice/RecommendedNoticeList/RecommendedNoticeList";
 
 const HomePageHero = () => {
   return (

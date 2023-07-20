@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { usePostApplicationMutation } from "redux/api/applicationApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
@@ -22,6 +21,7 @@ const usePostApplication = () => {
         }
       }
       console.error(err);
+      return undefined;
     }
   };
 

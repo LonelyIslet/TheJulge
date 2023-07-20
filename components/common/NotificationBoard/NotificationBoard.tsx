@@ -34,7 +34,7 @@ const NotificationBoard = ({
           개
         </h2>
         <button type="button" className={styles.closeBtn} onClick={onClose}>
-          <Image src="/images/close.svg" fill alt="닫기 버튼" />
+          <Image src="/images/close.svg" alt="닫기 버튼" fill />
         </button>
       </div>
       <ul className={styles.itemList}>
@@ -42,15 +42,13 @@ const NotificationBoard = ({
           const {
             shop: { item: shop }, notice: { item: notice }, createdAt, result,
           } = item;
+
           return (
             <li key={item.id} className={styles.item}>
               <div className={cx("ellipsis", `${result}`)} />
               <p className={styles.content}>
                 {shop.name}
-                {`(${formatTimeRange(notice.startsAt, notice.workhour, false)})`}
-                {" "}
-                공고 지원이
-                {" "}
+                {`(${formatTimeRange(notice.startsAt, notice.workhour, false)}) 공고 지원이 `}
                 <span className={cx(`${result}`)}>{labelMap[result]}</span>
                 되었어요.
               </p>

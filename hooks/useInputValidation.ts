@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import inputValidation from "utils/inputValidation";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import inputValidation from "utils/inputValidation";
 
 interface IData {
-  [key: string]: string
+  [key: string]: string | number
 }
 
 interface ICountValidation {
@@ -32,7 +32,7 @@ const useInputValidation = (
   name?: string,
   required?: boolean,
   rendering?: boolean,
-  setCountValidation?:React.Dispatch<React.SetStateAction<ICountValidation>>,
+  setCountValidation?: React.Dispatch<React.SetStateAction<ICountValidation>>,
   data?: IData,
   element?: "text" | "textarea",
 ) => {
@@ -53,7 +53,7 @@ const useInputValidation = (
     } else {
       setValidation(true);
     }
-    if (element === "textarea" && data && data[name as keyof IData] && data[name as keyof IData].length) {
+    if (element === "textarea" && data && data[name as keyof IData] && (data[name as keyof IData] as string).length) {
       setValidation(true);
     }
     setToggle(!toggle);
@@ -65,10 +65,10 @@ const useInputValidation = (
     } else {
       setValidation(true);
     }
-    if (element === "textarea" && data && data[name as keyof IData] && data[name as keyof IData].length) {
+    if (element === "textarea" && data && data[name as keyof IData] && (data[name as keyof IData] as string).length) {
       setValidation(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rendering]);
 
   const validationContent: string = value?.length === 0 && required

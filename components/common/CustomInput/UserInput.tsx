@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "./CustomInput.module.scss";
 
 interface IData {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 interface UserInputProps {
@@ -15,7 +15,7 @@ interface UserInputProps {
   id: string;
   name: string;
   onBlur: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onChange :(event:
+  onChange: (event:
   React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   data: IData
 }
@@ -76,15 +76,15 @@ const UserInput = ({
           />
         )}
       {type === "password" && (
-      <Image
-        src={isEyeToggled ? "/images/close-eye.svg"
-          : "/images/open-eye.svg"}
-        onMouseDown={handleToggle}
-        className={styles.unit}
-        alt="비밀번호 표시/숨김 버튼"
-        width={16}
-        height={16}
-      />
+        <Image
+          src={isEyeToggled ? "/images/close-eye.svg"
+            : "/images/open-eye.svg"}
+          onMouseDown={handleToggle}
+          className={styles.unit}
+          alt="비밀번호 표시/숨김 버튼"
+          width={16}
+          height={16}
+        />
       )}
     </div>
   );

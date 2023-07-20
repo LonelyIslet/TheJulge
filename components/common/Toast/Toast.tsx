@@ -23,6 +23,7 @@ const Toast = ({
 
     return () => { return clearTimeout(timeout); };
   }, []);
+
   return (
     <ToastPortal>
       <div

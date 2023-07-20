@@ -1,6 +1,6 @@
-import { apiSlice } from "redux/slices/apiSlice";
 import { ILink, IUser } from "types/dto";
 import { Address1 } from "types/shop/address";
+import { apiSlice } from "redux/slices/apiSlice";
 
 interface IGetUserInfoResponse {
   item: IUser;
@@ -24,11 +24,8 @@ export const userApi = apiSlice.injectEndpoints({
           return `users/${userId}`;
         },
       }),
-      updateUserInfo: builder.mutation<IUpdateUserInfoResponse,
-      {
-        userId: string,
-        body: IUserUpdateInfo
-      }>({
+      // eslint-disable-next-line max-len
+      updateUserInfo: builder.mutation<IUpdateUserInfoResponse, { userId: string, body: IUserUpdateInfo }>({
         query: ({ userId, body }) => {
           return {
             url: `users/${userId}`,
