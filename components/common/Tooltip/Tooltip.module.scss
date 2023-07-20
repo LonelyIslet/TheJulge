@@ -6,13 +6,10 @@
 	visibility: visible;
 	color: $white;
 	width: fit-content;
-	padding: 10px;
-	border-radius: 4px;
+	padding: 1rem;
+	border-radius: 0.4rem;
 	font-size: 1.8rem;
 	text-align: center;
-	line-height: 1.25rem;
-	letter-spacing: -0.02rem;
-	white-space: pre-line;
 	z-index: 100;
 	transition: visibility 0.5s, color 0.5s, background-color 0.5s, width 0.5s,
 	padding 0.5s ease-in-out;
