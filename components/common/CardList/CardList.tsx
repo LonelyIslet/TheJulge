@@ -9,7 +9,6 @@ interface CardListProps {
 const CardList = ({
   noticeList,
 }: CardListProps) => {
-  console.log(noticeList);
   return (
     <ul className={styles.cardList}>
       {noticeList?.map((i) => {

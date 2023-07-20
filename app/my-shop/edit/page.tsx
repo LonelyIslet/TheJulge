@@ -62,8 +62,6 @@ const MyShopEditPage = () => {
   });
   const { updateShop, isLoading: updateIsLoading } = useUpdateShop();
 
-  console.log(shopData);
-
   useEffect(() => {
     if (!isLoading && data?.item.shop) {
       const initialShopData = {
@@ -84,9 +82,9 @@ const MyShopEditPage = () => {
   }, [data, isLoading]);
 
   const handleData = (event:
-    React.ChangeEvent<HTMLInputElement |
-      HTMLTextAreaElement> |
-    React.MouseEvent<HTMLButtonElement>) => {
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => {
     if (event.type === "click") {
       const target = event.target as HTMLButtonElement;
       setShopData((prev) => {
@@ -131,7 +129,6 @@ const MyShopEditPage = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    console.log("submit");
     e.preventDefault();
     setRendering(!rendering);
     setCountValidation({
@@ -151,7 +148,6 @@ const MyShopEditPage = () => {
       && shopData?.description?.length
       && shopData?.originalHourlyPay?.length
     ) {
-      console.log("유효 통과 ");
       if (presignedUrlRef.current !== "") {
         try {
           await fetch(presignedUrlRef.current, {
