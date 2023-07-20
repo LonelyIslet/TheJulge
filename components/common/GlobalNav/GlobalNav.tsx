@@ -1,39 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SearchBar from "components/common/SearchBar/SearchBar";
-import Popover from "components/common/Popover/Popover";
-import NotificationBoard from "components/common/NotificationBoard/NotificationBoard";
-import { IAlert } from "types/dto";
+import NotificationButton from "components/common/GlobalNav/NotificationButton";
 import { UserType } from "types/enums/user.enum";
-import mockAlertData from "constants/mock/alerts.json";
 import useAppSelector from "redux/hooks/useAppSelector";
 import useResponsiveHeader from "hooks/useResponsiveNavbar";
 import styles from "./GlobalNav.module.scss";
 
-const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
-  return i.item as IAlert;
-});
-
 const GlobalNav = () => {
   const user = useAppSelector((state) => { return state.user; });
   const router = useRouter();
-  const [alertList, setAlertList] = useState<IAlert[]>([]);
   const navRef = useRef(null);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   useResponsiveHeader(navRef);
-
-  useEffect(() => {
-    // TOOD: api 호출을 통해 유저의 알림을 받아와 alertList에 setting한다.
-    setAlertList(ALERT_LIST);
-  }, []);
-
-  const hasUnreadAlerts = (alerts: IAlert[]) => {
-    return alerts.some((alert) => { return !alert.read; });
-  };
 
   const handleSignOut = () => {
     router.push("/signout");
@@ -60,7 +42,7 @@ const GlobalNav = () => {
           />
         </div>
         <div className={styles.rightItems}>
-          {!user.token ? (
+          {!user.userInfo ? (
             <>
               <Link href="/auth?mode=signin">
                 <h2>
@@ -88,34 +70,8 @@ const GlobalNav = () => {
               <button className={styles.logoutBtn} onClick={handleSignOut}>
                 <h2>로그아웃</h2>
               </button>
-              <div className={styles.notificationIcon}>
-                <Image
-                  src={
-                    hasUnreadAlerts(alertList)
-                      ? "/images/notification-active.svg"
-                      : "/images/notification.svg"
-                  }
-                  fill
-                  alt="알림 아이콘"
-                  onClick={() => {
-                    setIsNotificationOpen((prev) => { return !prev; });
-                  }}
-                />
-                {isNotificationOpen && (
-                <Popover
-                  onClose={() => { setIsNotificationOpen(false); }}
-                  top="2.85rem"
-                  right="0rem"
-                >
-                  <NotificationBoard
-                    alertList={ALERT_LIST}
-                    onClose={() => {
-                      setIsNotificationOpen(false);
-                    }}
-                  />
-                </Popover>
-                )}
-              </div>
+              { user.userInfo.type === UserType.EMPLOYEE
+                && <NotificationButton userId={user.userInfo.id as string} />}
             </>
           )}
         </div>
