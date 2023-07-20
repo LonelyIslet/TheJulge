@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { PostCard, Spinner, InfiniteCarousel } from "components/common";
+import DefaultRecommendedList from "components/notice/RecommendedNoticeList/DefaultRecommendedList";
 import useAppSelector from "redux/hooks/useAppSelector";
 import { SortOption, useGetNoticesQuery } from "redux/api/noticeApi";
 import useMediaQuery from "hooks/useMediaQuery";
@@ -39,7 +40,7 @@ const RecommendedNoticeList = () => {
   }
 
   if (!noticeList?.items.length) {
-    return (<div className={styles.loadingContainer}>회원님을 위한 맞춤공고가 없어요</div>);
+    return <DefaultRecommendedList />;
   }
 
   return (
