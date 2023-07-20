@@ -65,7 +65,7 @@ const RecommendedNoticeList = () => {
                   }
                   closed={noticeList.items[noticeIndex].item.closed}
                   name={noticeList.items[noticeIndex].item.shop.item.name}
-                  href={noticeList.items[noticeIndex].item.shop.href}
+                  href={noticeList.items[noticeIndex].item.shop.href as string}
                 />
               </div>
             );
