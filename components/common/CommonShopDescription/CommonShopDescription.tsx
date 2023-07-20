@@ -19,8 +19,6 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
     noticeId: router.noticeId,
   });
 
-  console.log(shopInfo);
-
   // 알바 공고내역 보면서 신청하기 or 편집하기
 
   const handleApplyJob = () => {
@@ -56,8 +54,6 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
   } else {
     btnType = <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>;
   }
-
-  console.log(user, noticeInfo);
 
   let renderingUi;
 
