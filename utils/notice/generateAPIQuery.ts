@@ -34,7 +34,7 @@ const generateAPIQuery = ({
   if (sort) {
     queryString += `sort=${sort}&`;
   } else {
-    queryString += "sort=time";
+    queryString += "sort=time&";
   }
 
   if (address?.length) {
