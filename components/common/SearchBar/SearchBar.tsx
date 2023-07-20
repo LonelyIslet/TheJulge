@@ -19,7 +19,9 @@ const SearchBar = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/notices/?keyword=${searchQuery}`);
+    if (searchQuery) {
+      router.push(`/notices/?keyword=${searchQuery}`);
+    }
     setSearchQuery("");
   };
 

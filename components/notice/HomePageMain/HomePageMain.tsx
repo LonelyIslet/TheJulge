@@ -45,8 +45,10 @@ const HomePageMain = ({
 
     if (keyword) {
       router.push(`/notices${queryString}`);
-    } else {
+    } else if (queryString) {
       router.push(queryString);
+    } else {
+      router.push("/");
     }
   };
 
@@ -87,11 +89,13 @@ const HomePageMain = ({
           <CardList noticeList={noticeList} />
         </div>
       </CommonLayout>
-      <Pagination
-        currentPage={currentPage}
-        lastPage={lastPage}
-        onPageClick={handlePageClick}
-      />
+      <div className={styles.pagination}>
+        <Pagination
+          currentPage={currentPage}
+          lastPage={lastPage}
+          onPageClick={handlePageClick}
+        />
+      </div>
     </>
   );
 };

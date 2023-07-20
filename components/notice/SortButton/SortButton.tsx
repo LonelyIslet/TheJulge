@@ -41,20 +41,23 @@ const SortButton = ({
   };
 
   useEffect(() => {
-    setQueryString(generateNotciesPageQuery({
+    const query = generateNotciesPageQuery({
       keyword,
       sort: sortOption,
       address,
       startsAtGte,
       hourlyPayGte,
-    }));
+    });
+    setQueryString(query);
   }, [keyword, sortOption, address, startsAtGte, hourlyPayGte]);
 
   useEffect(() => {
     if (keyword) {
       router.push(`/notices${queryString}`);
-    } else {
+    } else if (queryString) {
       router.push(queryString);
+    } else {
+      router.push("/");
     }
   }, [queryString, router, keyword]);
 

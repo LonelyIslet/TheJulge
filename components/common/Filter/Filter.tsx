@@ -47,7 +47,7 @@ const Filter = ({
 
   const handleDeleteLocation = (option: Address1) => {
     addressSet.delete(option);
-    setAddressSet(new Set(address));
+    setAddressSet(new Set(addressSet));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,8 +81,10 @@ const Filter = ({
 
     if (keyword) {
       router.push(`/notices${queryString}`);
-    } else {
+    } else if (queryString) {
       router.push(queryString);
+    } else {
+      router.push("/");
     }
   };
 
