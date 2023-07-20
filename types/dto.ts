@@ -2,7 +2,6 @@ import { ApplyStatus } from "./enums/apply.enum";
 import { UserType } from "./enums/user.enum";
 import { Address1 } from "./shop/address";
 
-
 export interface IShop {
   id?: string,
   name: string,
@@ -38,7 +37,6 @@ export interface INoticeData {
   links: ILink[],
 }
 
-
 export interface INotice {
   id: string,
   hourlyPay: number,
@@ -52,28 +50,9 @@ export interface INotice {
   },
 }
 
-
 export interface IgetNoticesParams {
   keyword: string,
   sort: string,
-}
-
-export interface IApplication {
-  id?: string,
-  status: ApplyStatus,
-  createdAt?: string,
-  user?: {
-    item: IUser,
-    href: string,
-  }
-  shop?: {
-    item: IShop,
-    href: string,
-  },
-  notice?: {
-    item: INotice,
-    href: string,
-  }
 }
 
 export interface Iitem {
@@ -100,18 +79,6 @@ export interface ILink {
   description: string;
   method: string;
   href: string;
-}
-
-export interface IShop {
-  id?: string,
-  name: string,
-  category: string,
-  address1: string,
-  address2: string,
-  description?: string,
-  imageUrl?: string,
-  originalHourlyPay: number,
-  user?: IUser,
 }
 
 export interface IAlert {
