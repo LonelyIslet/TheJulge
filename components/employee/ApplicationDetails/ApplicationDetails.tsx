@@ -3,15 +3,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
-import useAppSelector from "redux/hooks/useAppSelector";
 import {
   CommonDetail, CommonLayout, Loader, StatusChip,
 } from "components/common";
 import { EmployeeTable } from "components/notice";
 import { IEmployeeNotices } from "types/notice/tables";
-import formatTimeRange from "utils/formatTimeRange";
 import { DetailType } from "types/enums/detailPage.enum";
+import useAppSelector from "redux/hooks/useAppSelector";
+import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
+import formatTimeRange from "utils/formatTimeRange";
 
 const ApplicationDetails = () => {
   const user = useAppSelector((state) => { return state.user; });
