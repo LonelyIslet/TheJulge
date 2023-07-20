@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import { ADDRESS } from "constants/dropdown/dropdownData";
 import { Address1 } from "types/shop/address";
 import { Sort } from "types/notice/queries";
-import dateToStr from "utils/dateToStr";
-import formatStringNumberWithCommas from "utils/notice/formatStringNumberWithCommas";
-import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
+import dateToStr from "utils/common/dateToStr";
+import formatStringNumberWithCommas from "utils/common/formatStringNumberWithCommas";
+import generateNoticesPageQuery from "utils/notices/generateNoticesPageQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {

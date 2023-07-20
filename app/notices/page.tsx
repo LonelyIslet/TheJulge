@@ -2,8 +2,8 @@ import { HomePageMain } from "components/notice";
 import { Address1 } from "types/shop/address";
 import { Sort } from "types/notice/queries";
 import LIMIT from "constants/notice/options/LIMIT";
-import convertToArray from "utils/convertToArray";
-import getFirstValue from "utils/getFirstValue";
+import convertToArray from "utils/common/convertToArray";
+import getFirstValue from "utils/common/getFirstValue";
 import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 

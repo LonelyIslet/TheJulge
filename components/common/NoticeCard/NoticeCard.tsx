@@ -1,7 +1,7 @@
 import Image from "next/image";
 import classNames from "classnames/bind";
-import calculatePercentage from "utils/calculatePercentage";
-import formatTimeRange from "utils/formatTimeRange";
+import calculatePercentage from "utils/common/calculatePercentage";
+import formatTimeRange from "utils/common/formatTimeRange";
 import styles from "./NoticeCard.module.scss";
 
 const cx = classNames.bind(styles);

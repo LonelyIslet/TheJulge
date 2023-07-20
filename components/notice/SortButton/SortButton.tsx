@@ -7,7 +7,7 @@ import { Popover } from "components/common";
 import SortDropdown from "components/notice/SortButton/SortDropdown/SortDropdown";
 import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
-import generateNotciesPageQuery from "utils/notice/generateNoticesPageQuery";
+import generateNotciesPageQuery from "utils/notices/generateNoticesPageQuery";
 import { SORT_OPTIONS } from "constants/notice";
 import styles from "./SortButton.module.scss";
 

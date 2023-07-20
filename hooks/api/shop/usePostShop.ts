@@ -1,7 +1,7 @@
 import { IShop } from "types/dto";
 import { usePostShopMutation } from "redux/api/shopApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const usePostShop = () => {
   const [sendRequest, { isLoading, isError }] = usePostShopMutation();

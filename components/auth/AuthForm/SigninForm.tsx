@@ -7,7 +7,7 @@ import { CustomInput, Loader } from "components/common";
 import SigninProcess from "components/auth/SigninProcess/SigninProcess";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import useSignin from "hooks/api/auth/useSignin";
-import inputValidation from "utils/inputValidation";
+import inputValidation from "utils/common/inputValidation";
 import useLazyGetUserInfo from "hooks/api/user/useLazyGetUserInfo";
 import useAppSelector from "redux/hooks/useAppSelector";
 import styles from "./AuthForm.module.scss";

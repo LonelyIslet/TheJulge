@@ -1,6 +1,6 @@
 import { useAcceptApplicationMutation } from "redux/api/applicationApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useAcceptApplication = () => {
   const [sendRequest, { isLoading, isError }] = useAcceptApplicationMutation();

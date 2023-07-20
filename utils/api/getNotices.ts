@@ -1,7 +1,7 @@
 import { IGetNoticeResponse } from "redux/api/noticeApi";
 import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
-import generateAPIQuery from "utils/notice/generateAPIQuery";
+import generateAPIQuery from "utils/notices/generateAPIQuery";
 import LIMIT from "constants/notice/options/LIMIT";
 
 export interface GetNoticesParams {

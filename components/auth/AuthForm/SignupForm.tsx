@@ -8,7 +8,7 @@ import { ValidationTarget } from "types/enums/inputValidation.enum";
 import { UserType } from "types/enums/user.enum";
 import { ModalType } from "types/enums/modal.enum";
 import useSignup from "hooks/api/auth/useSignup";
-import inputValidation from "utils/inputValidation";
+import inputValidation from "utils/common/inputValidation";
 import styles from "./AuthForm.module.scss";
 
 const SignupForm = () => {

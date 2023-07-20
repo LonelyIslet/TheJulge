@@ -1,6 +1,6 @@
 import { useCancelApplicationMutation } from "redux/api/applicationApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useCancelApplication = () => {
   const [sendRequest, { isLoading, isError }] = useCancelApplicationMutation();
