@@ -11,7 +11,7 @@ interface NoticeCardProps {
   startsAt: string;
   address: string;
   imageUrl: string;
-  shopDescription: string;
+  shopDescription?: string;
   noticeDescription: string;
   closed: boolean;
   workhour: number;
