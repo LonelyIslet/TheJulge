@@ -16,7 +16,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
 
   const { data: shopInfo, isLoading, isError } = useGetNoticeByShopAndNoticeIdQuery({
     shopId: router.shopId,
-    noticeId: router.noticesId,
+    noticeId: router.noticeId,
   });
 
   // 알바 공고내역 보면서 신청하기 or 편집하기
