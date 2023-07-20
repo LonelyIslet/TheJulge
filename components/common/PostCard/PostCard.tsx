@@ -1,14 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames/bind";
+import Tooltip from "components/common/Tooltip/Tooltip";
 import calculatePercentage from "utils/calculatePercentage";
 import formatTimeRange from "utils/formatTimeRange";
 import getBgColorClass from "utils/getBgColorClass";
+import { setViewHistory } from "redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { INotice } from "types/dto";
 import CustomArrow from "./CustomArrow/CustomArrow";
 import styles from "./PostCard.module.scss";
 
 const cx = classNames.bind(styles);
-
 interface PostCardProps {
   hourlyPay: number;
   startsAt: string;
@@ -32,10 +38,31 @@ const PostCard = ({
   originalHourlyPay,
   href,
 }: PostCardProps) => {
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const isPassed = new Date() > new Date(startsAt);
   const isClosed = closed || isPassed;
   const percentage = calculatePercentage(hourlyPay, originalHourlyPay);
   const bgColorClass = getBgColorClass(percentage);
+  const dispatch = useDispatch();
+
+  const addViewHistoryItem = () => {
+    const viewHistoryItem: INotice = {
+      id: href,
+      hourlyPay,
+      startsAt,
+      workhour,
+      closed,
+      shop: {
+        item: {
+          imageUrl,
+          address1: address,
+          originalHourlyPay,
+          name,
+        },
+      },
+    };
+    dispatch(setViewHistory(viewHistoryItem));
+  };
 
   const getClosedMessage = () => {
     if (closed) {
@@ -48,7 +75,7 @@ const PostCard = ({
   };
 
   return (
-    <Link href={href} className={styles.postCardContainer}>
+    <Link href={href} className={styles.postCardContainer} onClick={addViewHistoryItem}>
       <div className={cx("postCard", { isClosed })}>
         <div className={styles.postImageContainer}>
           <Image
@@ -84,10 +111,15 @@ const PostCard = ({
           </div>
         </div>
         <div className={styles.hourlyPayContainer}>
-          <p className={cx("hourlyPay", { isClosed })}>
+          <p
+            className={cx("hourlyPay", { isClosed })}
+            onMouseEnter={() => { setIsTooltipVisible(true); }}
+            onMouseLeave={() => { setIsTooltipVisible(false); }}
+          >
             {hourlyPay.toLocaleString()}
             원
           </p>
+          <Tooltip isVisible={isTooltipVisible} message={`${hourlyPay.toLocaleString()}원`} />
           {percentage >= 5
             && (
               <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>

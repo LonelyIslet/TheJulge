@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IShop, IUser } from "types/dto";
+import { INotice, IShop, IUser } from "types/dto";
 
 export interface IUserState {
   token?: string;
   userInfo?: IUser;
+  viewHistory?: INotice[];
 }
 
 const initialState: IUserState = {
   token: undefined,
   userInfo: undefined,
+  viewHistory: [],
 };
 
 export const userSlice = createSlice({
@@ -24,9 +26,17 @@ export const userSlice = createSlice({
         state.userInfo.shop = action.payload;
       }
     },
+    setViewHistory: (state, action: PayloadAction<INotice>) => {
+      if (state.viewHistory && state.viewHistory?.length <= 5) {
+        state.viewHistory.push(action.payload);
+      } else {
+        state.viewHistory?.shift();
+        state.viewHistory?.push(action.payload);
+      }
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setViewHistory } = userSlice.actions;
 
 export default userSlice.reducer;
