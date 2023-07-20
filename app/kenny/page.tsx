@@ -1,67 +1,35 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
-  CommonBtn, Modal, NoticeCard, NotificationBoard, PostCard, StatusChip,
+  CommonBtn, Modal, NotificationBoard, PostCard, StatusChip,
 } from "components/common";
 import { ApplyStatus } from "types/enums/apply.enum";
 import { ButtonStyle } from "types/enums/button.enum";
 import { ModalType } from "types/enums/modal.enum";
-import { IAlert } from "types/dto";
 import Popover from "components/common/Popover/Popover";
 import useAppSelector from "redux/hooks/useAppSelector";
-// import styles from "./page.module.scss";
-import mockAlertData from "constants/mock/alerts.json";
 import useToast from "hooks/useToast";
 import { useGetNoticesQuery } from "redux/api/noticeApi";
-import { useUpdateUserInfoMutation } from "redux/api/userApi";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
-import useAppDispatch from "redux/hooks/useAppDispatch";
-import { setShowModal } from "redux/slices/errorModalSlice";
 import useErrorModal from "hooks/useErrorModal";
 import useUpdateProfile from "hooks/api/user/useUpdateProfile";
 import { Address1 } from "types/shop/address";
 import useUpdateShop from "hooks/api/shop/useUpdateShop";
 import InfiniteCarousel from "components/common/InfiniteCarousel/InfiniteCarousel";
-import data from "constants/mock/notice.json";
 import noticeList from "constants/mock/noticeList.json";
-import useDisableDraggableChildren from "hooks/useDisableDraggableChildren";
-
-
-const ALERT_LIST: IAlert[] = mockAlertData.items.map((i) => {
-  return i.item as IAlert;
-});
-
-const images = [
-  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
-  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
-  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
-  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
-  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
-  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
-  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
-  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
-  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320",
-  "https://unsplash.com/photos/1527pjeb6jg/download?force=false&w=320",
-  "https://unsplash.com/photos/9wg5jCEPBsw/download?force=false&w=320",
-  "https://unsplash.com/photos/phIFdC6lA4E/download?force=false&w=320"
-];
+import usePostNotice from "hooks/api/notice/usePostNotice";
 
 const Page = () => {
   const user = useAppSelector((state) => { return state.user; });
-  // const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const { showErrorModal } = useErrorModal();
-  // const [errorMsg, setErrorMsg] = useState("");
   const { showToast } = useToast();
   const { data, isLoading } = useGetNoticesQuery({ offset: 0 });
   const { updateProfile } = useUpdateProfile();
-  // const [updateProfile, { error }] = useUpdateUserInfoMutation();
   const { updateShop } = useUpdateShop();
-  const targetRef = useRef<HTMLDivElement>(null);
-  // useDisableDraggableChildren(targetRef);
+  const {postNotice} = usePostNotice();
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(user);
@@ -110,6 +78,17 @@ const Page = () => {
       console.log(res);
     }
   }
+
+  const handlePostNotice = async ()=>{
+    const body = {
+      hourlyPay: 20000,
+      startsAt:  "2023-09-02T10:00:00.000Z" ,
+      workhour: 2,
+      description: "구합니다.",
+    }
+    const res = await postNotice(user.userInfo!.shop!.item.id as string, body);
+    console.log(res);
+  }
   return (
     <main>
       <StatusChip status={ApplyStatus.PENDING} />
@@ -155,7 +134,9 @@ const Page = () => {
         {isPopoverOpen && (
           <Popover onClose={() => { setIsPopoverOpen(false); }} bottom="8rem">
             <NotificationBoard
-              alertList={ALERT_LIST}
+              alertList={[]}
+              isLoading
+              onRead={()=>{}}
               onClose={() => { setIsPopoverOpen(false); }}
             />
           </Popover>
@@ -169,6 +150,9 @@ const Page = () => {
       </div> */}
       <CommonBtn onClick={handleUpdateProfile}>
         update Profile
+      </CommonBtn>
+      <CommonBtn onClick={handlePostNotice}>
+        post notice
       </CommonBtn>
       {isErrorModalOpen && (
         <Modal
