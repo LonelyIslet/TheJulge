@@ -11,6 +11,8 @@ import styles from "./page.module.scss";
 const NoticePage = () => {
   const user = useAppSelector((state) => { return state.user; });
 
+  // 사장
+
   return (
     <>
       <div className={styles.top}>
@@ -20,7 +22,7 @@ const NoticePage = () => {
         {(user?.userInfo?.type === "employee"
         || user?.userInfo?.type === undefined)
         && <EmployeeNotice />}
-        {/* {user?.userInfo?.type === "employer" && <EmployerNotice />} */}
+        {user?.userInfo?.type === "employer" && <EmployerNotice />}
       </div>
     </>
   );
