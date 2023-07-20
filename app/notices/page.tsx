@@ -67,7 +67,6 @@ const NoticesPage = async ({
       <div className={styles.bottom}>
         <HomePageMain
           noticeList={noticeList}
-          limit={LIMIT}
           currentPage={currentPage}
           lastPage={lastPage}
           keyword={keyword}

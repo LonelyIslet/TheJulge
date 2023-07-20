@@ -1,1 +1,1 @@
-export type Sort = "time" | "pay" | "hour" | "shop";
+export type Sort = "default" | "time" | "pay" | "hour" | "shop";

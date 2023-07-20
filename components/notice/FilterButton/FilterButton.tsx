@@ -7,7 +7,6 @@ import { Address1 } from "types/shop/address";
 import styles from "./FilterButton.module.scss";
 
 interface FilterButtonProps {
-  limit: number;
   keyword?: string;
   sort?: Sort;
   address?: Address1[];
@@ -16,7 +15,6 @@ interface FilterButtonProps {
 }
 
 const FilterButton = ({
-  limit,
   keyword,
   sort,
   address,
@@ -64,7 +62,6 @@ const FilterButton = ({
             onClose={handlePopoverToggle}
           >
             <Filter
-              limit={limit}
               keyword={keyword}
               sort={sort}
               address={address}

@@ -1,6 +1,7 @@
+import LIMIT from "constants/notice/options/LIMIT";
+
 interface GenerateAPIQueryParams {
   offset?: number,
-  limit: number,
   keyword?: string,
   sort?: string,
   address?: string[],
@@ -10,7 +11,6 @@ interface GenerateAPIQueryParams {
 
 const generateAPIQuery = ({
   offset,
-  limit,
   keyword,
   sort,
   address,
@@ -21,17 +21,17 @@ const generateAPIQuery = ({
 
   if (offset) {
     queryString += `offset=${offset}&`;
+  } else {
+    queryString += "offset=0&";
   }
 
-  if (limit) {
-    queryString += `limit=${limit}&`;
-  }
+  queryString += `limit=${LIMIT}&`;
 
   if (keyword) {
     queryString += `keyword=${keyword}&`;
   }
 
-  if (sort) {
+  if (sort && sort !== "default") {
     queryString += `sort=${sort}&`;
   }
 

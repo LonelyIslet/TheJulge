@@ -12,7 +12,6 @@ import generateNoticesPageQuery from "utils/notice/generateNoticesPageQuery";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  limit: number;
   keyword?: string;
   sort?: Sort;
   address?: Address1[];
@@ -22,7 +21,6 @@ interface FilterProps {
 }
 
 const Filter = ({
-  limit,
   keyword,
   sort,
   address,
@@ -37,7 +35,7 @@ const Filter = ({
   const initialSagPresent = initialStartsAtGte ? dateToStr(initialStartsAtGte) : "";
   const [sagPresent, setSagPresent] = useState(initialSagPresent);
   const [hourlyPayGteState, setHourlyPayGteState] = useState(hourlyPayGte);
-  const initialHpgPresent = addCommasToString(String(hourlyPayGte));
+  const initialHpgPresent = hourlyPayGte ? addCommasToString(String(hourlyPayGte)) : "0";
   const [hpgPresent, setHpgPresent] = useState(initialHpgPresent);
   const [inputType, setInputType] = useState("text");
   const router = useRouter();
@@ -72,7 +70,6 @@ const Filter = ({
   const handleApply = () => {
     const queryString = generateNoticesPageQuery({
       page: 1,
-      limit,
       keyword,
       sort,
       address: Array.from(addressSet),

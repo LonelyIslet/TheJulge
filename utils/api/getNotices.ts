@@ -26,11 +26,9 @@ const getNotices = async ({
   }
 
   const offset = page ? (page - 1) * LIMIT : undefined;
-  const limit = LIMIT;
 
   const queryString = generateAPIQuery({
     offset,
-    limit,
     keyword,
     sort,
     address,

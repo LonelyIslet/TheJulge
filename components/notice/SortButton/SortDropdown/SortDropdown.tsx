@@ -5,7 +5,7 @@ import { SORT_OPTIONS } from "constants/notice";
 import styles from "./SortDropdown.module.scss";
 
 interface SortDropdownProps {
-  onSortOptionClick: (option?: Sort) => void;
+  onSortOptionClick: (option: Sort) => void;
 }
 
 const SortDropdown = ({
@@ -13,13 +13,6 @@ const SortDropdown = ({
 }: SortDropdownProps) => {
   return (
     <div className={styles.container}>
-      <button
-        type="button"
-        className={styles.option}
-        onClick={() => { return onSortOptionClick(); }}
-      >
-        최신등록순
-      </button>
       {Object.entries(SORT_OPTIONS).map(([key, value]) => {
         return (
           <button

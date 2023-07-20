@@ -12,7 +12,6 @@ import styles from "./HomePageMain.module.scss";
 
 interface HomePageMainProps {
   noticeList: INotice[],
-  limit: number,
   currentPage: number,
   lastPage: number,
   keyword?: string,
@@ -24,7 +23,6 @@ interface HomePageMainProps {
 
 const HomePageMain = ({
   noticeList,
-  limit,
   currentPage,
   lastPage,
   keyword,
@@ -38,7 +36,6 @@ const HomePageMain = ({
   const handlePageClick = (page: number) => {
     const queryString = generateNoticesPageQuery({
       page,
-      limit,
       keyword,
       sort,
       address,
@@ -71,7 +68,6 @@ const HomePageMain = ({
             )}
           <div className={styles.buttonContainer}>
             <SortButton
-              limit={limit}
               keyword={keyword}
               sort={sort}
               address={address}
@@ -79,7 +75,6 @@ const HomePageMain = ({
               hourlyPayGte={hourlyPayGte}
             />
             <FilterButton
-              limit={limit}
               keyword={keyword}
               sort={sort}
               address={address}

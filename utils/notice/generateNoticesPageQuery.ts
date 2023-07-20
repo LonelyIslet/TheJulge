@@ -1,9 +1,9 @@
+import LIMIT from "constants/notice/options/LIMIT";
 import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
 
 interface GenerateNotciesPageQueryParams {
   page?: number,
-  limit: number,
   keyword?: string,
   sort?: Sort,
   address?: Address1[],
@@ -13,7 +13,6 @@ interface GenerateNotciesPageQueryParams {
 
 const generateNoticesPageQuery = ({
   page = 1,
-  limit,
   keyword,
   sort,
   address,
@@ -22,21 +21,17 @@ const generateNoticesPageQuery = ({
 }: GenerateNotciesPageQueryParams) => {
   let queryString = "";
 
-  const offset = (page - 1) * limit;
+  const offset = (page - 1) * LIMIT;
 
   if (offset) {
-    queryString += `offset=${offset}&`;
-  }
-
-  if (limit) {
-    queryString += `limit=${limit}&`;
+    queryString += `page=${page}&`;
   }
 
   if (keyword) {
     queryString += `keyword=${keyword}&`;
   }
 
-  if (sort) {
+  if (sort && sort !== "default") {
     queryString += `sort=${sort}&`;
   }
 
