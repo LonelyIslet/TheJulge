@@ -37,13 +37,13 @@ const ApplicationDetails = () => {
     }
     setApplicationList(data.items.map((i) => {
       const { item } = i;
-      const { startsAt } = item.notice!.item;
-      const workHour = item?.notice?.item.workhour;
+      const { startsAt } = item.notice.item;
+      const workHour = item.notice.item.workhour;
       return {
         id: item.id as string,
         store: item.shop!.item.name,
-        date: formatTimeRange(startsAt, workHour as number),
-        hourlyPay: item?.notice?.item.hourlyPay as number,
+        date: formatTimeRange(startsAt, workHour),
+        hourlyPay: item.notice.item.hourlyPay,
         state: <StatusChip status={item.status} />,
       };
     }));
