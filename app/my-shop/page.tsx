@@ -8,6 +8,7 @@ import useAppSelector from "redux/hooks/useAppSelector";
 import { CommonDetail } from "components/common";
 import { DetailType } from "types/enums/detailPage.enum";
 import { IShop } from "types/dto";
+// import { useGetNoticesByShopIdQuery } from "redux/api/noticeApi";
 import styles from "./page.module.scss";
 
 interface IShopData {
@@ -18,13 +19,23 @@ interface IShopData {
 const MyShopPage = () => {
   const data = useAppSelector((state) => { return state.user.userInfo?.shop; }) as IShopData;
   const shop = {
-    id: data.item.id,
-    name: data.item.name,
-    address1: data.item.address1,
-    imageUrl: data.item.imageUrl,
-    description: data.item.description,
-    category: data.item.category,
+    id: data?.item.id,
+    name: data?.item.name,
+    address1: data?.item.address1,
+    imageUrl: data?.item.imageUrl,
+    description: data?.item.description,
+    category: data?.item.category,
   };
+
+  // const { data: noticeData, isLoading: noticeDataIsLoading } = useGetNoticesByShopIdQuery({
+  //   shopId, params: { offset: 10 },
+  // });
+
+  // useEffect(() => {
+  //   if (!noticeDataIsLoading) {
+  //     console.log(noticeData);
+  //   }
+  // }, [noticeDataIsLoading, noticeData]);
 
   if (!data) {
     return (
@@ -43,11 +54,11 @@ const MyShopPage = () => {
           address={shop.address1}
           imageUrl={shop.imageUrl as string}
           description={shop.description as string}
-          category={shop.category}
+          category={shop.category as string}
         />
       </div>
       <div className={styles.bottom}>
-        <MyNotice shopId={shop.id as string}/>
+        <MyNotice />
       </div>
     </>
   );
