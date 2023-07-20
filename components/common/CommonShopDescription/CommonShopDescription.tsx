@@ -14,9 +14,9 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
   const router = useParams();
   const [noticeInfo, setNoticeInfo] = useState<INotice>();
 
-  const { data: shopInfo, isLoading, isError } = useGetNoticeByShopAndNoticeIdQuery({
+  const { data: shopInfo, isLoading } = useGetNoticeByShopAndNoticeIdQuery({
     shopId: router.shopId,
-    noticeId: router.noticesId,
+    noticeId: router.noticeId,
   });
 
   // 알바 공고내역 보면서 신청하기 or 편집하기
@@ -37,8 +37,22 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
     setNoticeInfo(item);
   }, [shopInfo]);
 
-  if (isError) {
-    return null;
+  const userType = user?.type;
+  let btnType;
+
+  if (userType === ("employer" || undefined) || noticeInfo?.closed) {
+    btnType = (
+      <CommonBtn
+        onClick={handleApplyJob}
+        style={ButtonStyle.DISABLE}
+      >
+        신청 불가
+      </CommonBtn>
+    );
+  } else if (user?.shop?.item.id === shopInfo?.item.id) {
+    btnType = <CommonBtn onClick={handleEditNotice}>편집하기</CommonBtn>;
+  } else {
+    btnType = <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>;
   }
 
   let renderingUi;
@@ -56,23 +70,13 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
             startsAt={noticeInfo.startsAt}
             address={noticeInfo?.shop?.item.address1}
             imageUrl={noticeInfo.shop?.item.imageUrl as string}
-            shopDescription={noticeInfo?.shop?.item.description as string}
-            noticeDescription={noticeInfo.description}
+            shopDescription={noticeInfo?.shop?.item?.description as string}
+            noticeDescription={noticeInfo?.description as string}
             closed={noticeInfo?.closed}
-            workhour={noticeInfo.workhour}
+            workhour={noticeInfo?.workhour}
             originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay}
           >
-            {(noticeInfo?.closed || user?.type === "employer" || user?.type === undefined) && (
-            <CommonBtn
-              onClick={handleApplyJob}
-              style={ButtonStyle.DISABLE}
-            >
-              신청 불가
-            </CommonBtn>
-            )}
-            {!noticeInfo?.closed && user?.type === "employee"
-              ? <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>
-              : <CommonBtn onClick={handleEditNotice}>편집하기</CommonBtn>}
+            {btnType}
           </NoticeCard>
         </div>
       </CommonLayout>
