@@ -4,11 +4,11 @@ import { SORT_OPTIONS } from "constants/notice";
 import styles from "./SortDropdown.module.scss";
 
 interface SortDropdownProps {
-  onClick: (id: number) => void;
+  onSortOptionClick?: (id: number) => void;
 }
 
 const SortDropdown = ({
-  onClick,
+  onSortOptionClick,
 }: SortDropdownProps) => {
   return (
     <div className={styles.container}>

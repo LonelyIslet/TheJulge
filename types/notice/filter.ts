@@ -5,7 +5,10 @@ export interface FilterOptions {
 }
 
 export interface GetNoticesParams {
+  page?: number,
   keyword?: string,
   sort?: string,
-  filter?: string,
+  address?: string[],
+  startsAtGte?: string,
+  hourlyPayGte?: number,
 }

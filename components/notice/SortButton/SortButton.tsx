@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Popover } from "components/common";
 import SortDropdown from "components/notice/SortButton/SortDropdown/SortDropdown";
 import { SORT_OPTIONS } from "constants/notice";
@@ -11,26 +11,34 @@ import parseFilterToObject from "utils/notice/parseFilterToObject";
 import styles from "./SortButton.module.scss";
 
 interface SortButtonProps {
-  filter: string,
-  sortOptionId: number,
+  offset?: number;
+  limit?: number;
+  keyword?: string;
+  sortId?: number;
+  address?: string[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const SortButton = ({
-  filter,
-  sortOptionId,
+  offset,
+  limit,
+  keyword,
+  sortId,
+  address,
+  startsAtGte,
+  hourlyPayGte,
 }: SortButtonProps) => {
-  const [optionId, setOptionId] = useState(sortOptionId);
+  const [sortOptionId, setSortOptionId] = useState(sortId);
   const [showPopover, setShowPopover] = useState(false);
-  const searchParams = useSearchParams();
-  const keyword = searchParams.get("keyword") || "";
   const router = useRouter();
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
-  const handleOptionSelect = (id: number) => {
-    setOptionId(id);
+  const handleSortOptionClick = (id: number) => {
+    setSortOptionId(id);
     setShowPopover((prev) => { return !prev; });
     const sort = SORT_OPTIONS[id].option;
     const filterOptions = parseFilterToObject(filter);
@@ -52,7 +60,7 @@ const SortButton = ({
         onClick={handlePopoverToggle}
       >
         <h2>
-          {SORT_OPTIONS[optionId].label}
+          {sortOptionId ? SORT_OPTIONS[sortOptionId].label : SORT_OPTIONS[0].label }
         </h2>
         <Image
           width={10}
@@ -67,7 +75,7 @@ const SortButton = ({
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <SortDropdown onClick={handleOptionSelect} />
+            <SortDropdown onSortOptionClick={handleSortOptionClick} />
           </Popover>
         )}
     </div>
