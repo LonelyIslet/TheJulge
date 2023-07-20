@@ -12,12 +12,14 @@ export interface IShop {
   imageUrl?: string,
   originalHourlyPay: number,
   user?: IUser,
+}
+
 export interface INotice {
   id: string,
   hourlyPay: number,
   startsAt: string,
   workhour: number,
-  description: string,
+  description?: string,
   closed: boolean,
   shop: {
     item: IShop,
@@ -57,33 +59,6 @@ export interface IApplication {
   }
 }
 
-export interface INoticeData {
-  offset: number,
-  limit: number,
-  address: string[],
-  keyword?: string,
-  items: Iitem,
-  links: ILink[],
-}
-
-export interface INotice {
-  id: string,
-  hourlyPay: number,
-  description?: string,
-  startsAt: string,
-  workhour: number,
-  closed: boolean,
-  shop: {
-    item: IShop,
-    href?: string,
-  },
-}
-
-export interface IgetNoticesParams {
-  keyword: string,
-  sort: string,
-}
-
 export interface Iitem {
   item: INotice,
 }
@@ -108,18 +83,6 @@ export interface ILink {
   description: string;
   method: string;
   href: string;
-}
-
-export interface IShop {
-  id: string,
-  name: string,
-  category: string,
-  address1: string,
-  address2: string,
-  description: string,
-  imageUrl: string,
-  originalHourlyPay: number,
-  user?: IUser,
 }
 
 export interface IAlert {
