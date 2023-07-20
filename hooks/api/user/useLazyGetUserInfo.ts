@@ -2,7 +2,10 @@ import { userApi } from "redux/api/userApi";
 
 const useLazyGetUserInfo = () => {
   const [trigger, {
-    isLoading: isUserInfoLoading, data: userInfoData, isSuccess: isUserInfoFetched,
+    isLoading: isUserInfoLoading,
+    data: userInfoData,
+    isSuccess: isUserInfoFetched,
+    isFetching: isUserInfoFetching,
   }] = userApi.endpoints.getUserInfo.useLazyQuery();
 
   const getUserInfo = async (userId: string) => {
@@ -10,7 +13,7 @@ const useLazyGetUserInfo = () => {
   };
 
   return {
-    getUserInfo, isUserInfoLoading, userInfoData, isUserInfoFetched,
+    getUserInfo, isUserInfoLoading, userInfoData, isUserInfoFetched, isUserInfoFetching,
   };
 };
 
