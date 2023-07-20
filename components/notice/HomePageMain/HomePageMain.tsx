@@ -45,10 +45,8 @@ const HomePageMain = ({
 
     if (keyword) {
       router.push(`/notices${queryString}`);
-    } else if (queryString) {
-      router.push(queryString);
     } else {
-      router.push("/");
+      router.push(queryString);
     }
   };
 

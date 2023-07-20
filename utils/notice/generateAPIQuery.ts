@@ -10,22 +10,14 @@ interface GenerateAPIQueryParams {
 }
 
 const generateAPIQuery = ({
-  offset,
+  offset = 0,
   keyword,
-  sort,
-  address,
+  sort = "time",
+  address = [],
   startsAtGte,
   hourlyPayGte,
-}: GenerateAPIQueryParams) => {
-  let queryString = "";
-
-  if (offset) {
-    queryString += `offset=${offset}&`;
-  } else {
-    queryString += "offset=0&";
-  }
-
-  queryString += `limit=${LIMIT}&`;
+}: GenerateAPIQueryParams): string => {
+  let queryString = `offset=${offset}&limit=${LIMIT}&`;
 
   if (keyword) {
     queryString += `keyword=${keyword}&`;
@@ -33,15 +25,11 @@ const generateAPIQuery = ({
 
   if (sort) {
     queryString += `sort=${sort}&`;
-  } else {
-    queryString += "sort=time&";
   }
 
-  if (address?.length) {
-    for (let i = 0; i < address.length; i += 1) {
-      queryString += `address=${address[i]}&`;
-    }
-  }
+  address.forEach((addr) => {
+    queryString += `address=${addr}&`;
+  });
 
   if (startsAtGte) {
     queryString += `startsAtGte=${startsAtGte}&`;
@@ -51,10 +39,7 @@ const generateAPIQuery = ({
     queryString += `hourlyPayGte=${hourlyPayGte}&`;
   }
 
-  if (queryString) {
-    queryString = `?${queryString}`;
-    queryString = queryString.replace(/&$/, "");
-  }
+  queryString = `?${queryString.replace(/&$/, "")}`;
 
   return queryString;
 };

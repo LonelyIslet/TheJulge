@@ -1,4 +1,3 @@
-import LIMIT from "constants/notice/options/LIMIT";
 import { Sort } from "types/notice/queries";
 import { Address1 } from "types/shop/address";
 
@@ -18,12 +17,10 @@ const generateNoticesPageQuery = ({
   address,
   startsAtGte,
   hourlyPayGte,
-}: GenerateNotciesPageQueryParams) => {
+}: GenerateNotciesPageQueryParams): string => {
   let queryString = "";
 
-  const offset = (page - 1) * LIMIT;
-
-  if (offset) {
+  if (page > 1) {
     queryString += `page=${page}&`;
   }
 
@@ -35,11 +32,9 @@ const generateNoticesPageQuery = ({
     queryString += `sort=${sort}&`;
   }
 
-  if (address?.length) {
-    for (let i = 0; i < address.length; i += 1) {
-      queryString += `address=${address[i]}&`;
-    }
-  }
+  address?.forEach((addr) => {
+    queryString += `address=${addr}&`;
+  });
 
   if (startsAtGte) {
     queryString += `startsAtGte=${startsAtGte}&`;
@@ -49,10 +44,7 @@ const generateNoticesPageQuery = ({
     queryString += `hourlyPayGte=${hourlyPayGte}&`;
   }
 
-  if (queryString) {
-    queryString = `?${queryString}`;
-    queryString = queryString.replace(/&$/, "");
-  }
+  queryString = `?${queryString.replace(/&$/, "")}`;
 
   return queryString;
 };
