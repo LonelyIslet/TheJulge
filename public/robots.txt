@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.thejulge.com
+
+# Sitemaps
+Sitemap: https://www.thejulge.com/sitemap.xml

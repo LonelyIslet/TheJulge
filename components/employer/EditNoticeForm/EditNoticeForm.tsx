@@ -1,21 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
-import useAppSelector from "redux/hooks/useAppSelector";
 import convertToNumber from "utils/formattingStringTonumber";
 import convertToISODate from "utils/formattingData";
-import { usePostNoticeMutation } from "redux/api/noticeApi";
+import usePostNotice from "hooks/api/notice/usePostNotice";
+import useUpdateNotice from "hooks/api/notice/useUpdateNotice";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
   const params = useParams();
-  const { postNotice } = usePostNoticeMutation();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const { postNotice } = usePostNotice();
+  const { updateNotice } = useUpdateNotice();
 
-  const user = useAppSelector((state) => { return state.user; });
   const [rendering, setRendering] = useState(false);
 
   const [countValidation, setCountValidation] = useState({
@@ -26,10 +31,10 @@ const EditNoticeForm = () => {
   });
 
   const [data, setData] = useState({
-    hourlyPay: "", // 넘버 타입
-    startsAt: "", // 문자열
-    workhour: "", // 넘버
-    description: "", // 문자열
+    hourlyPay: "",
+    startsAt: "",
+    workhour: "",
+    description: "",
   });
 
   const handleData = (
@@ -74,10 +79,17 @@ const EditNoticeForm = () => {
     };
 
     if (formattedData.hourlyPay > 100
-      && !formattedData.startsAt.length
-      && formattedData.workhour > 0) {
-      const response = await postNotice({ shopId: params.shopId, body: formattedData });
-      console.log(response);
+      && formattedData.startsAt.length > 0
+      && formattedData.workhour > 0
+      && formattedData.description.length > 0) {
+      // 초기 글쓰기
+      if (!searchParams.get("id")) {
+        const response = await postNotice(params.shopId, formattedData);
+        router.push("/");
+      } else {
+        const response = await updateNotice(params.shopId, searchParams.get("id") as string, formattedData);
+        router.push("/");
+      }
     }
   };
 
@@ -137,6 +149,11 @@ const EditNoticeForm = () => {
           name="description"
           onChange={handleData}
           data={data}
+          required
+          validationTarget={ValidationTarget.REQUIRED}
+          rendering={rendering}
+          countValidation={countValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CommonBtn
           type="submit"
