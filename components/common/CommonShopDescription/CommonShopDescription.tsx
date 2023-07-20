@@ -14,7 +14,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
   const router = useParams();
   const [noticeInfo, setNoticeInfo] = useState<INotice>();
 
-  const { data: shopInfo, isLoading, isError } = useGetNoticeByShopAndNoticeIdQuery({
+  const { data: shopInfo, isLoading } = useGetNoticeByShopAndNoticeIdQuery({
     shopId: router.shopId,
     noticeId: router.noticeId,
   });
@@ -37,8 +37,22 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
     setNoticeInfo(item);
   }, [shopInfo]);
 
-  if (isError) {
-    return null;
+  const userType = user?.type;
+  let btnType;
+
+  if (userType === ("employer" || undefined) || noticeInfo?.closed) {
+    btnType = (
+      <CommonBtn
+        onClick={handleApplyJob}
+        style={ButtonStyle.DISABLE}
+      >
+        신청 불가
+      </CommonBtn>
+    );
+  } else if (user?.shop?.item.id === shopInfo?.item.id) {
+    btnType = <CommonBtn onClick={handleEditNotice}>편집하기</CommonBtn>;
+  } else {
+    btnType = <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>;
   }
 
   let renderingUi;
@@ -62,17 +76,8 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
             workhour={noticeInfo.workhour}
             originalHourlyPay={noticeInfo?.shop?.item.originalHourlyPay}
           >
-            {(noticeInfo?.closed || user?.type === "employer" || user?.type === undefined) && (
-            <CommonBtn
-              onClick={handleApplyJob}
-              style={ButtonStyle.DISABLE}
-            >
-              신청 불가
-            </CommonBtn>
-            )}
-            {!noticeInfo?.closed && user?.type === "employee"
-              ? <CommonBtn onClick={handleApplyJob}>신청하기</CommonBtn>
-              : <CommonBtn onClick={handleEditNotice}>편집하기</CommonBtn>}
+
+            {btnType}
           </NoticeCard>
         </div>
       </CommonLayout>

@@ -39,6 +39,13 @@ interface INoticeQueryParam {
   sort?: SortOption;
 }
 
+export interface IEditNotice {
+  hourlyPay: number,
+  startsAt: string,
+  workhour: number,
+  description: string,
+}
+
 type IGetShopNoticeResponse = Omit<IGetNoticeResponse, "address">;
 
 export const noticeApi = apiSlice.injectEndpoints({

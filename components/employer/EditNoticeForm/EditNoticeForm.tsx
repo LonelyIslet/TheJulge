@@ -3,15 +3,17 @@
 
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import convertToNumber from "utils/formattingStringTonumber";
 import convertToISODate from "utils/formattingData";
+import formattingStringToDate from "utils/fomattingStringToDate";
 import usePostNotice from "hooks/api/notice/usePostNotice";
 import useUpdateNotice from "hooks/api/notice/useUpdateNotice";
+import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
@@ -20,6 +22,9 @@ const EditNoticeForm = () => {
   const router = useRouter();
   const { postNotice } = usePostNotice();
   const { updateNotice } = useUpdateNotice();
+  const search = useSearchParams();
+
+  const { data: NoticeInitialInfo, isLoading } = useGetNoticeByShopAndNoticeIdQuery({ shopId: params.shopId, noticeId: search.get("id") as string });
 
   const [rendering, setRendering] = useState(false);
 
@@ -37,12 +42,22 @@ const EditNoticeForm = () => {
     description: "",
   });
 
-  const handleData = (
-    event:
-    React.ChangeEvent<HTMLInputElement |
-    HTMLTextAreaElement> |
-    React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  useEffect(() => {
+    if (!isLoading) {
+      setData({
+        hourlyPay: Number(String(NoticeInitialInfo?.item?.hourlyPay)?.replace(/[^0-9]/g, "")).toLocaleString(), // 넘버 타입
+        startsAt: formattingStringToDate(NoticeInitialInfo?.item.startsAt as string), // 문자열
+        workhour: String(NoticeInitialInfo?.item.workhour), // 넘버
+        description: NoticeInitialInfo?.item.description as string, // 문자열
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
+  const handleData = (event:
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => {
     if (event.type === "click") {
       const target = event.target as HTMLButtonElement;
       setData((prev) => {
@@ -71,6 +86,7 @@ const EditNoticeForm = () => {
       workhour: 1,
       description: 1,
     });
+
     const formattedData = {
       hourlyPay: convertToNumber(data.hourlyPay),
       startsAt: convertToISODate(data.startsAt),
