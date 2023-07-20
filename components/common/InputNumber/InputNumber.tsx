@@ -63,10 +63,11 @@ const InputNumber = ({
 
   useEffect(() => {
     setChange((prevChange) => { return !prevChange; });
-    if (data?.[name]) {
-      setValue(Number((data?.[name] as string).replace(/[^0-9]/g, "")).toLocaleString());
-    }
-  }, [toggle, rendering, data, name]);
+  }, [toggle, rendering]);
+
+  useEffect(() => {
+    setValue(Number((data?.[name] as string).replace(/[^0-9]/g, "")).toLocaleString());
+  }, [data]);
 
   return (
     <div className={styles.container}>
