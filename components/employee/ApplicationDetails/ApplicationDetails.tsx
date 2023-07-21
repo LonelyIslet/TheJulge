@@ -52,10 +52,6 @@ const ApplicationDetails = () => {
     }));
   }, [data]);
 
-  if (user.userInfo?.type === "employee" || user.userInfo?.type === undefined) {
-    return <EmployeeNotice />;
-  }
-
   if (user.userInfo?.type === "employer" && !isLoading && data?.items.length === 0) {
     return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
   }
