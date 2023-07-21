@@ -25,6 +25,10 @@ interface IData {
   [key: string]: string;
 }
 
+export const metadata = {
+  title: "내 가게 수정 | 더줄게",
+};
+
 const MyShopEditPage = () => {
   const user = useAppSelector((state) => { return state.user; });
   const [selectedFile, setSelectedFile] = useState<File | undefined>();

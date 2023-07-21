@@ -1,6 +1,12 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 const ShopsPage = () => {
+  const router = useRouter();
+  router.push("/");
   return (
-    <div>안녕하세요</div>
+    <div />
   );
 };
 

@@ -15,6 +15,7 @@
 이 어플리케이션은 [https://www.thejulge.com](https://www.thejulge.com)에서 접속할 수 있습니다.
 
 ## 프로젝트 구조
+
 ```
 thejulge
 ├─ .eslintignore
@@ -22,17 +23,15 @@ thejulge
 ├─ LICENSE.md
 ├─ README.md
 ├─ app
-│  ├─ api
-│  │  └─ sample
-│  │     └─ route.ts
 │  ├─ auth
 │  │  ├─ page.module.scss
 │  │  ├─ page.scss
 │  │  └─ page.tsx
+│  ├─ faq
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
 │  ├─ favicon.ico
-│  ├─ fonts
-│  │  ├─ SpoqaHanSansNeo-Bold.woff
-│  │  └─ SpoqaHanSansNeo-Regular.woff
+│  ├─ fonts /
 │  ├─ layout.tsx
 │  ├─ my-profile
 │  │  ├─ edit
@@ -53,10 +52,13 @@ thejulge
 │  │  └─ page.tsx
 │  ├─ page.module.scss
 │  ├─ page.tsx
+│  ├─ privacy
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
 │  ├─ shops
 │  │  └─ [shopId]
 │  │     └─ notices
-│  │        ├─ [noticesId]
+│  │        ├─ [noticeId]
 │  │        │  ├─ page.module.scss
 │  │        │  └─ page.tsx
 │  │        ├─ layout.tsx
@@ -208,6 +210,9 @@ thejulge
 │  │  └─ withUserType
 │  │     └─ withUserType.tsx
 │  └─ notice
+│     ├─ CheckStatusButton
+│     │  ├─ CheckStatusButton.module.scss
+│     │  └─ CheckStatusButton.tsx
 │     ├─ EmployeeTable
 │     │  └─ EmployeeTable.tsx
 │     ├─ EmployerTable
@@ -275,6 +280,7 @@ thejulge
 │  ├─ useDropdown.ts
 │  ├─ useErrorModal.ts
 │  ├─ useInputValidation.ts
+│  ├─ useIntersectionObserver.ts
 │  ├─ useMediaQuery.ts
 │  ├─ useOutsideClick.ts
 │  ├─ useResponsiveNavbar.ts
@@ -285,10 +291,7 @@ thejulge
 │  ├─ data
 │  │  ├─ dropdownAddress.json
 │  │  └─ dropdownShopCategory.json
-│  ├─ images /
-│  ├─ robots.txt
-│  ├─ sitemap-0.xml
-│  └─ sitemap.xml
+│  └─ images /
 ├─ redux
 │  ├─ StoreProvider.tsx
 │  ├─ api
@@ -333,19 +336,23 @@ thejulge
 └─ utils
    ├─ api
    │  └─ getNotices.ts
-   ├─ calculatePercentage.ts
-   ├─ convertToArray.ts
-   ├─ dateToStr.ts
-   ├─ formatTimeRange.ts
-   ├─ getBgColorClass.ts
-   ├─ getFirstValue.ts
-   ├─ inputValidation.ts
-   ├─ notice
+   ├─ common
+   │  ├─ calculatePercentage.ts
+   │  ├─ convertToArray.ts
+   │  ├─ dateToStr.ts
    │  ├─ formatStringNumberWithCommas.ts
-   │  ├─ generateAPIQuery.ts
-   │  └─ generateNoticesPageQuery.ts
-   ├─ predicateErrorType.ts
-   └─ showElapsedTime.ts
+   │  ├─ formatTimeRange.ts
+   │  ├─ getBgColorClass.ts
+   │  ├─ getFirstValue.ts
+   │  ├─ inputValidation.ts
+   │  ├─ predicateErrorType.ts
+   │  └─ showElapsedTime.ts
+   ├─ fomattingStringToDate.ts
+   ├─ formattingData.ts
+   ├─ formattingStringTonumber.ts
+   └─ notices
+      ├─ generateAPIQuery.ts
+      └─ generateNoticesPageQuery.ts
 
 ```
 
@@ -372,11 +379,11 @@ thejulge
 - [x] 랜딩 페이지 작성
 - [x] 리소스 완성
 - [x] 공고 페이지 완성
-- [ ] 가게 정보 상세 페이지 완성
-- [ ] 가게 정보 등록/수정 페이지 완성
-- [ ] 공고 등록/수정 페이지 완성
-- [ ] 사장/공고 상세 페이지 완성
-- [ ] 알바/공고 상세 페이지 완성
-- [ ] 내 프로필 상세 페이지 완성
-- [ ] 내 프로필 등록/수정 페이지 완성
+- [x] 가게 정보 상세 페이지 완성
+- [x] 가게 정보 등록/수정 페이지 완성
+- [x] 공고 등록/수정 페이지 완성
+- [x] 사장/공고 상세 페이지 완성
+- [x] 알바/공고 상세 페이지 완성
+- [x] 내 프로필 상세 페이지 완성
+- [x] 내 프로필 등록/수정 페이지 완성
 - [ ] 퍼포먼스 확인 및 리팩토링
