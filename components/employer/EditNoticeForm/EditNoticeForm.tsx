@@ -43,16 +43,16 @@ const EditNoticeForm = () => {
   });
 
   useEffect(() => {
-    if (!isLoading) {
+    if (NoticeInitialInfo) {
       setData({
         hourlyPay: Number(String(NoticeInitialInfo?.item?.hourlyPay)?.replace(/[^0-9]/g, "")).toLocaleString(), // 넘버 타입
-        startsAt: formattingStringToDate(NoticeInitialInfo?.item.startsAt as string), // 문자열
+        startsAt: formattingStringToDate(NoticeInitialInfo?.item.startsAt), // 문자열
         workhour: String(NoticeInitialInfo?.item.workhour), // 넘버
         description: NoticeInitialInfo?.item.description as string, // 문자열
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [NoticeInitialInfo]);
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
@@ -93,7 +93,6 @@ const EditNoticeForm = () => {
       workhour: convertToNumber(data.workhour),
       description: data.description,
     };
-
     if (formattedData.hourlyPay > 100
       && formattedData.startsAt.length > 0
       && formattedData.workhour > 0
@@ -101,10 +100,14 @@ const EditNoticeForm = () => {
       // 초기 글쓰기
       if (!searchParams.get("id")) {
         const response = await postNotice(params.shopId, formattedData);
-        router.push("/");
+        if (response) {
+          router.push("/my-shop");
+        }
       } else {
         const response = await updateNotice(params.shopId, searchParams.get("id") as string, formattedData);
-        router.push("/");
+        if (response) {
+          router.push("/my-shop");
+        }
       }
     }
   };
