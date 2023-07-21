@@ -59,6 +59,7 @@ const ApplicationDetails = () => {
   if (user.userInfo?.type === "employer" && !isLoading && data?.items.length === 0) {
     return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;
   }
+
   return (
     <CommonLayout position="below">
       <div>

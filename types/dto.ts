@@ -42,7 +42,7 @@ export interface INoticeData {
 }
 
 export interface INotice {
-  id: string,
+  id?: string,
   hourlyPay: number,
   description?: string,
   startsAt: string,
@@ -50,7 +50,7 @@ export interface INotice {
   closed: boolean,
   currentUserApplication?: {
     item: {
-      id: "string", // application.id,
+      id?: "string", // application.id,
       status: "pending | accepted | rejected | canceled", // application.status
       createdAt: "string", // application.createdAt
     },

@@ -23,7 +23,7 @@ const CardList = ({
               address={i.shop?.item.address1}
               imageUrl={i.shop?.item.imageUrl || ""}
               originalHourlyPay={i.shop?.item.originalHourlyPay}
-              href={`/shops/${i.shop?.item.id as string}/notices/${i.id}`}
+              href={`/shops/${i.shop?.item.id as string}/notices/${i.id as string}`}
             />
           </li>
         );

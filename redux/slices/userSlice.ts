@@ -27,6 +27,7 @@ export const userSlice = createSlice({
       }
     },
     setViewHistory: (state, action: PayloadAction<INotice>) => {
+      if (state.viewHistory?.some((i) => { return i.id === action.payload.id; })) return;
       if (state.viewHistory && state.viewHistory?.length <= 5) {
         state.viewHistory.push(action.payload);
       } else {

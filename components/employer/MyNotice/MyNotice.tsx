@@ -10,7 +10,7 @@ import { INotice, IShop } from "types/dto";
 import { useGetNoticesByShopIdQuery } from "redux/api/noticeApi";
 
 interface INoticeWithClosedInfo extends INotice {
-  id: string;
+  id?: string;
   closed: boolean;
 }
 
