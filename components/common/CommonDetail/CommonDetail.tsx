@@ -54,7 +54,7 @@ const CommonDetail = ({ detailType, shopId }: { detailType: Detail, shopId?: str
       title: "내가 등록한 공고",
       description: "공고를 등록해 보세요.",
       buttonText: "공고 등록하기",
-      onClick: () => { return router.push(`/shops/${shopId as string}/notices/write?id={}`); },
+      onClick: () => { return router.push(`/shops/${shopId as string}/notices/write`); },
     },
   };
 
