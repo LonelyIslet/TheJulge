@@ -12,7 +12,7 @@ const NoticeWrite = () => {
     <>
       <div className={styles.header}>
         <span>공고 등록</span>
-        <Link href="/my-profile">
+        <Link href="/my-shop">
           <Image src="/images/close.svg" alt="닫기 버튼" width={30} height={30} />
         </Link>
       </div>
