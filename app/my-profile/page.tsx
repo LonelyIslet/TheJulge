@@ -5,10 +5,6 @@ import { withAuth, withUserType } from "components/hocs";
 import { UserType } from "types/enums/user.enum";
 import styles from "./page.module.scss";
 
-export const metadata = {
-  title: "내 프로필 | 더줄게",
-};
-
 const MyProfilePage = () => {
   return (
     <>
