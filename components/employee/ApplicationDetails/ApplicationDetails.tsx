@@ -10,7 +10,6 @@ import {
   StatusChip,
 } from "components/common";
 import { EmployeeTable } from "components/notice";
-import EmployeeNotice from "components/employee/EmployeeNotice/EmployeeNotice";
 import { IEmployeeNotices } from "types/notice/tables";
 import { DetailType } from "types/enums/detailPage.enum";
 import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
