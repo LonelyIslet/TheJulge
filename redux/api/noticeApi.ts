@@ -41,7 +41,7 @@ interface INoticeQueryParam {
   sort?: SortOption;
 }
 
-type IGetShopNoticeResponse = Omit<IGetNoticeResponse, "address">;
+export type IGetShopNoticeResponse = Omit<IGetNoticeResponse, "address">;
 
 export const noticeApi = apiSlice.injectEndpoints({
   endpoints: (builder) => {
