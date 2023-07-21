@@ -2,6 +2,12 @@ import { ILink, INotice } from "types/dto";
 import { Address1 } from "types/shop/address";
 import { apiSlice } from "redux/slices/apiSlice";
 
+export interface IEditNotice {
+  hourlyPay: number,
+  startsAt: string,
+  workhour: number,
+  description: string
+}
 interface INoticeResponse {
   item: INotice;
   links: ILink[];
@@ -33,6 +39,13 @@ interface INoticeQueryParam {
   sort?: SortOption;
 }
 
+export interface IEditNotice {
+  hourlyPay: number,
+  startsAt: string,
+  workhour: number,
+  description: string,
+}
+
 type IGetShopNoticeResponse = Omit<IGetNoticeResponse, "address">;
 
 export const noticeApi = apiSlice.injectEndpoints({
@@ -62,11 +75,7 @@ export const noticeApi = apiSlice.injectEndpoints({
           };
         },
       }),
-      postNotice: builder.mutation<IPostNoticeResposne,
-      {
-        shopId: string, body: Partial<INotice>
-      }
-      >({
+      postNotice: builder.mutation<IPostNoticeResposne, { shopId: string, body: IEditNotice }>({
         query: ({ shopId, body }) => {
           return {
             url: `shops/${shopId}/notices`,
@@ -87,7 +96,7 @@ export const noticeApi = apiSlice.injectEndpoints({
       {
         shopId: string,
         noticeId: string,
-        body: INotice
+        body: IEditNotice
       }>({
         query: ({ shopId, noticeId, body }) => {
           return {
