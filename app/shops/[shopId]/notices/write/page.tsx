@@ -3,6 +3,10 @@ import Image from "next/image";
 import { EditNoticeForm } from "components/employer";
 import styles from "./page.module.scss";
 
+export const metadata = {
+  title: "공고 등록 | 더줄게",
+};
+
 const NoticeWrite = () => {
   return (
     <>

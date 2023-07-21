@@ -10,7 +10,6 @@ import {
   StatusChip,
 } from "components/common";
 import { EmployeeTable } from "components/notice";
-import EmployeeNotice from "components/employee/EmployeeNotice/EmployeeNotice";
 import { IEmployeeNotices } from "types/notice/tables";
 import { DetailType } from "types/enums/detailPage.enum";
 import { useGetApplicationsByUserIdQuery } from "redux/api/applicationApi";
@@ -51,10 +50,6 @@ const ApplicationDetails = () => {
       };
     }));
   }, [data]);
-
-  if (user.userInfo?.type === "employee" || user.userInfo?.type === undefined) {
-    return <EmployeeNotice />;
-  }
 
   if (user.userInfo?.type === "employer" && !isLoading && data?.items.length === 0) {
     return <CommonDetail detailType={DetailType.APPLICATION_DETAILS} />;

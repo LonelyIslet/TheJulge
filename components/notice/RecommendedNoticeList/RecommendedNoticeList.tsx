@@ -15,7 +15,7 @@ const RecommendedNoticeList = () => {
   let params;
 
   if (user.userInfo?.address) {
-    params = { address: [user.userInfo.address] };
+    params = { address: [user.userInfo.address], sort: "pay" as SortOption };
   } else {
     params = { limit: 6, sort: "pay" as SortOption };
   }
