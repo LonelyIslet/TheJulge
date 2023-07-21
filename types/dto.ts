@@ -42,12 +42,19 @@ export interface INoticeData {
 }
 
 export interface INotice {
-  id: string;
-  hourlyPay: number;
-  description?: string;
-  startsAt: string;
-  workhour: number;
-  closed: boolean;
+  id: string,
+  hourlyPay: number,
+  description?: string,
+  startsAt: string,
+  workhour: number,
+  closed: boolean,
+  currentUserApplication?: {
+    item: {
+      id: "string", // application.id,
+      status: "pending | accepted | rejected | canceled", // application.status
+      createdAt: "string", // application.createdAt
+    },
+  }
   shop: {
     item: IShop;
     href?: string;
