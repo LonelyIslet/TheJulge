@@ -57,7 +57,7 @@ export const noticeApi = apiSlice.injectEndpoints({
       getNoticesByShopId: builder.query<IGetShopNoticeResponse, { shopId: string, params: Pick<INoticeQueryParam, "offset" | "limit"> }>({
         query: ({ shopId, params }) => {
           return {
-            url: `notices/${shopId}`,
+            url: `shops/${shopId}/notices`,
             params,
           };
         },

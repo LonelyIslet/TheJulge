@@ -4,7 +4,7 @@ import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
 const useUpdateShop = () => {
-  const [sendRequest, { isLoading, isError }] = useUpdateShopInfoMutation();
+  const [sendRequest, { isLoading, isError, isSuccess }] = useUpdateShopInfoMutation();
   const { showErrorModal } = useErrorModal();
 
   const updateShop = async (
@@ -26,7 +26,9 @@ const useUpdateShop = () => {
     }
   };
 
-  return { updateShop, isLoading, isError };
+  return {
+    updateShop, isLoading, isError, isSuccess,
+  };
 };
 
 export default useUpdateShop;

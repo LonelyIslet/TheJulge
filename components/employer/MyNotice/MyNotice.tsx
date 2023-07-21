@@ -1,34 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DetailType } from "types/enums/detailPage.enum";
-import noticeList from "constants/mock/noticeList.json";
 import {
-  CommonLayout, CardList, CommonDetail,
+  CommonLayout, CardList, CommonDetail, Loader,
 } from "components/common";
 import useAppSelector from "redux/hooks/useAppSelector";
 import { INotice, IShop } from "types/dto";
+import { useGetNoticesByShopIdQuery } from "redux/api/noticeApi";
 
 interface INoticeWithClosedInfo extends INotice {
   id: string,
   closed: boolean,
 }
 
-interface IShopData {
-  item: IShop,
-  href: string
-}
-
-const notice: INoticeWithClosedInfo[] = (
-  noticeList.items as { item: INoticeWithClosedInfo }[]).map(({ item }) => { return item; });
-
 const MyNotice = () => {
-  const data = useAppSelector((state) => { return state.user.userInfo?.shop; }) as IShopData;
-  const shop = {
-    id: data?.item.id,
-  };
-
-  return noticeList.items?.length !== 0 ? (
+  const myShop = useAppSelector((state) => { return state.user.userInfo?.shop?.item; }) as IShop;
+  const [notice, setNotice] = useState<INoticeWithClosedInfo[]>([]);
+  const { data: noticeListData, isLoading, isSuccess } = useGetNoticesByShopIdQuery({
+    shopId: myShop.id as string, params: { offset: 0 },
+  });
+  useEffect(() => {
+    if (noticeListData) {
+      setNotice(noticeListData.items.map((i) => { return { ...i.item, shop: { item: myShop, href: "" } }; }));
+    }
+  }, [noticeListData, myShop]);
+  if (isLoading || !isSuccess || !noticeListData) {
+    return (
+      <div>
+        <Loader />
+        <p>공고 데이터를 불러오는 중입니다...</p>
+      </div>
+    );
+  }
+  return notice.length !== 0 ? (
     <CommonLayout position="below">
       <h2>내가 등록한 공고</h2>
       <CardList
@@ -36,7 +41,7 @@ const MyNotice = () => {
       />
     </CommonLayout>
   ) : (
-    <CommonDetail detailType={DetailType.NOTICE_DETAILS as DetailType} shopId={shop?.id} />
+    <CommonDetail detailType={DetailType.NOTICE_DETAILS as DetailType} shopId={myShop.id} />
   );
 };
 

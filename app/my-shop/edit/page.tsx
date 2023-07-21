@@ -15,7 +15,6 @@ import { ButtonStyle, ButtonSize } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
 import usePostShop from "hooks/api/shop/usePostShop";
 import useAppSelector from "redux/hooks/useAppSelector";
-import { useGetUserInfoQuery } from "redux/api/userApi";
 import usePostImageName from "hooks/api/image/usePostImageName";
 import { IShop } from "types/dto";
 import useUpdateShop from "hooks/api/shop/useUpdateShop";
@@ -43,14 +42,12 @@ const MyShopEditPage = () => {
     originalHourlyPay: "",
   });
   const router = useRouter();
-  const { postShop } = usePostShop();
+  const { postShop, isLoading: isPostLoading, isSuccess: isPostSuccess } = usePostShop();
   const { postImageName } = usePostImageName();
-  const shopId = useRef("");
   const presignedUrlRef = useRef("");
   const dispatch = useAppDispatch();
   const { userInfo } = user;
-  const userId = userInfo?.id as string;
-  const { data, isLoading } = useGetUserInfoQuery(userId);
+  const shopId = userInfo?.shop?.item.id;
   const [countValidation, setCountValidation] = useState({
     name: 0,
     category: 0,
@@ -60,26 +57,28 @@ const MyShopEditPage = () => {
     description: 0,
     originalHourlyPay: 0,
   });
-  const { updateShop, isLoading: updateIsLoading } = useUpdateShop();
+  const { updateShop, isLoading: updateIsLoading, isSuccess: isUpdateSuccess } = useUpdateShop();
 
-  useEffect(() => {
-    if (!isLoading && data?.item.shop) {
-      const initialShopData = {
-        name: data.item.shop.item.name,
-        category: data.item.shop.item.category,
-        address1: data.item.shop.item.address1,
-        address2: data.item.shop.item.address2,
-        description: data.item.shop.item.description,
-        imageUrl: data.item.shop.item.imageUrl,
-        originalHourlyPay: data.item.shop.item.originalHourlyPay.toString(),
-      };
-      shopId.current = data.item.shop.item.id as string;
-      setShopData(initialShopData as SetStateAction<IData>);
-      setPreviewUrl(data.item.shop.item.imageUrl as string);
-      setIsEditMode(true);
-      setFileEditMode(true);
-    }
-  }, [data, isLoading]);
+  useEffect(
+    () => {
+      if (userInfo?.shop) {
+        const initialShopData = {
+          name: userInfo?.shop?.item.name ?? "",
+          category: userInfo?.shop?.item.category ?? "",
+          address1: userInfo?.shop?.item.address1 ?? "",
+          address2: userInfo?.shop?.item.address2 ?? "",
+          description: userInfo?.shop?.item.description ?? "",
+          imageUrl: userInfo?.shop?.item.imageUrl ?? "",
+          originalHourlyPay: userInfo?.shop?.item.originalHourlyPay.toString(),
+        };
+        setShopData(initialShopData as SetStateAction<IData>);
+        setPreviewUrl(userInfo?.shop?.item.imageUrl as string);
+        setIsEditMode(true);
+        setFileEditMode(true);
+      }
+    },
+    [],
+  );
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
@@ -165,7 +164,7 @@ const MyShopEditPage = () => {
       };
 
       if (isEditMode) {
-        const updateShopRes = await updateShop(shopId.current, newData as IShop);
+        const updateShopRes = await updateShop(shopId as string, newData as IShop);
         if (updateShopRes) {
           dispatch(setUserShop({ item: updateShopRes.item, href: "" }));
           router.push("/my-shop");
@@ -182,127 +181,128 @@ const MyShopEditPage = () => {
 
   return (
     <div className={styles.layout}>
-      {isLoading || updateIsLoading
-        ? <Loader />
-        : (
-          <>
-            <header>
-              <span>가게 정보</span>
-              <Link href="/my-profile">
-                <Image src="/images/close.svg" alt="닫기 버튼" width={30} height={30} />
-              </Link>
-            </header>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={styles.inputBox}>
-                <CustomInput
-                  element="text"
-                  type="text"
-                  label="가게 이름"
-                  placeholder="입력"
-                  id="name"
-                  name="name"
-                  required
-                  onChange={handleData}
-                  validationTarget={ValidationTarget.REQUIRED}
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  setCountValidation={setCountValidation as
+      <header>
+        <span>가게 정보</span>
+        <Link href="/my-profile">
+          <Image src="/images/close.svg" alt="닫기 버튼" width={30} height={30} />
+        </Link>
+      </header>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.inputBox}>
+          <CustomInput
+            element="text"
+            type="text"
+            label="가게 이름"
+            placeholder="입력"
+            id="name"
+            name="name"
+            required
+            onChange={handleData}
+            validationTarget={ValidationTarget.REQUIRED}
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as
                     React.Dispatch<React.SetStateAction<object>>}
-                  data={shopData}
-                />
-                <Dropdown
-                  type="category"
-                  label="분류"
-                  id="category"
-                  name="category"
-                  onChange={handleData}
-                  required
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  data={shopData}
-                />
-                <Dropdown
-                  type="address"
-                  label="주소"
-                  id="address1"
-                  name="address1"
-                  onChange={handleData}
-                  required
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  data={shopData}
-                />
-                <CustomInput
-                  element="text"
-                  type="text"
-                  label="상세 주소"
-                  placeholder="입력"
-                  id="address2"
-                  name="address2"
-                  required
-                  onChange={handleData}
-                  validationTarget={ValidationTarget.REQUIRED}
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  setCountValidation={setCountValidation as
+            data={shopData}
+          />
+          <Dropdown
+            type="category"
+            label="분류"
+            id="category"
+            name="category"
+            onChange={handleData}
+            required
+            rendering={rendering}
+            countValidation={countValidation}
+            data={shopData}
+          />
+          <Dropdown
+            type="address"
+            label="주소"
+            id="address1"
+            name="address1"
+            onChange={handleData}
+            required
+            rendering={rendering}
+            countValidation={countValidation}
+            data={shopData}
+          />
+          <CustomInput
+            element="text"
+            type="text"
+            label="상세 주소"
+            placeholder="입력"
+            id="address2"
+            name="address2"
+            required
+            onChange={handleData}
+            validationTarget={ValidationTarget.REQUIRED}
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as
                     React.Dispatch<React.SetStateAction<object>>}
-                  data={shopData}
-                />
-                <InputNumber
-                  label="기본 시급"
-                  placeholder="입력"
-                  required
-                  id="originalHourlyPay"
-                  name="originalHourlyPay"
+            data={shopData}
+          />
+          <InputNumber
+            label="기본 시급"
+            placeholder="입력"
+            required
+            id="originalHourlyPay"
+            name="originalHourlyPay"
                   // validationTarget={ValidationTarget.REQUIRED}
-                  onChange={handleData}
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  setCountValidation={setCountValidation as
+            onChange={handleData}
+            rendering={rendering}
+            countValidation={countValidation}
+            setCountValidation={setCountValidation as
                     React.Dispatch<React.SetStateAction<object>>}
-                  data={shopData}
-                  unit="원"
-                />
-              </div>
-              <div className={styles.inputBox}>
-                <FileUploader
-                  name="imageUrl"
-                  id="imageUrl"
-                  required
-                  onFileChange={handleFileSelected}
-                  previewUrl={previewUrl}
-                  isEditMode={fileEditMode}
-                  rendering={rendering}
-                  countValidation={countValidation}
-                  validationTarget={ValidationTarget.REQUIRED}
-                  setCountValidation={setCountValidation as
+            data={shopData}
+            unit="원"
+          />
+        </div>
+        <div className={styles.inputBox}>
+          <FileUploader
+            name="imageUrl"
+            id="imageUrl"
+            required
+            onFileChange={handleFileSelected}
+            previewUrl={previewUrl}
+            isEditMode={fileEditMode}
+            rendering={rendering}
+            countValidation={countValidation}
+            validationTarget={ValidationTarget.REQUIRED}
+            setCountValidation={setCountValidation as
                     React.Dispatch<React.SetStateAction<object>>}
-                  data={shopData}
-                />
-              </div>
-              <div className={styles.textbox}>
-                <CustomInput
-                  element="textarea"
-                  label="가게 설명"
-                  placeholder="입력"
-                  id="description"
-                  name="description"
-                  onChange={handleData}
-                  data={shopData}
-                />
-              </div>
-              <div className={styles.submitButton}>
-                <CommonBtn
-                  type="submit"
-                  style={ButtonStyle.SOLID}
-                  size={ButtonSize.LARGE}
-                >
-                  {isEditMode ? "편집하기" : "등록하기"}
-                </CommonBtn>
-              </div>
-            </form>
-          </>
-        )}
+            data={shopData}
+          />
+        </div>
+        <div className={styles.textbox}>
+          <CustomInput
+            element="textarea"
+            label="가게 설명"
+            placeholder="입력"
+            id="description"
+            name="description"
+            onChange={handleData}
+            data={shopData}
+          />
+        </div>
+        <div className={styles.submitButton}>
+          <CommonBtn
+            type="submit"
+            style={ButtonStyle.SOLID}
+            size={ButtonSize.LARGE}
+          >
+            {
+            // eslint-disable-next-line no-nested-ternary
+            updateIsLoading || isPostLoading || isUpdateSuccess || isPostSuccess
+              ? <Loader />
+              : isEditMode
+                ? "편집하기"
+                : "등록하기"
+}
+          </CommonBtn>
+        </div>
+      </form>
     </div>
   );
 };

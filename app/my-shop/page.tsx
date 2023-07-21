@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { MyShop, MyNotice } from "components/employer";
 import { withAuth, withUserType } from "components/hocs";
 import { UserType } from "types/enums/user.enum";
@@ -8,7 +7,6 @@ import useAppSelector from "redux/hooks/useAppSelector";
 import { CommonDetail } from "components/common";
 import { DetailType } from "types/enums/detailPage.enum";
 import { IShop } from "types/dto";
-// import { useGetNoticesByShopIdQuery } from "redux/api/noticeApi";
 import styles from "./page.module.scss";
 
 interface IShopData {
@@ -26,16 +24,6 @@ const MyShopPage = () => {
     description: data?.item.description,
     category: data?.item.category,
   };
-
-  // const { data: noticeData, isLoading: noticeDataIsLoading } = useGetNoticesByShopIdQuery({
-  //   shopId, params: { offset: 10 },
-  // });
-
-  // useEffect(() => {
-  //   if (!noticeDataIsLoading) {
-  //     console.log(noticeData);
-  //   }
-  // }, [noticeDataIsLoading, noticeData]);
 
   if (!data) {
     return (
