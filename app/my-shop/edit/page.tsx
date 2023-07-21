@@ -63,29 +63,6 @@ const MyShopEditPage = () => {
   });
   const { updateShop, isLoading: updateIsLoading, isSuccess: isUpdateSuccess } = useUpdateShop();
 
-<<<<<<< HEAD
-  useEffect(
-    () => {
-      if (userInfo?.shop) {
-        const initialShopData = {
-          name: userInfo?.shop?.item.name ?? "",
-          category: userInfo?.shop?.item.category ?? "",
-          address1: userInfo?.shop?.item.address1 ?? "",
-          address2: userInfo?.shop?.item.address2 ?? "",
-          description: userInfo?.shop?.item.description ?? "",
-          imageUrl: userInfo?.shop?.item.imageUrl ?? "",
-          originalHourlyPay: userInfo?.shop?.item.originalHourlyPay.toString(),
-        };
-        setShopData(initialShopData as SetStateAction<IData>);
-        setPreviewUrl(userInfo?.shop?.item.imageUrl as string);
-        setIsEditMode(true);
-        setFileEditMode(true);
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
-=======
   useEffect(() => {
     if (userInfo?.shop) {
       const initialShopData = {
@@ -104,7 +81,6 @@ const MyShopEditPage = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
->>>>>>> main
 
   const handleData = (event:
   React.ChangeEvent<HTMLInputElement |
