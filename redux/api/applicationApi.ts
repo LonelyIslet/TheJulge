@@ -52,11 +52,12 @@ export const applicationApi = apiSlice.injectEndpoints({
       }),
       acceptApplication: builder.mutation<IUpdateApplicationResponse, {
         shopId: string,
-        noticeId: string
+        noticeId: string,
+        applicationId: string,
       }>({
-        query: ({ shopId, noticeId }) => {
+        query: ({ shopId, noticeId, applicationId }) => {
           return {
-            url: `shops/${shopId}/notices/${noticeId}/applications`,
+            url: `shops/${shopId}/notices/${noticeId}/applications/${applicationId}`,
             method: "PUT",
             body: { status: ApplyStatus.ACCEPTED },
           };
@@ -64,11 +65,12 @@ export const applicationApi = apiSlice.injectEndpoints({
       }),
       rejectApplication: builder.mutation<IUpdateApplicationResponse, {
         shopId: string,
-        noticeId: string
+        noticeId: string,
+        applicationId: string,
       }>({
-        query: ({ shopId, noticeId }) => {
+        query: ({ shopId, noticeId, applicationId }) => {
           return {
-            url: `shops/${shopId}/notices/${noticeId}/applications`,
+            url: `shops/${shopId}/notices/${noticeId}/applications/${applicationId}`,
             method: "PUT",
             body: { status: ApplyStatus.REJECTED },
           };
@@ -76,11 +78,12 @@ export const applicationApi = apiSlice.injectEndpoints({
       }),
       cancelApplication: builder.mutation<IUpdateApplicationResponse, {
         shopId: string,
-        noticeId: string
+        noticeId: string,
+        applicationId: string,
       }>({
-        query: ({ shopId, noticeId }) => {
+        query: ({ shopId, noticeId, applicationId }) => {
           return {
-            url: `shops/${shopId}/notices/${noticeId}/applications`,
+            url: `shops/${shopId}/notices/${noticeId}/applications/${applicationId}`,
             method: "PUT",
             body: { status: ApplyStatus.CANCELED },
           };

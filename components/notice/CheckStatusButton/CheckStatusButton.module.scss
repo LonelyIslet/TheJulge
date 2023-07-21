@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 0 1.2rem;
+  
+  button {
+    @include bold;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+
+    @include mobile {
+      font-size: 1.2rme;
+      padding: 0.8rem 1.2rem;
+      word-break: keep-all;
+    }
+  }
+
+  .approve {
+    border: 1px $blue-20 solid;
+    border-radius: 0.6rem;
+    color: $blue-20;
+
+    &:hover {
+      background-color: $blue-20;
+      color: $white;
+    }
+  }
+  
+  .reject {
+    border: 1px $primary solid;
+    border-radius: 0.6rem;
+    color: $primary;
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}  
+
