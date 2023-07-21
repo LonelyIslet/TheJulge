@@ -4,7 +4,7 @@ import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/predicateErrorType";
 
 const usePostShop = () => {
-  const [sendRequest, { isLoading, isError }] = usePostShopMutation();
+  const [sendRequest, { isLoading, isError, isSuccess }] = usePostShopMutation();
   const { showErrorModal } = useErrorModal();
 
   const postShop = async (
@@ -25,7 +25,9 @@ const usePostShop = () => {
     }
   };
 
-  return { postShop, isLoading, isError };
+  return {
+    postShop, isLoading, isError, isSuccess,
+  };
 };
 
 export default usePostShop;

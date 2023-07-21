@@ -110,7 +110,7 @@ const Dropdown = ({
         <p className={swingValidationText
           ? `${styles.validation}` : `${styles.swing}`}
         >
-          필수 항목입니다..
+          필수 항목입니다.
         </p>
         )}
     </div>

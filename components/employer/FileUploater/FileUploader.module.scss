@@ -38,6 +38,8 @@
       &.isEditMode {
         filter: brightness(0.5)
       }
+
+      object-fit: cover;
     }
 
     .previewContainer {

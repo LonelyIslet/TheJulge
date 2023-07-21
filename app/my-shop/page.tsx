@@ -1,47 +1,54 @@
 "use client";
 
 import { MyShop, MyNotice } from "components/employer";
-import { INotice } from "types/dto";
 import { withAuth, withUserType } from "components/hocs";
 import { UserType } from "types/enums/user.enum";
-import noticeList from "constants/mock/noticeList.json";
+import useAppSelector from "redux/hooks/useAppSelector";
+import { CommonDetail } from "components/common";
+import { DetailType } from "types/enums/detailPage.enum";
+import { IShop } from "types/dto";
 import styles from "./page.module.scss";
 
-interface INoticeWithClosedInfo extends INotice {
-  id: string,
-  closed: boolean,
+interface IShopData {
+  item: IShop,
+  href: string
 }
 
 const MyShopPage = () => {
-  const notice: INoticeWithClosedInfo[] = (
-    noticeList.items as { item: INoticeWithClosedInfo }[]).map(({ item }) => { return item; });
-
+  const data = useAppSelector((state) => { return state.user.userInfo?.shop; }) as IShopData;
   const shop = {
-    name: "악마",
-    address1: "서울시 강서구 ",
-    imageUrl: "https://images.unsplash.com/photo-1630906086851-65a063a8cdd5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1665&q=80",
-    category: "카페",
-    description: "카페 설명임",
-    originalHourlyPay: 20000,
+    id: data?.item.id,
+    name: data?.item.name,
+    address1: data?.item.address1,
+    imageUrl: data?.item.imageUrl,
+    description: data?.item.description,
+    category: data?.item.category,
   };
 
+  if (!data) {
+    return (
+      <div className={styles.top}>
+        <CommonDetail detailType={DetailType.EMPLOYER} />
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <>
       <div className={styles.top}>
         <MyShop
+          id={shop.id as string}
           name={shop.name}
           address={shop.address1}
-          imageUrl={shop.imageUrl}
-          description={shop.description}
-          category={shop.category}
+          imageUrl={shop.imageUrl as string}
+          description={shop.description as string}
+          category={shop.category as string}
         />
       </div>
       <div className={styles.bottom}>
-        <MyNotice
-          noticeList={notice}
-        />
+        <MyNotice />
       </div>
-    </div>
+    </>
   );
 };
 
