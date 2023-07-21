@@ -1,20 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 "use client";
 
-import React, {
-  LegacyRef, useCallback, useEffect, useState,
+import {
+  useCallback, useEffect, useState, LegacyRef,
 } from "react";
-import { DetailType } from "types/enums/detailPage.enum";
 import {
   CommonLayout, CommonDetail, Loader, PostCard,
 } from "components/common";
-import useAppSelector from "redux/hooks/useAppSelector";
+import { DetailType } from "types/enums/detailPage.enum";
 import { INotice, IShop } from "types/dto";
 import { IGetShopNoticeResponse, useGetNoticesByShopIdQuery } from "redux/api/noticeApi";
+import useAppSelector from "redux/hooks/useAppSelector";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
-import styles from "../../common/CardList/CardList.module.scss";
+import styles from "components/common/CardList/CardList.module.scss";
 
 interface INoticeWithClosedInfo extends INotice {
   id: string;
@@ -25,29 +22,32 @@ const MyNotice = () => {
   const myShop = useAppSelector((state) => { return state.user.userInfo?.shop?.item; }) as IShop;
   const [notice, setNotice] = useState<INoticeWithClosedInfo[]>([]);
   const { data: noticeListData, isLoading, isSuccess } = useGetNoticesByShopIdQuery({
-    shopId: myShop.id as string, params: { offset: 0, limit: 2 },
+    shopId: myShop.id as string,
+    params: { offset: 0, limit: 2 },
   });
   const [isMoreLoading, setIsMoreLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [hasNext, setHasNext] = useState(true);
+
   const fetchMoreNotices = useCallback(async () => {
     setOffset((prev) => { return prev + 2; });
     setIsMoreLoading(true);
     const res = await fetch(`api/shops/${myShop.id as string}/notices?offset=${offset + 2}&limit=2`);
-    const realRes = await res.json();
-    const { items } = realRes as IGetShopNoticeResponse;
-    setHasNext(realRes.hasNext as boolean);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    const { items, hasNext: HN } = await res.json() as IGetShopNoticeResponse;
+    setHasNext(HN);
     const addedList = items.map((i) => { return { ...i.item, shop: { item: myShop, href: "" } }; });
     setNotice((prev) => { return [...prev, ...addedList]; });
     setIsMoreLoading(false);
   }, [myShop, offset]);
+
   const setTargetObservation = useIntersectionObserver(fetchMoreNotices);
+
   useEffect(() => {
     if (noticeListData) {
       setNotice(noticeListData.items.map((i) => { return { ...i.item, shop: { item: myShop, href: "" } }; }));
     }
   }, [noticeListData, myShop]);
+
   if (isLoading || !isSuccess || !noticeListData) {
     return (
       <div style={{ height: "17rem" }}>
@@ -55,6 +55,7 @@ const MyNotice = () => {
       </div>
     );
   }
+
   return notice.length !== 0 ? (
     <>
       <CommonLayout position="below">
@@ -81,9 +82,13 @@ const MyNotice = () => {
         </ul>
       </CommonLayout>
       {isMoreLoading && (
-        <div style={{
-          display: "flex", justifyContent: "center", alignItems: "center", marginTop: "4rem",
-        }}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "4rem",
+          }}
         >
           <Loader />
         </div>

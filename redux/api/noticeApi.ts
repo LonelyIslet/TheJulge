@@ -22,6 +22,7 @@ export interface IGetNoticeResponse {
   count: number;
   address: Address1[];
   keyword?: string;
+  hasNext: boolean;
   items: {
     item: INotice;
     links: ILink[];
