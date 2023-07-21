@@ -1,15 +1,16 @@
 import { CommonLayout, ShopCard } from "components/common";
 
 interface MyShopProps {
-  name: string;
-  address: string;
-  imageUrl: string;
-  description: string;
-  category: string;
+  id: string,
+  name: string,
+  address: string,
+  imageUrl: string,
+  description: string,
+  category: string,
 }
 
 const MyShop = ({
-  name, address, imageUrl, description, category,
+  id, name, address, imageUrl, description, category,
 }: MyShopProps) => {
   return (
     <CommonLayout position="above">
@@ -18,6 +19,7 @@ const MyShop = ({
       </div>
       <article>
         <ShopCard
+          id={id}
           name={name}
           address={address}
           imageUrl={imageUrl}

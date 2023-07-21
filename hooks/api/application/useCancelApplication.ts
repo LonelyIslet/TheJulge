@@ -9,9 +9,10 @@ const useCancelApplication = () => {
   const cancelApplication = async (
     shopId: string,
     noticeId: string,
+    applicationId: string,
   ) => {
     try {
-      const data = await sendRequest({ shopId, noticeId }).unwrap();
+      const data = await sendRequest({ shopId, noticeId, applicationId }).unwrap();
       return data;
     } catch (err) {
       if (isFetchBaseQueryError(err)) {

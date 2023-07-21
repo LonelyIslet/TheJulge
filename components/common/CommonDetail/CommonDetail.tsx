@@ -23,7 +23,7 @@ interface IInfo {
   NOTICE_DETAILS: IDetail
 }
 
-const CommonDetail = ({ detailType }: { detailType: Detail }) => {
+const CommonDetail = ({ detailType, shopId }: { detailType: Detail, shopId?: string }) => {
   const router = useRouter();
   const info: IInfo = {
     EMPLOYER: {
@@ -54,7 +54,7 @@ const CommonDetail = ({ detailType }: { detailType: Detail }) => {
       title: "내가 등록한 공고",
       description: "공고를 등록해 보세요.",
       buttonText: "공고 등록하기",
-      onClick: () => { return router.push("/notice/write"); },
+      onClick: () => { return router.push(`/shops/${shopId as string}/notices/write?id={}`); },
     },
   };
 

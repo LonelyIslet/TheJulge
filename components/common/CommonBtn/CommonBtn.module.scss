@@ -4,22 +4,23 @@
   border: 0.1rem solid $primary;
   white-space: pre;
 
-  @include hoverScaleEffect(5);
-
   &.solid {
     background-color: $primary;
     color: $white;
+    @include hoverScaleEffect(5);
   }
 
   &.outline {
     background-color: $white;
     color: $primary;
+    @include hoverScaleEffect(5);
   }
 
   &.disable {
     background-color: $gray-40;
     color: $white;
     cursor: default;
+    border: none;
   }
 
   &.large {

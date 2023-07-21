@@ -1,5 +1,4 @@
-import { INotice } from "types/dto";
-import { usePostNoticeMutation } from "redux/api/noticeApi";
+import { IEditNotice, usePostNoticeMutation } from "redux/api/noticeApi";
 import useErrorModal from "hooks/useErrorModal";
 import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
@@ -9,7 +8,7 @@ const usePostNotice = () => {
 
   const postNotice = async (
     shopId: string,
-    body: Partial<INotice>,
+    body: IEditNotice,
   ) => {
     try {
       const data = await sendRequest({ shopId, body }).unwrap();

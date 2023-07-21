@@ -76,6 +76,9 @@
     .name {
       margin-bottom: 2rem;
       font-size: 2rem;
+      word-break: break-all;
+
+      @include ellipsis(1);
 
       @container myLayout (max-width: 260px) {
         margin-bottom: 0.5rem;

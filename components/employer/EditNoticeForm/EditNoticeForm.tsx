@@ -1,12 +1,31 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { CommonBtn, CustomInput, InputNumber } from "components/common";
 import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import { ValidationTarget } from "types/enums/inputValidation.enum";
+import convertToNumber from "utils/formattingStringTonumber";
+import convertToISODate from "utils/formattingData";
+import formattingStringToDate from "utils/fomattingStringToDate";
+import usePostNotice from "hooks/api/notice/usePostNotice";
+import useUpdateNotice from "hooks/api/notice/useUpdateNotice";
+import { useGetNoticeByShopAndNoticeIdQuery } from "redux/api/noticeApi";
 import styles from "./EditNoticeForm.module.scss";
 
 const EditNoticeForm = () => {
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const { postNotice } = usePostNotice();
+  const { updateNotice } = useUpdateNotice();
+  const search = useSearchParams();
+
+  const { data: NoticeInitialInfo, isLoading } = useGetNoticeByShopAndNoticeIdQuery({ shopId: params.shopId, noticeId: search.get("id") as string });
+
   const [rendering, setRendering] = useState(false);
 
   const [countValidation, setCountValidation] = useState({
@@ -17,18 +36,28 @@ const EditNoticeForm = () => {
   });
 
   const [data, setData] = useState({
-    hourlyPay: "", // 넘버 타입
-    startsAt: "", // 문자열
-    workhour: "", // 넘버
-    description: "", // 문자열
+    hourlyPay: "",
+    startsAt: "",
+    workhour: "",
+    description: "",
   });
 
-  const handleData = (
-    event:
-    React.ChangeEvent<HTMLInputElement |
-    HTMLTextAreaElement> |
-    React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  useEffect(() => {
+    if (!isLoading) {
+      setData({
+        hourlyPay: Number(String(NoticeInitialInfo?.item?.hourlyPay)?.replace(/[^0-9]/g, "")).toLocaleString(), // 넘버 타입
+        startsAt: formattingStringToDate(NoticeInitialInfo?.item.startsAt as string), // 문자열
+        workhour: String(NoticeInitialInfo?.item.workhour), // 넘버
+        description: NoticeInitialInfo?.item.description as string, // 문자열
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
+  const handleData = (event:
+  React.ChangeEvent<HTMLInputElement |
+  HTMLTextAreaElement> |
+  React.MouseEvent<HTMLButtonElement>) => {
     if (event.type === "click") {
       const target = event.target as HTMLButtonElement;
       setData((prev) => {
@@ -48,7 +77,7 @@ const EditNoticeForm = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setRendering(!rendering);
     setCountValidation({
@@ -57,6 +86,27 @@ const EditNoticeForm = () => {
       workhour: 1,
       description: 1,
     });
+
+    const formattedData = {
+      hourlyPay: convertToNumber(data.hourlyPay),
+      startsAt: convertToISODate(data.startsAt),
+      workhour: convertToNumber(data.workhour),
+      description: data.description,
+    };
+
+    if (formattedData.hourlyPay > 100
+      && formattedData.startsAt.length > 0
+      && formattedData.workhour > 0
+      && formattedData.description.length > 0) {
+      // 초기 글쓰기
+      if (!searchParams.get("id")) {
+        const response = await postNotice(params.shopId, formattedData);
+        router.push("/");
+      } else {
+        const response = await updateNotice(params.shopId, searchParams.get("id") as string, formattedData);
+        router.push("/");
+      }
+    }
   };
 
   return (
@@ -115,6 +165,11 @@ const EditNoticeForm = () => {
           name="description"
           onChange={handleData}
           data={data}
+          required
+          validationTarget={ValidationTarget.REQUIRED}
+          rendering={rendering}
+          countValidation={countValidation}
+          setCountValidation={setCountValidation as React.Dispatch<React.SetStateAction<object>>}
         />
         <CommonBtn
           type="submit"

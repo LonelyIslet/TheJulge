@@ -5,6 +5,7 @@ import { ButtonSize, ButtonStyle } from "types/enums/button.enum";
 import styles from "./ShopCard.module.scss";
 
 interface ShopCardProps {
+  id: string;
   name: string;
   address: string;
   imageUrl: string;
@@ -13,7 +14,7 @@ interface ShopCardProps {
 }
 
 const ShopCard = ({
-  name, address, imageUrl, description, category,
+  id, name, address, imageUrl, description, category,
 }: ShopCardProps) => {
   return (
     <section className={styles.shopCard}>
@@ -46,7 +47,7 @@ const ShopCard = ({
           <Link href="/my-shop/edit" className={styles.button}>
             <CommonBtn style={ButtonStyle.OUTLINE} size={ButtonSize.LARGE} type="submit" responsive>편집하기</CommonBtn>
           </Link>
-          <Link href="/notice/write" className={styles.button}>
+          <Link href={`/shops/${id}/notices/write?id={}`} className={styles.button}>
             <CommonBtn style={ButtonStyle.SOLID} size={ButtonSize.LARGE} type="submit" responsive>공고 등록하기</CommonBtn>
           </Link>
         </div>
