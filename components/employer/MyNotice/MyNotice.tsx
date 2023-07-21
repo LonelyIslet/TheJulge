@@ -14,7 +14,7 @@ import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 import styles from "components/common/CardList/CardList.module.scss";
 
 interface INoticeWithClosedInfo extends INotice {
-  id: string;
+  id?: string;
   closed: boolean;
 }
 

@@ -11,10 +11,12 @@ import getBgColorClass from "utils/common/getBgColorClass";
 import { setViewHistory } from "redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { INotice } from "types/dto";
+import extractPathVariable from "utils/divideShopIdAndNoticeId";
 import CustomArrow from "./CustomArrow/CustomArrow";
 import styles from "./PostCard.module.scss";
 
 const cx = classNames.bind(styles);
+
 interface PostCardProps {
   hourlyPay: number;
   startsAt: string;
@@ -46,14 +48,16 @@ const PostCard = ({
   const dispatch = useDispatch();
 
   const addViewHistoryItem = () => {
+    const viewHistoryItems = extractPathVariable(href);
     const viewHistoryItem: INotice = {
-      id: href,
+      id: viewHistoryItems.noticesId,
       hourlyPay,
       startsAt,
       workhour,
       closed,
       shop: {
         item: {
+          id: viewHistoryItems.shopsId,
           imageUrl,
           address1: address,
           originalHourlyPay,
