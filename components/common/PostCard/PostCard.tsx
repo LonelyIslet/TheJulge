@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames/bind";
+import Tooltip from "components/common/Tooltip/Tooltip";
 import calculatePercentage from "utils/calculatePercentage";
 import formatTimeRange from "utils/formatTimeRange";
 import getBgColorClass from "utils/getBgColorClass";
@@ -34,6 +38,7 @@ const PostCard = ({
   originalHourlyPay,
   href,
 }: PostCardProps) => {
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const isPassed = new Date() > new Date(startsAt);
   const isClosed = closed || isPassed;
   const percentage = calculatePercentage(hourlyPay, originalHourlyPay);
@@ -106,10 +111,15 @@ const PostCard = ({
           </div>
         </div>
         <div className={styles.hourlyPayContainer}>
-          <p className={cx("hourlyPay", { isClosed })}>
+          <p
+            className={cx("hourlyPay", { isClosed })}
+            onMouseEnter={() => { setIsTooltipVisible(true); }}
+            onMouseLeave={() => { setIsTooltipVisible(false); }}
+          >
             {hourlyPay.toLocaleString()}
             원
           </p>
+          <Tooltip isVisible={isTooltipVisible} message={`${hourlyPay.toLocaleString()}원`} />
           {percentage >= 5
             && (
               <div className={cx("payPercentage", { isClosed }, `${bgColorClass}`)}>
