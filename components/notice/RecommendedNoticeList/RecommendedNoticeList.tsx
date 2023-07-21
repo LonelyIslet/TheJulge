@@ -53,6 +53,8 @@ const RecommendedNoticeList = () => {
           {({ index }) => {
             const modulo = index % noticeList.items.length;
             const noticeIndex = modulo < 0 ? noticeList.items.length + modulo : modulo;
+            const shopId = noticeList.items[noticeIndex].item.shop.item.id as string;
+            const noticeId = noticeList.items[noticeIndex].item.id;
             return (
               <div draggable style={{ margin: "0 0.7rem", height: "100%" }}>
                 <PostCard
@@ -66,7 +68,7 @@ const RecommendedNoticeList = () => {
                   }
                   closed={noticeList.items[noticeIndex].item.closed}
                   name={noticeList.items[noticeIndex].item.shop.item.name}
-                  href={noticeList.items[noticeIndex].item.shop.href as string}
+                  href={`/shops/${shopId}/notices/${noticeId}`}
                 />
               </div>
             );
