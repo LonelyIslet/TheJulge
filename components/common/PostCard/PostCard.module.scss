@@ -19,9 +19,7 @@
       padding: 1rem;
     }
 
-    &:hover {
-      background-color: $red-10;
-    }
+    @include hoverScaleEffect(2);
 
     &.isClosed {
       pointer-events: none;
