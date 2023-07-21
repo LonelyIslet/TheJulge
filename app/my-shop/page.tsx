@@ -14,10 +14,6 @@ interface IShopData {
   href: string
 }
 
-export const metadata = {
-  title: "내 가게 | 더줄게",
-};
-
 const MyShopPage = () => {
   const data = useAppSelector((state) => { return state.user.userInfo?.shop; }) as IShopData;
   const shop = {
