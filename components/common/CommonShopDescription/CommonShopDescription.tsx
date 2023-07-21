@@ -78,7 +78,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
         onClick={goToLogin}
         style={ButtonStyle.SOLID}
       >
-        신청 하기
+        신청하기
       </CommonBtn>
     );
   } else if (noticeInfo?.closed) {
@@ -86,7 +86,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
       <CommonBtn
         style={ButtonStyle.DISABLE}
       >
-        신청 불가
+        신청불가
       </CommonBtn>
     );
   } else if (userType === "employer") {
@@ -96,7 +96,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
           onClick={handleEditNotice}
           style={ButtonStyle.SOLID}
         >
-          편집하기
+          공고 편집하기
         </CommonBtn>
       );
     } else {
@@ -104,7 +104,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
         <CommonBtn
           style={ButtonStyle.DISABLE}
         >
-          신청 불가
+          신청불가
         </CommonBtn>
       );
     }
