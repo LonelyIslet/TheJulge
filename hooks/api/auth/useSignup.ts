@@ -1,6 +1,6 @@
 import { ICredentialsWithType, useSignupMutation } from "redux/api/authApi";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import useErrorModal from "hooks/useErrorModal";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useSignup = () => {
   const [sendRequest, { isLoading, isError }] = useSignupMutation();

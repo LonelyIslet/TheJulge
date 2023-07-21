@@ -3,8 +3,8 @@ import { apiSlice } from "redux/slices/apiSlice";
 
 export interface IPostImageNameResponse {
   item: {
-    url: string,
-  },
+    url: string;
+  };
   links: ILink[];
 }
 

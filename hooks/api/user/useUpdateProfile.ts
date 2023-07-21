@@ -1,6 +1,6 @@
 import { IUserUpdateInfo, useUpdateUserInfoMutation } from "redux/api/userApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useUpdateProfile = () => {
   const [sendRequest, { isLoading, isError }] = useUpdateUserInfoMutation();

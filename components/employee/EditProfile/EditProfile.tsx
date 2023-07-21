@@ -18,7 +18,7 @@ import useAppDispatch from "redux/hooks/useAppDispatch";
 import useAppSelector from "redux/hooks/useAppSelector";
 import useToast from "hooks/useToast";
 import useErrorModal from "hooks/useErrorModal";
-import inputValidation from "utils/inputValidation";
+import inputValidation from "utils/common/inputValidation";
 import styles from "./EditProfile.module.scss";
 
 const EditProfile = () => {

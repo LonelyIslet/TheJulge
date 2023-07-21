@@ -1,6 +1,6 @@
 import { useReadAlertMutation } from "redux/api/alertApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useReadAlert = () => {
   const [sendRequest, { isLoading, isError }] = useReadAlertMutation();

@@ -1,40 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Popover } from "components/common";
+import SortDropdown from "components/notice/SortButton/SortDropdown/SortDropdown";
+import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
+import generateNotciesPageQuery from "utils/notices/generateNoticesPageQuery";
 import { SORT_OPTIONS } from "constants/notice";
-import parseQuery from "utils/notice/parseQuery";
-import SortDropdown from "./SortDropdown/SortDropdown";
 import styles from "./SortButton.module.scss";
 
 interface SortButtonProps {
-  filter: string,
-  sortOptionId: number,
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const SortButton = ({
-  filter,
-  sortOptionId,
+  keyword,
+  sort,
+  address,
+  startsAtGte,
+  hourlyPayGte,
 }: SortButtonProps) => {
-  const [optionId, setOptionId] = useState(sortOptionId);
+  const [sortOption, setSortOption] = useState(sort);
+  const [queryString, setQueryString] = useState("");
   const [showPopover, setShowPopover] = useState(false);
-  const searchParams = useSearchParams();
-  const keyword = searchParams.get("keyword") || "";
   const router = useRouter();
 
   const handlePopoverToggle = () => {
     setShowPopover((prev) => { return !prev; });
   };
 
-  const handleOptionSelect = (id: number) => {
-    setOptionId(id);
+  const handleSortOptionClick = (option: Sort) => {
+    setSortOption(option);
     setShowPopover((prev) => { return !prev; });
-    const sort = SORT_OPTIONS[id].option;
-    const queryString = parseQuery({ keyword, sort, filter });
-    router.push(queryString);
   };
+
+  useEffect(() => {
+    const query = generateNotciesPageQuery({
+      keyword,
+      sort: sortOption,
+      address,
+      startsAtGte,
+      hourlyPayGte,
+    });
+    setQueryString(query);
+  }, [keyword, sortOption, address, startsAtGte, hourlyPayGte]);
+
+  useEffect(() => {
+    if (keyword) {
+      router.push(`/notices${queryString}`);
+    } else {
+      router.push(queryString);
+    }
+  }, [queryString, router, keyword]);
 
   return (
     <div
@@ -46,7 +69,7 @@ const SortButton = ({
         onClick={handlePopoverToggle}
       >
         <h2>
-          {SORT_OPTIONS[optionId].label}
+          {sortOption ? SORT_OPTIONS[sortOption] : "마감임박순"}
         </h2>
         <Image
           width={10}
@@ -61,7 +84,7 @@ const SortButton = ({
             top="3.8rem"
             onClose={handlePopoverToggle}
           >
-            <SortDropdown onClick={handleOptionSelect} />
+            <SortDropdown onSortOptionClick={handleSortOptionClick} />
           </Popover>
         )}
     </div>

@@ -17,17 +17,19 @@ type IPostNoticeResposne = INoticeResponse;
 type IUpdateNoticeResponse = INoticeResponse;
 
 export interface IGetNoticeResponse {
-  offset: number,
-  limit: number,
-  address: Address1[],
+  offset: number;
+  limit: number;
+  count: number;
+  address: Address1[];
+  keyword?: string;
   items: {
-    item: INotice,
-    links: ILink[]
+    item: INotice;
+    links: ILink[];
   }[];
   links: ILink[];
 }
 
-export type SortOption = "pay" | "hour" | "shop";
+export type SortOption = "time" | "pay" | "hour" | "shop";
 
 interface INoticeQueryParam {
   offset?: number;

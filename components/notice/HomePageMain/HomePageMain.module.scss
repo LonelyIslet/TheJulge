@@ -16,3 +16,11 @@
 .keyword {
   color: $primary;
 }
+
+.pagination {
+  margin-top: 4rem;
+
+  @include mobile {
+    margin-top: 3rem;
+  }
+}

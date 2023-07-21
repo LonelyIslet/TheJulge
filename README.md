@@ -48,11 +48,11 @@ thejulge
 │  │  ├─ layout.tsx
 │  │  ├─ page.module.scss
 │  │  └─ page.tsx
-│  ├─ page.module.scss
-│  ├─ page.tsx
-│  ├─ posts
+│  ├─ notices
 │  │  ├─ page.module.scss
 │  │  └─ page.tsx
+│  ├─ page.module.scss
+│  ├─ page.tsx
 │  ├─ shops
 │  │  └─ [shopId]
 │  │     └─ notices
@@ -79,6 +79,9 @@ thejulge
 │  │  │  └─ UserTypeSelect.tsx
 │  │  ├─ PersistGateContext
 │  │  │  └─ PersistGateContext.tsx
+│  │  ├─ SigninProcess
+│  │  │  ├─ SigninProcess.module.scss
+│  │  │  └─ SigninProcess.tsx
 │  │  └─ index.ts
 │  ├─ common
 │  │  ├─ CardList
@@ -111,7 +114,9 @@ thejulge
 │  │  │  └─ GlobalFooter.tsx
 │  │  ├─ GlobalNav
 │  │  │  ├─ GlobalNav.module.scss
-│  │  │  └─ GlobalNav.tsx
+│  │  │  ├─ GlobalNav.tsx
+│  │  │  ├─ NotificationButton.module.scss
+│  │  │  └─ NotificationButton.tsx
 │  │  ├─ InfiniteCarousel
 │  │  │  ├─ InfiniteCarousel.module.scss
 │  │  │  ├─ InfiniteCarousel.tsx
@@ -163,6 +168,9 @@ thejulge
 │  │  │  ├─ Toast.tsx
 │  │  │  ├─ ToastPortal.tsx
 │  │  │  └─ ToastRoot.tsx
+│  │  ├─ Tooltip
+│  │  │  ├─ Tooltip.module.scss
+│  │  │  └─ Tooltip.tsx
 │  │  ├─ Twiggler
 │  │  │  ├─ Twiggler.module.scss
 │  │  │  └─ Twiggler.tsx
@@ -213,6 +221,8 @@ thejulge
 │     │  ├─ HomePageMain.module.scss
 │     │  └─ HomePageMain.tsx
 │     ├─ RecommendedNoticeList
+│     │  ├─ DefaultRecommendedList.module.scss
+│     │  ├─ DefaultRecommendedList.tsx
 │     │  ├─ RecommendedNoticeList.module.scss
 │     │  └─ RecommendedNoticeList.tsx
 │     ├─ SortButton
@@ -234,6 +244,7 @@ thejulge
 │  └─ notice
 │     ├─ index.ts
 │     ├─ options
+│     │  ├─ LIMIT.ts
 │     │  └─ SORT_OPTIONS.ts
 │     └─ tables
 │        └─ columns.ts
@@ -274,7 +285,10 @@ thejulge
 │  ├─ data
 │  │  ├─ dropdownAddress.json
 │  │  └─ dropdownShopCategory.json
-│  └─ images /
+│  ├─ images /
+│  ├─ robots.txt
+│  ├─ sitemap-0.xml
+│  └─ sitemap.xml
 ├─ redux
 │  ├─ StoreProvider.tsx
 │  ├─ api
@@ -312,7 +326,7 @@ thejulge
 │  │  └─ user.enum.ts
 │  ├─ global.d.ts
 │  ├─ notice
-│  │  ├─ filter.ts
+│  │  ├─ queries.ts
 │  │  └─ tables.ts
 │  └─ shop
 │     └─ address.ts
@@ -320,26 +334,26 @@ thejulge
    ├─ api
    │  └─ getNotices.ts
    ├─ calculatePercentage.ts
+   ├─ convertToArray.ts
    ├─ dateToStr.ts
    ├─ formatTimeRange.ts
    ├─ getBgColorClass.ts
+   ├─ getFirstValue.ts
    ├─ inputValidation.ts
    ├─ notice
-   │  ├─ addCommasToString.ts
-   │  ├─ calcOptions.ts
-   │  ├─ parseFilterToObject.ts
-   │  └─ parseQuery.ts
+   │  ├─ formatStringNumberWithCommas.ts
+   │  ├─ generateAPIQuery.ts
+   │  └─ generateNoticesPageQuery.ts
    ├─ predicateErrorType.ts
    └─ showElapsedTime.ts
 
 ```
 
 - app/: Next 앱 라우터 파일을 저장하는 디렉토리
-- app/api/: Next api　라우터 파일을 저장하는 디렉토리
 - components/: React 컴포넌트를 저장하는 디렉토리
 - constants/: 상수를 저장하는 디렉토리
 - hooks/: 커스텀 훅 함수를 저장하는 디렉토리
-- public/: 정적 파일(이미지 파일, robots, sitemap 등)을 저장하는 디렉토리
+- public/: 정적 파일을 저장하는 디렉토리
 - redux/: 리덕스 관련 파일을 저장하는 디렉토리
 - styles/: 글로벌 스타일 관련 파일을 저장하는 디렉토리 
 - types/: 타입과 관련된 파일을 저장하는 디렉토리

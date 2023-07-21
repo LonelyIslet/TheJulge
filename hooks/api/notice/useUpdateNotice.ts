@@ -1,6 +1,6 @@
 import { IEditNotice, useUpdateNoticeMutation } from "redux/api/noticeApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useUpdateNotice = () => {
   const [sendRequest, { isLoading, isError }] = useUpdateNoticeMutation();

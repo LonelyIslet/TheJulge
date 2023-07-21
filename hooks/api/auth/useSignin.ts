@@ -1,6 +1,6 @@
 import { ICredentials, useSigninMutation } from "redux/api/authApi";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
 import useErrorModal from "hooks/useErrorModal";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const useSignin = () => {
   const [sendRequest, { isLoading, isError }] = useSigninMutation();

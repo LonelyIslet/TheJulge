@@ -7,10 +7,10 @@ type Unit = "px" | "rem" | "em" | "%" | "vh" | "vw" | "vmin" | "vmax";
 type InsetValue = `${number}${Unit}`;
 
 interface PopoverProps {
-  top?: InsetValue,
-  left?: InsetValue,
-  right?: InsetValue,
-  bottom?: InsetValue,
+  top?: InsetValue;
+  left?: InsetValue;
+  right?: InsetValue;
+  bottom?: InsetValue;
   onClose: () => void;
   children: React.ReactNode;
 }

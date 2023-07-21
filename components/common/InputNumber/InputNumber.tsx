@@ -24,7 +24,7 @@ interface CustomInputProps {
   rendering?: boolean;
   countValidation?: ICountValidation
   setCountValidation?: React.Dispatch<React.SetStateAction<object>>;
-  unit?: string
+  unit?: string;
 }
 
 const InputNumber = ({

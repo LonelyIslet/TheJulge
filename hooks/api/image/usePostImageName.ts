@@ -1,6 +1,6 @@
 import { usePostImageNameMutation } from "redux/api/imageApi";
 import useErrorModal from "hooks/useErrorModal";
-import { isFetchBaseQueryError } from "utils/predicateErrorType";
+import { isFetchBaseQueryError } from "utils/common/predicateErrorType";
 
 const usePostImageName = () => {
   const [sendRequest, { isLoading, isError }] = usePostImageNameMutation();

@@ -1,33 +1,65 @@
 import { HomePageHero, HomePageMain } from "components/notice";
-import { SortOptions } from "types/enums/sort.enum";
+import { Address1 } from "types/shop/address";
+import { Sort } from "types/notice/queries";
+import LIMIT from "constants/notice/options/LIMIT";
+import convertToArray from "utils/common/convertToArray";
+import getFirstValue from "utils/common/getFirstValue";
 import getNotices from "utils/api/getNotices";
 import styles from "./page.module.scss";
 
+interface IProcessedParams {
+  page?: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
+}
+
 interface HomePageProps {
   searchParams: {
-    [key: string]: string | undefined
+    [key: string]: string | string[] | undefined;
   }
 }
 
 const HomePage = async ({
   searchParams,
 }: HomePageProps) => {
-  const { keyword, sort, filter } = searchParams;
-  const noticeList = await getNotices({ keyword, sort, filter });
-  let sortOptionId = 0;
+  const processedParams: IProcessedParams = {
+    page: Number(getFirstValue(searchParams.page)) || undefined,
+    keyword: getFirstValue(searchParams.keyword),
+    sort: getFirstValue(searchParams.sort) as Sort,
+    address: convertToArray(searchParams.address) as Address1[],
+    startsAtGte: getFirstValue(searchParams.startsAtGte),
+    hourlyPayGte: Number(getFirstValue(searchParams.hourlyPayGte)) || undefined,
+  };
 
-  switch (sort) {
-    case SortOptions.PAY:
-      sortOptionId = 1;
-      break;
-    case SortOptions.HOUR:
-      sortOptionId = 2;
-      break;
-    case SortOptions.SHOP:
-      sortOptionId = 3;
-      break;
-    default:
-      break;
+  const {
+    page,
+    keyword,
+    sort,
+    address,
+    startsAtGte,
+    hourlyPayGte,
+  } = processedParams;
+
+  const { count, noticeList } = await getNotices({
+    page,
+    keyword,
+    sort,
+    address,
+    startsAtGte,
+    hourlyPayGte,
+  });
+
+  let currentPage = 1;
+  let lastPage = 1;
+  if (page) {
+    currentPage = page;
+  }
+
+  if (count) {
+    lastPage = Math.floor((count - 1) / LIMIT) + 1;
   }
 
   return (
@@ -38,9 +70,13 @@ const HomePage = async ({
       <div className={styles.bottom}>
         <HomePageMain
           noticeList={noticeList}
+          currentPage={currentPage}
+          lastPage={lastPage}
           keyword={keyword}
-          sortOptionId={sortOptionId}
-          filter={filter}
+          sort={sort}
+          address={address}
+          startsAtGte={startsAtGte}
+          hourlyPayGte={hourlyPayGte}
         />
       </div>
     </div>

@@ -17,10 +17,10 @@ interface ICountValidation {
 }
 
 interface FileUploaderProps {
-  name: string,
-  id: string
-  previewUrl: string,
-  isEditMode: boolean,
+  name: string;
+  id: string;
+  previewUrl: string;
+  isEditMode: boolean;
   validationTarget?: ValidationTarget;
   countValidation?: ICountValidation;
   rendering: boolean

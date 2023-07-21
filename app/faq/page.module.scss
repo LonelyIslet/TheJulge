@@ -1,0 +1,11 @@
+.container {
+  @include flexbox(column, center);
+  height: 50vh;
+  margin: 0 auto;
+  max-width: 40rem;
+}
+
+.content {
+  margin: 25px 0 60px;
+  text-align: center;
+}

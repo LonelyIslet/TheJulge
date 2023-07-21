@@ -1,30 +1,52 @@
-import { INotice } from "types/dto";
-import { GetNoticesProps } from "types/notice/filter";
 import { IGetNoticeResponse } from "redux/api/noticeApi";
-import parseQuery from "utils/notice/parseQuery";
+import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
+import generateAPIQuery from "utils/notices/generateAPIQuery";
+import LIMIT from "constants/notice/options/LIMIT";
+
+export interface GetNoticesParams {
+  page?: number;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
+}
 
 const getNotices = async ({
+  page,
   keyword,
   sort,
-  filter,
-}: GetNoticesProps) => {
+  address,
+  startsAtGte,
+  hourlyPayGte,
+}: GetNoticesParams) => {
   if (!process.env.API_BASE_URL) {
-    return [];
+    return { count: 0, noticeList: [] };
   }
 
-  const queryString = parseQuery({ keyword, sort, filter });
+  const offset = page ? (page - 1) * LIMIT : undefined;
 
-  const items: INotice[] = [];
-  const res = await fetch(`${process.env.API_BASE_URL}/notices${queryString}`);
-  const data = await res.json() as IGetNoticeResponse;
+  const queryString = generateAPIQuery({
+    offset,
+    keyword,
+    sort,
+    address,
+    startsAtGte,
+    hourlyPayGte,
+  });
 
-  if (data.items) {
-    data.items.forEach((noticeItem) => {
-      items.push(noticeItem.item);
-    });
+  try {
+    const res = await fetch(`${process.env.API_BASE_URL}/notices${queryString}`);
+    const { count, items } = await res.json() as IGetNoticeResponse;
+
+    const noticeList = items ? items.map((notice) => { return notice.item; }) : [];
+
+    return { count, noticeList };
+  } catch (err) {
+    console.error("Error fetching notices:", err);
+    return { count: 0, noticeList: [] };
   }
-
-  return items;
 };
 
 export default getNotices;

@@ -2,19 +2,24 @@
 
 import { useState } from "react";
 import { Filter, Popover } from "components/common";
-import { FilterOptions } from "types/notice/filter";
-import calcOptions from "utils/notice/calcOptions";
-import parseFilterToObject from "utils/notice/parseFilterToObject";
+import { Sort } from "types/notice/queries";
+import { Address1 } from "types/shop/address";
 import styles from "./FilterButton.module.scss";
 
 interface FilterButtonProps {
-  filter?: string;
-  keyword: string;
+  keyword?: string;
+  sort?: Sort;
+  address?: Address1[];
+  startsAtGte?: string;
+  hourlyPayGte?: number;
 }
 
 const FilterButton = ({
-  filter,
   keyword,
+  sort,
+  address,
+  startsAtGte,
+  hourlyPayGte,
 }: FilterButtonProps) => {
   const [showPopover, setShowPopover] = useState(false);
 
@@ -22,14 +27,18 @@ const FilterButton = ({
     setShowPopover((prev) => { return !prev; });
   };
 
-  let filterOptions: FilterOptions | undefined;
-  if (filter) {
-    filterOptions = parseFilterToObject(filter);
+  let optionsNum = 0;
+
+  if (address?.length) {
+    optionsNum += address.length;
   }
 
-  let optionsNum = 0;
-  if (filterOptions) {
-    optionsNum = calcOptions(filterOptions);
+  if (startsAtGte) {
+    optionsNum += 1;
+  }
+
+  if (hourlyPayGte) {
+    optionsNum += 1;
   }
 
   return (
@@ -53,8 +62,11 @@ const FilterButton = ({
             onClose={handlePopoverToggle}
           >
             <Filter
-              filter={filter}
               keyword={keyword}
+              sort={sort}
+              address={address}
+              startsAtGte={startsAtGte}
+              hourlyPayGte={hourlyPayGte}
               onClose={handlePopoverToggle}
             />
           </Popover>
