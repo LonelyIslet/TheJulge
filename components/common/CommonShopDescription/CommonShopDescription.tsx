@@ -45,7 +45,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
   };
 
   const handleEditNotice = () => {
-    router.push(`/shops/${params.shopId}/write`);
+    router.push(`/shops/${params.shopId}/notices/write?id=${params.noticeId}`);
   };
 
   const handleCancleNotice = async () => {
@@ -65,6 +65,7 @@ const CommonShopDescription = ({ user }: { user: IUser | undefined }) => {
   }, [shopInfo]);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     setIsApplied(data?.item?.currentUserApplication?.item?.id === user?.id);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
