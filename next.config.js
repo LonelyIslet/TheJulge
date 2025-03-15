@@ -7,7 +7,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*",
+        hostname: "bootcamp-api.codeit.kr",
+        // Optionally add pathname if there are specific folders to include
+      },
+      {
+        protocol: "https",
+        hostname: "*", // Allow all for local development
       },
     ],
   },
