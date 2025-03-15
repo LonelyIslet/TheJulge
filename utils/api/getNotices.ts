@@ -21,7 +21,7 @@ const getNotices = async ({
   startsAtGte,
   hourlyPayGte,
 }: GetNoticesParams) => {
-  if (!process.env.API_BASE_URL) {
+  if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
     return { count: 0, noticeList: [] };
   }
 
@@ -37,7 +37,7 @@ const getNotices = async ({
   });
 
   try {
-    const res = await fetch(`${process.env.API_BASE_URL}/notices${queryString}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/notices${queryString}`);
     const { count, items } = await res.json() as IGetNoticeResponse;
 
     const noticeList = items ? items.map((notice) => { return notice.item; }) : [];
