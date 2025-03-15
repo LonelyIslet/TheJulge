@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: 'https://www.thejulge.com',
+  siteUrl: 'https://thejulge.netlify.app/',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'daily',
